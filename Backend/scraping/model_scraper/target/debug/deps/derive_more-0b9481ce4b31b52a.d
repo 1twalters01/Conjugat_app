@@ -1,0 +1,9 @@
+C:\Users\44775\Documents\Projects\Conjugat\Backend\scraping\model_scraper\target\debug\deps\derive_more-0b9481ce4b31b52a.dll: C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\lib.rs C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\utils.rs C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\add_assign_like.rs C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\add_helpers.rs C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\add_like.rs
+
+C:\Users\44775\Documents\Projects\Conjugat\Backend\scraping\model_scraper\target\debug\deps\derive_more-0b9481ce4b31b52a.d: C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\lib.rs C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\utils.rs C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\add_assign_like.rs C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\add_helpers.rs C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\add_like.rs
+
+C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\lib.rs:
+C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\utils.rs:
+C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\add_assign_like.rs:
+C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\add_helpers.rs:
+C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\derive_more-0.99.17\src\add_like.rs:

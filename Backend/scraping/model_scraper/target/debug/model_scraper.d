@@ -1,0 +1,1 @@
+C:\Users\44775\Documents\Projects\Conjugat\Backend\scraping\model_scraper\target\debug\model_scraper.exe: C:\Users\44775\Documents\Projects\Conjugat\Backend\scraping\model_scraper\src\crud.rs C:\Users\44775\Documents\Projects\Conjugat\Backend\scraping\model_scraper\src\generate_urls.rs C:\Users\44775\Documents\Projects\Conjugat\Backend\scraping\model_scraper\src\main.rs
