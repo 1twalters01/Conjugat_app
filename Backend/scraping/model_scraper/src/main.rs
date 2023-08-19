@@ -1,20 +1,29 @@
 #![allow(unused)]
 
-mod generate_urls;
 mod crud;
+mod generate_urls;
+mod generate_word_list;
 
 use std::fs::{self, OpenOptions, File};
 use std::io::{ErrorKind, Read, Write};
-use crate::generate_urls::generate_url_text_file;
+use crate::generate_urls::generate_url_text_files;
+use crate::generate_word_list::generate_word_list_files;
+
+use crate::crud::{append_file, delete_file, open_file};
+
+
 
 fn main() {
-    generate_url_text_file();
+    let languages: Vec<&str> = vec!["Spanish", "Portuguese", "Italian", "French", "English"];
 
-    // let response = scrape_html("https://conjugator.reverso.net/index-spanish-1-250.html");
-    // println!("{}", response);
+    // generate_url_text_files(languages.clone());
+    // println!("url list has been generated");
+
+    generate_word_list_files(languages);
+    println!("word list has been generated");
+
 }
 
 
-// fn scrape_html(url: &str) -> String {
-    // return reqwest::blocking::get(url).unwrap().text().unwrap();
-// }
+
+

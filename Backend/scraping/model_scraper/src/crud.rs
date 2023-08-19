@@ -30,7 +30,7 @@ pub fn rewrite_file(file: &mut File, content: String) {
 
 pub fn append_file(file: &mut File, content: String) {
     let mut old_content: String = String::new();
-    let new_content: String = old_content + &content + "\n";
+    let new_content: String = old_content + &content;
     let check: () = file.write_all(new_content.as_bytes()).unwrap();    
 }
 
