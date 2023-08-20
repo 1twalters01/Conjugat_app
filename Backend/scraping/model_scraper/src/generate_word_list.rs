@@ -30,7 +30,7 @@ pub fn generate_word_list_files(languages: Vec<&str>) {
 
 
 fn extract_verbs(common_verb_list_url: &str) -> String {
-    let response = reqwest::blocking::get(common_verb_list_url).unwrap().text().unwrap();
+    let response: String = reqwest::blocking::get(common_verb_list_url).unwrap().text().unwrap();
     let document = scraper::Html::parse_document(&response);
 
     let class_selector = scraper::Selector::parse("div.index-content").unwrap();
