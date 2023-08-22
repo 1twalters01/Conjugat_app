@@ -28,14 +28,24 @@ fn main() {
     // extract data from: accorder
     let infinitive: &str = "accorder";
     let content: String = obtain_html_string(infinitive);
-    // println!("{}", content);
 
+    // generate vectors for variables
+    let mut tenses: Vec<String> = Vec::new();
+    let mut subjects: Vec<String> = Vec::new();
+    let mut auxiliaries: Vec<String> = Vec::new();
+    let mut conjugates: Vec<String> = Vec::new();
+
+
+    let section_container = scraper::Selector::parse("div.word-wrap-row").unwrap();
     let tense_selector = scraper::Selector::parse("div[mobile-title]>p").unwrap();
-    let tense_type_container = scraper::Selector::parse("div.word-wrap-row").unwrap();
+    let subject_selector = scraper::Selector::parse("i.graytxt").unwrap();
+    // let auxiliary_selector = scraper::Selector::parse("i.auxgraytxt").unwrap(); 
+    let conjugate_selector = scraper::Selector::parse("i.verbtxt").unwrap();
 
 
     let document = scraper::Html::parse_document(&content);
-    for (index, section) in document.select(&tense_type_container).enumerate() {
+
+    for (index, section) in document.select(&section_container).enumerate() {
         let mut tense_h4:Vec<&str> = Vec::new();
         let mut spaced = String::new();
         let h4_selector = scraper::Selector::parse("div.word-wrap-title>h4").unwrap(); 
@@ -43,6 +53,7 @@ fn main() {
         for main_tense in section.select(&h4_selector) {
             tense_h4 = main_tense.text().collect::<Vec<_>>();
         }
+
 
         if tense_h4.len() == 0 {
             tense_h4 = vec![""]
@@ -53,10 +64,32 @@ fn main() {
 
         for tense_scraped in section.select(&tense_selector) {
             let tense_p = tense_scraped.text().collect::<Vec<_>>();
-            let tense = tense_h4.clone()[0].to_owned() + tense_p[0]; 
-            println!("{:?}", tense);
+            let tense_content = tense_h4.clone()[0].to_owned() + tense_p[0];
+            tenses.push(tense_content);
+        }
+
+
+
+        for subject_scraped in section.select(&subject_selector) {
+            let subject_i = subject_scraped.text().collect::<Vec<_>>();
+            let subject_content = subject_i[0].to_string();
+            if !(subjects.contains(&subject_content)) {
+                subjects.push(subject_content);
+            }
+        }
+
+        for conjugate_scraped in section.select(&conjugate_selector) {
+            let conjugate_i = conjugate_scraped.text().collect::<Vec<_>>();
+            let conjugate_content = conjugate_i[0].to_string();
+            if !(conjugates.contains(&conjugate_content)) {
+                conjugates.push(conjugate_content);
+            }
         }
     }
+
+    println!("\n {:?}", tenses);
+    println!("\n {:?}", subjects);
+    println!("\n {:?}", conjugates);
 }
 
 
