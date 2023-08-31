@@ -1,9 +1,21 @@
 use crate::{append_file, delete_file, open_file};
-
-use std::fs::File;
 use serde::{Deserialize, Serialize};
 use serde_json::Result;
-use sqlx::{Row, postgres::PgPoolOptions};
+use sqlx::{postgres::PgPoolOptions, Row};
+use std::{
+    env,
+    collections::HashSet,
+    fs::File,
+    result,
+    sync::atomic::{AtomicI64, Ordering},
+    thread
+};
+
+
+
+// atomic counter for auto increment
+static PK_COUNTER: AtomicI64 = AtomicI64::new(1);
+
 
 
 #[derive(Serialize, Deserialize, Clone)]
@@ -19,15 +31,15 @@ struct Field {
 }
 
 
+
 impl LanguageData {
     fn default() -> LanguageData {
         LanguageData {
             model: "verbs.language".to_string(),
-            pk: 1,
+            pk: PK_COUNTER.fetch_add(1, Ordering::SeqCst),
             fields:  Field::default(),
         }
     }
-    // TODO: automatic incremental pk
 }
 
 impl Field {
@@ -36,15 +48,40 @@ impl Field {
             language: "None".to_string(),
         }
     }
-    // TODO: ensure language is unique
 }
 
 
 
 pub async fn run_languages_module(languages: Vec<&str>) {
-    let languages_data = create_languages_vec(languages);
+    match is_vector_valid(&languages) {
+        Ok(res) => res,
+        Err(err) => panic!("{}", err),
+    };
+
+    let languages_data: Vec<LanguageData> = create_languages_vec(languages);
     generate_languages_json_file(&languages_data);
     save_languages_to_postgres(&languages_data).await;
+}
+
+
+
+fn is_vector_valid<'a>(vector: &'a Vec<&'a str>) -> result::Result<bool, &str> {
+    let hs: HashSet<&str> = vector
+        .iter()
+        .cloned()
+        .collect::<HashSet<&str>>();
+
+    if hs.len() != vector.len() {
+        return Err("Vector has duplicated languages")
+    }
+
+    for elem in hs {
+        if elem == "" {
+            return Err("Vector has null element(s)")
+        }
+    }
+
+    Ok(true)
 }
 
 
@@ -58,7 +95,6 @@ fn create_languages_vec(languages: Vec<&str>) -> Vec<LanguageData> {
         };
 
         let language_data = LanguageData {
-            pk: index.to_string().parse::<i64>().unwrap() + 1,
             fields: field,
             ..LanguageData::default()
         };
@@ -67,11 +103,12 @@ fn create_languages_vec(languages: Vec<&str>) -> Vec<LanguageData> {
     }
 
     return languages_data;
-} 
+}
+
 
 
 fn generate_languages_json_file(languages_data: &Vec<LanguageData>) {
-    let languages_json = serde_json::to_string_pretty(&languages_data).unwrap();
+    let languages_json: String = serde_json::to_string_pretty(&languages_data).unwrap();
 
     let file_path: String = "temp/json/languages/languages.json".to_string();
     delete_file(file_path.clone());
@@ -82,14 +119,14 @@ fn generate_languages_json_file(languages_data: &Vec<LanguageData>) {
 
 
 
-
-
 async fn save_languages_to_postgres(languages_data: &Vec<LanguageData>) {
     // Get values from .env file
-    let pgusername: &str = "";
-    let pgpassword: &str = "";
-    let pgdbname: &str = "";
-    let url: String = String::from("postgres://") + pgusername + ":" + pgpassword + "@localhost:5432/" + pgdbname;
+    let pgusername: String = env::var("PG_USERNAME").unwrap();
+    let pgpassword: String = env::var("PG_PASSWORD").unwrap();
+    let pgdbname: String = env::var("PG_DB_NAME").unwrap();
+
+    let url: String = String::from("postgres://") + pgusername.as_str() + ":"
+        + pgpassword.as_str() + "@localhost:5432/" + pgdbname.as_str();
 
     // Create connection pool 
     let pool = PgPoolOptions::new()

@@ -12,6 +12,7 @@ use crate::scrape_verb::scrape_verb;
 use crate::scrape_model::scrape_model;
 
 mod crud;
+use dotenv::dotenv;
 use std::fs::{self, OpenOptions, File};
 use std::io::{ErrorKind, Read, Write};
 use crate::crud::{append_file, delete_file, open_file};
@@ -20,7 +21,8 @@ use crate::save_language::run_languages_module;
 
 #[tokio::main]
 async  fn main() {
-    let languages: Vec<&str> = vec!["Spanish", "Portuguese", "Italian", "French", "English", "Hindi", "Greek"];
+    dotenv().ok();
+    let languages: Vec<&str> = vec!["Spanish", "Portuguese", "Italian", "French", "English", "Egyptian", "Greek"];
     run_languages_module(languages).await;
 
     // generate_url_text_files(languages.clone());
