@@ -18,10 +18,10 @@ use crate::crud::{append_file, delete_file, open_file};
 use crate::save_language::run_languages_module;
 
 
-
-fn main() {
-    let languages: Vec<&str> = vec!["Spanish", "Portuguese", "Italian", "French", "English"];
-    run_languages_module(languages);
+#[tokio::main]
+async  fn main() {
+    let languages: Vec<&str> = vec!["Spanish", "Portuguese", "Italian", "French", "English", "Hindi", "Greek"];
+    run_languages_module(languages).await;
 
     // generate_url_text_files(languages.clone());
     // println!("url list has been generated");
