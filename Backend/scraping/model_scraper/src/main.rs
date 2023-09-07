@@ -1,29 +1,36 @@
 #![allow(unused)]
 
+mod crud;
+mod save_language;
+mod save_model;
+
 mod generate_urls;
 mod generate_word_list;
 mod scrape_verb;
 mod scrape_model;
-mod save_language;
+
+use crate::save_language::run_languages_module;
 
 use crate::generate_urls::generate_url_text_files;
 use crate::generate_word_list::generate_word_list_files;
 use crate::scrape_verb::scrape_verb;
 use crate::scrape_model::scrape_model;
 
-mod crud;
 use dotenv::dotenv;
-use std::fs::{self, OpenOptions, File};
-use std::io::{ErrorKind, Read, Write};
-use crate::crud::{append_file, delete_file, open_file};
-use crate::save_language::run_languages_module;
+use save_model::run_model_module;
 
 
 #[tokio::main]
 async  fn main() {
     dotenv().ok();
-    let languages: Vec<&str> = vec!["Spanish", "Portuguese", "Italian", "French", "English", "Egyptian", "Greek"];
-    run_languages_module(languages).await;
+
+    // Complete
+
+    let languages: Vec<&str> = vec!["Spanish", "Portuguese", "Italian", "French", "English"];
+    // run_languages_module(languages).await;
+
+    //Incomplete
+    run_model_module().await;
 
     // generate_url_text_files(languages.clone());
     // println!("url list has been generated");

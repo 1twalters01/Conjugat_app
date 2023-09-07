@@ -1,10 +1,10 @@
-use crate::{append_file, delete_file, open_file};
+use crate::crud::{append_file, delete_file, open_file};
 use serde::{Deserialize, Serialize};
 use serde_json::Result;
 use sqlx::{postgres::PgPoolOptions, Row};
 use std::{
-    env,
     collections::HashSet,
+    env,
     fs::File,
     result,
     sync::atomic::{AtomicI64, Ordering},
@@ -65,7 +65,7 @@ pub async fn run_languages_module(languages: Vec<&str>) {
 
 
 
-fn is_vector_valid<'a>(vector: &'a Vec<&'a str>) -> result::Result<bool, &str> {
+fn is_vector_valid<'a>(vector: &'a Vec<&'a str>) -> result::Result<bool, &'a str> {
     let hs: HashSet<&str> = vector
         .iter()
         .cloned()

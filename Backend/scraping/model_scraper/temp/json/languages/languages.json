@@ -33,19 +33,5 @@
     "fields": {
       "language": "English"
     }
-  },
-  {
-    "model": "verbs.language",
-    "pk": 6,
-    "fields": {
-      "language": "Egyptian"
-    }
-  },
-  {
-    "model": "verbs.language",
-    "pk": 7,
-    "fields": {
-      "language": "Greek"
-    }
   }
 ]
