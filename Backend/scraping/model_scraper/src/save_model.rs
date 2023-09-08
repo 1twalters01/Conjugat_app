@@ -143,7 +143,9 @@ impl Field {
 
 pub async fn run_model_module() {
     let (language_hash, languages) = read_language_json();
-    let (groups, endings, models) = scrape_html(&languages);
+    let (all, groups, endings, models) = scrape_html(&languages);
+
+    println!("all\n{:?}\n\nmodels\n{:?}\n\ngroups\n{:?}\n\nendings{:?}", all, models, groups, endings);
 
     // let group_data: Vec<JsonData> = create_group_vec(&languages);
     // let ending_data: Vec<JsonData> = create_ending_vec(&languages);
@@ -184,8 +186,9 @@ fn read_language_json() -> (HashMap<String, i64>, Vec<String>) {
 
 // todo!("Get a vec of the different groups (e.g. er, ir, re in french)");
 // Vec<Vec<String>> as [<ar, er, ir>, <ar, er, ir>, <are, ere, ire>, <er, ir, re>, <>] for groups, endings, models
-fn scrape_html(languages: &Vec<String>) -> (Vec<Vec<String>>, Vec<Vec<String>>, Vec<Vec<String>>) {
+fn scrape_html(languages: &Vec<String>) -> (Vec<Vec<[String; 3]>>, Vec<Vec<String>>, Vec<Vec<String>>, Vec<Vec<String>>) {
 
+    let mut all_plural: Vec<Vec<[String; 3]>> = Vec::new(); // change final array to array [String, String, String]
     let mut models: Vec<Vec<String>> = Vec::new();
     let mut endings: Vec<Vec<String>> = Vec::new();
     let mut groups: Vec<Vec<String>> = Vec::new();
@@ -195,10 +198,14 @@ fn scrape_html(languages: &Vec<String>) -> (Vec<Vec<String>>, Vec<Vec<String>>, 
         let url = "https://conjugator.reverso.net/conjugation-rules-model-".to_string() + language + ".html";
 
 
-
+        let mut all: Vec<[String; 3]> = Vec::new();
         let mut model: Vec<String> = Vec::new();
         let mut ending: Vec<String> = Vec::new();
         let mut group: Vec<String> = Vec::new();
+
+        let mut all_hash: HashSet<[String; 3]> = HashSet::new();
+        let mut model_hash: HashSet<String> = HashSet::new();
+        let mut ending_hash: HashSet<String> = HashSet::new();
         let mut group_hash: HashSet<String> = HashSet::new();
 
 
@@ -218,6 +225,7 @@ fn scrape_html(languages: &Vec<String>) -> (Vec<Vec<String>>, Vec<Vec<String>>, 
 
         let section_container = scraper::Selector::parse("div.model-contents").unwrap();
 
+        let all_selector = scraper::Selector::parse("div.model-row").unwrap();
         let model_selector = scraper::Selector::parse("a[class=model-title-verb]").unwrap();
         let ending_selector = scraper::Selector::parse("p[class=ending]").unwrap();
         let group_selector = scraper::Selector::parse("p[class=group]").unwrap();
@@ -226,41 +234,73 @@ fn scrape_html(languages: &Vec<String>) -> (Vec<Vec<String>>, Vec<Vec<String>>, 
         let document = scraper::Html::parse_document(&content);
 
         for section in document.select(&section_container) {
+            
+            for all_scraped in section.select(&all_selector) {
+                let all_div = all_scraped.text().collect::<Vec<_>>();
+                // let model_content = all_div[0].to_string();
+                // let group_content = all_div[1].to_string();
 
-            for model_scraped in section.select(&model_selector) {
-                let model_a = model_scraped.text().collect::<Vec<_>>();
-                let model_content = model_a[0].to_string();
-                model.push(model_content);
-            }
+                let model_a = all_scraped.select(&model_selector).next().unwrap().text().collect::<Vec<_>>();
+                let group_p = all_scraped.select(&group_selector).next().unwrap().text().collect::<Vec<_>>();
+                let ending_p = all_scraped.select(&ending_selector).next().unwrap().text().collect::<Vec<_>>();
 
-            for group_scraped in section.select(&group_selector) {
-                let group_p = group_scraped.text().collect::<Vec<_>>();
+                let mut model_content = String::new();
+                let mut group_content = String::new();
+                let mut ending_content = String::new();
+                let mut all_content = [String::new(), String::new(), String::new()];
 
-                if group_p.is_empty() == false {
-                    let group_content = group_p[0].to_string();
-                    group_hash.insert(group_content);
+                if (model_a.is_empty() == false) {
+                    model_content = model_a[0].trim().to_string();
+                    all_content[0] = model_a[0].trim().to_string();
+                } else {
+                    model_content = String::from("-");
+                    all_content[0] = String::from("-");
                 }
+ 
+                if (group_p.is_empty() == false) {
+                    group_content = group_p[0].trim().to_string();
+                    all_content[1] = group_p[0].trim().to_string();
+                } else {
+                    group_content = String::from("-");
+                    all_content[1] = String::from("-");
+                }
+
+                if (ending_p.is_empty() == false) {
+                    ending_content = ending_p[0].trim().to_string();
+                    all_content[2] = ending_p[0].trim().to_string();
+                } else {
+                    ending_content = String::from("-");
+                    all_content[2] = String::from("-");
+                }
+ 
+                all_hash.insert(all_content);
+                model_hash.insert(model_content);
+                group_hash.insert(group_content);
+                ending_hash.insert(ending_content);
             }
+
+            all = Vec::from_iter(all_hash.clone().into_iter());
+            all.sort();
+
+            model = Vec::from_iter(model_hash.clone().into_iter());
+            model.sort();
+
 
             group = Vec::from_iter(group_hash.clone().into_iter());
             group.sort();
 
-            for ending_scraped in section.select(&ending_selector) {
-                let ending_p = ending_scraped.text().collect::<Vec<_>>();
-                let ending_content = ending_p[0].trim().to_string();
-                ending.push(ending_content);
-            }
-        }
+            ending = Vec::from_iter(ending_hash.clone().into_iter());
+            ending.sort();
 
+        }
+        
+        all_plural.push(all);
         models.push(model);
         groups.push(group);
         endings.push(ending);
-
-        // println!("{:?}", models);
     }
-    println!("{:?}", groups.clone());
 
-    return (groups, endings, models)
+    return (all_plural, groups, endings, models)
 }
 
 
