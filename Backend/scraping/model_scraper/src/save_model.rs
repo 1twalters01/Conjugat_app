@@ -143,10 +143,16 @@ impl Field {
 
 pub async fn run_model_module() {
     let (language_hash, languages) = read_language_json();
-    let (all, groups, endings, models) = scrape_html(&languages);
+    println!("language hash {:?}\n\nlanguages {:?}", language_hash, languages);
+    
+    // let (all, groups, endings, models) = scrape_html(&languages);
+    let (all) = scrape_html(&languages);
+    let (groups, endings, models) = split_vec(&all);
 
     println!("all\n{:?}\n\nmodels\n{:?}\n\ngroups\n{:?}\n\nendings{:?}", all, models, groups, endings);
 
+    let (endings_groups_dict, models_endings_dict) = generate_languages_hashmaps(&all);
+    
     // let group_data: Vec<JsonData> = create_group_vec(&languages);
     // let ending_data: Vec<JsonData> = create_ending_vec(&languages);
     // let model_data: Vec<JsonData> = create_model_vec(&languages);
@@ -186,7 +192,8 @@ fn read_language_json() -> (HashMap<String, i64>, Vec<String>) {
 
 // todo!("Get a vec of the different groups (e.g. er, ir, re in french)");
 // Vec<Vec<String>> as [<ar, er, ir>, <ar, er, ir>, <are, ere, ire>, <er, ir, re>, <>] for groups, endings, models
-fn scrape_html(languages: &Vec<String>) -> (Vec<Vec<[String; 3]>>, Vec<Vec<String>>, Vec<Vec<String>>, Vec<Vec<String>>) {
+//fn scrape_html(languages: &Vec<String>) -> (Vec<Vec<[String; 3]>>, Vec<Vec<String>>, Vec<Vec<String>>, Vec<Vec<String>>) {
+fn scrape_html(languages: &Vec<String>) -> (Vec<Vec<[String; 3]>>) {
 
     let mut all_plural: Vec<Vec<[String; 3]>> = Vec::new(); // change final array to array [String, String, String]
     let mut models: Vec<Vec<String>> = Vec::new();
@@ -300,10 +307,60 @@ fn scrape_html(languages: &Vec<String>) -> (Vec<Vec<[String; 3]>>, Vec<Vec<Strin
         endings.push(ending);
     }
 
-    return (all_plural, groups, endings, models)
+    // return (all_plural, groups, endings, models)
+    return (all_plural)
 }
 
 
+fn split_vec(all: &Vec<Vec<[String; 3]>>) -> (Vec<Vec<String>>, Vec<Vec<String>>, Vec<Vec<String>>) {
+    let groups: Vec<Vec<String>> = Vec::new();
+    let endings: Vec<Vec<String>> = Vec::new();
+    let models: Vec<Vec<String>> = Vec::new();
+    
+    for language_vec in all {
+        let group: Vec<String> = Vec::new();
+        let ending: Vec<String> = Vec::new();
+        let model: Vec<String> = Vec::new();
+        
+        for item in language_vec {
+            model.push(item[0]);
+            group.push(item[1]);
+            ending.push(item[2]);
+        }
+        groups.push(group);
+        endings.push(ending);
+        models.push(model);
+    }
+
+    return (groups, endings, models);
+}
+
+
+// model = [0]; group = [1]; ending = [2];
+// endings_groups_dict, models_endings_dict
+fn generate_languages_hashmaps(&all: &Vec<Vec<[String; 3]>>) -> (Vec<HashMap<String, String>>,  Vec<HashMap<String, String>>) {
+    let endings_groups_dict: Vec<HashSet<String, String>> = Vec::new();
+    let models_endings_dict: Vec<HashSet<String, String>> = Vec::new();
+
+    for language_vec in all {
+        let ending_group_dict: HashSet<String, String>> = HashSet::new();
+        let model_ending_dict: HashSet<String, String>> = HashSet::new();
+        
+        for item in language_vec {
+            let model = item[0];
+            let group = item[1];
+            let ending = item[2];
+            
+            ending_group_dict.insert(ending, group);
+            model_ending_dict.insert(model, ending);
+        }
+        
+        endings_groups_dict.push(ending_group_dict);
+        models_endings_dict.push(model_ending_dict);
+    }
+
+    return (endings_groups_dict, models_endings_dict);
+}
 
 
 fn create_group_vec(languages: &Vec<&str>, language_hash: &HashMap<String, i64>, groups: Vec<String>) -> Vec<Vec<JsonData>> {
