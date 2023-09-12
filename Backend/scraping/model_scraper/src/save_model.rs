@@ -152,6 +152,9 @@ pub async fn run_model_module() {
     println!("all\n{:?}\n\nmodels\n{:?}\n\ngroups\n{:?}\n\nendings{:?}", all, models, groups, endings);
 
     let (endings_groups_dict, models_endings_dict) = generate_languages_hashmaps(&all);
+
+    generate_json_files(&languages_data);
+    save_data_to_postgres(&languages_data).await;
     
     // let group_data: Vec<JsonData> = create_group_vec(&languages);
     // let ending_data: Vec<JsonData> = create_ending_vec(&languages);
