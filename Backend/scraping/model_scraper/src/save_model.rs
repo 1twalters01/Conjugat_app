@@ -156,88 +156,14 @@ pub async fn run_model_module() {
 
 
     let (groups_data, endings_data, models_data) = generate_vectors(&all, &groups_dict, &endings_groups_dict, &models_endings_dict);
-    println!("{:?}", groups_data)
     // println!("groups_data\n{:?}\n\nendings_data\n{:?}\n\nmodels_data\n{:?}\n\n", groups_data, endings_data, models_data);;
+
+
+    generate_json_files(&groups_data, &endings_data, &models_data);
+    save_to_postgres(&groups_data, &endings_data, &models_data);
 }
 
 
-fn generate_vectors(all: &Vec<Vec<[String; 3]>>, groups_dict: &Vec<BTreeMap<String, i64>>, endings_groups_dict: &Vec<HashMap<String, String>>, models_endings_dict: &Vec<HashMap<String, String>>) -> (Vec<JsonData>, Vec<JsonData>, Vec<JsonData>) {
-    let mut groups_data: Vec<JsonData> = Vec::new();
-    let mut endings_data: Vec<JsonData> = Vec::new();
-    let mut models_data: Vec<JsonData> = Vec::new();
-
-    // model_hash.insert(item[0].clone());
-    // group_hash.insert(item[1].clone());
-    // ending_hash.insert(item[2].clone());
-
-    // println!("{:?}\n{:?}\n\n{:?}", all[1][1][1], groups_dict, groups_dict[1].get(&all[1][1][1]));
-
-
-    // for (item) in groups_dict {
-    // // for (key, value) in groups_dict {
-    //     println!("{:?}", item);
-    //     // println!("{:?} {:?}", key, value);
-    // }
-
-    for (index, language_vec) in all.into_iter().enumerate() {
-        let mut swaped_groups_dict: BTreeMap<i64, String> = BTreeMap::new();
-
-        for (key, value) in &groups_dict[index] {
-            swaped_groups_dict.insert(value.clone(), key.clone());
-        }
-
-        for (key, value) in &swaped_groups_dict {
-            println!("{:?} {:?}", key, value);
-
-            let group_field = GroupField {
-                language: index.to_string(), 
-                group: value.to_string(),
-            };
-
-            let group_data = JsonData {
-                fields: Field::GroupField(group_field),
-                pk: *key,
-                ..JsonData::default(FieldOptions::GroupField)
-            };
-
-            groups_data.push(group_data);
-        }
-
-
-        for item in  language_vec {
-            // ending
-            let ending_field = EndingField {
-                group: String::from(""),
-                ending: item[2].clone()
-            };
-            
-            let ending_data = JsonData {
-                fields: Field::EndingField(ending_field),
-                ..JsonData::default(FieldOptions::EndingField)
-            };
-
-            endings_data.push(ending_data);
-
-
-            // model
-            let model_field = ModelField {
-                ending: String::from(""),
-                model: item[0].clone()
-            };
-
-            let model_data = JsonData {
-                    fields: Field::ModelField(model_field),
-                    ..JsonData::default(FieldOptions::EndingField)
-            };
-
-            // item[0]
-            // item[1]
-            // item[2]
-        }
-    } 
-
-    return (groups_data, endings_data, models_data);
-} 
 
 
 
@@ -424,15 +350,15 @@ fn split_vec(all: &Vec<Vec<[String; 3]>>) -> (Vec<Vec<String>>, Vec<Vec<String>>
 
 // model = [0]; group = [1]; ending = [2];
 // endings_groups_dict, models_endings_dict
-fn generate_languages_hashmaps(all: &Vec<Vec<[String; 3]>>) -> (Vec<BTreeMap<String, i64>>, Vec<HashMap<String, String>>,  Vec<HashMap<String, String>>) {
+fn generate_languages_hashmaps(all: &Vec<Vec<[String; 3]>>) -> (Vec<BTreeMap<String, i64>>, Vec<BTreeMap<String, String>>,  Vec<BTreeMap<String, String>>) {
     let mut groups_dict: Vec<BTreeMap<String, i64>> = Vec::new();
-    let mut endings_groups_dict: Vec<HashMap<String, String>> = Vec::new();
-    let mut models_endings_dict: Vec<HashMap<String, String>> = Vec::new();
+    let mut endings_groups_dict: Vec<BTreeMap<String, String>> = Vec::new();
+    let mut models_endings_dict: Vec<BTreeMap<String, String>> = Vec::new();
 
     for language_vec in all {
         let mut group_dict: BTreeMap<String, i64> = BTreeMap::new();
-        let mut ending_group_dict: HashMap<String, String> = HashMap::new();
-        let mut model_ending_dict: HashMap<String, String> = HashMap::new();
+        let mut ending_group_dict: BTreeMap<String, String> = BTreeMap::new();
+        let mut model_ending_dict: BTreeMap<String, String> = BTreeMap::new();
         
         for item in language_vec {
             let model = item[0].clone();
@@ -455,61 +381,89 @@ fn generate_languages_hashmaps(all: &Vec<Vec<[String; 3]>>) -> (Vec<BTreeMap<Str
 }
 
 
-fn create_group_vec(languages: &Vec<&str>, language_hash: &HashMap<String, i64>, groups: Vec<String>) -> Vec<Vec<JsonData>> {
-    let mut groups_data: Vec<Vec<JsonData>> = Vec::new();
-
-    for language in languages {
-        let field_language = language_hash
-            .get(language.clone())
-            .unwrap()
-            .clone()
-            .to_string();
-
-        for group in &groups {
-            let group_fields = Field::GroupField(GroupField {
-                language: field_language.clone(),
-                group: group.clone(),
-            });
-
-            let group_data = JsonData {
-                fields: group_fields,
-                ..JsonData::default(FieldOptions::GroupField)
-            };
-        }
-    }
-
-    return groups_data;
-}
 
 
 
-
-
-fn create_ending_vec(languages: &Vec<&str>) -> Vec<JsonData> {
+fn generate_vectors(all: &Vec<Vec<[String; 3]>>, groups_dict: &Vec<BTreeMap<String, i64>>, endings_groups_dict: &Vec<BTreeMap<String, String>>, models_endings_dict: &Vec<BTreeMap<String, String>>) -> (Vec<JsonData>, Vec<JsonData>, Vec<JsonData>) {
+    let mut groups_data: Vec<JsonData> = Vec::new();
     let mut endings_data: Vec<JsonData> = Vec::new();
-
-
-
-    return endings_data
-}
-
-fn create_model_vec(languages: &Vec<&str>) -> Vec<JsonData> {
     let mut models_data: Vec<JsonData> = Vec::new();
 
+    for (index, language_vec) in all.into_iter().enumerate() {
+
+        // Group
+        let mut swaped_groups_dict: BTreeMap<i64, String> = BTreeMap::new();
+
+        for (key, value) in &groups_dict[index] {
+            swaped_groups_dict.insert(value.clone(), key.clone());
+        }
+
+        for (key, value) in &swaped_groups_dict {
+            let group_field = GroupField {
+                language: index.to_string(), 
+                group: value.to_string(),
+            };
+
+            let group_data = JsonData {
+                fields: Field::GroupField(group_field),
+                pk: *key,
+                ..JsonData::default(FieldOptions::GroupField)
+            };
+
+            groups_data.push(group_data);
+        }
 
 
-    return models_data
+
+        // Ending
+        for (key, value) in &endings_groups_dict[index] {
+            let ending_field = EndingField {
+                group: groups_dict[index].get(value).unwrap().to_string(),
+                ending: key.to_string(),
+            };
+
+            let ending_data = JsonData {
+                fields: Field::EndingField(ending_field),
+                ..JsonData::default(FieldOptions::EndingField)
+            };
+
+            endings_data.push(ending_data);
+        }
+
+
+        // Model
+        for (key, value) in &models_endings_dict[index] {
+            let model_field = ModelField {
+                ending: endings_groups_dict[index].get(value).unwrap().to_string(),
+                model: key.to_string(),
+            };
+
+            let model_data = JsonData {
+                fields: Field::ModelField(model_field),
+                ..JsonData::default(FieldOptions::ModelField)
+            };
+
+            models_data.push(model_data);
+        }
+
+    } 
+
+    return (groups_data, endings_data, models_data);
 }
 
 
 
-fn generate_model_json_file(groups: &Vec<JsonData>, endings: &Vec<JsonData>, models: &Vec<JsonData>) {
+
+
+
+
+fn generate_json_files(groups: &Vec<JsonData>, endings: &Vec<JsonData>, models: &Vec<JsonData>) {
 
 }
 
 
 
-async fn save_model_to_postgres(groups: &Vec<JsonData>, endings: &Vec<JsonData>, models: &Vec<JsonData>) {
+async fn save_to_postgres(groups: &Vec<JsonData>, endings: &Vec<JsonData>, models: &Vec<JsonData>) {
     // Get values from .env file
     let pgusername: String = env::var("PG_USERNAME").unwrap();
     let pgpassword: String = env::var("PG_PASSWORD").unwrap();
