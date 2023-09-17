@@ -71,7 +71,7 @@ struct EndingField {
 
 #[derive(Serialize, Deserialize, Clone)]
 struct ModelField {
-    group: String,
+    ending: String,
     model: String,
 }
 
@@ -130,7 +130,7 @@ impl Field {
            
             FieldOptions::ModelField => {
                 let model_field = ModelField {
-                    group: "".to_string(),
+                    ending: "".to_string(),
                     model: "".to_string(),
                 };
                 return Field::ModelField(model_field)
@@ -143,26 +143,82 @@ impl Field {
 
 pub async fn run_model_module() {
     let (language_hash, languages) = read_language_json();
-    println!("language hash {:?}\n\nlanguages {:?}", language_hash, languages);
+    // println!("language hash {:?}\n\nlanguages {:?}\n\n", language_hash, languages);
     
     // let (all, groups, endings, models) = scrape_html(&languages);
     let (all) = scrape_html(&languages);
     let (groups, endings, models) = split_vec(&all);
+    // println!("all\n{:?}\n\nmodels\n{:?}\n\ngroups\n{:?}\n\nendings{:?}\n\n", all, models, groups, endings);
 
-    println!("all\n{:?}\n\nmodels\n{:?}\n\ngroups\n{:?}\n\nendings{:?}", all, models, groups, endings);
+    let (groups_data, endings_data, models_data) = generate_vectors(&all);
 
-    let (endings_groups_dict, models_endings_dict) = generate_languages_hashmaps(&all);
-
-    generate_json_files(&languages_data);
-    save_data_to_postgres(&languages_data).await;
+    let (groups_dict, endings_groups_dict, models_endings_dict) = generate_languages_hashmaps(&all);
+    // println!("groups_dict\n{:?}\n\nendings_groups_dict\n{:?}\n\nmodels_endings_dict\n{:?}\n\n", groups_dict, endings_groups_dict, models_endings_dict)
+    println!("{:?}", groups_dict);
     
-    // let group_data: Vec<JsonData> = create_group_vec(&languages);
-    // let ending_data: Vec<JsonData> = create_ending_vec(&languages);
-    // let model_data: Vec<JsonData> = create_model_vec(&languages);
-
-    // generate_model_json_file(&data);
-    // save_model_to_postgres(&data).await;
 }
+
+
+fn generate_vectors(all: &Vec<Vec<[String; 3]>>) -> (Vec<JsonData>, Vec<JsonData>, Vec<JsonData>) {
+    let mut groups_data: Vec<JsonData> = Vec::new();
+    let mut endings_data: Vec<JsonData> = Vec::new();
+    let mut models_data: Vec<JsonData> = Vec::new();
+
+    // model_hash.insert(item[0].clone());
+    // group_hash.insert(item[1].clone());
+    // ending_hash.insert(item[2].clone());
+
+    for (index, language_vec) in all.into_iter().enumerate() {
+        for item in  language_vec {
+            //group
+            // Create hashmap, if item[1] not in hashmap then add to hashmap and do the following
+            let group_field = GroupField {
+                language: index.to_string(), 
+                group: item[1].clone()
+            };
+
+            let group_data = JsonData {
+                fields: Field::GroupField(group_field),
+                ..JsonData::default(FieldOptions::GroupField)
+            };
+
+            groups_data.push(group_data);
+
+            
+            // ending
+            let ending_field = EndingField {
+                group: String::from(""),
+                ending: item[2].clone()
+            };
+            
+            let ending_data = JsonData {
+                fields: Field::EndingField(ending_field),
+                ..JsonData::default(FieldOptions::EndingField)
+            };
+
+            endings_data.push(ending_data);
+
+
+            // model
+            let model_field = ModelField {
+                ending: String::from(""),
+                model: item[0].clone()
+            };
+
+            let model_data = JsonData {
+                    fields: Field::ModelField(model_field),
+                    ..JsonData::default(FieldOptions::EndingField)
+            };
+
+            // item[0]
+            // item[1]
+            // item[2]
+        }
+    } 
+
+    return (groups_data, endings_data, models_data);
+} 
+
 
 
 
@@ -182,12 +238,6 @@ fn read_language_json() -> (HashMap<String, i64>, Vec<String>) {
         languages.push(language.clone().fields.language);
     }
 
-    // println!(
-    //     "{:?}, {:?}",
-    //     &language_json[0].fields.language,
-    //     language_hash.get(&language_json[0].fields.language).unwrap()
-    // );
-
     return (language_hash, languages)
 }
 
@@ -199,9 +249,9 @@ fn read_language_json() -> (HashMap<String, i64>, Vec<String>) {
 fn scrape_html(languages: &Vec<String>) -> (Vec<Vec<[String; 3]>>) {
 
     let mut all_plural: Vec<Vec<[String; 3]>> = Vec::new(); // change final array to array [String, String, String]
-    let mut models: Vec<Vec<String>> = Vec::new();
-    let mut endings: Vec<Vec<String>> = Vec::new();
     let mut groups: Vec<Vec<String>> = Vec::new();
+    let mut endings: Vec<Vec<String>> = Vec::new();
+    let mut models: Vec<Vec<String>> = Vec::new();
 
 
     for language in languages {
@@ -209,23 +259,19 @@ fn scrape_html(languages: &Vec<String>) -> (Vec<Vec<[String; 3]>>) {
 
 
         let mut all: Vec<[String; 3]> = Vec::new();
-        let mut model: Vec<String> = Vec::new();
-        let mut ending: Vec<String> = Vec::new();
         let mut group: Vec<String> = Vec::new();
+        let mut ending: Vec<String> = Vec::new();
+        let mut model: Vec<String> = Vec::new();
 
         let mut all_hash: HashSet<[String; 3]> = HashSet::new();
-        let mut model_hash: HashSet<String> = HashSet::new();
-        let mut ending_hash: HashSet<String> = HashSet::new();
         let mut group_hash: HashSet<String> = HashSet::new();
+        let mut ending_hash: HashSet<String> = HashSet::new();
+        let mut model_hash: HashSet<String> = HashSet::new();
 
 
         let mut content: String = String::new();
         let file_path: String = "temp/models/".to_string() + language + ".txt";
         let mut file: File = open_file(file_path);
-       
-        // let response: String = reqwest::blocking::get(url).unwrap().text().unwrap();
-        // content.push_str(response.as_str());
-        // append_file(&mut file, content);
 
         file.read_to_string(&mut content);
 
@@ -316,20 +362,37 @@ fn scrape_html(languages: &Vec<String>) -> (Vec<Vec<[String; 3]>>) {
 
 
 fn split_vec(all: &Vec<Vec<[String; 3]>>) -> (Vec<Vec<String>>, Vec<Vec<String>>, Vec<Vec<String>>) {
-    let groups: Vec<Vec<String>> = Vec::new();
-    let endings: Vec<Vec<String>> = Vec::new();
-    let models: Vec<Vec<String>> = Vec::new();
+    let mut groups: Vec<Vec<String>> = Vec::new();
+    let mut endings: Vec<Vec<String>> = Vec::new();
+    let mut models: Vec<Vec<String>> = Vec::new();
     
     for language_vec in all {
-        let group: Vec<String> = Vec::new();
-        let ending: Vec<String> = Vec::new();
-        let model: Vec<String> = Vec::new();
+        let mut group: Vec<String> = Vec::new();
+        let mut ending: Vec<String> = Vec::new();
+        let mut model: Vec<String> = Vec::new();
         
+        let mut model_hash: HashSet<String> = HashSet::new();
+        let mut ending_hash: HashSet<String> = HashSet::new();
+        let mut group_hash: HashSet<String> = HashSet::new();
+
+ 
         for item in language_vec {
-            model.push(item[0]);
-            group.push(item[1]);
-            ending.push(item[2]);
+            model_hash.insert(item[0].clone());
+            group_hash.insert(item[1].clone());
+            ending_hash.insert(item[2].clone());
         }
+        
+        model = Vec::from_iter(model_hash.clone().into_iter());
+        model.sort();
+
+
+        group = Vec::from_iter(group_hash.clone().into_iter());
+        group.sort();
+
+        ending = Vec::from_iter(ending_hash.clone().into_iter());
+        ending.sort();
+
+
         groups.push(group);
         endings.push(ending);
         models.push(model);
@@ -341,28 +404,34 @@ fn split_vec(all: &Vec<Vec<[String; 3]>>) -> (Vec<Vec<String>>, Vec<Vec<String>>
 
 // model = [0]; group = [1]; ending = [2];
 // endings_groups_dict, models_endings_dict
-fn generate_languages_hashmaps(&all: &Vec<Vec<[String; 3]>>) -> (Vec<HashMap<String, String>>,  Vec<HashMap<String, String>>) {
-    let endings_groups_dict: Vec<HashSet<String, String>> = Vec::new();
-    let models_endings_dict: Vec<HashSet<String, String>> = Vec::new();
+fn generate_languages_hashmaps(all: &Vec<Vec<[String; 3]>>) -> (Vec<HashMap<String, i64>>, Vec<HashMap<String, String>>,  Vec<HashMap<String, String>>) {
+    let mut groups_dict: Vec<HashMap<String, i64>> = Vec::new();
+    let mut endings_groups_dict: Vec<HashMap<String, String>> = Vec::new();
+    let mut models_endings_dict: Vec<HashMap<String, String>> = Vec::new();
 
     for language_vec in all {
-        let ending_group_dict: HashSet<String, String>> = HashSet::new();
-        let model_ending_dict: HashSet<String, String>> = HashSet::new();
+        let mut group_dict: HashMap<String, i64> = HashMap::new();
+        let mut ending_group_dict: HashMap<String, String> = HashMap::new();
+        let mut model_ending_dict: HashMap<String, String> = HashMap::new();
         
         for item in language_vec {
-            let model = item[0];
-            let group = item[1];
-            let ending = item[2];
+            let model = item[0].clone();
+            let group = item[1].clone();
+            let ending = item[2].clone();
             
-            ending_group_dict.insert(ending, group);
+            if (group_dict.contains_key(&group) == false) {
+                group_dict.insert(group.clone(), GROUP_PK_COUNTER.fetch_add(1, Ordering::SeqCst).clone()); 
+            }
+            ending_group_dict.insert(ending.clone(), group);
             model_ending_dict.insert(model, ending);
         }
         
+        groups_dict.push(group_dict);
         endings_groups_dict.push(ending_group_dict);
         models_endings_dict.push(model_ending_dict);
     }
 
-    return (endings_groups_dict, models_endings_dict);
+    return (groups_dict, endings_groups_dict, models_endings_dict);
 }
 
 
