@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::Result;
 use sqlx::{postgres::PgPoolOptions, Row};
 use std::{
-    collections::{HashMap, HashSet},
+    collections::{BTreeMap, HashMap, HashSet},
     env,
     fs::File,
     io::Read,
@@ -20,7 +20,7 @@ static MODEL_PK_COUNTER: AtomicI64 = AtomicI64::new(1);
 
 
 
-#[derive(Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 struct JsonData {
     model: String,
     pk: i64,
@@ -40,7 +40,7 @@ struct LanguageField {
 
 
 
-#[derive(Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 enum Field {
     GroupField(GroupField),
     EndingField(EndingField),
@@ -57,19 +57,19 @@ enum FieldOptions {
 
 
 
-#[derive(Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 struct GroupField {
     language: String,
     group: String,
 }
 
-#[derive(Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 struct EndingField {
     group: String,
     ending: String,
 }
 
-#[derive(Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 struct ModelField {
     ending: String,
     model: String,
@@ -150,16 +150,18 @@ pub async fn run_model_module() {
     let (groups, endings, models) = split_vec(&all);
     // println!("all\n{:?}\n\nmodels\n{:?}\n\ngroups\n{:?}\n\nendings{:?}\n\n", all, models, groups, endings);
 
-    let (groups_data, endings_data, models_data) = generate_vectors(&all);
 
     let (groups_dict, endings_groups_dict, models_endings_dict) = generate_languages_hashmaps(&all);
-    // println!("groups_dict\n{:?}\n\nendings_groups_dict\n{:?}\n\nmodels_endings_dict\n{:?}\n\n", groups_dict, endings_groups_dict, models_endings_dict)
-    println!("{:?}", groups_dict);
-    
+    // println!("groups_dict\n{:?}\n\nendings_groups_dict\n{:?}\n\nmodels_endings_dict\n{:?}\n\n", groups_dict, endings_groups_dict, models_endings_dict);
+
+
+    let (groups_data, endings_data, models_data) = generate_vectors(&all, &groups_dict, &endings_groups_dict, &models_endings_dict);
+    println!("{:?}", groups_data)
+    // println!("groups_data\n{:?}\n\nendings_data\n{:?}\n\nmodels_data\n{:?}\n\n", groups_data, endings_data, models_data);;
 }
 
 
-fn generate_vectors(all: &Vec<Vec<[String; 3]>>) -> (Vec<JsonData>, Vec<JsonData>, Vec<JsonData>) {
+fn generate_vectors(all: &Vec<Vec<[String; 3]>>, groups_dict: &Vec<BTreeMap<String, i64>>, endings_groups_dict: &Vec<HashMap<String, String>>, models_endings_dict: &Vec<HashMap<String, String>>) -> (Vec<JsonData>, Vec<JsonData>, Vec<JsonData>) {
     let mut groups_data: Vec<JsonData> = Vec::new();
     let mut endings_data: Vec<JsonData> = Vec::new();
     let mut models_data: Vec<JsonData> = Vec::new();
@@ -168,23 +170,41 @@ fn generate_vectors(all: &Vec<Vec<[String; 3]>>) -> (Vec<JsonData>, Vec<JsonData
     // group_hash.insert(item[1].clone());
     // ending_hash.insert(item[2].clone());
 
+    // println!("{:?}\n{:?}\n\n{:?}", all[1][1][1], groups_dict, groups_dict[1].get(&all[1][1][1]));
+
+
+    // for (item) in groups_dict {
+    // // for (key, value) in groups_dict {
+    //     println!("{:?}", item);
+    //     // println!("{:?} {:?}", key, value);
+    // }
+
     for (index, language_vec) in all.into_iter().enumerate() {
-        for item in  language_vec {
-            //group
-            // Create hashmap, if item[1] not in hashmap then add to hashmap and do the following
+        let mut swaped_groups_dict: BTreeMap<i64, String> = BTreeMap::new();
+
+        for (key, value) in &groups_dict[index] {
+            swaped_groups_dict.insert(value.clone(), key.clone());
+        }
+
+        for (key, value) in &swaped_groups_dict {
+            println!("{:?} {:?}", key, value);
+
             let group_field = GroupField {
                 language: index.to_string(), 
-                group: item[1].clone()
+                group: value.to_string(),
             };
 
             let group_data = JsonData {
                 fields: Field::GroupField(group_field),
+                pk: *key,
                 ..JsonData::default(FieldOptions::GroupField)
             };
 
             groups_data.push(group_data);
+        }
 
-            
+
+        for item in  language_vec {
             // ending
             let ending_field = EndingField {
                 group: String::from(""),
@@ -404,13 +424,13 @@ fn split_vec(all: &Vec<Vec<[String; 3]>>) -> (Vec<Vec<String>>, Vec<Vec<String>>
 
 // model = [0]; group = [1]; ending = [2];
 // endings_groups_dict, models_endings_dict
-fn generate_languages_hashmaps(all: &Vec<Vec<[String; 3]>>) -> (Vec<HashMap<String, i64>>, Vec<HashMap<String, String>>,  Vec<HashMap<String, String>>) {
-    let mut groups_dict: Vec<HashMap<String, i64>> = Vec::new();
+fn generate_languages_hashmaps(all: &Vec<Vec<[String; 3]>>) -> (Vec<BTreeMap<String, i64>>, Vec<HashMap<String, String>>,  Vec<HashMap<String, String>>) {
+    let mut groups_dict: Vec<BTreeMap<String, i64>> = Vec::new();
     let mut endings_groups_dict: Vec<HashMap<String, String>> = Vec::new();
     let mut models_endings_dict: Vec<HashMap<String, String>> = Vec::new();
 
     for language_vec in all {
-        let mut group_dict: HashMap<String, i64> = HashMap::new();
+        let mut group_dict: BTreeMap<String, i64> = BTreeMap::new();
         let mut ending_group_dict: HashMap<String, String> = HashMap::new();
         let mut model_ending_dict: HashMap<String, String> = HashMap::new();
         
@@ -418,7 +438,7 @@ fn generate_languages_hashmaps(all: &Vec<Vec<[String; 3]>>) -> (Vec<HashMap<Stri
             let model = item[0].clone();
             let group = item[1].clone();
             let ending = item[2].clone();
-            
+
             if (group_dict.contains_key(&group) == false) {
                 group_dict.insert(group.clone(), GROUP_PK_COUNTER.fetch_add(1, Ordering::SeqCst).clone()); 
             }
