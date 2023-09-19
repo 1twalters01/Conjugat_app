@@ -160,7 +160,7 @@ pub async fn run_model_module() {
 
 
     generate_json_files(&groups_data, &endings_data, &models_data);
-    save_to_postgres(&groups_data, &endings_data, &models_data);
+    save_to_postgres(&groups_data, &endings_data, &models_data).await;
 }
 
 
@@ -414,19 +414,19 @@ fn generate_vectors(all: &Vec<Vec<[String; 3]>>, groups_dict: &Vec<BTreeMap<Stri
         }
 
 
-
-        // Change swaped dict to a list of 2 strings so that duplicate values are kept
         // Ending
-        let mut swaped_endings_groups_dict: BTreeMap<String, String> = BTreeMap::new();
+        let mut swaped_endings_groups_vec: Vec<[String; 2]> = Vec::new();
 
         for (key, value) in &endings_groups_dict[index] {
-            swaped_endings_groups_dict.insert(value.clone(), key.clone());
+            swaped_endings_groups_vec.push([value.clone(), key.clone()]);
         }
+
+        swaped_endings_groups_vec.sort();
         
-        for (key, value) in &swaped_endings_groups_dict {
+        for item in &swaped_endings_groups_vec {
             let ending_field = EndingField {
-                group: groups_dict[index].get(key).unwrap().to_string(),
-                ending: value.to_string(),
+                group: groups_dict[index].get(&item[0]).unwrap().to_string(),
+                ending: item[1].to_string(),
             };
 
             let ending_data = JsonData {
@@ -436,21 +436,6 @@ fn generate_vectors(all: &Vec<Vec<[String; 3]>>, groups_dict: &Vec<BTreeMap<Stri
 
             endings_data.push(ending_data);
         }
-
-
-        // for (key, value) in &endings_groups_dict[index] {
-        //     let ending_field = EndingField {
-        //         group: groups_dict[index].get(value).unwrap().to_string(),
-        //         ending: key.to_string(),
-        //     };
-        //
-        //     let ending_data = JsonData {
-        //         fields: Field::EndingField(ending_field),
-        //         ..JsonData::default(FieldOptions::EndingField)
-        //     };
-        //
-        //     endings_data.push(ending_data);
-        // }
 
 
         // Model
@@ -501,6 +486,7 @@ fn generate_json_files(groups_data: &Vec<JsonData>, endings_data: &Vec<JsonData>
     append_file(&mut file, endings_json.clone());
 
 
+
     // models
     let models_json: String = serde_json::to_string_pretty(&models_data).unwrap();
 
@@ -516,6 +502,7 @@ fn generate_json_files(groups_data: &Vec<JsonData>, endings_data: &Vec<JsonData>
 
 
 async fn save_to_postgres(groups_data: &Vec<JsonData>, endings_data: &Vec<JsonData>, models_data: &Vec<JsonData>) {
+    println!("test1");
     // Get values from .env file
     let pgusername: String = env::var("PG_USERNAME").unwrap();
     let pgpassword: String = env::var("PG_PASSWORD").unwrap();
@@ -529,6 +516,84 @@ async fn save_to_postgres(groups_data: &Vec<JsonData>, endings_data: &Vec<JsonDa
         .max_connections(5)
         .connect(url.as_str()).await.unwrap();
 
+    for group_data in groups_data {
+        // if unable to insert into table then update table else panic
+        let insert_query = sqlx::query("INSERT INTO verbs_group (id, language, group) VALUES ($1, $2, $3)")
+            .bind(group_data.pk)
+            .bind(group_data.fields.language)
+            .bind(group_data.fields.group)
+            .execute(&pool).await;
 
+        let insert_result = match insert_query {
+            Ok(res) => res,
+            Err(err) => {
+                let rewrite_query = sqlx::query("UPDATE verbs_group SET language=($1) WHERE id=($2)")
+                    .bind(group_data.pk)
+                    .bind(group_data.pk)
+                    .execute(&pool).await;
 
+                let rewrite_result = match rewrite_query {
+                    Ok(res) => res,
+                    Err(err) => panic!("Error: {:?}", err),
+                };
+                rewrite_result
+            },
+        };
+    } 
+
+    for group_data in groups_data {
+        println!("{:?}, {:?}", group_data, group_data.pk);
+        if let Field::GroupField(GroupField{language, group}) = &group_data.fields {println!("{:?}, {:?}", language, group)};
+        // println!("{:?}\n", group_data.fields);
+    }
+
+    // for ending_data in endings_data {
+    //     // if unable to insert into table then update table else panic
+    //     let insert_query = sqlx::query("INSERT INTO verbs_ending (id, language, group) VALUES ($1, $2, $3)")
+    //         .bind(language_data.pk)
+    //         .bind(language_data.fields.language.clone())
+    //         .execute(&pool).await;
+    //
+    //     let insert_result = match insert_query {
+    //         Ok(res) => res,
+    //         Err(err) => {
+    //             let rewrite_query = sqlx::query("UPDATE verbs_ending SET language=($1) WHERE id=($2)")
+    //                 .bind(language_data.fields.language.clone())
+    //                 .bind(language_data.pk)
+    //                 .execute(&pool).await;
+    //
+    //             let rewrite_result = match rewrite_query {
+    //                 Ok(res) => res,
+    //                 Err(err) => panic!("Error: {:?}", err),
+    //             };
+    //             rewrite_result
+    //         },
+    //     };
+
+    // }
+    
+    // for model_data in endings_data {
+    //     // if unable to insert into table then update table else panic
+    //     let insert_query = sqlx::query("INSERT INTO verbs_model (id, language) VALUES ($1, $2)")
+    //         .bind(language_data.pk)
+    //         .bind(language_data.fields.language.clone())
+    //         .execute(&pool).await;
+    //
+    //     let insert_result = match insert_query {
+    //         Ok(res) => res,
+    //         Err(err) => {
+    //             let rewrite_query = sqlx::query("UPDATE verbs_language SET language=($1) WHERE id=($2)")
+    //                 .bind(language_data.fields.language.clone())
+    //                 .bind(language_data.pk)
+    //                 .execute(&pool).await;
+    //
+    //             let rewrite_result = match rewrite_query {
+    //                 Ok(res) => res,
+    //                 Err(err) => panic!("Error: {:?}", err),
+    //             };
+    //             rewrite_result
+    //         },
+    //     };
+    
+    // }
 }
