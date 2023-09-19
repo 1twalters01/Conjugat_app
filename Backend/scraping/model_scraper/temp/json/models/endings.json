@@ -1,0 +1,142 @@
+[
+  {
+    "model": "verbs.endings",
+    "pk": 1,
+    "fields": {
+      "EndingField": {
+        "group": "1",
+        "ending": "-zar"
+      }
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 2,
+    "fields": {
+      "EndingField": {
+        "group": "2",
+        "ending": "-yacer"
+      }
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 3,
+    "fields": {
+      "EndingField": {
+        "group": "3",
+        "ending": "-üir"
+      }
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 4,
+    "fields": {
+      "EndingField": {
+        "group": "4",
+        "ending": "-ser"
+      }
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 5,
+    "fields": {
+      "EndingField": {
+        "group": "6",
+        "ending": "-çar"
+      }
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 6,
+    "fields": {
+      "EndingField": {
+        "group": "7",
+        "ending": "-ôr"
+      }
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 7,
+    "fields": {
+      "EndingField": {
+        "group": "5",
+        "ending": "-uvir"
+      }
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 8,
+    "fields": {
+      "EndingField": {
+        "group": "8",
+        "ending": "-ser"
+      }
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 9,
+    "fields": {
+      "EndingField": {
+        "group": "10",
+        "ending": "-iare"
+      }
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 10,
+    "fields": {
+      "EndingField": {
+        "group": "9",
+        "ending": "-vere"
+      }
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 11,
+    "fields": {
+      "EndingField": {
+        "group": "11",
+        "ending": "-uscire"
+      }
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 12,
+    "fields": {
+      "EndingField": {
+        "group": "12",
+        "ending": "-essere"
+      }
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 13,
+    "fields": {
+      "EndingField": {
+        "group": "15",
+        "ending": "-"
+      }
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 14,
+    "fields": {
+      "EndingField": {
+        "group": "17",
+        "ending": "-"
+      }
+    }
+  }
+]

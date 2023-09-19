@@ -1,0 +1,182 @@
+[
+  {
+    "model": "verbs.groups",
+    "pk": 1,
+    "fields": {
+      "GroupField": {
+        "language": "1",
+        "group": "1st"
+      }
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 2,
+    "fields": {
+      "GroupField": {
+        "language": "1",
+        "group": "2nd"
+      }
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 3,
+    "fields": {
+      "GroupField": {
+        "language": "1",
+        "group": "3rd"
+      }
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 4,
+    "fields": {
+      "GroupField": {
+        "language": "1",
+        "group": "aux."
+      }
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 5,
+    "fields": {
+      "GroupField": {
+        "language": "2",
+        "group": "3rd"
+      }
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 6,
+    "fields": {
+      "GroupField": {
+        "language": "2",
+        "group": "1st"
+      }
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 7,
+    "fields": {
+      "GroupField": {
+        "language": "2",
+        "group": "2nd"
+      }
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 8,
+    "fields": {
+      "GroupField": {
+        "language": "2",
+        "group": "aux."
+      }
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 9,
+    "fields": {
+      "GroupField": {
+        "language": "3",
+        "group": "2nd"
+      }
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 10,
+    "fields": {
+      "GroupField": {
+        "language": "3",
+        "group": "1st"
+      }
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 11,
+    "fields": {
+      "GroupField": {
+        "language": "3",
+        "group": "3rd"
+      }
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 12,
+    "fields": {
+      "GroupField": {
+        "language": "3",
+        "group": "aux."
+      }
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 13,
+    "fields": {
+      "GroupField": {
+        "language": "4",
+        "group": "3rd"
+      }
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 14,
+    "fields": {
+      "GroupField": {
+        "language": "4",
+        "group": "1st"
+      }
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 15,
+    "fields": {
+      "GroupField": {
+        "language": "4",
+        "group": "aux."
+      }
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 16,
+    "fields": {
+      "GroupField": {
+        "language": "4",
+        "group": "2nd"
+      }
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 17,
+    "fields": {
+      "GroupField": {
+        "language": "5",
+        "group": "-"
+      }
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 18,
+    "fields": {
+      "GroupField": {
+        "language": "5",
+        "group": "aux."
+      }
+    }
+  }
+]

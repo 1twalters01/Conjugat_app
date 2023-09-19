@@ -400,7 +400,7 @@ fn generate_vectors(all: &Vec<Vec<[String; 3]>>, groups_dict: &Vec<BTreeMap<Stri
 
         for (key, value) in &swaped_groups_dict {
             let group_field = GroupField {
-                language: index.to_string(), 
+                language: (index + 1).to_string(), 
                 group: value.to_string(),
             };
 
@@ -415,11 +415,18 @@ fn generate_vectors(all: &Vec<Vec<[String; 3]>>, groups_dict: &Vec<BTreeMap<Stri
 
 
 
+        // Change swaped dict to a list of 2 strings so that duplicate values are kept
         // Ending
+        let mut swaped_endings_groups_dict: BTreeMap<String, String> = BTreeMap::new();
+
         for (key, value) in &endings_groups_dict[index] {
+            swaped_endings_groups_dict.insert(value.clone(), key.clone());
+        }
+        
+        for (key, value) in &swaped_endings_groups_dict {
             let ending_field = EndingField {
-                group: groups_dict[index].get(value).unwrap().to_string(),
-                ending: key.to_string(),
+                group: groups_dict[index].get(key).unwrap().to_string(),
+                ending: value.to_string(),
             };
 
             let ending_data = JsonData {
@@ -429,6 +436,21 @@ fn generate_vectors(all: &Vec<Vec<[String; 3]>>, groups_dict: &Vec<BTreeMap<Stri
 
             endings_data.push(ending_data);
         }
+
+
+        // for (key, value) in &endings_groups_dict[index] {
+        //     let ending_field = EndingField {
+        //         group: groups_dict[index].get(value).unwrap().to_string(),
+        //         ending: key.to_string(),
+        //     };
+        //
+        //     let ending_data = JsonData {
+        //         fields: Field::EndingField(ending_field),
+        //         ..JsonData::default(FieldOptions::EndingField)
+        //     };
+        //
+        //     endings_data.push(ending_data);
+        // }
 
 
         // Model
@@ -457,13 +479,43 @@ fn generate_vectors(all: &Vec<Vec<[String; 3]>>, groups_dict: &Vec<BTreeMap<Stri
 
 
 
-fn generate_json_files(groups: &Vec<JsonData>, endings: &Vec<JsonData>, models: &Vec<JsonData>) {
+fn generate_json_files(groups_data: &Vec<JsonData>, endings_data: &Vec<JsonData>, models_data: &Vec<JsonData>) {
+    // groups
+    let groups_json: String = serde_json::to_string_pretty(&groups_data).unwrap();
+
+    let groups_file_path: String = "temp/json/models/groups.json".to_string();
+    delete_file(groups_file_path.clone());
+
+    let mut file: File = open_file(groups_file_path);
+    append_file(&mut file, groups_json.clone());
+
+
+
+    // endings
+    let endings_json: String = serde_json::to_string_pretty(&endings_data).unwrap();
+
+    let endings_file_path: String = "temp/json/models/endings.json".to_string();
+    delete_file(endings_file_path.clone());
+
+    let mut file: File = open_file(endings_file_path);
+    append_file(&mut file, endings_json.clone());
+
+
+    // models
+    let models_json: String = serde_json::to_string_pretty(&models_data).unwrap();
+
+    let models_file_path: String = "temp/json/models/models.json".to_string();
+    delete_file(models_file_path.clone());
+
+    let mut file: File = open_file(models_file_path);
+    append_file(&mut file, models_json.clone());
+
 
 }
 
 
 
-async fn save_to_postgres(groups: &Vec<JsonData>, endings: &Vec<JsonData>, models: &Vec<JsonData>) {
+async fn save_to_postgres(groups_data: &Vec<JsonData>, endings_data: &Vec<JsonData>, models_data: &Vec<JsonData>) {
     // Get values from .env file
     let pgusername: String = env::var("PG_USERNAME").unwrap();
     let pgpassword: String = env::var("PG_PASSWORD").unwrap();
