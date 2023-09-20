@@ -1,0 +1,220 @@
+use crate::crud::{append_file, delete_file, open_file};
+use serde::{Deserialize, Serialize};
+use serde_json::Result;
+use sqlx::{postgres::PgPoolOptions, Row};
+use std::{
+    collections::{BTreeMap, HashMap, HashSet},
+    env,
+    fs::File,
+    io::Read,
+    result,
+    sync::atomic::{AtomicI64, Ordering},
+    thread
+};
+
+
+
+static BASE_PK_COUNTER: AtomicI64 = AtomicI64::new(1);
+static TENSE_PK_COUNTER: AtomicI64 = AtomicI64::new(1);
+static SUBJECT_PK_COUNTER: AtomicI64 = AtomicI64::new(1);
+static AUXILIARY_PK_COUNTER: AtomicI64 = AtomicI64::new(1);
+static CONJUGATE_PK_COUNTER: AtomicI64 = AtomicI64::new(1);
+static SENTENCE_PK_COUNTER: AtomicI64 = AtomicI64::new(1);
+
+
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+struct JsonData {
+    model: String,
+    pk: i64,
+    fields: Field,
+}
+
+#[Debug, Serialize, Deserialize, Clone)]
+enum Field {
+    GroupField(GroupField),
+    EndingField(EndingField),
+    ModelField(ModelField),
+
+    BaseField(BaseField),
+    TenseField(TenseField),
+    SubjectField(SubjectField),
+    AuxiliaryField(AuxiliaryField),
+    ConjugateField(ConjugateField),
+    SentenceField(SentenceField),
+}
+
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+enum FieldOptions {
+    GroupField,
+    EndingField,
+    ModelField,
+
+    BaseField,
+    TenseField,
+    SubjectField,
+    AuxiliaryField,
+    ConjugateField,
+    SentenceField,
+}
+
+
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+struct GroupField {
+    language: String,
+    group: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+struct EndingField {
+    group: String,
+    ending: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+struct ModelField {
+    ending: String,
+    model: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+struct BaseField {
+    rank: i64
+    language: String,
+    base
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+struct TenseFieldField {
+    language: String,
+    tense: String
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+struct SubjectField {
+    language: String,
+    subject: String
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+struct AuxiliaryField {
+    language: String,
+    auxiliary: String
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+struct ConjugateField {
+    language: String,
+    conjugate: String,
+}
+
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+struct SentenceField {
+    rank: i64,
+    tense: String,
+    subject: String,
+    auxiliary: String,
+    conjugate: String
+}
+
+
+BaseField, TenseField, SubjectField, AuxiliaryField, ConjugateField, SentenceField
+
+impl JsonData {
+    fn default(field_type: FieldOptions) -> JsonData {
+        match field_type {
+            GroupField => {
+                return JsonData {
+                    model: "verbs.groups".to_string(),
+                    pk: GROUP_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
+                    fields: Field::default(FieldOptions::GroupField),
+                }
+            },
+
+            FieldOptions::EndingField => {
+                return JsonData {
+                    model: "verbs.endings".to_string(),
+                    pk: ENDING_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
+                    fields: Field::default(FieldOptions::EndingField),
+                }
+            },
+ 
+            FieldOptions::ModelField => {
+                return JsonData {
+                    model: "verbs.models".to_string(),
+                    pk: MODEL_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
+                    fields: Field::default(FieldOptions::ModelField),
+                }
+            },
+
+            BaseField => {
+                return JsonData {
+                    rank: "verbs.bases".to_string(),
+                    pk: BASE_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
+                    fields: Field::default(FieldOptions::BaseField),
+                }
+            },
+
+            FieldOptions::TenseField => {
+                return JsonData {
+                    model: "verbs.endings".to_string(),
+                    pk: TENSE_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
+                    fields: Field::default(FieldOptions::TenseField),
+                }
+            },
+ 
+            FieldOptions::SubjectField => {
+                return JsonData {
+                    model: "verbs.models".to_string(),
+                    pk: SUBJECT_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
+                    fields: Field::default(FieldOptions::SubjectField),
+                }
+            },
+ 
+            FieldOptions::AuxiliaryField => {
+                return JsonData {
+                    model: "verbs.models".to_string(),
+                    pk: SUBJECT_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
+                    fields: Field::default(FieldOptions::AuxiliaryField),
+                }
+            },
+ 
+            FieldOptions::ConjugateField => {
+                return JsonData {
+                    model: "verbs.models".to_string(),
+                    pk: SUBJECT_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
+                    fields: Field::default(FieldOptions::ConjugateField),
+                }
+            },
+ 
+            FieldOptions::SentenceField => {
+                return JsonData {
+                    model: "verbs.models".to_string(),
+                    pk: SUBJECT_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
+                    fields: Field::default(FieldOptions::SentenceField),
+                }
+            },
+        }
+    }
+}
+
+pub async fn run_component_module() {
+    let (group_hash, group) = read_group_json();
+    // println!("group_hash{:?}\n\ngroup\n", group_hash, group);
+    let (ending_hash, ending) = read_ending_json();
+    // println!("ending_hash{:?}\n\nending\n", ending_hash, ending);
+    let (model_hash, model) = read_model_json();
+    // println!("model_hash{:?}\n\nmodel\n", model_hash, model);
+
+    let () = scrape_html();
+
+
+
+    let () = generate__vectors
+
+    generate_json_files();
+    save_to_postgres().await;
+}
