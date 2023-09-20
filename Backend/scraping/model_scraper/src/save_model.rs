@@ -27,21 +27,10 @@ struct JsonData {
     fields: Field,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
-struct LanguageData {
-    model: String,
-    pk: i64,
-    fields: LanguageField,
-}
-#[derive(Debug, Serialize, Deserialize, Clone)]
-struct LanguageField {
-    language: String,
-}
-
-
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 enum Field {
+    LanguageField(LanguageField),
     GroupField(GroupField),
     EndingField(EndingField),
     ModelField(ModelField),
@@ -50,12 +39,18 @@ enum Field {
 
 #[derive(Serialize, Deserialize, Clone)]
 enum FieldOptions {
+    LanguageField,
     GroupField,
     EndingField,
     ModelField,
 }
 
 
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+struct LanguageField {
+    language: String,
+}
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 struct GroupField {
@@ -80,6 +75,14 @@ struct ModelField {
 impl JsonData {
     fn default(field_type: FieldOptions) -> JsonData {
         match field_type {
+            FieldOptions::LanguageField => {
+                return JsonData {
+                    model: "verbs.languages".to_string(),
+                    pk:0,
+                    fields: Field::default(FieldOptions::LanguageField),
+                }
+            },
+
             FieldOptions::GroupField => {
                 return JsonData {
                     model: "verbs.groups".to_string(),
@@ -112,6 +115,13 @@ impl JsonData {
 impl Field {
     fn default(field_type: FieldOptions) -> Field {
         match field_type {
+            FieldOptions::LanguageField => {
+                let language_field = LanguageField {
+                    language: String::from(""),
+                };
+                return Field::LanguageField(language_field)
+            },
+
             FieldOptions::GroupField => {
                 let group_field = GroupField {
                     language: String::from(""),
@@ -175,13 +185,15 @@ fn read_language_json() -> (HashMap<String, i64>, Vec<String>) {
     let mut language_data = String::from("");
     file.read_to_string(&mut language_data);
 
-    let language_json: Vec<LanguageData> = serde_json::from_str(language_data.as_str()).unwrap();
+    let languages_json: Vec<JsonData> = serde_json::from_str(language_data.as_str()).unwrap();
     let mut language_hash: HashMap<String, i64> = HashMap::new(); 
     let mut languages: Vec<String> = Vec::new();
 
-    for language in &language_json {
-        language_hash.insert(language.clone().fields.language, language.clone().pk);
-        languages.push(language.clone().fields.language);
+    for language_json in &languages_json {
+        if let Field::LanguageField(LanguageField{ language }) = language_json.fields {
+            language_hash.insert(language, language_json.clone().pk);
+            languages.push(language);
+        }; 
     }
 
     return (language_hash, languages)
@@ -516,84 +528,97 @@ async fn save_to_postgres(groups_data: &Vec<JsonData>, endings_data: &Vec<JsonDa
         .max_connections(5)
         .connect(url.as_str()).await.unwrap();
 
-    for group_data in groups_data {
-        // if unable to insert into table then update table else panic
-        let insert_query = sqlx::query("INSERT INTO verbs_group (id, language, group) VALUES ($1, $2, $3)")
-            .bind(group_data.pk)
-            .bind(group_data.fields.language)
-            .bind(group_data.fields.group)
-            .execute(&pool).await;
-
-        let insert_result = match insert_query {
-            Ok(res) => res,
-            Err(err) => {
-                let rewrite_query = sqlx::query("UPDATE verbs_group SET language=($1) WHERE id=($2)")
-                    .bind(group_data.pk)
-                    .bind(group_data.pk)
-                    .execute(&pool).await;
-
-                let rewrite_result = match rewrite_query {
-                    Ok(res) => res,
-                    Err(err) => panic!("Error: {:?}", err),
-                };
-                rewrite_result
-            },
-        };
-    } 
 
     for group_data in groups_data {
         println!("{:?}, {:?}", group_data, group_data.pk);
-        if let Field::GroupField(GroupField{language, group}) = &group_data.fields {println!("{:?}, {:?}", language, group)};
-        // println!("{:?}\n", group_data.fields);
+        if let Field::GroupField(GroupField{language, group}) = &group_data.fields {
+
+            //if unable to insert into table then update table else panic
+            let insert_query = sqlx::query("INSERT INTO verbs_group (id, language, group) VALUES ($1, $2, $3)")
+                .bind(group_data.pk)
+                .bind(language)
+                .bind(group)
+                .execute(&pool)
+                .await;
+
+            let insert_result = match insert_query {
+                Ok(res) => res,
+                Err(err) => {
+                    let rewrite_query = sqlx::query("UPDATE verbs_group SET language=($1), group=($2), WHERE id=($3)")
+                        .bind(language)
+                        .bind(group)
+                        .bind(group_data.pk)
+                        .execute(&pool).await;
+
+                    let rewrite_result = match rewrite_query {
+                        Ok(res) => res,
+                        Err(err) => panic!("Error: {:?}", err),
+                    };
+                    rewrite_result
+                },
+            };
+
+        } else {
+            panic!("non-group in group field");
+        };
     }
 
-    // for ending_data in endings_data {
-    //     // if unable to insert into table then update table else panic
-    //     let insert_query = sqlx::query("INSERT INTO verbs_ending (id, language, group) VALUES ($1, $2, $3)")
-    //         .bind(language_data.pk)
-    //         .bind(language_data.fields.language.clone())
-    //         .execute(&pool).await;
-    //
-    //     let insert_result = match insert_query {
-    //         Ok(res) => res,
-    //         Err(err) => {
-    //             let rewrite_query = sqlx::query("UPDATE verbs_ending SET language=($1) WHERE id=($2)")
-    //                 .bind(language_data.fields.language.clone())
-    //                 .bind(language_data.pk)
-    //                 .execute(&pool).await;
-    //
-    //             let rewrite_result = match rewrite_query {
-    //                 Ok(res) => res,
-    //                 Err(err) => panic!("Error: {:?}", err),
-    //             };
-    //             rewrite_result
-    //         },
-    //     };
 
-    // }
+    for ending_data in endings_data {
+        if let Field::EndingField(EndingField { group, ending }) = &ending_data.fields {
+            // if unable to insert into table then update table else panic
+            let insert_query = sqlx::query("INSERT INTO verbs_ending (id, group, ending) VALUES ($1, $2, $3")
+                .bind(ending_data.pk)
+                .bind(group)
+                .bind(ending)
+                .execute(&pool).await;
+
+            let insert_result = match insert_query {
+                Ok(res) => res,
+                Err(err) => {
+                    let rewrite_query = sqlx::query("UPDATE verbs_ending SET group=($1), ending=($2), WHERE id=($3)")
+                        .bind(group)
+                        .bind(ending)
+                        .bind(ending_data.pk)
+                        .execute(&pool).await;
+
+                    let rewrite_result = match rewrite_query {
+                        Ok(res) => res,
+                        Err(err) => panic!("Error: {:?}", err),
+                    };
+                    rewrite_result
+                }
+            };
+        }
+    }
     
-    // for model_data in endings_data {
-    //     // if unable to insert into table then update table else panic
-    //     let insert_query = sqlx::query("INSERT INTO verbs_model (id, language) VALUES ($1, $2)")
-    //         .bind(language_data.pk)
-    //         .bind(language_data.fields.language.clone())
-    //         .execute(&pool).await;
-    //
-    //     let insert_result = match insert_query {
-    //         Ok(res) => res,
-    //         Err(err) => {
-    //             let rewrite_query = sqlx::query("UPDATE verbs_language SET language=($1) WHERE id=($2)")
-    //                 .bind(language_data.fields.language.clone())
-    //                 .bind(language_data.pk)
-    //                 .execute(&pool).await;
-    //
-    //             let rewrite_result = match rewrite_query {
-    //                 Ok(res) => res,
-    //                 Err(err) => panic!("Error: {:?}", err),
-    //             };
-    //             rewrite_result
-    //         },
-    //     };
-    
-    // }
+
+    for model_data in endings_data {
+        if let Field::ModelField(ModelField { ending, model }) = &model_data.fields {
+        // if unable to insert into table then update table else panic
+            let insert_query = sqlx::query("INSERT INTO verbs_model (id, ending, model) VALUES ($1, $2, $3)")
+                .bind(model_data.pk)
+                .bind(ending)
+                .bind(model)
+                .execute(&pool).await;
+
+            let insert_result = match insert_query {
+                Ok(res) => res,
+                Err(err) => {
+                    let rewrite_query = sqlx::query("UPDATE verbs_model SET ending=($1), model=($2) WHERE id=($3)")
+                        .bind(ending)
+                        .bind(model)
+                        .bind(model_data.pk)
+                        .execute(&pool).await;
+
+                    let rewrite_result = match rewrite_query {
+                        Ok(res) => res,
+                        Err(err) => panic!("Error: {:?}", err),
+                    };
+                    rewrite_result
+                },
+            };
+        }
+    }
+
 }

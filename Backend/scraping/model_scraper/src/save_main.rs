@@ -13,7 +13,9 @@ use std::{
 };
 
 
-
+static GROUP_PK_COUNTER: AtomicI64 = AtomicI64::new(1);
+static ENDING_PK_COUNTER: AtomicI64 = AtomicI64::new(1);
+static MODEL_PK_COUNTER: AtomicI64 = AtomicI64::new(1);
 static BASE_PK_COUNTER: AtomicI64 = AtomicI64::new(1);
 static TENSE_PK_COUNTER: AtomicI64 = AtomicI64::new(1);
 static SUBJECT_PK_COUNTER: AtomicI64 = AtomicI64::new(1);
@@ -30,12 +32,11 @@ struct JsonData {
     fields: Field,
 }
 
-#[Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 enum Field {
     GroupField(GroupField),
     EndingField(EndingField),
     ModelField(ModelField),
-
     BaseField(BaseField),
     TenseField(TenseField),
     SubjectField(SubjectField),
@@ -50,7 +51,6 @@ enum FieldOptions {
     GroupField,
     EndingField,
     ModelField,
-
     BaseField,
     TenseField,
     SubjectField,
@@ -81,21 +81,21 @@ struct ModelField {
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 struct BaseField {
-    rank: i64
+    rank: i64,
     language: String,
-    base
+    base: String,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-struct TenseFieldField {
+struct TenseField {
     language: String,
-    tense: String
+    tense: String,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 struct SubjectField {
     language: String,
-    subject: String
+    subject: String,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -106,7 +106,7 @@ struct AuxiliaryField {
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 struct ConjugateField {
-    language: String,
+    base: String,
     conjugate: String,
 }
 
@@ -121,7 +121,7 @@ struct SentenceField {
 }
 
 
-BaseField, TenseField, SubjectField, AuxiliaryField, ConjugateField, SentenceField
+// BaseField, TenseField, SubjectField, AuxiliaryField, ConjugateField, SentenceField
 
 impl JsonData {
     fn default(field_type: FieldOptions) -> JsonData {
@@ -150,9 +150,9 @@ impl JsonData {
                 }
             },
 
-            BaseField => {
+            FieldOptions::BaseField => {
                 return JsonData {
-                    rank: "verbs.bases".to_string(),
+                    model: "verbs.bases".to_string(),
                     pk: BASE_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
                     fields: Field::default(FieldOptions::BaseField),
                 }
@@ -201,6 +201,95 @@ impl JsonData {
     }
 }
 
+
+
+impl Field {
+    fn default(field_type: FieldOptions) -> Field {
+        match field_type {
+            FieldOptions::GroupField => {
+                let group_field = GroupField {
+                    language: String::from(""),
+                    group: "".to_string(), 
+                };
+                return Field::GroupField(group_field)
+            },
+
+            FieldOptions::EndingField => {
+                let ending_field = EndingField {
+                    group: "".to_string(),
+                    ending: "".to_string(),
+                };
+                return Field::EndingField(ending_field)
+            },
+           
+            FieldOptions::ModelField => {
+                let model_field = ModelField {
+                    ending: "".to_string(),
+                    model: "".to_string(),
+                };
+                return Field::ModelField(model_field)
+            },
+
+            FieldOptions::BaseField => {
+                let base_field = BaseField {
+                    rank: 0,
+                    base: "".to_string(),
+                    language: "".to_string(),
+                };
+                return Field::BaseField(base_field)
+            },
+
+            FieldOptions::TenseField => {
+                let tense_field = TenseField {
+                    tense: "".to_string(),
+                    language: "".to_string(),
+                };
+                return Field::TenseField(tense_field)
+            },
+
+            FieldOptions::SubjectField => {
+                let subject_field = SubjectField {
+                    subject: "".to_string(),
+                    language: "".to_string(),
+                };
+                return Field::SubjectField(subject_field)
+            },
+
+            FieldOptions::AuxiliaryField => {
+                let auxiliary_field = AuxiliaryField {
+                    auxiliary: "".to_string(),
+                    language: "".to_string(),
+                };
+                return Field::AuxiliaryField(auxiliary_field)
+            },
+
+            FieldOptions::ConjugateField => {
+                let conjugate_field = ConjugateField {
+                    base: "".to_string(),
+                    conjugate: "".to_string(),
+                };
+                return Field::ConjugateField(conjugate_field)
+            },
+
+            FieldOptions::SentenceField => {
+                let sentence_field = SentenceField {
+                    rank: 0,
+                    tense: String::from(""),
+                    subject: String::from(""),
+                    auxiliary: String::from(""),
+                    conjugate: String::from(""),
+                };
+                return Field::SentenceField(sentence_field)
+            },
+
+        } 
+    }
+}
+
+
+
+
+
 pub async fn run_component_module() {
     let (group_hash, group) = read_group_json();
     // println!("group_hash{:?}\n\ngroup\n", group_hash, group);
@@ -213,8 +302,50 @@ pub async fn run_component_module() {
 
 
 
-    let () = generate__vectors
+    let () = generate_vectors();
 
     generate_json_files();
     save_to_postgres().await;
 }
+
+
+fn read_group_json() -> (Vec<HashMap<String, String>>, Vec<JsonData>) {
+
+}
+
+fn read_ending_json() -> (Vec<HashMap<String, String>>, Vec<JsonData>) {
+
+}
+
+fn read_model_json() -> (Vec<HashMap<String, String>>, Vec<JsonData>) {
+
+}
+
+
+fn scrape_html() {}
+
+
+fn generate_vectors() {}
+
+
+fn generate_json_files() {}
+
+
+async fn save_to_postgres() {
+    // Get values from .env file
+    let pgusername: String = env::var("PG_USERNAME").unwrap();
+    let pgpassword: String = env::var("PG_PASSWORD").unwrap();
+    let pgdbname: String = env::var("PG_DB_NAME").unwrap();
+
+    let url: String = String::from("postgres://") + pgusername.as_str() + ":"
+        + pgpassword.as_str() + "@localhost:5432/" + pgdbname.as_str();
+
+    // Create connection pool 
+    let pool = PgPoolOptions::new()
+        .max_connections(5)
+        .connect(url.as_str()).await.unwrap();
+
+
+
+}
+

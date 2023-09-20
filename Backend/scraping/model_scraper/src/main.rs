@@ -33,7 +33,7 @@ async  fn main() {
     run_model_module().await;
 
     //Incomplete
-    run_main_module().await;
+    // run_main_module().await;
 
     // generate_url_text_files(languages.clone());
     // println!("url list has been generated");
