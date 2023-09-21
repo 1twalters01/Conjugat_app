@@ -309,16 +309,86 @@ pub async fn run_component_module() {
 }
 
 
-fn read_group_json() -> (Vec<HashMap<String, String>>, Vec<JsonData>) {
 
+fn read_group_json() -> (Vec<HashMap<String, String>>, Vec<JsonData>) {
+	let file_path = String::from("temp/json/models/groups.json");
+    let mut file = open_file(file_path);
+
+    let mut group_data = String::from("");
+    file.read_to_string(&mut group_data);
+
+    let groups_json: Vec<JsonData> = serde_json::from_str(group_data.as_str()).unwrap();
+    let mut group_hash: HashMap<String, String> = HashMap::new();
+    let mut groups_vec_hash: Vec<HashMap<String, String> = Vec::new();
+    let mut groups: Vec<String> = Vec::new();
+
+    for (index, group_json) in &groups_json.into_iter().enumerate() {
+        if let Field::GroupField(GroupField{ group, language }) = group_json.fields {
+            // group_hash.insert(group + index.to_string(), language);
+            group_hash.insert(group, language);
+            groups_vec_hash[language.parse::<i64>()].insert(
+            groups[language.parse::<i64>()].push(group);
+        }; 
+    }
+    
+    // for key in group_hash {
+    //     if let Field::GroupField (GroupField{language, group}) = &group_data.fields {
+    //         let language_index = language.parse::<i64>().unwrap() - 1;
+    //         groups_vec_hash[language_index].insert(key);
+    //     }
+    // }
+
+    return (groups_vec_hash, groups)
 }
+
+
 
 fn read_ending_json() -> (Vec<HashMap<String, String>>, Vec<JsonData>) {
+	let file_path = String::from("temp/json/models/endings.json");
+    let mut file = open_file(file_path);
 
+    let mut ending_data = String::from("");
+    file.read_to_string(&mut ending_data);
+
+    let endings_json: Vec<JsonData> = serde_json::from_str(ending_data.as_str()).unwrap();
+    let mut ending_hash: HashMap<String, String> = HashMap::new();
+    let mut endings_vec_hash: Vec<HashMap<String, String> = Vec::new();
+    let mut endings: Vec<String> = Vec::new();
+
+    for (index, ending_json) in &endings_json.into_iter().enumerate() {
+        if let Field::GroupField(GroupField{ ending, group }) = ending_json.fields {
+            ending_hash.insert(ending, group);
+            endings_vec_hash[group.parse::<i64>()].insert(
+            endings[group.parse::<i64>()].push(ending);
+        }; 
+    }
+
+    return (endings_vec_hash, endings)
 }
 
-fn read_model_json() -> (Vec<HashMap<String, String>>, Vec<JsonData>) {
 
+
+fn read_model_json() -> (Vec<HashMap<String, String>>, Vec<JsonData>) {
+	let file_path = String::from("temp/json/models/models.json");
+    let mut file = open_file(file_path);
+
+    let mut model_data = String::from("");
+    file.read_to_string(&mut model_data);
+
+    let models_json: Vec<JsonData> = serde_json::from_str(model_data.as_str()).unwrap();
+    let mut model_hash: HashMap<String, String> = HashMap::new();
+    let mut models_vec_hash: Vec<HashMap<String, String> = Vec::new();
+    let mut models: Vec<String> = Vec::new();
+
+    for (index, model_json) in &models_json.into_iter().enumerate() {
+        if let Field::GroupField(GroupField{ model, ending }) = model_json.fields {
+            model_hash.insert(ending, group);
+            models_vec_hash[ending.parse::<i64>()].insert(
+            models[ending.parse::<i64>()].push(model);
+        }; 
+    }
+
+    return (endings_vec_hash, endings)
 }
 
 
