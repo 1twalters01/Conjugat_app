@@ -304,7 +304,12 @@ pub async fn run_component_module() {
 
     let () = generate_vectors();
 
-    generate_json_files();
+    generate_json_files(&bases_data);
+    generate_json_files(&tenses_data);
+    generate_json_files(&subjects_data);
+    generate_json_files(&auxiliaries_data);
+    generate_json_files(&conjugates_data);
+    
     save_to_postgres().await;
 }
 
