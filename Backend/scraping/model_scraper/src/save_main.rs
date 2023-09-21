@@ -398,7 +398,14 @@ fn scrape_html() {}
 fn generate_vectors() {}
 
 
-fn generate_json_files() {}
+fn generate_json_files(data: &Vec<JsonData>, file_path: String) {
+	let json: String = serde_json::to_string_pretty(&data).unwrap();
+    
+    delete_file(file_path.clone());
+    
+    let mut file: File = open(file_path);
+    append_file(&mut file, json.clone());
+}
 
 
 async fn save_to_postgres() {
