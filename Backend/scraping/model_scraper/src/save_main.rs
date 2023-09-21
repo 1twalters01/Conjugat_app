@@ -126,7 +126,7 @@ struct SentenceField {
 impl JsonData {
     fn default(field_type: FieldOptions) -> JsonData {
         match field_type {
-            GroupField => {
+            FieldOptions::GroupField => {
                 return JsonData {
                     model: "verbs.groups".to_string(),
                     pk: GROUP_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
