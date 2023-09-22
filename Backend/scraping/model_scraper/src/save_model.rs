@@ -29,6 +29,7 @@ struct JsonData {
 
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(untagged)]
 enum Field {
     LanguageField(LanguageField),
     GroupField(GroupField),
@@ -190,9 +191,9 @@ fn read_language_json() -> (HashMap<String, i64>, Vec<String>) {
     let mut languages: Vec<String> = Vec::new();
 
     for language_json in &languages_json {
-        if let Field::LanguageField(LanguageField{ language }) = language_json.fields {
-            language_hash.insert(language, language_json.clone().pk);
-            languages.push(language);
+        if let Field::LanguageField(LanguageField{ language }) = &language_json.fields {
+            language_hash.insert(language.clone(), language_json.clone().pk);
+            languages.push(language.clone());
         }; 
     }
 

@@ -30,10 +30,10 @@ async  fn main() {
 
     let languages: Vec<&str> = vec!["Spanish", "Portuguese", "Italian", "French", "English"];
     // run_languages_module(languages).await;
-    run_model_module().await;
+    // run_model_module().await;
 
     //Incomplete
-    // run_main_module().await;
+    run_main_module().await;
 
     // generate_url_text_files(languages.clone());
     // println!("url list has been generated");
