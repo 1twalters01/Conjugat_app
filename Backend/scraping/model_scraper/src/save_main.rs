@@ -193,7 +193,7 @@ impl JsonData {
  
             FieldOptions::SentenceField => {
                 return JsonData {
-                    model: "verbs.models".to_string(),
+                    model: "verbs.sentences".to_string(),
                     pk: SUBJECT_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
                     fields: Field::default(FieldOptions::SentenceField),
                 }
@@ -333,16 +333,18 @@ fn read_group_json() -> (Vec<HashMap<String, String>>, Vec<Vec<JsonData>>) {
     for (index, group_data) in groups_data.into_iter().enumerate() {
         if let Field::GroupField(GroupField{ ref group, ref language }) = group_data.fields {
             group_hash = HashMap::from([(group.clone(), language.clone()),]);
-
+            group_vec = Vec::new();
 
             if language.clone() == (language_count + 1).to_string() { 
                 if groups_vec_hash.len() == language_count{
                     groups_vec_hash.push(HashMap::from([(group.clone(), language.clone())]));
 
                     group_vec.push(group_data.clone());
-                    groups_vec_vec.push(Vec::from(group_vec.clone()))
+                    groups_vec_vec.push(group_vec.clone())
                 } else {
                     groups_vec_hash[language_count].insert(group.clone(), language.clone());
+
+                    groups_vec_vec[language_count].push(group_data.clone());
                 }
             } else {
                 language_count = language_count + 1;
@@ -350,12 +352,13 @@ fn read_group_json() -> (Vec<HashMap<String, String>>, Vec<Vec<JsonData>>) {
                     groups_vec_hash.push(HashMap::from([(group.clone(), language.clone())]));
 
                     group_vec.push(group_data.clone());
-                    groups_vec_vec.push(Vec::from(group_vec.clone()))
+                    groups_vec_vec.push(group_vec.clone());
 
                 } else {
                     groups_vec_hash[language_count].insert(group.to_string(), language.clone());
-                }
 
+                    groups_vec_vec[language_count].push(group_data.clone());
+                }
             }
         }; 
     }
