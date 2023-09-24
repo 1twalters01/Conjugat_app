@@ -20,7 +20,8 @@ static MODEL_PK_COUNTER: AtomicI64 = AtomicI64::new(1);
 
 
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+
+#[derive(Ord, PartialOrd, PartialEq, Eq, Debug, Serialize, Deserialize, Clone)]
 struct JsonData {
     model: String,
     pk: i64,
@@ -28,7 +29,7 @@ struct JsonData {
 }
 
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Ord, PartialEq, Eq, PartialOrd, Debug, Serialize, Deserialize, Clone)]
 #[serde(untagged)]
 enum Field {
     LanguageField(LanguageField),
@@ -48,24 +49,24 @@ enum FieldOptions {
 
 
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Ord, PartialEq, Eq, PartialOrd, Debug, Serialize, Deserialize, Clone)]
 struct LanguageField {
     language: String,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Ord, PartialEq, Eq, PartialOrd, Debug, Serialize, Deserialize, Clone)]
 struct GroupField {
     language: String,
     group: String,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Ord, PartialEq, Eq, PartialOrd, Debug, Serialize, Deserialize, Clone)]
 struct EndingField {
     group: String,
     ending: String,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Ord, PartialEq, Eq, PartialOrd, Debug, Serialize, Deserialize, Clone)]
 struct ModelField {
     ending: String,
     model: String,
@@ -401,6 +402,14 @@ fn generate_vectors(all: &Vec<Vec<[String; 3]>>, groups_dict: &Vec<BTreeMap<Stri
     let mut groups_data: Vec<JsonData> = Vec::new();
     let mut endings_data: Vec<JsonData> = Vec::new();
     let mut models_data: Vec<JsonData> = Vec::new();
+    
+    #[derive(Clone, Debug)]
+    struct ModelFieldPlaceholderStruct {
+        ending: i64,
+        model: String,
+    }
+
+    let mut model_field_vec: Vec<ModelFieldPlaceholderStruct> = Vec::new();
 
     for (index, language_vec) in all.into_iter().enumerate() {
 
@@ -436,7 +445,10 @@ fn generate_vectors(all: &Vec<Vec<[String; 3]>>, groups_dict: &Vec<BTreeMap<Stri
 
         swaped_endings_groups_vec.sort();
         
+        let mut ending_pk_dict: HashMap<String, i64> = HashMap::new();
         for item in &swaped_endings_groups_vec {
+            ending_pk_dict.insert(item[1].to_string(), ENDING_PK_COUNTER.fetch_add(0, Ordering::SeqCst).clone());
+
             let ending_field = EndingField {
                 group: groups_dict[index].get(&item[0]).unwrap().to_string(),
                 ending: item[1].to_string(),
@@ -452,21 +464,44 @@ fn generate_vectors(all: &Vec<Vec<[String; 3]>>, groups_dict: &Vec<BTreeMap<Stri
 
 
         // Model
+        // model_field_vec = Vec::new();
+
         for (key, value) in &models_endings_dict[index] {
-            let model_field = ModelField {
-                ending: endings_groups_dict[index].get(value).unwrap().to_string(),
+            let ending_val = endings_groups_dict[index].get(value).unwrap().to_string(); 
+
+            let model_field = ModelFieldPlaceholderStruct {
+                ending: ending_pk_dict.get(value).unwrap().clone(),
                 model: key.to_string(),
             };
-
-            let model_data = JsonData {
-                fields: Field::ModelField(model_field),
-                ..JsonData::default(FieldOptions::ModelField)
-            };
-
-            models_data.push(model_data);
+            
+            model_field_vec.push(model_field);
+            // let model_data = JsonData {
+            //     fields: Field::ModelField(model_field),
+            //     ..JsonData::default(FieldOptions::ModelField)
+            // };
+            //
+            // models_data.push(model_data);
         }
-
     } 
+
+    model_field_vec.sort_by_key(|m| m.ending);
+
+    for model_field in model_field_vec {
+        println!("model_field: {:?}", model_field);
+        let model_field = ModelField {
+            ending: model_field.ending.to_string(),
+            model: model_field.model,
+        };
+
+        let model_data = JsonData {
+            fields: Field::ModelField(model_field),
+            ..JsonData::default(FieldOptions::ModelField)
+        };
+
+        models_data.push(model_data);
+    }
+
+    // models_data.sort_by_key(|m| m.fields.clone()); 
 
     return (groups_data, endings_data, models_data);
 }

@@ -109,6 +109,7 @@ struct AuxiliaryField {
 struct ConjugateField {
     base: String,
     conjugate: String,
+    model: String,
 }
 
 
@@ -268,6 +269,7 @@ impl Field {
                 let conjugate_field = ConjugateField {
                     base: "".to_string(),
                     conjugate: "".to_string(),
+                    model: String::new(),
                 };
                 return Field::ConjugateField(conjugate_field)
             },
@@ -293,11 +295,13 @@ impl Field {
 
 pub async fn run_main_module() {
     let (group_hash, group) = read_group_json();
-    // println!("group_hash{:?}\n\ngroup\n", group_hash, group);
-    // let (ending_hash, ending) = read_ending_json();
-    // println!("ending_hash{:?}\n\nending\n", ending_hash, ending);
-    // let (model_hash, model) = read_model_json();
-    // println!("model_hash{:?}\n\nmodel\n", model_hash, model);
+    // println!("group_hash\n{:?}\n\ngroup\n{:?}\n", group_hash, group);
+
+    let (ending_hash, ending) = read_ending_json();
+    // println!("ending_hash\n{:?}\n\nending\n{:?}\n", ending_hash, ending);
+
+    let (model_hash, model) = read_model_json();
+    println!("model_hash\n{:?}\n\nmodel\n{:?}\n", model_hash, model);
 
     // let () = scrape_html();
 
@@ -315,8 +319,7 @@ pub async fn run_main_module() {
 }
 
 
-
-fn read_group_json() -> (Vec<HashMap<String, String>>, Vec<Vec<JsonData>>) {
+fn read_group_json() -> (Vec<BTreeMap<String, i64>>, Vec<JsonData>) {
 	let file_path = String::from("temp/json/models/groups.json");
     let mut file = open_file(file_path);
 
@@ -324,46 +327,131 @@ fn read_group_json() -> (Vec<HashMap<String, String>>, Vec<Vec<JsonData>>) {
     file.read_to_string(&mut group_json);
 
     let groups_data: Vec<JsonData> = serde_json::from_str(group_json.as_str()).unwrap();
-    let mut group_hash: HashMap<String, String> = HashMap::new();
-    let mut groups_vec_hash: Vec<HashMap<String, String>> = Vec::new();
-    let mut group_vec: Vec<JsonData> = Vec::new();
-    let mut groups_vec_vec: Vec<Vec<JsonData>> = Vec::new();
+    
+    let mut groups_hash: BTreeMap<String, i64> = BTreeMap::new();
+    let mut groups_vec_hash: Vec<BTreeMap<String, i64>> = Vec::new();
+    let mut groups_vec: Vec<JsonData> = Vec::new();
 
     let mut language_count = 0;
     for (index, group_data) in groups_data.into_iter().enumerate() {
         if let Field::GroupField(GroupField{ ref group, ref language }) = group_data.fields {
-            group_hash = HashMap::from([(group.clone(), language.clone()),]);
-            group_vec = Vec::new();
+            groups_hash = BTreeMap::from([(group.clone(), language.parse::<i64>().unwrap()),]);
+            // group_vec = Vec::new();
+            groups_vec.push(group_data.clone());
 
             if language.clone() == (language_count + 1).to_string() { 
                 if groups_vec_hash.len() == language_count{
-                    groups_vec_hash.push(HashMap::from([(group.clone(), language.clone())]));
+                    groups_vec_hash.push(groups_hash);
 
-                    group_vec.push(group_data.clone());
-                    groups_vec_vec.push(group_vec.clone())
                 } else {
-                    groups_vec_hash[language_count].insert(group.clone(), language.clone());
+                    groups_vec_hash[language_count].insert(group.to_string(), language.parse::<i64>().unwrap());
 
-                    groups_vec_vec[language_count].push(group_data.clone());
                 }
             } else {
                 language_count = language_count + 1;
                 if groups_vec_hash.len() == language_count{
-                    groups_vec_hash.push(HashMap::from([(group.clone(), language.clone())]));
-
-                    group_vec.push(group_data.clone());
-                    groups_vec_vec.push(group_vec.clone());
+                    groups_vec_hash.push(groups_hash);
 
                 } else {
-                    groups_vec_hash[language_count].insert(group.to_string(), language.clone());
+                    groups_vec_hash[language_count].insert(group.to_string(), language.parse::<i64>().unwrap());
 
-                    groups_vec_vec[language_count].push(group_data.clone());
                 }
             }
         }; 
     }
-    println!("{:?}\n\n{:?}", groups_vec_hash, groups_vec_vec);
-    return (groups_vec_hash, groups_vec_vec)
+
+    return (groups_vec_hash, groups_vec);
+}
+
+
+
+
+fn read_ending_json() -> (Vec<BTreeMap<String, i64>>, Vec<JsonData>) {
+	let file_path = String::from("temp/json/models/endings.json");
+    let mut file = open_file(file_path);
+
+    let mut ending_json = String::from("");
+    file.read_to_string(&mut ending_json);
+
+    let endings_data: Vec<JsonData> = serde_json::from_str(ending_json.as_str()).unwrap();
+    let mut endings_hash: BTreeMap<String, i64> = BTreeMap::new();
+    let mut endings_vec_hash: Vec<BTreeMap<String, i64>> = Vec::new();
+    let mut endings_vec: Vec<JsonData> = Vec::new();
+
+    let mut group_count = 0;
+    for (index, ending_data) in endings_data.into_iter().enumerate() {
+        if let Field::EndingField(EndingField{ ref ending, ref group }) = ending_data.fields {
+            endings_hash = BTreeMap::from([(ending.clone(), group.parse::<i64>().unwrap()),]);
+            endings_vec.push(ending_data.clone());
+
+            if group.clone() == (group_count + 1).to_string() { 
+                if endings_vec_hash.len() == group_count{
+                    endings_vec_hash.push(endings_hash);
+
+                } else {
+                    endings_vec_hash[group_count].insert(ending.clone(), group.parse::<i64>().unwrap());
+                }
+            } else {
+                group_count = group_count + 1;
+                if endings_vec_hash.len() == group_count{
+                    endings_vec_hash.push(endings_hash);
+
+
+                } else {
+                    endings_vec_hash[group_count].insert(ending.to_string(), group.parse::<i64>().unwrap());
+                }
+            }
+        }; 
+    }
+
+    return (endings_vec_hash, endings_vec); 
+}
+
+
+
+
+
+fn read_model_json() -> (Vec<BTreeMap<String, i64>>, Vec<JsonData>) {
+	let file_path = String::from("temp/json/models/models.json");
+    let mut file = open_file(file_path);
+
+    let mut model_json = String::from("");
+    file.read_to_string(&mut model_json);
+
+    let models_data: Vec<JsonData> = serde_json::from_str(model_json.as_str()).unwrap();
+    let mut models_hash: BTreeMap<String, i64> = BTreeMap::new();
+    let mut models_vec_hash: Vec<BTreeMap<String, i64>> = Vec::new();
+    let mut models_vec: Vec<JsonData> = Vec::new();
+
+    let mut ending_count = 0;
+    for (index, model_data) in models_data.into_iter().enumerate() {
+        if let Field::ModelField(ModelField{ ref model, ref ending }) = model_data.fields {
+            models_hash = BTreeMap::from([(model.clone(), ending.parse::<i64>().unwrap()),]);
+            models_vec.push(model_data.clone());
+
+            if ending.clone() == (ending_count + 1).to_string() { 
+                if models_vec_hash.len() == ending_count{
+                    models_vec_hash.push(models_hash);
+
+                } else {
+                    models_vec_hash[ending_count].insert(model.clone(), ending.parse::<i64>().unwrap());
+
+                }
+            } else {
+                ending_count = ending_count + 1;
+                if models_vec_hash.len() == ending_count{
+                    models_vec_hash.push(models_hash);
+
+
+                } else {
+                    models_vec_hash[ending_count].insert(model.to_string(), ending.parse::<i64>().unwrap());
+
+                }
+            }
+        }; 
+    }
+
+    return (models_vec_hash, models_vec); 
 }
 
 
