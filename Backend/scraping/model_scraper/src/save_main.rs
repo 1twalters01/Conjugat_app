@@ -303,7 +303,7 @@ pub async fn run_main_module() {
     let (model_hash, model) = read_model_json();
     println!("model_hash\n{:?}\n\nmodel\n{:?}\n", model_hash, model);
 
-    // let () = scrape_html();
+    let () = scrape_html();
 
 
 
@@ -456,58 +456,35 @@ fn read_model_json() -> (Vec<BTreeMap<String, i64>>, Vec<JsonData>) {
 
 
 
-// fn read_ending_json() -> (Vec<HashMap<String, String>>, Vec<JsonData>) {
-// 	let file_path = String::from("temp/json/models/endings.json");
-//     let mut file = open_file(file_path);
-//
-//     let mut ending_data = String::from("");
-//     file.read_to_string(&mut ending_data);
-//
-//     let endings_json: Vec<JsonData> = serde_json::from_str(ending_data.as_str()).unwrap();
-//     let mut ending_hash: HashMap<String, String> = HashMap::new();
-//     let mut endings_vec_hash: Vec<HashMap<String, String>> = Vec::new();
-//     let mut endings: Vec<String> = Vec::new();
-//
-//     for (index, ending_json) in &endings_json.into_iter().enumerate() {
-//         if let Field::EndingField(EndingField{ ending, group }) = ending_json.fields {
-//             ending_hash.insert(ending, group);
-//             endings_vec_hash[group.parse().unwrap()].insert(ending_hash);
-//             endings[group.parse().unwrap()].push(ending_json);
-//         }; 
-//     }
-//
-//     return (endings_vec_hash, endings)
-// }
-//
-//
-//
-// fn read_model_json() -> (Vec<HashMap<String, String>>, Vec<JsonData>) {
-// 	let file_path = String::from("temp/json/models/models.json");
-//     let mut file = open_file(file_path);
-//
-//     let mut model_data = String::from("");
-//     file.read_to_string(&mut model_data);
-//
-//     let models_json: Vec<JsonData> = serde_json::from_str(model_data.as_str()).unwrap();
-//     let mut model_hash: HashMap<String, String> = HashMap::new();
-//     let mut models_vec_hash: Vec<HashMap<String, String> = Vec::new();
-//     let mut models: Vec<String> = Vec::new();
-//
-//     for (index, model_json) in &models_json.into_iter().enumerate() {
-//         if let Field::ModelField(ModelField{ model, ending }) = model_json.fields {
-//             model_hash.insert(ending, group);
-//             models_vec_hash[ending.parse()].insert(model_hash);
-//             models[ending.parse()].push(model);
-//         }; 
-//     }
-//
-//     return (endings_vec_hash, endings)
-// }
-//
-//
-// fn scrape_html() {}
-//
-//
+
+
+
+
+fn scrape_html(language: &str, verb: &str) {
+	let url = "https://conjugator.reverso.net/conjugation-".to_string() + language + "-verb-" + verb + ".html";
+
+	// Scrape the website
+	let mut content: String = String::new();
+	let response: String = reqwest::blocking::get(url).unwrap().text().unwrap();
+        content.push_str(response.as_str());
+        append_file(&mut file, content);
+
+	// // Read html from file
+	// let mut content: String = String::new();
+	// let file_path: String = "temp/models/".to_string() + language + ".txt";
+        // let mut file: File = open_file(file_path);
+        // file.read_to_string(&mut content);
+
+	return response
+}
+
+
+
+
+
+
+
+
 // fn generate_vectors() {}
 //
 //
