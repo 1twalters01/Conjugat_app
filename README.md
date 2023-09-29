@@ -4,7 +4,7 @@
 Backend
 * C
 * Rust
-  * clang
+  * clap
   * dotenv
   * PyO3
   * serde
