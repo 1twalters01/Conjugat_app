@@ -284,7 +284,6 @@ impl Field {
                 };
                 return Field::SentenceField(sentence_field)
             },
-
         } 
     }
 }
@@ -301,11 +300,18 @@ pub async fn run_main_module() {
     // println!("ending_hash\n{:?}\n\nending\n{:?}\n", ending_hash, ending);
 
     let (model_hash, model) = read_model_json();
-    println!("model_hash\n{:?}\n\nmodel\n{:?}\n", model_hash, model);
+    // println!("model_hash\n{:?}\n\nmodel\n{:?}\n", model_hash, model);
 
-    let content: String = scrape_html();
+    let language = "french";
+    let verb = "finir";
 
-    let () = extract_data(content);
+    let url: String = form_url(language, verb);
+    // println!("url: {}", url);
+
+    let content: String = scrape_html(url).await;
+    // println!("content\n{:?}", content);
+
+    let () = extract_data(content, verb);
 
     // let () = generate_vectors();
 
@@ -457,82 +463,95 @@ fn read_model_json() -> (Vec<BTreeMap<String, i64>>, Vec<JsonData>) {
 
 
 
-
-
-
-fn scrape_html(language: &str, verb: &str) -> String {
+fn form_url(language: &str, verb: &str) -> String {
     let url = "https://conjugator.reverso.net/conjugation-".to_string() + language + "-verb-" + verb + ".html";
+    return url
+}
 
+
+async fn scrape_html(url: String) -> String {
     // Scrape the website
     let mut content: String = String::new();
-    let response: String = reqwest::blocking::get(url).unwrap().text().unwrap();
+    let response: String = reqwest::get(url).await.unwrap().text().await.unwrap();
     content.push_str(response.as_str());
-    append_file(&mut file, content);
 
     // // Read html from file
     // let mut content: String = String::new();
     // let file_path: String = "temp/models/".to_string() + language + ".txt";
     // let mut file: File = open_file(file_path);
     // file.read_to_string(&mut content);
+    // append_file(&mut file, content);
 
     return content
 }
 
 
-fn extract_data(content: String) -> () {
+fn extract_data(content: String, infinitive: &str) -> () {
     let document = scraper::Html::parse_document(&content);
 
-    let top_section_container = scraper::Selector::parse("").unwrap();
-    let model_selector = scraper::Selector::parse("").unwrap();
-    let auxiliary_type_selector = scraper::Selector::parse("").unwrap();
-    let form_selector = scraper::Selector::parse("").unwrap();
+    let top_section_container = scraper::Selector::parse("div.alternate-versions").unwrap();
+    let model_selector = scraper::Selector::parse("span[id=ch_lblModel]").unwrap();
+    let auxiliary_type_selector = scraper::Selector::parse("span[id=ch_lblAuxiliary]>a").unwrap();
+    let form_type_selector = scraper::Selector::parse("span[id=ch_lblAutreForm]>a").unwrap();
 
-    let main_section_container = scraper::Selector::parse("div.word-wrap-row").unwrap();
-    let tense_type_selector = scraper::Selector::parse("word-wrap-title").unwrap()
-    let inner_section_container = scraper::Selector::parse("blue-box-wrap").unwrap()
-    let tense_selector = scraper::Selector::parse("").unwrap();
-    let li_selector = scraper::Selector::parse("").unwrap();
-    let subject_selector = scraper::Selector::parse("").unwrap();
-    let auxiliary_selector = scraper::Selector::parse("").unwrap();
-    let conjugate_selector = scraper::Selector::parse("").unwrap();
+    let mut model: String = String::new();
+    let mut auxiliary_types: Vec<&str> = Vec::new();
+    let mut form_types: Vec<&str> = vec![infinitive];
 
-    let model: String = String::new();
-    let auxiliary_type: Vec<String> = Vec::new();
-    let form: Vec<String> = Vec::new();
-    for section in document.select(&top_section_container) {
-	// Only want one so change these, have no compiler atm
-	for model_scraped in section.select(&model_selector) {
-            let model_a = model_scraped.text().collect::<Vec<_>>();
-            model = model_a[0].to_string();
-        }
-	for auxiliary_scraped in section.select(&auxiliary_type_selector) {
-	    let auxiliary_a = auxiliary_scraped.text().collect::<Vec<_>>();
-	    let auxiliary_type_content = model_a[0].to_string();
-	    auxiliary_type.push(auxiliary_type_content);
-	}
-	for form_scraped in section.select(&form_selector) {
-	    let form_a = form_scraped.text().collect::<Vec<_>>();
-	    let form_type_content = form_a[0].to_string();
-	    form_type.push(auxiliary_type_content
-	}
+    for mut section in document.select(&top_section_container) {
+        model = section.select(&model_selector).flat_map(|el| el.text()).collect::<String>();
+        println!("model: {}", model);
+
+        auxiliary_types = section.select(&auxiliary_type_selector).flat_map(|el| el.text()).collect::<Vec<&str>>();
+        println!("{:?}", auxiliary_types);
+
+        form_types.extend(section.select(&form_type_selector).flat_map(|el| el.text()).collect::<Vec<&str>>());
+        println!("{:?}", form_types);
     }
-	
-    // Main section
-    for section in document.select(&main_section_container) {
-	for tense_type_scraped in section.select(&tense_type_selector) {
-		
-	}
-	for inner_section in section.select(&inner_section_container) {
-	    for tense_scraped in inner_section.select(&tense_selector) {
-		    
-	    }
-	    for li_section in inner_section.select(&li_selector) {
-		for subject_scraped in li_section.select(&subject_selector) {}
-		for auxiliary_scraped in li_section.select(&auxiliary_selector) {}
-		for conjugate_scraped in li_section.select(&conjugate_selector) {}
-	    }
-	}
-    }
+
+ //    let main_section_container = scraper::Selector::parse("div.word-wrap-row").unwrap();
+ //    let tense_type_selector = scraper::Selector::parse("word-wrap-title").unwrap();
+ //    let inner_section_container = scraper::Selector::parse("blue-box-wrap").unwrap();
+ //    let tense_selector = scraper::Selector::parse("").unwrap();
+ //    let li_selector = scraper::Selector::parse("").unwrap();
+ //    let subject_selector = scraper::Selector::parse("").unwrap();
+ //    let auxiliary_selector = scraper::Selector::parse("").unwrap();
+ //    let conjugate_selector = scraper::Selector::parse("").unwrap();
+	// 
+ //    let mut tense_type: String = String::new();
+ //    let mut tenses: Vec<String> = Vec::new();
+ //    let mut subjects: Vec<String> = Vec::new();
+ //    let mut auxiliaries: Vec<String> = Vec::new();
+ //    let mut conjugates: Vec<String> = Vec::new();
+	//
+ //    // Main section
+ //    for section in document.select(&main_section_container) {
+	//     for tense_type_scraped in section.select(&tense_type_selector) {
+	// 	    let tense_type_elemplaceholder = tense_type_scraped.text().collect::<Vec<_>>();
+ //            let tense_type_content = tense_type_elemplaceholder[0].to_string();
+ //            tense_type = tense_type_content;
+	//     }
+	//
+	//     for inner_section in section.select(&inner_section_container) {
+	//         for tense_scraped in inner_section.select(&tense_selector) {
+	// 	    
+	//         }
+	//
+	//         for li_section in inner_section.select(&li_selector) {
+	// 	        for subject_scraped in li_section.select(&subject_selector) {
+	//
+ //                }
+	//
+	// 	        for auxiliary_scraped in li_section.select(&auxiliary_selector) {
+	//
+ //                }
+	//
+	// 	        for conjugate_scraped in li_section.select(&conjugate_selector) {
+	//
+ //                }
+	//         }
+	//     }
+ //    }
 }
 
 
