@@ -107,3 +107,80 @@ struct SentenceField {
 
 
 
+impl JsonData {
+    fn default(field_type: FieldOptions) -> JsonData {
+        match field_type {
+            FieldOptions::GroupField => {
+                return JsonData {
+                    model: "verbs.groups".to_string(),
+                    pk: GROUP_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
+                    fields: Field::default(FieldOptions::GroupField),
+                }
+            },
+
+            FieldOptions::EndingField => {
+                return JsonData {
+                    model: "verbs.endings".to_string(),
+                    pk: ENDING_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
+                    fields: Field::default(FieldOptions::EndingField),
+                }
+            },
+ 
+            FieldOptions::ModelField => {
+                return JsonData {
+                    model: "verbs.models".to_string(),
+                    pk: MODEL_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
+                    fields: Field::default(FieldOptions::ModelField),
+                }
+            },
+
+            FieldOptions::BaseField => {
+                return JsonData {
+                    model: "verbs.bases".to_string(),
+                    pk: BASE_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
+                    fields: Field::default(FieldOptions::BaseField),
+                }
+            },
+
+            FieldOptions::TenseField => {
+                return JsonData {
+                    model: "verbs.endings".to_string(),
+                    pk: TENSE_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
+                    fields: Field::default(FieldOptions::TenseField),
+                }
+            },
+ 
+            FieldOptions::SubjectField => {
+                return JsonData {
+                    model: "verbs.models".to_string(),
+                    pk: SUBJECT_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
+                    fields: Field::default(FieldOptions::SubjectField),
+                }
+            },
+ 
+            FieldOptions::AuxiliaryField => {
+                return JsonData {
+                    model: "verbs.models".to_string(),
+                    pk: SUBJECT_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
+                    fields: Field::default(FieldOptions::AuxiliaryField),
+                }
+            },
+ 
+            FieldOptions::ConjugateField => {
+                return JsonData {
+                    model: "verbs.models".to_string(),
+                    pk: SUBJECT_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
+                    fields: Field::default(FieldOptions::ConjugateField),
+                }
+            },
+ 
+            FieldOptions::SentenceField => {
+                return JsonData {
+                    model: "verbs.sentences".to_string(),
+                    pk: SUBJECT_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
+                    fields: Field::default(FieldOptions::SentenceField),
+                }
+            },
+        }
+    }
+}
