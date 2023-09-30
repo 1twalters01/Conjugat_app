@@ -201,7 +201,12 @@ impl JsonData {
 impl Field {
     fn default(field_type: FieldOptions) -> Field {
         match field_type {
-            
+            FieldOptions::LanguageField => {
+                let language_field = LanguageField {
+                    language: String::from(""),
+                };
+                return Field::LanguageField(language_field)
+            },
             
             FieldOptions::GroupField => {
                 let group_field = GroupField {
