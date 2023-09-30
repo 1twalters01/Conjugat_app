@@ -110,6 +110,14 @@ struct SentenceField {
 impl JsonData {
     fn default(field_type: FieldOptions) -> JsonData {
         match field_type {
+            FieldOptions::LanguageField => {
+                return JsonData {
+                    model: "verbs.languages".to_string(),
+                    pk:0,
+                    fields: Field::default(FieldOptions::LanguageField),
+                }
+            },
+            
             FieldOptions::GroupField => {
                 return JsonData {
                     model: "verbs.groups".to_string(),
