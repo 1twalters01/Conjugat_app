@@ -308,7 +308,7 @@ pub async fn run_main_module() {
     let url: String = form_url(language, verb);
     // println!("url: {}", url);
 
-    let content: String = scrape_html(url).await;
+    let content: String = scrape_html_from_url(url).await;
     // println!("content\n{:?}", content);
 
     let () = extract_data(content, verb);
@@ -469,7 +469,7 @@ fn form_url(language: &str, verb: &str) -> String {
 }
 
 
-async fn scrape_html(url: String) -> String {
+async fn scrape_html_from_url(url: String) -> String {
     // Scrape the website
     let mut content: String = String::new();
     let response: String = reqwest::get(url).await.unwrap().text().await.unwrap();
@@ -503,10 +503,10 @@ fn extract_data(content: String, infinitive: &str) -> () {
         println!("model: {}", model);
 
         auxiliary_types = section.select(&auxiliary_type_selector).flat_map(|el| el.text()).collect::<Vec<&str>>();
-        println!("{:?}", auxiliary_types);
+        println!("auxiliary types: {:?}", auxiliary_types);
 
         form_types.extend(section.select(&form_type_selector).flat_map(|el| el.text()).collect::<Vec<&str>>());
-        println!("{:?}", form_types);
+        println!("form types: {:?}", form_types);
     }
 
  //    let main_section_container = scraper::Selector::parse("div.word-wrap-row").unwrap();
