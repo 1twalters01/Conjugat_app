@@ -192,3 +192,94 @@ impl JsonData {
         }
     }
 }
+
+
+
+
+
+
+impl Field {
+    fn default(field_type: FieldOptions) -> Field {
+        match field_type {
+            
+            
+            FieldOptions::GroupField => {
+                let group_field = GroupField {
+                    language: String::from(""),
+                    group: "".to_string(), 
+                };
+                return Field::GroupField(group_field)
+            },
+
+            FieldOptions::EndingField => {
+                let ending_field = EndingField {
+                    group: "".to_string(),
+                    ending: "".to_string(),
+                };
+                return Field::EndingField(ending_field)
+            },
+           
+            FieldOptions::ModelField => {
+                let model_field = ModelField {
+                    ending: "".to_string(),
+                    model: "".to_string(),
+                };
+                return Field::ModelField(model_field)
+            },
+
+            FieldOptions::BaseField => {
+                let base_field = BaseField {
+                    rank: 0,
+                    base: "".to_string(),
+                    language: "".to_string(),
+                };
+                return Field::BaseField(base_field)
+            },
+
+            FieldOptions::TenseField => {
+                let tense_field = TenseField {
+                    tense: "".to_string(),
+                    language: "".to_string(),
+                };
+                return Field::TenseField(tense_field)
+            },
+
+            FieldOptions::SubjectField => {
+                let subject_field = SubjectField {
+                    subject: "".to_string(),
+                    language: "".to_string(),
+                };
+                return Field::SubjectField(subject_field)
+            },
+
+            FieldOptions::AuxiliaryField => {
+                let auxiliary_field = AuxiliaryField {
+                    auxiliary: "".to_string(),
+                    language: "".to_string(),
+                };
+                return Field::AuxiliaryField(auxiliary_field)
+            },
+
+            FieldOptions::ConjugateField => {
+                let conjugate_field = ConjugateField {
+                    base: "".to_string(),
+                    conjugate: "".to_string(),
+                    model: String::new(),
+                };
+                return Field::ConjugateField(conjugate_field)
+            },
+
+            FieldOptions::SentenceField => {
+                let sentence_field = SentenceField {
+                    rank: 0,
+                    tense: String::from(""),
+                    subject: String::from(""),
+                    auxiliary: String::from(""),
+                    conjugate: String::from(""),
+                };
+                return Field::SentenceField(sentence_field)
+            },
+        } 
+    }
+}
+
