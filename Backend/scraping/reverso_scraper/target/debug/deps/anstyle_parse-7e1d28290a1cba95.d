@@ -1,9 +1,0 @@
-C:\Users\44775\Documents\Projects\Conjugat\Backend\scraping\reverso_scraper\target\debug\deps\anstyle_parse-7e1d28290a1cba95.rmeta: C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-parse-0.2.2\src\lib.rs C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-parse-0.2.2\src\params.rs C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-parse-0.2.2\src\state\mod.rs C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-parse-0.2.2\src\state\definitions.rs C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-parse-0.2.2\src\state\table.rs
-
-C:\Users\44775\Documents\Projects\Conjugat\Backend\scraping\reverso_scraper\target\debug\deps\anstyle_parse-7e1d28290a1cba95.d: C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-parse-0.2.2\src\lib.rs C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-parse-0.2.2\src\params.rs C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-parse-0.2.2\src\state\mod.rs C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-parse-0.2.2\src\state\definitions.rs C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-parse-0.2.2\src\state\table.rs
-
-C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-parse-0.2.2\src\lib.rs:
-C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-parse-0.2.2\src\params.rs:
-C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-parse-0.2.2\src\state\mod.rs:
-C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-parse-0.2.2\src\state\definitions.rs:
-C:\Users\44775\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-parse-0.2.2\src\state\table.rs:
