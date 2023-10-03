@@ -1,9 +1,21 @@
 mod args;
+mod main_processes;
 
+use args::{ScraperArgs, ScrapeMode};
 use clap::Parser;
-use args::ScraperArgs;
+use main_processes::{continue_process, initialise_process};
 
 fn main() {
     let args = ScraperArgs::parse();
-    println!("{:?}", args);
+
+    match args.scrape_mode {
+        ScrapeMode::Initialise => {
+            initialise_process();
+        },
+        ScrapeMode::Continue => {
+            continue_process();
+        }
+    }; 
 }
+
+
