@@ -1,4 +1,4 @@
-pub mod language;
-pub mod model;
+pub mod languages;
+pub mod models;
 pub mod conjugations;
 pub mod sentences;
