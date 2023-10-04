@@ -5,6 +5,8 @@ struct JsonData {
     fields: Field,
 }
 
+
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 enum Field {
@@ -17,9 +19,9 @@ enum Field {
     SubjectField(SubjectField),
     AuxiliaryField(AuxiliaryField),
     ConjugateField(ConjugateField),
+    ConjugationField(ConjugationField),
     SentenceField(SentenceField),
 }
-
 
 
 
@@ -34,12 +36,12 @@ enum FieldOptions {
     SubjectField,
     AuxiliaryField,
     ConjugateField,
+    ConjugationField,
     SentenceField,
 }
 
 
-
-
+// May change String data types to &str later
 #[derive(Ord, PartialEq, Eq, PartialOrd, Debug, Serialize, Deserialize, Clone)]
 struct LanguageField {
     language: String,
@@ -85,7 +87,7 @@ struct SubjectField {
 #[derive(Debug, Serialize, Deserialize, Clone)]
 struct AuxiliaryField {
     language: String,
-    auxiliary: String
+    auxiliary: String,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -95,14 +97,22 @@ struct ConjugateField {
     model: String,
 }
 
-
 #[derive(Debug, Serialize, Deserialize, Clone)]
-struct SentenceField {
+struct ConjugationField {
     rank: i64,
     tense: String,
     subject: String,
     auxiliary: String,
-    conjugate: String
+    conjugate: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+struct SentenceField {
+    rank: i64,
+    conjugation: String,
+    sentence: String,
+    charStart: i64,
+    charLength: i64,
 }
 
 
@@ -152,7 +162,7 @@ impl JsonData {
 
             FieldOptions::TenseField => {
                 return JsonData {
-                    model: "verbs.endings".to_string(),
+                    model: "verbs.tenses".to_string(),
                     pk: TENSE_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
                     fields: Field::default(FieldOptions::TenseField),
                 }
@@ -160,7 +170,7 @@ impl JsonData {
  
             FieldOptions::SubjectField => {
                 return JsonData {
-                    model: "verbs.models".to_string(),
+                    model: "verbs.subjects".to_string(),
                     pk: SUBJECT_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
                     fields: Field::default(FieldOptions::SubjectField),
                 }
@@ -168,7 +178,7 @@ impl JsonData {
  
             FieldOptions::AuxiliaryField => {
                 return JsonData {
-                    model: "verbs.models".to_string(),
+                    model: "verbs.auxiliaries".to_string(),
                     pk: SUBJECT_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
                     fields: Field::default(FieldOptions::AuxiliaryField),
                 }
@@ -176,12 +186,20 @@ impl JsonData {
  
             FieldOptions::ConjugateField => {
                 return JsonData {
-                    model: "verbs.models".to_string(),
+                    model: "verbs.conjugates".to_string(),
                     pk: SUBJECT_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
                     fields: Field::default(FieldOptions::ConjugateField),
                 }
             },
- 
+            
+            FieldOptions::ConjugationField => {
+                return JsonData {
+                    model: "verbs.conjugations".to_string(),
+                    pk: SUBJECT_PK_COUNTER.fetch_add(1, Ordering::SeqCst),
+                    fields: Field::default(FieldOptions::ConjugationField),
+                }
+            },
+            
             FieldOptions::SentenceField => {
                 return JsonData {
                     model: "verbs.sentences".to_string(),
@@ -274,15 +292,25 @@ impl Field {
                 return Field::ConjugateField(conjugate_field)
             },
 
-            FieldOptions::SentenceField => {
-                let sentence_field = SentenceField {
+            FieldOptions::ConjugationField => {
+                let conjugation_field = ConjugationField {
                     rank: 0,
                     tense: String::from(""),
                     subject: String::from(""),
                     auxiliary: String::from(""),
                     conjugate: String::from(""),
                 };
-                return Field::SentenceField(sentence_field)
+                return Field::ConjugationField(conjugation_field)
+            },
+
+            FieldOptions::SentenceField => {
+                let sentence_field = SentenceField {
+                    rank: 0,
+                    conjugation: String::from(""),
+                    sentence: String::from(""),
+                    charStart: 0,
+                    charLength: 0,
+                }
             },
         } 
     }
