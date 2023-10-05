@@ -4,23 +4,24 @@ use serde::{Deserialize, Serialize};
 use serde_json::Result;
 use std::env;
 use std::fs::{self, OpenOptions, File};
-use std::io::{ErrorKind, Read, Write};
+use std::io::{self, ErrorKind, Read, Write};
 
-pub fn open_file(file_path: String) -> File {
-    let file_result = OpenOptions::new().write(true).read(true).open(file_path.clone());  //.unwrap();
+pub fn open_file(file_path: &str) -> Result<File, io::Error> {
+    let file_result = OpenOptions::new().write(true).read(true).open(file_path);
 
     let mut file = match file_result {
         Ok(file) => file,
         Err(error) => match error.kind() {
+            // If file not found then create the file else recoverable error
             ErrorKind::NotFound => match File::create(file_path) {
                 Ok(file) => file,
-                Err(e) => panic!("Problem creating the file: {:?}", e),
+                Err(e) => return Err(e),
             },
-
-            other_error => {
-                // make this error non-critical
-                panic!("Problem opening the file");
-            }
+            
+            other_error_kind => {
+                // Make better error message
+                let msg = "Problem opening the file";
+                Err::new(other_error_kind, msg),
         }
     };
 
@@ -35,15 +36,21 @@ pub fn append_file(file: &mut File, content: String) {
 }
 
 
-
-pub async fn async_scrape_html_from_url(url: String) -> String {
+pub async fn async_scrape_html_from_url(url: &str) -> String {
     let mut content: String = String::new();
     let response: String = reqwest::get(url).await.unwrap().text().await.unwrap();
     content.push_str(response.as_str());
     return content
 }
 
-pub fn read_html_from_file(file_path: String) -> string {
+pub fn scrape_html_from_url(url: &str) -> String {
+    let mut content: String = String::new();
+    let response: String = reqwest::blocking::get(url).unwrap().text().unwrap();
+    content.push_str(response.as_str());
+    return content
+}
+
+pub fn read_html_from_file(file_path: &str) -> string {
     let mut content: String = String::new();
     let mut file: File = open_file(file_path);
     file.read_to_string(&mut content);
