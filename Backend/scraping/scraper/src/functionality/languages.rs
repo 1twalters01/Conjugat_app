@@ -1,5 +1,5 @@
 // Todo
-use data_types::JsonData;
+use data_types::{Field, JsonData};
 use::helper_functions::{save_data_to_json_file, create_pool_connection};
 
 
@@ -44,13 +44,13 @@ fn create_languages_vec(languages: Vec<&str>) -> Vec<LanguageData> {
     let mut languages_data: Vec<JsonData> = Vec::new();
 
     for (index, language) in languages.into_iter().enumerate(){
-        let field = Field {
+        let field = LanguageField {
             language: language.to_string()
         };
 
-        let language_data = LanguageData {
+        let language_data = JsonData {
             pk: PK_COUNTER.fetch_add(1, Ordering::SeqCst),
-            fields: field,
+            fields: Field::LanguageField(language_field),
             ..JsonData::default()
         };
 
