@@ -33,11 +33,6 @@ pub async fn run_languages_module(languages: Vec<&str>) {
     save_language_data_to_postgres(&languages_data).await;
 }
 
-fn form_vec_vec(languages: Vec<&str>) -> Vec<Vec<&str>> {
-    let langauge_data_vec_vec: Vec<Vec<&str>> = Vec::new();
-    
-    return language_data_vec_vec;
-}
 
 // Improve this function
 fn is_vector_valid<'a>(vector: &'a Vec<&'a str>) -> result::Result<bool, &'a str> {
@@ -59,6 +54,13 @@ fn is_vector_valid<'a>(vector: &'a Vec<&'a str>) -> result::Result<bool, &'a str
     Ok(true)
 }
 
+
+// Todo
+fn form_vec_vec(languages: Vec<&str>) -> Vec<Vec<&str>> {
+    let langauge_data_vec_vec: Vec<Vec<&str>> = Vec::new();
+    
+    return language_data_vec_vec;
+}
 
 
 async fn save_language_data_to_postgres(languages_data: &Vec<JsonData>) {
