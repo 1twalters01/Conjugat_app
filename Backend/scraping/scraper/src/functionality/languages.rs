@@ -2,7 +2,8 @@
 use crate::data_types::JsonData::{
     JsonData,
     Field,
-    FieldOptions, LanguageField
+    FieldOptions,
+    LanguageField,
 };
 
 use crate::helper_functions::{
