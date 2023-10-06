@@ -5,36 +5,41 @@ static PK_COUNTER: AtomicI64 = AtomicI64::new(1);
 
 
 pub async fn run_model_module() {
-    let (language_hash, languages) = read_language_json();
-    // println!("language hash {:?}\n\nlanguages {:?}\n\n", language_hash, languages);
+
+
+
+    let groups_data: Vec<JsonData> = create_groups_vec();
+    let endings_data: Vec<JsonData> = create_endings_vec();
+    let model_data: Vec<JsonData> = create_model_vec();
+
+    let groups_file_path: String = "temp/json/models/groups.json".to_string();
+    let endings_file_path: String = "temp/json/models/endings.json".to_string();
+    let models_file_path: String = "temp/json/models/models.json".to_string();
+    save_data_to_json_file(&groups_data, groups_file_path);
+    save_data_to_json_file(&endings_data, endings_file_path);
+    save_data_to_json_file(&models_data, models_file_path);
     
-    // let (all, groups, endings, models) = scrape_html(&languages);
-    let (all) = scrape_html(&languages);
-    let (groups, endings, models) = split_vec(&all);
-    // println!("all\n{:?}\n\nmodels\n{:?}\n\ngroups\n{:?}\n\nendings{:?}\n\n", all, models, groups, endings);
-
-
-    let (groups_dict, endings_groups_dict, models_endings_dict) = generate_languages_hashmaps(&all);
-    // println!("groups_dict\n{:?}\n\nendings_groups_dict\n{:?}\n\nmodels_endings_dict\n{:?}\n\n", groups_dict, endings_groups_dict, models_endings_dict);
-
-
-    let (groups_data, endings_data, models_data) = generate_vectors(&all, &groups_dict, &endings_groups_dict, &models_endings_dict);
-    // println!("groups_data\n{:?}\n\nendings_data\n{:?}\n\nmodels_data\n{:?}\n\n", groups_data, endings_data, models_data);;
-
-
-    generate_json_files(&groups_data, &endings_data, &models_data);
     save_to_postgres(&groups_data, &endings_data, &models_data).await;
 }
 
 
 
 
+fn create_groups_vec() -> Vec<JsonData {
+
+}
+
+fn create_groups_vec() -> Vec<JsonData {
+
+}
+
+fn create_groups_vec() -> Vec<JsonData {
+
+}
 
 
 
-
-
-async fn save_data_to_postgres(languages_data: &Vec<JsonData>) {
+async fn save_data_to_postgres(groups_data: &Vec<JsonData>, endings_data: &Vec<JsonData>, models_data: &Vec<JsonData>) {
     pool = create_pool_connection()
 
     for group_data in groups_data {
