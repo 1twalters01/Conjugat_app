@@ -1,15 +1,17 @@
+use serde::{Serialize, Deserialize};
+
 #[derive(Clone, Debug, Serialize, Deserialize)]
-struct JsonData {
+pub struct JsonData {
     model: &str,
-    pk: i64,
-    fields: Field,
+    pub pk: i64,
+    pub fields: Field,
 }
 
 
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-enum Field {
+pub enum Field {
     LanguageField(LanguageField),
     GroupField(GroupField),
     EndingField(EndingField),
@@ -26,7 +28,7 @@ enum Field {
 
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-enum FieldOptions {
+pub enum FieldOptions {
     LanguageField,
     GroupField,
     EndingField,
@@ -43,62 +45,62 @@ enum FieldOptions {
 
 
 #[derive(Ord, PartialEq, Eq, PartialOrd, Debug, Serialize, Deserialize, Clone)]
-struct LanguageField {
+pub struct LanguageField {
     language: &str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-struct GroupField {
+pub struct GroupField {
     language: &str,
     group: &str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-struct EndingField {
+pub struct EndingField {
     group: &str,
     ending: &str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-struct ModelField {
+pub struct ModelField {
     ending: &str,
     model: &str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-struct BaseField {
+pub struct BaseField {
     rank: i64,
     language: &str,
     base: &str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-struct TenseField {
+pub struct TenseField {
     language: &str,
     tense: &str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-struct SubjectField {
+pub struct SubjectField {
     language: &str,
     subject: &str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-struct AuxiliaryField {
+pub struct AuxiliaryField {
     language: &str,
     auxiliary: &str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-struct ConjugateField {
+pub struct ConjugateField {
     base: &str,
     conjugate: &str,
     model: &str,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-struct ConjugationField {
+pub struct ConjugationField {
     rank: i64,
     tense: &str,
     subject: &str,
@@ -107,18 +109,18 @@ struct ConjugationField {
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-struct SentenceField {
+pub struct SentenceField {
     rank: i64,
     conjugation: &str,
     sentence: &str,
-    charStart: i64,
-    charLength: i64,
+    char_start: i64,
+    char_length: i64,
 }
 
 
 
 impl JsonData {
-    fn default(field_type: FieldOptions) -> JsonData {
+    pub fn default(field_type: FieldOptions) -> JsonData {
         match field_type {
             FieldOptions::LanguageField => {
                 return JsonData {
@@ -306,11 +308,12 @@ impl Field {
             FieldOptions::SentenceField => {
                 let sentence_field = SentenceField {
                     rank: 0,
-                    conjugation: ""),
+                    conjugation: "",
                     sentence: "",
-                    charStart: 0,
-                    charLength: 0,
-                }
+                    char_start: 0,
+                    char_length: 0,
+                };
+                return Field::SentenceField(sentence_field);
             },
         } 
     }
