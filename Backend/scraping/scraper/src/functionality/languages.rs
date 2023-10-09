@@ -58,6 +58,10 @@ fn is_vector_valid<'a>(vector: &'a Vec<&'a str>) -> result::Result<bool, &'a str
 // Todo
 fn form_vec_vec(languages: Vec<&str>) -> Vec<Vec<&str>> {
     let langauge_data_vec_vec: Vec<Vec<&str>> = Vec::new();
+    for language in languages {
+        let data: Vec<&str> = vec::from(language);
+        language_data_vec_vec.push(data);
+    }
     
     return language_data_vec_vec;
 }
