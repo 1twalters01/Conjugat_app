@@ -24,20 +24,17 @@ use std::{
 
 
 pub async fn run_model_module() {
-    // read languages from json file
-    
-    
-    // create urls
-
-
+    // get html vector for the models of each language saved
+    let (languages_data, languages) = read_languages();
+    let content_vec: Vec<String> = get_model_html_vec(languages);
 
 
     // 0:language, 1: group
-    let groups_data_vec_vec: Vec<Vec<&str>> = Vec::new();
+    let groups_data_vec_vec: Vec<Vec<&str>> = get_groups_data_vec_vec(content_vec);
     // 0: group, 1: ending
-    let endings_data_vec_vec: Vec<Vec<&str>> = Vec::new();
+    let endings_data_vec_vec: Vec<Vec<&str>> = get_endings_data_vec_vec();
     // 0: ending, 1: model
-    let models_data_vec_vec: Vec<Vec<&str>> = Vec::new();
+    let models_data_vec_vec: Vec<Vec<&str>> = get_models_data_vec_vec();
 
     let groups_data: Vec<JsonData> = create_json_data_vec(group_data_vec_vec, FieldOptions::GroupField);
     let endings_data: Vec<JsonData> = create_json_data_vec(ending_data_vec_vec, FieldOptions::EndingField);
@@ -51,6 +48,73 @@ pub async fn run_model_module() {
     save_data_to_json_file(&models_data, models_file_path);
 
     save_to_postgres(&groups_data, &endings_data, &models_data).await;
+}
+
+
+fn read_languages() -> Vec<String> {
+    // read languages from json file
+    let language_file_path: &str = "temp/json/models/groups.json";
+    let mut language_content: String = read_html_from_file(language_file_path;
+    let languages_data: Vec<JsonData> = serde_json::from_str(language_content.as_str()).unwrap();
+    
+    // create urls
+    let languages: Vec<&str> = Vec::new();
+    for language_data in languages_data {
+        if let Field::LanguageField(LanguageField { language }) = &language_data.fields {
+            languages.push(language);
+        }
+    }
+    return language_data, language
+}
+
+fn get_model_html_vec(languages: Vec<&str>) {    
+    let mut urls: Vec<String> = Vec::new();
+    for language in languages {
+        urls.push(String::from("https://conjugator.reverso.net/conjugation-rules-model-") + language + ".html");
+    }
+
+    // scrape the urls of their html
+    let mut content_vec: Vec<String> = Vec::new();
+    
+    for url in urls {
+        let content: String = scrape_html_from_url(url.as_str())
+        content_vec.push(content);
+    }
+    
+    return content_vec;
+}
+
+
+fn get_groups_data_vec_vec(content_vec: Vec<String>, languages) {
+    let group_selector = scraper::Selector::parse("a[class=group]").unwrap();
+    let groups_data_vec_vec: Vec<Vec<&str>> = Vec::new();
+    
+    for (index, extract) in content_vec.into_iter().enumerate() {
+        let document = scraper::Html::parse_document(&extract);
+        groups = document.select(&group_selector).flat_map(|el| el.text()).collect::<Vec<&str>>();
+        
+        // for section in document.select(&section_container) {
+            // group_vec = section.select(&group_selector).flat_map(|el| el.text()).collect::<Vec<&str>>();
+            // println!("model: {}", model);
+        // }
+        groups.sort()
+        
+        for group in groups {
+            let group_vec: vec<&str> = vec![languages[index], group];
+            groups_data_vec_vec.push(group_vec);
+        }
+    }
+
+    return groups_data_vec_vec;
+}
+
+
+fn get_endings_data_vec_vec(content_vec: Vec<String>) {
+    
+}
+
+fn get_endings_data_vec_vec(content_vec: Vec<String>) {
+    
 }
 
 
