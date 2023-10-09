@@ -97,10 +97,11 @@ fn get_groups_data_vec_vec(content_vec: Vec<String>, languages) {
             // group_vec = section.select(&group_selector).flat_map(|el| el.text()).collect::<Vec<&str>>();
             // println!("model: {}", model);
         // }
+        
         groups.sort()
         
         for group in groups {
-            let group_vec: vec<&str> = vec![languages[index], group];
+            let group_vec: vec<&str> = vec![index, group];
             groups_data_vec_vec.push(group_vec);
         }
     }
@@ -110,11 +111,21 @@ fn get_groups_data_vec_vec(content_vec: Vec<String>, languages) {
 
 
 fn get_endings_data_vec_vec(content_vec: Vec<String>) {
+    let ending_selector = scraper::Selector::parse("p[class=ending]").unwrap();;
+    let endings_data_vec_vec: Vec<Vec<&str>> = Vec::new();
+
+
     
+    return endings_data_vec_vec;
 }
 
-fn get_endings_data_vec_vec(content_vec: Vec<String>) {
+fn get_models_data_vec_vec(content_vec: Vec<String>) {
+    let model_selector = scraper::Selector::parse("a[class=model-title-verb]").unwrap();
+    let models_data_vec_vec: Vec<Vec<&str>> = Vec::new();
+
     
+
+    return models_data_vec_vec;
 }
 
 
