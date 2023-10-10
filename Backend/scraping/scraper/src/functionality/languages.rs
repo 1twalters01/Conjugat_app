@@ -57,13 +57,13 @@ fn is_vector_valid<'a>(vector: &'a Vec<&'a str>) -> result::Result<bool, &'a str
 
 // Todo
 fn form_vec_vec(languages: Vec<&str>) -> Vec<Vec<&str>> {
-    let langauge_data_vec_vec: Vec<Vec<&str>> = Vec::new();
+    let mut languages_data_vec_vec: Vec<Vec<&str>> = Vec::new();
     for language in languages {
-        let data: Vec<&str> = vec::from(language);
-        language_data_vec_vec.push(data);
+        let data: Vec<&str> = Vec::from([language]);
+        languages_data_vec_vec.push(data);
     }
     
-    return language_data_vec_vec;
+    return languages_data_vec_vec;
 }
 
 
@@ -79,8 +79,8 @@ async fn save_language_data_to_postgres(languages_data: &Vec<JsonData>) {
                 .execute(&pool).await;
 
             match insert_query {
-                Ok(res) => {},
-                Err(err) => {
+                Ok(res) => {res},
+                Err(_) => {
                     let update_query = sqlx::query("UPDATE verbs_lanauge SET lanague=($1), WHERE id=($2)")
                         .bind(language)
                         .bind(language_data.pk)
