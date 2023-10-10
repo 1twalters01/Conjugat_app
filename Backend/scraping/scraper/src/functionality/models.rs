@@ -112,12 +112,26 @@ fn get_groups_data_vec_vec(content_vec: &Vec<String>, languages_data: &Vec<JsonD
 }
 
 
+// need to fix let mut all on line 123
 fn get_endings_data_vec_vec(content_vec: &Vec<String>, groups_data: &Vec<JsonData>) -> Vec<Vec<&'static str>> {
+    let all_selector = scraper::Selector::parse("div.model-row").unwrap();
     let ending_selector = scraper::Selector::parse("p[class=ending]").unwrap();
-    let endings_data_vec_vec: Vec<Vec<&str>> = Vec::new();
+    let mut endings_data_vec_vec: Vec<Vec<&str>> = Vec::new();
 
+    for extract in content_vec {
+        let document = scraper::Html::parse_document(&extract);
+        let mut all: Vec<Vec<&str>> = document.select(&all_selector).flat_map(|el| el.text()).collect::<Vec<Vec<&str>>>();
 
-    
+        all.sort();
+
+        for (index, item) in all.into_iter().enumerate() {
+            let ending_vec: Vec<&str> = Vec::from([groups_data[index].pk.to_string().as_str(), item[1]]);
+            endings_data_vec_vec.push(ending_vec);
+        }
+
+        endings_data_vec_vec.sort();
+    }
+
     return endings_data_vec_vec;
 }
 
