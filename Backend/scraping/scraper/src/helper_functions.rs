@@ -75,6 +75,11 @@ pub fn read_html_from_file(file_path: &str) -> String {
     return content
 }
 
+pub fn read_data_from_file(file_path: &str) -> Vec<JsonData> {
+    let mut content: String = read_html_from_file(file_path);
+    let data: Vec<JsonData> = serde_json::from_str(content.as_str()).unwrap();
+    return data;
+}
 
 pub fn create_json_data_vec(data_vec_vec: Vec<Vec<&str>>, field_type: FieldOptions) -> Vec<JsonData> {
     let mut json_data: Vec<JsonData> = Vec::new();

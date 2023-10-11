@@ -135,11 +135,36 @@ fn get_endings_data_vec_vec(content_vec: &Vec<String>, groups_data: &Vec<JsonDat
     return endings_data_vec_vec;
 }
 
-fn get_models_data_vec_vec(content_vec: &Vec<String>, endings_data: &Vec<JsonData>) -> Vec<Vec<&'static str>> {
-    let model_selector = scraper::Selector::parse("a[class=model-title-verb]").unwrap();
-    let models_data_vec_vec: Vec<Vec<&str>> = Vec::new();
 
-    
+
+
+fn get_models_data_vec_vec(content_vec: &Vec<String>, groups_data: &Vec<JsonData>) -> Vec<Vec<&'static str>> {
+    let all_selector = scraper::Selector::parse("div.model-row").unwrap();
+    let model_selector = scraper::Selector::parse("a[class=model-title-verb]").unwrap();
+    let mut models_data_vec_vec: Vec<Vec<&str>> = Vec::new();
+    let mut ending_model_data_vec_vec: Vec<Vec<&str>> = Vec::new();
+
+   for extract in content_vec {
+        let document = scraper::Html::parse_document(&extract);
+        let mut all: Vec<Vec<&str>> = document.select(&all_selector).map(|el| el.text()).collect::<Vec<Vec<&str>>>();
+
+        all.sort();
+
+        // This is defo wrong G
+        for (index, item) in all.into_iter().enumerate() {
+            let ending_vec: Vec<&str> = Vec::from([groups_data[index].pk.to_string().as_str(), item[1], item[2]]);
+            ending_model_data_vec_vec.push(ending_vec);
+        }
+
+        ending_model_data_vec_vec.sort();
+
+        for (index, ending_model_data_vec) in ending_model_data_vec_vec.into_iter().enumerate() {
+            let model_vec: Vec<&str> = Vec::from([index.to_string().as_str(), ending_model_data_vec[index]]);
+            models_data_vec_vec.push(model_vec);
+        }
+
+        models_data_vec_vec.sort();
+   } 
 
     return models_data_vec_vec;
 }
