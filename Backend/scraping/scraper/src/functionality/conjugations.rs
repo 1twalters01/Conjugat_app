@@ -93,6 +93,21 @@ pub async fn run_conjugations_modules() {
             let auxiliary_selector = scraper::Selector::parse("span#ch_lblAuxiliary>a").unwrap();
             let conjugate_selector = scraper::Selector::parse("i.verbtxt").unwrap();
             // 
+            let language: &str = languages[language_id];
+            let base: &str = verb;
+            let base_rank: &str = ;
+            let tense: &str = ;
+            let subjuct: &str = ;
+            let auxiliary: &str = ;
+            let conjugate: &str = ;
+            let conjugation_rank: &str = ;
+            
+            let base_data_vec: Vec<&str> = vec![rank, language, base];
+            let tense_data_vec: Vec<&str> = vec![language, tense];
+            let subject_data_vec: Vec<&str> = vec![language, subject];
+            let auxiliary_data_vec: Vec<&str> = vec![language, auxiliary];
+            let conjugate_data_vec: Vec<&str> = vec![base, conjugate, model];
+            let conjugation_data_vec: Vec<&str> = vec![rank, tense, subject, auxiliary, conjugate];
         }
     }
 }
