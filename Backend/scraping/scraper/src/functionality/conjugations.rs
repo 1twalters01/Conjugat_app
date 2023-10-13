@@ -26,6 +26,8 @@ use crate::helper_functions::{
 use std::{
     collections::HashSet,
     result,
+    time::Duration,
+    thread,
 };
 
 
@@ -40,7 +42,50 @@ pub async fn run_conjugations_modules() {
 
     let languages: Vec<&str> = extract_languages(languages_data);
 
-    let verb_urls: Vec<Vec<&str>> = form_verb_urls(languages);
+    let verb_urls_vec: Vec<Vec<&str>> = form_verb_urls(languages);
+    save_verb_urls(verb_urls_vec);
+
+    for (language_id, verb_urls) in verb_urls_vec.into_iter().enumerate() {
+        for url in verb_urls {
+            // async_scrape_html_from_url(url: &str)
+            let mut content: String = String::new();
+            reqwest::get(url).await.unwrap().text().await.unwrap();
+            content.push_str(response.as_str());
+
+            let document = scraper::Html::parse_document(&content);
+            
+            // Scrape top bar of reverso website, aka model, auxiliaries and other forms
+            let top_section_container = scraper::Selector::parse("div.alternate-versions").unwrap();
+            let model_selector = scraper::Selector::parse("span[id=ch_lblModel]").unwrap();
+            let auxiliary_type_selector = scraper::Selector::parse("span[id=ch_lblAuxiliary]>a").unwrap();
+            let form_type_selector = scraper::Selector::parse("span[id=ch_lblAutreForm]>a").unwrap();
+        
+            let mut model: String = String::new();
+            let mut auxiliary_types: Vec<&str> = Vec::new();
+            let mut form_types: Vec<&str> = vec![infinitive];
+        
+            for mut section in document.select(&top_section_container) {
+                model = section.select(&model_selector).flat_map(|el| el.text().collect::<String>());
+                println!("model: {}", model);
+        
+                auxiliary_types = section.select(&auxiliary_type_selector).flat_map(|el| el.text()).collect::<Vec<&str>>();
+                println!("auxiliary types: {:?}", auxiliary_types);
+        
+                form_types.extend(section.select(&form_type_selector).flat_map(|el| el.text()).collect::<Vec<&str>>());
+                println!("form types: {:?}", form_types);
+            }
+
+            // Create vec of alternate urls
+            let alt_urls: Vec<&str> = form_types.map(|el| String::from("https://conjugator.reverso.net/conjugation-") + languages[language_id] + el.replace(" ", "%20") + ".html");
+
+            // Scrape alternate urls
+            thread::sleep(Duration::from_millis(exponential_drop_off));
+            let alt_content: Vec<String> = alt_urls.map(|url| async_scrape_html_from_url(url));
+
+            // Scrape lower section
+            
+        }
+    }
 }
 
 fn extract_languages(languages_data: Vec<JsonData>) -> Vec<&'static str> {
