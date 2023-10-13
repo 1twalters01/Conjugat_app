@@ -79,7 +79,7 @@ pub async fn run_conjugations_modules() {
             let alt_urls: Vec<&str> = form_types.map(|el| String::from("https://conjugator.reverso.net/conjugation-") + languages[language_id] + el.replace(" ", "%20") + ".html");
 
             // Scrape alternate urls
-            thread::sleep(Duration::from_millis(exponential_drop_off));
+            thread::sleep(Duration::from_millis(exponential_back_off));
             let alt_content: Vec<String> = alt_urls.map(|url| async_scrape_html_from_url(url));
 
             // Scrape lower section
