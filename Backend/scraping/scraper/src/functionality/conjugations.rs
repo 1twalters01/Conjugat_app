@@ -45,6 +45,9 @@ pub async fn run_conjugations_modules() {
     let verb_urls_vec: Vec<Vec<&str>> = form_verb_urls(languages);
     save_verb_urls(verb_urls_vec);
 
+    // Get exponential back off
+    let (exponential_backoff, error_429_backoff): i64 = read_exponential_backoff_values;
+    
     for (language_id, verb_urls) in verb_urls_vec.into_iter().enumerate() {
         for url in verb_urls {
             // async_scrape_html_from_url(url: &str)
@@ -79,11 +82,17 @@ pub async fn run_conjugations_modules() {
             let alt_urls: Vec<&str> = form_types.map(|el| String::from("https://conjugator.reverso.net/conjugation-") + languages[language_id] + el.replace(" ", "%20") + ".html");
 
             // Scrape alternate urls
-            thread::sleep(Duration::from_millis(exponential_back_off));
+            thread::sleep(Duration::from_millis(exponential_backoff));
             let alt_content: Vec<String> = alt_urls.map(|url| async_scrape_html_from_url(url));
 
             // Scrape lower section
-            
+            //let tense_type_selector = scraper:;Selector::parse("div.word-wrap-title>h4").unwrap();
+            //let tense_main_selector = scraper::Selector::parse("").unwrap();
+            let tense_selector = scraper::Selector::parse("div[mobile-title]>p").unwrap();
+            let subject_selector = scraper::Selector::parse("i.graytxt").unwrap();
+            let auxiliary_selector = scraper::Selector::parse("span#ch_lblAuxiliary>a").unwrap();
+            let conjugate_selector = scraper::Selector::parse("i.verbtxt").unwrap();
+            // 
         }
     }
 }
