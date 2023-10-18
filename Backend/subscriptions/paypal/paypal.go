@@ -2,30 +2,35 @@ package paypal
 
 import (
     "bytes"
-    "encoding/json"
+    // "encoding/json"
     "fmt"
-    "os"
+    "github.com/joho/godotenv"
     "net/http"
 )
 
-type GetAccessTokenStruct struct {
-    user   string `json:"user"`
-    header string `json:"header"`
-    data   string `json:"data"`
-}
+// type GetAccessTokenStruct struct {
+//     user   string `json:"user"`
+//     header string `json:"header"`
+//     data   string `json:"data"`
+// }
 
-func get_access_token() *http.Response {
+// func GetAccessToken() {
+func GetAccessToken() *http.Response {
+    envFile, _ := godotenv.Read(".env")
+
     var url string = "https://api-m.sandbox.paypal.com/v1/oauth2/token";
-    var client_id string = os.Getenv("PAYPAL_CLIENT_ID");
-    var secret_key string = os.Getenv("PAYPAL_SECRET_KEY");
+    var client_id string = envFile["PAYPAL_CLIENT_ID"];
+    var secret_key string = envFile["PAYPAL_SECRET_KEY"];
 
     var user string = client_id + ":" + secret_key;
+    fmt.Println(user);
+
     // var header string = "Content-Type: application/x-www-form-urlencoded";
     var data string = "grant_type=client_credentials";
 
     body := []byte(`{
-        "user": ` + user + `,
-        "data": ` + data + `,
+    "user": ` + user + `,
+    "data": ` + data + `,
     }`)
 
     r, err := http.NewRequest("POST", url, bytes.NewBuffer(body))
@@ -34,6 +39,7 @@ func get_access_token() *http.Response {
     }
 
     r.Header.Add("Content-Type", "application/x-www-form-urlencoded")
+    fmt.Println(r)
 
     client := &http.Client{}
     res, err := client.Do(r)
@@ -46,19 +52,19 @@ func get_access_token() *http.Response {
     return res
 }
 
-func show_sub_details() {
+func ShowSubDetails() {
 
 }
 
-func cancel_sub() {
+func CancelSub() {
 
 }
 
-func suspend_sub() {
+func SuspendSub() {
 
 }
 
-func activate_sub() {
+func ActivateSub() {
 
 }
 
