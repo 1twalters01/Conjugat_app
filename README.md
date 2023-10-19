@@ -2,7 +2,6 @@
 
 ## Stack overview
 Backend
-* C
 * Rust
   * clap
   * dotenv
@@ -12,3 +11,6 @@ Backend
 * Python
   * Django
   * Fastapi
+* C
+* Go
+  * godotenv
