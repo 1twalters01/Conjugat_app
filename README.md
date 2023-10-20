@@ -2,15 +2,9 @@
 
 ## Stack overview
 Backend
-* Rust
-  * clap
-  * dotenv
-  * PyO3
-  * serde
-  * sqlx
-* Python
-  * Django
-  * Fastapi
+* Rust - clap, dotenv, PyO3, serde, sqlx
+* Python - Django, Fastapi
 * C
-* Go
-  * godotenv
+* Go - godotenv
+
+## System
