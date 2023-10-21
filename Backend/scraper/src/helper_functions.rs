@@ -1,4 +1,3 @@
-
 use sqlx::{Pool, Postgres};
 use sqlx::postgres::PgPoolOptions;
 use std::{
@@ -7,25 +6,32 @@ use std::{
     io::{self, Error, ErrorKind, Read, Write},
     result,
 };
-use crate::data_types::JsonData::{
-    JsonData, Field, FieldOptions,
-    LanguageField,
-    GroupField,
-    ModelField,
-    EndingField,
-    BaseField,
-    TenseField,
-    SubjectField,
-    AuxiliaryField,
-    ConjugateField,
-    ConjugationField,
-    SentenceField,
+
+use crate::data_types::{
+    JsonData::JsonData,
+    Field::{
+        Field,
+        FieldOptions,
+    },
+    FieldOptions::{
+        LanguageField,
+        GroupField,
+        ModelField,
+        EndingField,
+        BaseField,
+        TenseField,
+        SubjectField,
+        AuxiliaryField,
+        ConjugateField,
+        ConjugationField,
+        SentenceField,
+    },
 };
 
 pub fn open_file(file_path: &str) -> result::Result<File, io::Error> {
     let file_result = OpenOptions::new().write(true).read(true).open(file_path);
 
-    let mut file = match file_result {
+    let file = match file_result {
         Ok(file) => Ok(file),
         Err(error) => match error.kind() {
             // If file not found then create the file else recoverable error
@@ -45,9 +51,9 @@ pub fn open_file(file_path: &str) -> result::Result<File, io::Error> {
     return file;
 }
 
-pub fn append_file(file: &mut File, content: String) {
-    let mut old_content: String = String::new();
-    let new_content: String = old_content + &content;
+pub fn append_file(file: &mut File, content: &String) {
+    let old_content: String = String::new();
+    let new_content: String = old_content + content;
     // let check: () = file.write_all(new_content.as_bytes()).unwrap();
     file.write_all(new_content.as_bytes()).unwrap();
 }
@@ -71,12 +77,12 @@ pub fn read_html_from_file(file_path: &str) -> String {
     let mut content: String = String::new();
     let mut file: File = open_file(file_path).unwrap();
     file.read_to_string(&mut content);
-    append_file(&mut file, content);
+    append_file(&mut file, &content);
     return content
 }
 
 pub fn read_data_from_file(file_path: &str) -> Vec<JsonData> {
-    let mut content: String = read_html_from_file(file_path);
+    let content: String = read_html_from_file(file_path);
     let data: Vec<JsonData> = serde_json::from_str(content.as_str()).unwrap();
     return data;
 }
@@ -86,7 +92,7 @@ pub fn create_json_data_vec(data_vec_vec: Vec<Vec<&str>>, field_type: FieldOptio
     let mut primary_key: i64 = 0;
    
 
-    for (index2, data) in data_vec_vec.into_iter().enumerate() {
+    for (_index2, data) in data_vec_vec.into_iter().enumerate() {
         primary_key = primary_key + 1;
 
         let field: Field = match field_type {
@@ -191,7 +197,7 @@ pub fn create_json_data_vec(data_vec_vec: Vec<Vec<&str>>, field_type: FieldOptio
         let target_data = JsonData {
             pk: primary_key,
             fields: field,
-            ..JsonData::default(field_type)
+            ..JsonData::default(&field_type)
         };
 
         json_data.push(target_data);
@@ -205,7 +211,7 @@ pub fn save_data_to_json_file(data:&Vec<JsonData>, file_path: &str) {
     let serialized_data: String = serde_json::to_string_pretty(&data).unwrap();
     fs::remove_file(file_path);
     let mut file: File = open_file(file_path).unwrap();
-    append_file(&mut file, serialized_data);
+    append_file(&mut file, &serialized_data);
 }
 
 pub async fn create_pool_connection() -> Pool<Postgres> {

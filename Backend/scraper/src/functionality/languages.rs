@@ -1,9 +1,11 @@
 // Todo
-use crate::data_types::JsonData::{
-    JsonData,
-    Field,
-    FieldOptions,
-    LanguageField,
+use crate::data_types::{
+    JsonData::JsonData,
+    Field::{
+        Field,
+        FieldOptions,
+    },
+    FieldOptions::LanguageField,
 };
 
 use crate::helper_functions::{
@@ -19,7 +21,7 @@ use std::{
 
 
 
-pub async fn run_languages_module(languages: Vec<&str>) {
+pub async fn run_languages_module(languages: Vec<&'static str>) {
     match is_vector_valid(&languages) {
         Ok(res) => res,
         Err(err) => panic!("{}", err),
@@ -67,7 +69,7 @@ fn form_vec_vec(languages: Vec<&str>) -> Vec<Vec<&str>> {
 }
 
 
-async fn save_language_data_to_postgres(languages_data: &Vec<JsonData>) {
+async fn save_language_data_to_postgres(languages_data: &Vec<JsonData<'static>>) {
     let pool = create_pool_connection().await;
     
     for language_data in languages_data {
