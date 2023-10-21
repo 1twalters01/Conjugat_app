@@ -1,11 +1,11 @@
 // Todo
 use crate::data_types::{
-    JsonData::JsonData,
-    Field::{
+    json_data::JsonData,
+    field::{
         Field,
         FieldOptions,
     },
-    FieldOptions::LanguageField,
+    field_options::LanguageField,
 };
 
 use crate::helper_functions::{
@@ -21,28 +21,28 @@ use std::{
 
 
 
-pub async fn run_languages_module(languages: Vec<&'static str>) {
+pub async fn run_languages_module(languages: Vec<String>) {
     match is_vector_valid(&languages) {
         Ok(res) => res,
         Err(err) => panic!("{}", err),
     };
 
-    let language_data_vec_vec: Vec<Vec<&str>> = form_vec_vec(languages);
+    let language_data_vec_vec: Vec<Vec<String>> = form_vec_vec(languages);
 
     let languages_data: Vec<JsonData> = create_json_data_vec(language_data_vec_vec, FieldOptions::LanguageField); 
     let file_path: &str = "temp/json/languages/languages.json";
     save_data_to_json_file(&languages_data, file_path);
-    save_language_data_to_postgres(&languages_data).await;
+    // save_language_data_to_postgres(&languages_data).await;
 }
 
 
 // Improve this function
-fn is_vector_valid<'a>(vector: &'a Vec<&'a str>) -> result::Result<bool, &'a str> {
-    let hs: HashSet<&str> = vector
+fn is_vector_valid(vector: &Vec<String>) -> result::Result<bool, &str> {
+    let hs: HashSet<String> = vector
         .iter()
         .cloned()
-        .collect::<HashSet<&str>>();
-
+        .collect::<HashSet<String>>();
+    
     if hs.len() != vector.len() {
         return Err("Vector has duplicated languages")
     }
@@ -52,16 +52,16 @@ fn is_vector_valid<'a>(vector: &'a Vec<&'a str>) -> result::Result<bool, &'a str
             return Err("Vector has null element(s)")
         }
     }
-
+    
     Ok(true)
 }
 
 
 // Todo
-fn form_vec_vec(languages: Vec<&str>) -> Vec<Vec<&str>> {
-    let mut languages_data_vec_vec: Vec<Vec<&str>> = Vec::new();
+fn form_vec_vec(languages: Vec<String>) -> Vec<Vec<String>> {
+    let mut languages_data_vec_vec: Vec<Vec<String>> = Vec::new();
     for language in languages {
-        let data: Vec<&str> = Vec::from([language]);
+        let data: Vec<String> = Vec::from([language]);
         languages_data_vec_vec.push(data);
     }
     
@@ -69,7 +69,7 @@ fn form_vec_vec(languages: Vec<&str>) -> Vec<Vec<&str>> {
 }
 
 
-async fn save_language_data_to_postgres(languages_data: &Vec<JsonData<'static>>) {
+async fn save_language_data_to_postgres(languages_data: &Vec<JsonData>) {
     let pool = create_pool_connection().await;
     
     for language_data in languages_data {

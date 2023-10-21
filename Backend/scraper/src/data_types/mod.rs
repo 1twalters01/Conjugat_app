@@ -1,3 +1,3 @@
-pub mod JsonData;
-pub mod Field;
-pub mod FieldOptions;
+pub mod json_data;
+pub mod field;
+pub mod field_options;

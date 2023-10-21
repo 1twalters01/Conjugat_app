@@ -1,24 +1,24 @@
 use serde::{Serialize, Deserialize};
-use crate::data_types::Field::{
+use crate::data_types::field::{
     Field,
     FieldOptions,
 };
 
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct JsonData<'a> {
-    model: &'a str,
+pub struct JsonData {
+    pub model: String,
     pub pk: i64,
-    pub fields: Field<'a>,
+    pub fields: Field,
 }
 
 
-impl<'a> JsonData<'a> {
+impl JsonData {
     pub fn default(field_type: &FieldOptions) -> JsonData {
         match field_type {
             FieldOptions::LanguageField => {
                 return JsonData {
-                    model: "verbs.languages",
+                    model: String::from("verbs.languages"),
                     pk: 0,
                     fields: Field::default(FieldOptions::LanguageField),
                 }
@@ -26,7 +26,7 @@ impl<'a> JsonData<'a> {
             
             FieldOptions::GroupField => {
                 return JsonData {
-                    model: "verbs.groups",
+                    model: String::from("verbs.groups"),
                     pk: 0,
                     fields: Field::default(FieldOptions::GroupField),
                 }
@@ -34,7 +34,7 @@ impl<'a> JsonData<'a> {
 
             FieldOptions::EndingField => {
                 return JsonData {
-                    model: "verbs.endings",
+                    model: String::from("verbs.endings"),
                     pk: 0,
                     fields: Field::default(FieldOptions::EndingField),
                 }
@@ -42,7 +42,7 @@ impl<'a> JsonData<'a> {
  
             FieldOptions::ModelField => {
                 return JsonData {
-                    model: "verbs.models",
+                    model: String::from("verbs.models"),
                     pk: 0,
                     fields: Field::default(FieldOptions::ModelField),
                 }
@@ -50,7 +50,7 @@ impl<'a> JsonData<'a> {
 
             FieldOptions::BaseField => {
                 return JsonData {
-                    model: "verbs.bases",
+                    model: String::from("verbs.bases"),
                     pk: 0,
                     fields: Field::default(FieldOptions::BaseField),
                 }
@@ -58,7 +58,7 @@ impl<'a> JsonData<'a> {
 
             FieldOptions::TenseField => {
                 return JsonData {
-                    model: "verbs.tenses",
+                    model: String::from("verbs.tenses"),
                     pk: 0,
                     fields: Field::default(FieldOptions::TenseField),
                 }
@@ -66,7 +66,7 @@ impl<'a> JsonData<'a> {
  
             FieldOptions::SubjectField => {
                 return JsonData {
-                    model: "verbs.subjects",
+                    model: String::from("verbs.subjects"),
                     pk: 0,
                     fields: Field::default(FieldOptions::SubjectField),
                 }
@@ -74,7 +74,7 @@ impl<'a> JsonData<'a> {
  
             FieldOptions::AuxiliaryField => {
                 return JsonData {
-                    model: "verbs.auxiliaries",
+                    model: String::from("verbs.auxiliaries"),
                     pk: 0,
                     fields: Field::default(FieldOptions::AuxiliaryField),
                 }
@@ -82,7 +82,7 @@ impl<'a> JsonData<'a> {
  
             FieldOptions::ConjugateField => {
                 return JsonData {
-                    model: "verbs.conjugates",
+                    model: String::from("verbs.conjugates"),
                     pk: 0,
                     fields: Field::default(FieldOptions::ConjugateField),
                 }
@@ -90,7 +90,7 @@ impl<'a> JsonData<'a> {
             
             FieldOptions::ConjugationField => {
                 return JsonData {
-                    model: "verbs.conjugations",
+                    model: String::from("verbs.conjugations"),
                     pk: 0,
                     fields: Field::default(FieldOptions::ConjugationField),
                 }
@@ -98,7 +98,7 @@ impl<'a> JsonData<'a> {
             
             FieldOptions::SentenceField => {
                 return JsonData {
-                    model: "verbs.sentences",
+                    model: String::from("verbs.sentences"),
                     pk: 0,
                     fields: Field::default(FieldOptions::SentenceField),
                 }

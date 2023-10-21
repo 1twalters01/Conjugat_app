@@ -1,11 +1,11 @@
 // Todo
 use crate::data_types::{
-    JsonData::JsonData,
-    Field::{
+    json_data::JsonData,
+    field::{
         Field,
         FieldOptions,
     },
-    FieldOptions::{
+    field_options::{
         LanguageField,
         GroupField,
         EndingField,
@@ -20,7 +20,7 @@ use crate::helper_functions::{
     save_data_to_json_file,
     create_pool_connection,
     read_html_from_file,
-    scrape_html_from_url,
+    async_scrape_html_from_url,
 };
 
 // use std::{
@@ -33,9 +33,9 @@ use crate::helper_functions::{
 
 pub async fn run_model_module() {
     // get html vector for the models of each language saved
-    let language_content: String = read_html_from_file("temp/json/models/groups.json");
+    let language_content: String = read_html_from_file("temp/json/languages/languages.json");
     let (_languages_data, languages) = read_languages_from_file(language_content.as_str());
-    let content_vec: Vec<String> = get_model_html_vec(languages);
+    let content_vec: Vec<String> = get_model_html_vec(languages).await;
 
     // Create the document vector
     // let mut document_vec: Vec<Html> = Vec::new();
@@ -46,20 +46,18 @@ pub async fn run_model_module() {
     let document_vec: Vec<Html> = content_vec.into_iter()
         .map(|extract| scraper::Html::parse_document(&extract))
         .collect::<Vec<Html>>();
-
+    
     // 0:language, 1: group
-    let mut groups_count: &str = "0";
-    let mut holder = 0;
-    let mut holder2: String = String::new();
-    let groups_data_vec_vec: Vec<Vec<&str>> = get_groups_data_vec_vec(&document_vec, groups_count, holder, holder2);
+    let groups_data_vec_vec: Vec<Vec<String>> = get_groups_data_vec_vec(&document_vec);
+    println!("{:?}", groups_data_vec_vec);
     let groups_data: Vec<JsonData> = create_json_data_vec(groups_data_vec_vec, FieldOptions::GroupField);
 
     // 0: group, 1: ending
-    let endings_data_vec_vec: Vec<Vec<&str>> = get_endings_data_vec_vec(&document_vec, &groups_data);
+    let endings_data_vec_vec: Vec<Vec<String>> = get_endings_data_vec_vec(&document_vec, &groups_data);
     let endings_data: Vec<JsonData> = create_json_data_vec(endings_data_vec_vec, FieldOptions::EndingField);
 
     // 0: ending, 1: model
-    let models_data_vec_vec: Vec<Vec<&str>> = get_models_data_vec_vec(&document_vec, &endings_data);
+    let models_data_vec_vec: Vec<Vec<String>> = get_models_data_vec_vec(&document_vec, &endings_data);
     let models_data: Vec<JsonData> = create_json_data_vec(models_data_vec_vec, FieldOptions::ModelField);
 
 
@@ -74,31 +72,33 @@ pub async fn run_model_module() {
 }
 
 
-fn read_languages_from_file<'a>(language_content: &'a str) -> (Vec<JsonData<'a>>, Vec<&'a str>) {
+fn read_languages_from_file(language_content: &str) -> (Vec<JsonData>, Vec<String>) {
     // let language_file_path: &str = "temp/json/models/groups.json";
     // language_content = read_html_from_file(language_file_path);
     let languages_data: Vec<JsonData> = serde_json::from_str(language_content).unwrap();
     
-    let mut languages: Vec<&str> = Vec::new();
+    let mut languages: Vec<String> = Vec::new();
     for language_data in &languages_data {
-        if let Field::LanguageField(LanguageField { language }) = language_data.fields {
-            languages.push(language);
+        if let Field::LanguageField(LanguageField { language }) = &language_data.fields {
+            languages.push(language.clone());
         }
     }
     return (languages_data, languages);
 }
 
-fn get_model_html_vec(languages: Vec<&str>) -> Vec<String> {    
+// either make this load data after initial or read file for html
+async fn get_model_html_vec(languages: Vec<String>) -> Vec<String> {    
     let mut urls: Vec<String> = Vec::new();
     for language in languages {
-        urls.push(String::from("https://conjugator.reverso.net/conjugation-rules-model-") + language + ".html");
+        urls.push(String::from("https://conjugator.reverso.net/conjugation-rules-model-") + language.as_str() + ".html");
     }
+    println!("{:?}", urls);
 
     // scrape the urls of their html
     let mut content_vec: Vec<String> = Vec::new();
     
     for url in urls {
-        let content: String = scrape_html_from_url(url.as_str());
+        let content: String = async_scrape_html_from_url(url).await;
         content_vec.push(content);
     }
     
@@ -106,29 +106,38 @@ fn get_model_html_vec(languages: Vec<&str>) -> Vec<String> {
 }
 
 
-fn get_groups_data_vec_vec<'a>(document_vec: &'a Vec<Html>, mut groups_count: &'a str, mut holder: i64, mut holderr: String) -> Vec<Vec<&'a str>> {
-    let group_selector = scraper::Selector::parse("a[class=group]").unwrap();
-    let mut groups_data_vec_vec: Vec<Vec<&str>> = Vec::new();
+fn get_groups_data_vec_vec(document_vec: &Vec<Html>) -> Vec<Vec<String>> {
+    let section_container = scraper::Selector::parse("div.model-contents").unwrap();
+    let group_selector = scraper::Selector::parse("p[class=group]").unwrap();
+    let all_selector = scraper::Selector::parse("div.model-row").unwrap();
+    let mut groups_data_vec_vec: Vec<Vec<String>> = Vec::new();
    
-    for document in document_vec {
-        let mut groups = document.select(&group_selector).flat_map(|el| el.text()).collect::<Vec<&str>>();
+    for (index, document) in document_vec.into_iter().enumerate() {
+        // println!("token: {:?}", document.select(&group_selector));
+        // let mut groups = document.select(&group_selector).flat_map(|el| el.text()).collect::<Vec<&str>>();
         
-        // for section in document.select(&section_container) {
-            // group_vec = section.select(&group_selector).flat_map(|el| el.text()).collect::<Vec<&str>>();
-            // println!("model: {}", model);
-        // }
+        let mut groups: Vec<&str> = Vec::new();
+        println!("hi");
+        for section in document.select(&section_container) {
+            for all_scraped in section.select(&all_selector) {
+                let all_div = all_scraped.text().collect::<Vec<_>>();
+                println!("{:?}", all_div);
+                let group_p = all_scraped.select(&group_selector).next().unwrap().text().collect::<Vec<_>>();
+                // let group_content = String::new();
+                println!("{:?}", group_p); 
+                let group_content = group_p[0].trim();
+                println!("{:?}\n{:?}", all_div, group_content);
+                groups.push(group_content);
+            }
+        }
         
         groups.sort();
+        println!("groups: {:?}", groups);
         
         for group in groups {
-            let group_vec: Vec<&str> = vec![groups_count, group];
+            let group_vec: Vec<String> = vec![index.to_string(), group.to_string()];
             groups_data_vec_vec.push(group_vec);
         }
-
-        holder += 1;
-        holderr = holder.to_string();
-        groups_count = holderr.as_str();
-        // count = (count.parse::<i64>().unwrap() + 1).to_string().as_str();
     }
 
     return groups_data_vec_vec;
@@ -136,18 +145,21 @@ fn get_groups_data_vec_vec<'a>(document_vec: &'a Vec<Html>, mut groups_count: &'
 
 
 // need to fix let mut all on line 123
-fn get_endings_data_vec_vec<'a>(document_vec: &Vec<Html>, groups_data: &'a Vec<JsonData>) -> Vec<Vec<&'a str>> {
+fn get_endings_data_vec_vec(document_vec: &Vec<Html>, groups_data: &Vec<JsonData>) -> Vec<Vec<String>> {
     let all_selector = scraper::Selector::parse("div.model-row").unwrap();
     // let ending_selector = scraper::Selector::parse("p[class=ending]").unwrap();
-    let mut endings_data_vec_vec: Vec<Vec<&str>> = Vec::new();
+    let mut endings_data_vec_vec: Vec<Vec<String>> = Vec::new();
 
     for document in document_vec {
-        let mut all: Vec<Vec<&str>> = document.select(&all_selector).map(|el| el.text().collect::<Vec<&str>>()).collect::<Vec<Vec<&str>>>();
+        let mut all: Vec<Vec<String>> = document.select(&all_selector)
+                                                .map(|el| el.text().map(|var| var.to_string())
+                                                                   .collect::<Vec<String>>())
+                                                .collect::<Vec<Vec<String>>>();
 
         all.sort();
 
         for (index, item) in all.into_iter().enumerate() {
-            let ending_vec: Vec<&str> = Vec::from([groups_data[index].pk.to_string().as_str(), item[1]]);
+            let ending_vec: Vec<String> = Vec::from([groups_data[index].pk.to_string(), item[1].clone()]);
             endings_data_vec_vec.push(ending_vec);
         }
 
@@ -160,27 +172,27 @@ fn get_endings_data_vec_vec<'a>(document_vec: &Vec<Html>, groups_data: &'a Vec<J
 
 
 
-fn get_models_data_vec_vec<'a>(document_vec: &Vec<Html>, groups_data: &'a Vec<JsonData>) -> Vec<Vec<&'a str>> {
+fn get_models_data_vec_vec(document_vec: &Vec<Html>, groups_data: &Vec<JsonData>) -> Vec<Vec<String>> {
     let all_selector = scraper::Selector::parse("div.model-row").unwrap();
-    let model_selector = scraper::Selector::parse("a[class=model-title-verb]").unwrap();
-    let mut models_data_vec_vec: Vec<Vec<&str>> = Vec::new();
-    let mut ending_model_data_vec_vec: Vec<Vec<&str>> = Vec::new();
+    // let model_selector = scraper::Selector::parse("a[class=model-title-verb]").unwrap();
+    let mut models_data_vec_vec: Vec<Vec<String>> = Vec::new();
+    let mut ending_model_data_vec_vec: Vec<Vec<String>> = Vec::new();
 
     for document in document_vec {
-        let mut all: Vec<Vec<&str>> = document.select(&all_selector).map(|el| el.text().collect::<Vec<&str>>()).collect::<Vec<Vec<&str>>>();
+        let mut all: Vec<Vec<String>> = document.select(&all_selector).map(|el| el.text().map(|var| var.to_string()).collect::<Vec<String>>()).collect::<Vec<Vec<String>>>();
 
         all.sort();
 
         // This is defo wrong G
         for (index, item) in all.into_iter().enumerate() {
-            let ending_vec: Vec<&str> = Vec::from([groups_data[index].pk.to_string().as_str(), item[1], item[2]]);
+            let ending_vec: Vec<String> = Vec::from([groups_data[index].pk.to_string(), item[1].clone(), item[2].clone()]);
             ending_model_data_vec_vec.push(ending_vec);
         }
 
         ending_model_data_vec_vec.sort();
 
-        for (index, ending_model_data_vec) in ending_model_data_vec_vec.into_iter().enumerate() {
-            let model_vec: Vec<&str> = Vec::from([index.to_string().as_str(), ending_model_data_vec[index]]);
+        for (index, ending_model_data_vec) in ending_model_data_vec_vec.clone().into_iter().enumerate() {
+            let model_vec: Vec<String> = Vec::from([index.to_string(), ending_model_data_vec[index].clone()]);
             models_data_vec_vec.push(model_vec);
         }
 
@@ -192,7 +204,7 @@ fn get_models_data_vec_vec<'a>(document_vec: &Vec<Html>, groups_data: &'a Vec<Js
 
 
 
-async fn save_data_to_postgres<'a>(groups_data: &Vec<JsonData<'a>>, endings_data: &Vec<JsonData<'a>>, models_data: &Vec<JsonData<'a>>) {
+async fn save_data_to_postgres(groups_data: &Vec<JsonData>, endings_data: &Vec<JsonData>, models_data: &Vec<JsonData>) {
     let pool = create_pool_connection().await;
 
     for group_data in groups_data {

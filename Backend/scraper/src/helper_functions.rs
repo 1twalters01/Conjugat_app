@@ -8,12 +8,12 @@ use std::{
 };
 
 use crate::data_types::{
-    JsonData::JsonData,
-    Field::{
+    json_data::JsonData,
+    field::{
         Field,
         FieldOptions,
     },
-    FieldOptions::{
+    field_options::{
         LanguageField,
         GroupField,
         ModelField,
@@ -59,7 +59,7 @@ pub fn append_file(file: &mut File, content: &String) {
 }
 
 
-pub async fn async_scrape_html_from_url(url: &str) -> String {
+pub async fn async_scrape_html_from_url(url: String) -> String {
     let mut content: String = String::new();
     let response: String = reqwest::get(url).await.unwrap().text().await.unwrap();
     content.push_str(response.as_str());
@@ -76,18 +76,18 @@ pub fn scrape_html_from_url(url: &str) -> String {
 pub fn read_html_from_file(file_path: &str) -> String {
     let mut content: String = String::new();
     let mut file: File = open_file(file_path).unwrap();
-    file.read_to_string(&mut content);
+    file.read_to_string(&mut content).unwrap();
     append_file(&mut file, &content);
     return content
 }
 
-pub fn read_data_from_file(file_path: &str) -> Vec<JsonData> {
-    let content: String = read_html_from_file(file_path);
-    let data: Vec<JsonData> = serde_json::from_str(content.as_str()).unwrap();
-    return data;
-}
+// pub fn read_data_from_file(file_path: &str) -> Vec<JsonData> {
+//     let content: String = read_html_from_file(file_path);
+//     let data: Vec<JsonData> = serde_json::from_str(content.as_str()).unwrap();
+//     return data;
+// }
 
-pub fn create_json_data_vec(data_vec_vec: Vec<Vec<&str>>, field_type: FieldOptions) -> Vec<JsonData> {
+pub fn create_json_data_vec(data_vec_vec: Vec<Vec<String>>, field_type: FieldOptions) -> Vec<JsonData> {
     let mut json_data: Vec<JsonData> = Vec::new();
     let mut primary_key: i64 = 0;
    
@@ -98,31 +98,31 @@ pub fn create_json_data_vec(data_vec_vec: Vec<Vec<&str>>, field_type: FieldOptio
         let field: Field = match field_type {
             FieldOptions::LanguageField => {
                 let language_field = LanguageField {
-                    language: data[0],
+                    language: data[0].clone(),
                 };
                 Field::LanguageField(language_field)
             },
 
             FieldOptions::GroupField => {
                 let group_field = GroupField {
-                    language: data[0],
-                    group: data[1],
+                    language: data[0].clone(),
+                    group: data[1].clone(),
                 };
                 Field::GroupField(group_field)
             },
 
             FieldOptions::EndingField => {
                 let ending_field = EndingField {
-                    group: data[0],
-                    ending: data[1],
+                    group: data[0].clone(),
+                    ending: data[1].clone(),
                 };
                 Field::EndingField(ending_field)
             },
 
             FieldOptions:: ModelField => {
                 let model_field = ModelField {
-                    ending: data[0],
-                    model: data[1],
+                    ending: data[0].clone(),
+                    model: data[1].clone(),
                 };
                 Field::ModelField(model_field)
             },
@@ -130,41 +130,41 @@ pub fn create_json_data_vec(data_vec_vec: Vec<Vec<&str>>, field_type: FieldOptio
             FieldOptions::BaseField => {
                 let base_field = BaseField {
                     rank: data[0].parse::<i64>().unwrap(),
-                    language: data[1],
-                    base: data[2],
+                    language: data[1].clone(),
+                    base: data[2].clone(),
                 };
                 Field::BaseField(base_field)
             },
 
             FieldOptions::TenseField => {
                 let tense_field = TenseField {
-                    language: data[0],
-                    tense: data[1],
+                    language: data[0].clone(),
+                    tense: data[1].clone(),
                 };
                 Field::TenseField(tense_field)
             },
 
             FieldOptions::SubjectField => {
                 let subject_field = SubjectField {
-                    language: data[0],
-                    subject: data[1],
+                    language: data[0].clone(),
+                    subject: data[1].clone(),
                 };
                 Field::SubjectField(subject_field)
             },
 
             FieldOptions::AuxiliaryField => {
                 let auxiliary_field = AuxiliaryField {
-                    language: data[0],
-                    auxiliary: data[1],
+                    language: data[0].clone(),
+                    auxiliary: data[1].clone(),
                 };
                 Field::AuxiliaryField(auxiliary_field)
             },
 
             FieldOptions::ConjugateField => {
                 let conjugate_field = ConjugateField {
-                    base: data[0],
-                    conjugate: data[1],
-                    model: data[2],
+                    base: data[0].clone(),
+                    conjugate: data[1].clone(),
+                    model: data[2].clone(),
                 };
                 Field::ConjugateField(conjugate_field)
             },
@@ -173,10 +173,10 @@ pub fn create_json_data_vec(data_vec_vec: Vec<Vec<&str>>, field_type: FieldOptio
             FieldOptions::ConjugationField => {
                 let conjugation_field = ConjugationField {
                     rank: data[0].parse::<i64>().unwrap(),
-                    tense: data[1],
-                    subject: data[2],
-                    auxiliary: data[3],
-                    conjugate: data[4],
+                    tense: data[1].clone(),
+                    subject: data[2].clone(),
+                    auxiliary: data[3].clone(),
+                    conjugate: data[4].clone(),
                 };
                 Field::ConjugationField(conjugation_field)
             },
@@ -185,8 +185,8 @@ pub fn create_json_data_vec(data_vec_vec: Vec<Vec<&str>>, field_type: FieldOptio
             FieldOptions::SentenceField => {
                 let sentence_field = SentenceField {
                     rank: data[0].parse::<i64>().unwrap(),
-                    conjugation: data[1],
-                    sentence: data[2],
+                    conjugation: data[1].clone(),
+                    sentence: data[2].clone(),
                     char_length: data[3].parse::<i64>().unwrap(),
                     char_start: data[4].parse::<i64>().unwrap(),
                 };
@@ -209,8 +209,8 @@ pub fn create_json_data_vec(data_vec_vec: Vec<Vec<&str>>, field_type: FieldOptio
 
 pub fn save_data_to_json_file(data:&Vec<JsonData>, file_path: &str) {
     let serialized_data: String = serde_json::to_string_pretty(&data).unwrap();
-    fs::remove_file(file_path);
-    let mut file: File = open_file(file_path).unwrap();
+    fs::remove_file(file_path).unwrap();
+    let mut file = open_file(file_path).unwrap();
     append_file(&mut file, &serialized_data);
 }
 

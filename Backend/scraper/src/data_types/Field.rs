@@ -1,5 +1,5 @@
 use serde::{Serialize, Deserialize};
-use crate::data_types::FieldOptions::{
+use crate::data_types::field_options::{
     LanguageField,
     GroupField,
     EndingField,
@@ -16,19 +16,18 @@ use crate::data_types::FieldOptions::{
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum Field<'a> {
-    #[serde(borrow)]
-    LanguageField(LanguageField<'a>),
-    GroupField(GroupField<'a>),
-    EndingField(EndingField<'a>),
-    ModelField(ModelField<'a>),
-    BaseField(BaseField<'a>),
-    TenseField(TenseField<'a>),
-    SubjectField(SubjectField<'a>),
-    AuxiliaryField(AuxiliaryField<'a>),
-    ConjugateField(ConjugateField<'a>),
-    ConjugationField(ConjugationField<'a>),
-    SentenceField(SentenceField<'a>),
+pub enum Field {
+    LanguageField(LanguageField),
+    GroupField(GroupField),
+    EndingField(EndingField),
+    ModelField(ModelField),
+    BaseField(BaseField),
+    TenseField(TenseField),
+    SubjectField(SubjectField),
+    AuxiliaryField(AuxiliaryField),
+    ConjugateField(ConjugateField),
+    ConjugationField(ConjugationField),
+    SentenceField(SentenceField),
 }
 
 
@@ -48,36 +47,36 @@ pub enum FieldOptions {
 }
 
 
-impl<'a> Field<'a> {
-    pub fn default(field_type: FieldOptions) -> Field<'a> {
+impl Field {
+    pub fn default(field_type: FieldOptions) -> Field {
         match field_type {
             FieldOptions::LanguageField => {
                 let language_field = LanguageField {
-                    language: "",
+                    language: String::new(),
                 };
                 return Field::LanguageField(language_field)
             },
             
             FieldOptions::GroupField => {
                 let group_field = GroupField {
-                    language: "",
-                    group: "", 
+                    language: String::new(),
+                    group: String::new(), 
                 };
                 return Field::GroupField(group_field)
             },
 
             FieldOptions::EndingField => {
                 let ending_field = EndingField {
-                    group: "",
-                    ending: "",
+                    group: String::new(),
+                    ending: String::new(),
                 };
                 return Field::EndingField(ending_field)
             },
            
             FieldOptions::ModelField => {
                 let model_field = ModelField {
-                    ending: "",
-                    model: "",
+                    ending: String::new(),
+                    model: String::new(),
                 };
                 return Field::ModelField(model_field)
             },
@@ -85,41 +84,41 @@ impl<'a> Field<'a> {
             FieldOptions::BaseField => {
                 let base_field = BaseField {
                     rank: 0,
-                    base: "",
-                    language: "",
+                    base: String::new(),
+                    language: String::new(),
                 };
                 return Field::BaseField(base_field)
             },
 
             FieldOptions::TenseField => {
                 let tense_field = TenseField {
-                    tense: "",
-                    language: "",
+                    tense: String::new(),
+                    language: String::new(),
                 };
                 return Field::TenseField(tense_field)
             },
 
             FieldOptions::SubjectField => {
                 let subject_field = SubjectField {
-                    subject: "",
-                    language: "",
+                    subject: String::new(),
+                    language: String::new(),
                 };
                 return Field::SubjectField(subject_field)
             },
 
             FieldOptions::AuxiliaryField => {
                 let auxiliary_field = AuxiliaryField {
-                    auxiliary: "",
-                    language: "",
+                    auxiliary: String::new(),
+                    language: String::new(),
                 };
                 return Field::AuxiliaryField(auxiliary_field)
             },
 
             FieldOptions::ConjugateField => {
                 let conjugate_field = ConjugateField {
-                    base: "",
-                    conjugate: "",
-                    model: "",
+                    base: String::new(),
+                    conjugate: String::new(),
+                    model: String::new(),
                 };
                 return Field::ConjugateField(conjugate_field)
             },
@@ -127,10 +126,10 @@ impl<'a> Field<'a> {
             FieldOptions::ConjugationField => {
                 let conjugation_field = ConjugationField {
                     rank: 0,
-                    tense: "",
-                    subject: "",
-                    auxiliary: "",
-                    conjugate: "",
+                    tense: String::new(),
+                    subject: String::new(),
+                    auxiliary: String::new(),
+                    conjugate: String::new(),
                 };
                 return Field::ConjugationField(conjugation_field)
             },
@@ -138,8 +137,8 @@ impl<'a> Field<'a> {
             FieldOptions::SentenceField => {
                 let sentence_field = SentenceField {
                     rank: 0,
-                    conjugation: "",
-                    sentence: "",
+                    conjugation: String::new(),
+                    sentence: String::new(),
                     char_start: 0,
                     char_length: 0,
                 };

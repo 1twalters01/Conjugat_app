@@ -8,12 +8,16 @@ use args::{ScraperArgs, ScrapeMode};
 use clap::Parser;
 use main_processes::{continue_process, initialise_process};
 
-fn main() {
+use dotenv::dotenv;
+
+#[tokio::main]
+async fn main() {
+    dotenv().ok();
     let args = ScraperArgs::parse();
 
     match args.scrape_mode {
         ScrapeMode::Initialise => {
-            initialise_process();
+            initialise_process().await;
         },
         ScrapeMode::Continue => {
             continue_process();
