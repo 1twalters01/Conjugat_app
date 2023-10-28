@@ -28,4 +28,7 @@ If player B wins:
 * Player B new Elo: 2300 + 16 (1 – 0.151) = 2314
 
 # K factor
-
+FIDE (chess) uses the following:
+K = 40: for a player new to the rating list until the completion of events with a total of 30 games.
+K = 20: for players who have always been rated under 2400.
+K = 10: for players with any published rating of at least 2400 and at least 30 games played in previous events. Thereafter it remains permanently at 10.
