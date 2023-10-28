@@ -11,6 +11,7 @@ Formulae for updating the players' rating
 ## Example
 * Player A Elo: 2600
 * Player B Elo: 2300
+
 Let's say for this example that K = 16
 
 * Player A expected score: 1 / (1 + 10^((2300-2600)/400)) = 0.849
