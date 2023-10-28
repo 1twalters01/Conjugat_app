@@ -8,6 +8,8 @@ Formulae for updating the players' rating
 * R^(')_(A) = R_A + K(S_A - E_A)
 * R^(')_(B) = R_B + K(S_B - E_B)
 
+S in the case of a win = 1, 0.5, 0
+
 ## Example
 * Player A Elo: 2600
 * Player B Elo: 2300
