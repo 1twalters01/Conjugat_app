@@ -69,34 +69,34 @@ fn form_vec_vec(languages: Vec<String>) -> Vec<Vec<String>> {
 }
 
 
-async fn save_language_data_to_postgres(languages_data: &Vec<JsonData>) {
-    let pool = create_pool_connection().await;
-    
-    for language_data in languages_data {
-        if let Field::LanguageField(LanguageField { language }) = &language_data.fields {
-            // if unable to insert into table then update table else panic
-            let insert_query = sqlx::query("INSERT INTO verbs_language (id, language) VALUES ($1, $2)")
-                .bind(language_data.pk)
-                .bind(language)
-                .execute(&pool).await;
-
-            match insert_query {
-                Ok(res) => {res},
-                Err(_) => {
-                    let update_query = sqlx::query("UPDATE verbs_lanauge SET lanague=($1), WHERE id=($2)")
-                        .bind(language)
-                        .bind(language_data.pk)
-                        .execute(&pool).await;
-
-                    let update_result = match update_query {
-                        Ok(res) => res,
-                        Err(err) => panic!("Error: {:?}", err),
-                    };
-                    update_result
-                }
-            };
-        } else {
-            panic!("non-ending in ending field");
-        };
-    }
-}
+// async fn save_language_data_to_postgres(languages_data: &Vec<JsonData>) {
+//     let pool = create_pool_connection().await;
+//     
+//     for language_data in languages_data {
+//         if let Field::LanguageField(LanguageField { language }) = &language_data.fields {
+//             // if unable to insert into table then update table else panic
+//             let insert_query = sqlx::query("INSERT INTO verbs_language (id, language) VALUES ($1, $2)")
+//                 .bind(language_data.pk)
+//                 .bind(language)
+//                 .execute(&pool).await;
+//
+//             match insert_query {
+//                 Ok(res) => {res},
+//                 Err(_) => {
+//                     let update_query = sqlx::query("UPDATE verbs_lanauge SET lanague=($1), WHERE id=($2)")
+//                         .bind(language)
+//                         .bind(language_data.pk)
+//                         .execute(&pool).await;
+//
+//                     let update_result = match update_query {
+//                         Ok(res) => res,
+//                         Err(err) => panic!("Error: {:?}", err),
+//                     };
+//                     update_result
+//                 }
+//             };
+//         } else {
+//             panic!("non-ending in ending field");
+//         };
+//     }
+// }

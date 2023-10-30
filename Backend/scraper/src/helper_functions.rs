@@ -59,25 +59,25 @@ pub fn append_file(file: &mut File, content: &String) {
 }
 
 
-pub async fn async_scrape_html_from_url(url: String) -> String {
-    let mut content: String = String::new();
-    let response: String = reqwest::get(url).await.unwrap().text().await.unwrap();
-    content.push_str(response.as_str());
-    return content
-}
+// pub async fn async_scrape_html_from_url(url: String) -> String {
+//     let mut content: String = String::new();
+//     let response: String = reqwest::get(url).await.unwrap().text().await.unwrap();
+//     content.push_str(response.as_str());
+//     return content
+// }
 
-pub fn scrape_html_from_url(url: &str) -> String {
-    let mut content: String = String::new();
-    let response: String = reqwest::blocking::get(url).unwrap().text().unwrap();
-    content.push_str(response.as_str());
-    return content
-}
+// pub fn scrape_html_from_url(url: &str) -> String {
+//     let mut content: String = String::new();
+//     let response: String = reqwest::blocking::get(url).unwrap().text().unwrap();
+//     content.push_str(response.as_str());
+//     return content
+// }
 
 pub fn read_html_from_file(file_path: &str) -> String {
     let mut content: String = String::new();
     let mut file: File = open_file(file_path).unwrap();
     file.read_to_string(&mut content).unwrap();
-    append_file(&mut file, &content);
+    // append_file(&mut file, &content);
     return content
 }
 

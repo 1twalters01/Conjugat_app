@@ -1,0 +1,138 @@
+[
+  {
+    "model": "verbs.groups",
+    "pk": 1,
+    "fields": {
+      "language": "0",
+      "group": "1st"
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 2,
+    "fields": {
+      "language": "0",
+      "group": "2nd"
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 3,
+    "fields": {
+      "language": "0",
+      "group": "3rd"
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 4,
+    "fields": {
+      "language": "0",
+      "group": "aux."
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 5,
+    "fields": {
+      "language": "1",
+      "group": "1st"
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 6,
+    "fields": {
+      "language": "1",
+      "group": "2nd"
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 7,
+    "fields": {
+      "language": "1",
+      "group": "3rd"
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 8,
+    "fields": {
+      "language": "1",
+      "group": "aux."
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 9,
+    "fields": {
+      "language": "2",
+      "group": "1st"
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 10,
+    "fields": {
+      "language": "2",
+      "group": "2nd"
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 11,
+    "fields": {
+      "language": "2",
+      "group": "3rd"
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 12,
+    "fields": {
+      "language": "2",
+      "group": "aux."
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 13,
+    "fields": {
+      "language": "3",
+      "group": "1st"
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 14,
+    "fields": {
+      "language": "3",
+      "group": "2nd"
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 15,
+    "fields": {
+      "language": "3",
+      "group": "3rd"
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 16,
+    "fields": {
+      "language": "3",
+      "group": "aux."
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 17,
+    "fields": {
+      "language": "4",
+      "group": "aux."
+    }
+  }
+]
