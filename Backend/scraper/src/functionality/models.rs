@@ -147,6 +147,11 @@ fn get_groups_data_vec_vec(document_vec: &Vec<Html>) -> Vec<Vec<String>> {
 }
 
 
+fn get_groups_vec_map(groups_data_vec_vec: Vec<Vec<String>>) -> Vec<BTreeMap> {
+    // Outer vec by language
+    // map os <group, pk>
+}
+
 fn get_endings_data_vec_vec(document_vec: &Vec<Html>) -> Vec<Vec<String>> {
     let all_selector = scraper::Selector::parse("div.model-row").unwrap();
     let ending_selector = scraper::Selector::parse("").unwrap();
