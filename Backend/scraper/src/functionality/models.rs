@@ -150,6 +150,7 @@ fn get_groups_data_vec_vec(document_vec: &Vec<Html>) -> Vec<Vec<String>> {
 fn get_endings_data_vec_vec(document_vec: &Vec<Html>) -> Vec<Vec<String>> {
     let all_selector = scraper::Selector::parse("div.model-row").unwrap();
     let ending_selector = scraper::Selector::parse("").unwrap();
+    let group_selector = scraper::Selector::parse("p[class=group]").unwrap();
     let mut endings_data_vec_vec: Vec<Vec<String>> = Vec::new();
     let mut ending_count: i64 = 0;
 
@@ -162,37 +163,34 @@ fn get_endings_data_vec_vec(document_vec: &Vec<Html>) -> Vec<Vec<String>> {
             .map(|testvecvec| testvecvec.map(|testvec| testvec[0]).collect::<Vec<_>>()).collect::<Vec<_>>();
 
         endings_groups_vec.sort();
-        endings_groups_vec.dedup()
+        endings_groups_vec.dedup();
     }
 
     return ending_data_vec_vec;
 }
 
     
-// need to fix let mut all on line 123
-// fn get_endings_data_vec_vec(document_vec: &Vec<Html>, groups_data: &Vec<JsonData>) -> Vec<Vec<String>> {
-//     let all_selector = scraper::Selector::parse("div.model-row").unwrap();
-//     // let ending_selector = scraper::Selector::parse("p[class=ending]").unwrap();
-//     let mut endings_data_vec_vec: Vec<Vec<String>> = Vec::new();
-//
-//     for document in document_vec {
-//         let mut all: Vec<Vec<String>> = document.select(&all_selector)
-//                                                 .map(|el| el.text().map(|var| var.to_string())
-//                                                                    .collect::<Vec<String>>())
-//                                                 .collect::<Vec<Vec<String>>>();
-//
-//         all.sort();
-//
-//         for (index, item) in all.into_iter().enumerate() {
-//             let ending_vec: Vec<String> = Vec::from([groups_data[index].pk.to_string(), item[1].clone()]);
-//             endings_data_vec_vec.push(ending_vec);
-//         }
-//
-//         endings_data_vec_vec.sort();
-//     }
-//
-//     return endings_data_vec_vec;
-// }
+fn get_models_data_vec_vec(document_vec: &Vec<Html>) -> Vec<Vec<String>> {
+    let all_selector = scraper::Selector::parse("div.model-row").unwrap();
+    let model_selector = scraper:: Selector::parse("").unwrap();
+    let ending_selector = scraper::Selector::parse("").unwrap();
+    let mut models_data_vec_vec: Vec<Vec<String>> = Vec::new();
+    let mut model_count: i64 = 0;
+
+    for (index, document) in document_vec.into_iter().enumerate() {
+        let mut models_endings_vec = document.select(&all_selector).into_iter()
+            .map(|all_scraped| [all_scraped.select(model_selector).next.unwrap().text.collect::<Vec<_>>(),
+                                all_scraped.select(&ending_selector).next.unwrap().text.collect::<Vec<_>>()]) // use map to turn word into int
+            .collect::<Vec<_>>()
+            .iter().filter() // Make all empty groups be equal to "-"
+            .map(|testvecvec| testvecvec.map(|testvec| testvec[0]).collect::<Vec<_>>()).collect::<Vec<_>>();
+
+        models_endings_vec.sort();
+        models_endings_vec.dudup();
+    }
+
+    return models_vec_vec
+}
 
 
 
