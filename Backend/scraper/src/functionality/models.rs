@@ -122,6 +122,17 @@ fn get_model_html_vec(languages: Vec<String>) -> Vec<String> {
 }
 
 
+fn get_main_data(document_vec: &Vec<Html>) -> Vec<Vec<Strings>> {
+    let all_selector = scraper::Selector::parse("div.model-row").unwrap();
+    let main_data: Vec<Vec<String>> = Vec::new();
+    for document in document_vec.into_iter().enumerate() {
+        data = document.select(&all_selector).into_iter()
+            .map(|all_scraped| all_scraped).collect::<Vec<_>>();
+    }
+
+    return main_data;
+}
+
 fn get_groups_data_vec_vec(document_vec: &Vec<Html>) -> Vec<Vec<String>> {
     let all_selector = scraper::Selector::parse("div.model-row").unwrap();
     let group_selector = scraper::Selector::parse("p[class=group]").unwrap();
