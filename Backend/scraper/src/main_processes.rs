@@ -19,6 +19,16 @@ pub async fn initialise_process() {
 
     println!("{:?}", languages);
 
+    if languages.is_empty() {
+        languages = Vec::from([
+        "Spanish".to_string(),
+        "Portuguese".to_string(),
+        "Italian".to_string(),
+        "French".to_string(),
+        "English".to_string()
+        ]);
+    }
+
     run_languages_module(languages).await;
     run_model_module().await;
 }

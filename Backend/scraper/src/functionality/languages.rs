@@ -11,7 +11,7 @@ use crate::data_types::{
 use crate::helper_functions::{
     create_json_data_vec,
     save_data_to_json_file,
-    create_pool_connection,
+    // create_pool_connection,
 };
 
 use std::{
@@ -57,7 +57,6 @@ fn is_vector_valid(vector: &Vec<String>) -> result::Result<bool, &str> {
 }
 
 
-// Todo
 fn form_vec_vec(languages: Vec<String>) -> Vec<Vec<String>> {
     let mut languages_data_vec_vec: Vec<Vec<String>> = Vec::new();
     for language in languages {
