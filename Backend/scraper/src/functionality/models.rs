@@ -49,12 +49,16 @@ pub async fn run_model_module() {
     let document_vec: Vec<Html> = content_vec.into_iter()
         .map(|extract| scraper::Html::parse_document(&extract))
         .collect::<Vec<Html>>();
-    
+    let all_selector = scraper::Selector::parse("div.model-row").unwrap();
+    let scraped_data = document_vec.map(|document|document.select(&all_selector));
+
     // 0:language, 1: group
-    let groups_data_vec_vec: Vec<Vec<String>> = get_groups_data_vec_vec(&document_vec);
+    let groups_data_vec_vec: Vec<Vec<String>> = get_groups_data_vec_vec(&scraped_data);
     println!("{:?}\n", groups_data_vec_vec);
     let groups_data: Vec<JsonData> = create_json_data_vec(groups_data_vec_vec, FieldOptions::GroupField);
     println!("{:?}\n", groups_data);
+    let groups_vec_vec_map: Vec<Vec<BTreeMap<String, String>>> = get_groups_vec_vec_map(groups_data);
+    println!("{:?}\n", groups_vec_map);
 
     // // 0: group, 1: ending
     // let endings_data_vec_vec: Vec<Vec<String>> = get_endings_data_vec_vec(&document_vec, &groups_data);
@@ -158,9 +162,14 @@ fn get_groups_data_vec_vec(document_vec: &Vec<Html>) -> Vec<Vec<String>> {
 }
 
 
-fn get_groups_vec_map(groups_data_vec_vec: Vec<Vec<String>>) -> Vec<BTreeMap> {
+fn get_groups_vec_vec_map(groups_data: Vec<JsonData>) -> Vec<Vec<BTreeMap<String, String>>> {
     // Outer vec by language
     // map os <group, pk>
+    let group_vec_vec_map: Vec<BTreeMap<String, String>> =
+    for group_data in groups_data {
+        
+    }
+    return group_vec_vec_map;
 }
 
 fn get_endings_data_vec_vec(document_vec: &Vec<Html>) -> Vec<Vec<String>> {
