@@ -26,6 +26,7 @@ use crate::helper_functions::{
     // async_scrape_html_from_url,
 };
 
+use std::collections::BTreeMap;
 // use std::{
 //     collections::HashSet,
 //     result,
@@ -136,7 +137,6 @@ fn get_groups_data_vec_vec(main_data_vec: &Vec<Select>) -> Vec<Vec<String>> {
 }
 
 
-use std::collections::BTreeMap;
 fn get_groups_vec_vec_map(groups_data: Vec<JsonData>) -> Vec<Vec<BTreeMap<String, i64>>> {
     // Outer vec by language
     // map os <group, pk>
@@ -158,19 +158,18 @@ fn get_groups_vec_vec_map(groups_data: Vec<JsonData>) -> Vec<Vec<BTreeMap<String
 }
 
 
-fn get_endings_data_vec_vec(document_vec: &Vec<Html>) -> Vec<Vec<String>> {
-    let all_selector = scraper::Selector::parse("div.model-row").unwrap();
-    let ending_selector = scraper::Selector::parse("").unwrap();
+fn get_endings_data_vec_vec(main_data_vec: &Vec<Select>, groups_vec_vec_map: Vec<Vec<BTreeMap<String, i64>>>) -> Vec<Vec<String>> {
+    let ending_selector = scraper::Selector::parse("p[class=ending]").unwrap();
     let group_selector = scraper::Selector::parse("p[class=group]").unwrap();
     let mut endings_data_vec_vec: Vec<Vec<String>> = Vec::new();
     let mut ending_count: i64 = 0;
-
-    for (index, document) in document_vec.into_iter().enumerate() {
-        let mut endings_groups_vec = document.select(&all_selector).into_iter()
-            .map(|all_scraped| [all_scraped.select(&ending_selector).next.unwrap().text.collect::<Vec<_>>(),
-                                all_scraped.select(group_selector).next.unwrap().text.collect::<Vec<_>>()]) // use map to turn word into int
+    
+    for (index, main_data) in main_data_vec.into_iter().enumerate() {
+        let mut endings = main_data.into_iter()
+            .map(|data| [data.select(ending_selector).next.unwrap().text.collect::<Vec<_>>(),
+                         data.select(group_selector).next.unwrap().text.collect::<Vec<_>>()])
             .collect::<Vec<_>>()
-            .iter().filter() // Make all empty groups be equal to "-"
+            .iter().filter()
             .map(|testvecvec| testvecvec.map(|testvec| testvec[0]).collect::<Vec<_>>()).collect::<Vec<_>>();
 
         endings_groups_vec.sort();
@@ -178,6 +177,15 @@ fn get_endings_data_vec_vec(document_vec: &Vec<Html>) -> Vec<Vec<String>> {
     }
 
     return ending_data_vec_vec;
+}
+
+
+fn get_endings_vec_vec_map(groups_data: Vec<JsonData>) -> Vec<Vec<BTreeMap<String, i64>>> {
+    let mut ending_vec_vec_map: Vec<Vec<BTreeMap<String, i64>>> = Vec::new();
+
+
+    
+    return ending_vec_vec_map;
 }
 
     
