@@ -28,13 +28,35 @@ use crate::helper_functions::{
 };
 
 use std::{
-    collections::{BTreeMap, HashSet}
+    collections::{BTreeMap, HashSet},
     result,
     time::Duration,
     thread,
 };
 
 
+
+pub async fn run_conjugations_modules() {
+    let language_content: String = read_html_from_file("temp/json/languages/languages.json");
+    let (_languages_data, languages) = read_language_data_from_json_data(language_content.as_str());
+
+    let group_content: String = read_html_from_file("temp/json/models/groups.json");
+    let (_groups_data, groups) = read_group_data_from_json_data(group_content.as_str());
+
+    let ending_content: String = read_html_from_file("temp/json/models/endings.json");
+    let (_endings_data, endings) = read_ending_data_from_json_data(ending_content.as_str());
+
+    let model_content: String = read_html_from_file("temp/json/models/models.json");
+    let (_model_data, models) = read_model_data_from_json_data(model_content.as_str());
+
+    
+    // Try to read verb urls. If not there then build and save urls
+    let verb_urls_vec: Vec<Vec<&str>> = form_verb_urls(languages);
+    save_verb_urls(verb_urls_vec);
+
+
+    
+}
 
 // pub async fn run_conjugations_modules() {
 //     // get vectors for the languages, groups, endings, and models
