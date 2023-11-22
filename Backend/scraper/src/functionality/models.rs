@@ -139,7 +139,7 @@ fn get_groups_data_vec_vec(main_data_vec: &Vec<Select>) -> Vec<Vec<String>> {
 
 fn get_groups_vec_vec_map(groups_data: Vec<JsonData>) -> Vec<Vec<BTreeMap<String, i64>>> {
     // Outer vec by language
-    // map os <group, pk>
+    // map os <group, language>
     let mut group_vec_vec_map: Vec<Vec<BTreeMap<String, i64>>> = Vec::new(); 
     for group_data in groups_data {
         let mut group_map: BTreeMap<String, i64> = BTreeMap::new();
@@ -180,11 +180,22 @@ fn get_endings_data_vec_vec(main_data_vec: &Vec<Select>, groups_vec_vec_map: Vec
 }
 
 
-fn get_endings_vec_vec_map(groups_data: Vec<JsonData>) -> Vec<Vec<BTreeMap<String, i64>>> {
-    let mut ending_vec_vec_map: Vec<Vec<BTreeMap<String, i64>>> = Vec::new();
+fn get_endings_vec_vec_map(endings_data: Vec<JsonData>) -> Vec<Vec<BTreeMap<String, i64>>> {
+    // map os <ending, group>
+    let mut ending_vec_vec_map: Vec<Vec<BTreeMap<String, i64>>> = Vec::new(); 
+    for ending_data in endings_data {
+        let mut ending_map: BTreeMap<String, i64> = BTreeMap::new();
+        if let Field::EndingField(EndingField { ending, group }) = &ending_data.fields {
+            let group_id: i64 = group.parse::<i64>().unwrap();
+           ending_map.insert(ending.to_owned(), group_id);
+            if group_id > ending_vec_vec_map.len().to_string().parse::<i64>().unwrap() {
+                ending_vec_vec_map.push(Vec::from([ending_map]));
+            } else {
+                ending_vec_vec_map[group_id.to_string().parse::<usize>().unwrap()].push(ending_map);
+            }
+        }
+    }
 
-
-    
     return ending_vec_vec_map;
 }
 
