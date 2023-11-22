@@ -219,41 +219,8 @@ fn get_models_data_vec_vec(document_vec: &Vec<Html>) -> Vec<Vec<String>> {
         models_endings_vec.dudup();
     }
 
-    return models_vec_vec
+    return models_data_vec_vec;
 }
-
-
-
-
-// fn get_models_data_vec_vec(document_vec: &Vec<Html>, groups_data: &Vec<JsonData>) -> Vec<Vec<String>> {
-//     let all_selector = scraper::Selector::parse("div.model-row").unwrap();
-//     // let model_selector = scraper::Selector::parse("a[class=model-title-verb]").unwrap();
-//     let mut models_data_vec_vec: Vec<Vec<String>> = Vec::new();
-//     let mut ending_model_data_vec_vec: Vec<Vec<String>> = Vec::new();
-//
-//     for document in document_vec {
-//         let mut all: Vec<Vec<String>> = document.select(&all_selector).map(|el| el.text().map(|var| var.to_string()).collect::<Vec<String>>()).collect::<Vec<Vec<String>>>();
-//
-//         all.sort();
-//
-//         // This is defo wrong G
-//         for (index, item) in all.into_iter().enumerate() {
-//             let ending_vec: Vec<String> = Vec::from([groups_data[index].pk.to_string(), item[1].clone(), item[2].clone()]);
-//             ending_model_data_vec_vec.push(ending_vec);
-//         }
-//
-//         ending_model_data_vec_vec.sort();
-//
-//         for (index, ending_model_data_vec) in ending_model_data_vec_vec.clone().into_iter().enumerate() {
-//             let model_vec: Vec<String> = Vec::from([index.to_string(), ending_model_data_vec[index].clone()]);
-//             models_data_vec_vec.push(model_vec);
-//         }
-//
-//         models_data_vec_vec.sort();
-//    } 
-//
-//     return models_data_vec_vec;
-// }
 
 
 
