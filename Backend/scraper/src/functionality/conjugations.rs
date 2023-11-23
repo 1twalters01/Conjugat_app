@@ -29,6 +29,7 @@ use crate::helper_functions::{
 
 use std::{
     collections::{BTreeMap, HashSet},
+    env,
     result,
     time::Duration,
     thread,
@@ -56,7 +57,7 @@ pub async fn run_conjugations_modules() {
 
 
     // Get exponential back off: regular gap between requests and the gap you wait when you get a 429 error
-    let (exponential_backoff, error_429_backoff): i64 = read_exponential_backoff_values;
+    let (exponential_backoff, error_429_backoff): i64 = env::var("read_exponential_backoff_values").unwrap();
 }
 
 // pub async fn run_conjugations_modules() {
