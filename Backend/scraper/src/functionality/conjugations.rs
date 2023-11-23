@@ -52,13 +52,77 @@ pub async fn run_conjugations_modules() {
 
     
     // Try to read verb urls. If not there then build and save urls
-    let verb_urls_vec: Vec<Vec<&str>> = form_verb_urls(languages);
+    let verb_urls_vec: Vec<Vec<&str>> = read_or_form_verb_urls_vec_vec(languages);
     save_verb_urls(verb_urls_vec);
 
 
     // Get exponential back off: regular gap between requests and the gap you wait when you get a 429 error
     let (exponential_backoff, error_429_backoff): i64 = env::var("read_exponential_backoff_values").unwrap();
 }
+
+
+
+fn read_language_data_from_json_data(language_content: &str) -> (Vec<JsonData>, Vec<String>) {
+    let languages_data: Vec<JsonData> = serde_json::from_str(language_content).unwrap();
+    
+    let mut languages: Vec<String> = Vec::new();
+    for language_data in &languages_data {
+        if let Field::LanguageField(LanguageField { language }) = &language_data.fields {
+            languages.push(language.clone());
+        }
+    }
+    return (languages_data, languages);
+}
+
+
+
+fn read_group_data_from_json_data(group_content: &str) -> (Vec<JsonData>, Vec<String>) {
+    let languages_data: Vec<JsonData> = serde_json::from_str(language_content).unwrap();
+    
+    let mut languages: Vec<String> = Vec::new();
+    for language_data in &languages_data {
+        if let Field::LanguageField(LanguageField { language }) = &language_data.fields {
+            languages.push(language.clone());
+        }
+    }
+    return (languages_data, languages);
+}
+
+
+
+fn read_ending_data_from_json_data(ending_content: &str) -> (Vec<JsonData>, Vec<String>) {
+    let languages_data: Vec<JsonData> = serde_json::from_str(language_content).unwrap();
+    
+    let mut languages: Vec<String> = Vec::new();
+    for language_data in &languages_data {
+        if let Field::LanguageField(LanguageField { language }) = &language_data.fields {
+            languages.push(language.clone());
+        }
+    }
+    return (languages_data, languages);
+}
+
+
+
+fn read_model_data_from_json_data(model_content: &str) -> (Vec<JsonData>, Vec<String>) {
+    let languages_data: Vec<JsonData> = serde_json::from_str(language_content).unwrap();
+    
+    let mut languages: Vec<String> = Vec::new();
+    for language_data in &languages_data {
+        if let Field::LanguageField(LanguageField { language }) = &language_data.fields {
+            languages.push(language.clone());
+        }
+    }
+    return (languages_data, languages);
+}
+
+
+
+fn read_or_form_verb_urls_vec_vec() -> Vec<Vec<String {
+    
+}
+
+
 
 // pub async fn run_conjugations_modules() {
 //     // get vectors for the languages, groups, endings, and models
