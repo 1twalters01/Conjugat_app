@@ -55,7 +55,8 @@ pub async fn run_conjugations_modules() {
     save_verb_urls(verb_urls_vec);
 
 
-    
+    // Get exponential back off: regular gap between requests and the gap you wait when you get a 429 error
+    let (exponential_backoff, error_429_backoff): i64 = read_exponential_backoff_values;
 }
 
 // pub async fn run_conjugations_modules() {
