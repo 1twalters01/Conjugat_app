@@ -118,8 +118,20 @@ fn read_model_data_from_json_data(model_content: &str) -> (Vec<JsonData>, Vec<St
 
 
 
-fn read_or_form_verb_urls_vec_vec() -> Vec<Vec<String {
+fn read_or_form_verb_urls_vec_vec(languages: Vec<String>) -> Vec<Vec<String>> {
+    // try to read urls_vec_vec
+        // Todo
+
     
+    // create urls_vec_vec
+    for language in languages {
+        // create urls to scrape words from
+        let urls = "https://conjugator.reverso.net/index-".to_string() + language + "-" + 1751 + "-" + 2000 + ".html";
+
+
+        let url = "https://conjugator.reverso.net/conjugation-".to_string() + language + "-verb-" + verb + ".html";
+    }
+}}
 }
 
 
