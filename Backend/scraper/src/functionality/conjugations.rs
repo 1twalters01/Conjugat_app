@@ -58,6 +58,8 @@ pub async fn run_conjugations_modules() {
 
     // Get exponential back off: regular gap between requests and the gap you wait when you get a 429 error
     let (exponential_backoff, error_429_backoff): i64 = env::var("read_exponential_backoff_values").unwrap();
+
+    
 }
 
 
@@ -119,17 +121,44 @@ fn read_model_data_from_json_data(model_content: &str) -> (Vec<JsonData>, Vec<St
 
 
 fn read_or_form_verb_urls_vec_vec(languages: Vec<String>) -> Vec<Vec<String>> {
-    // try to read urls_vec_vec
-        // Todo
+// try to read urls_vec_vec
+    // Todo
 
     
-    // create urls_vec_vec
+// create urls_vec_vec
+
+    // try to read words
+
+    
+    // else
     for language in languages {
         // create urls to scrape words from
-        let urls = "https://conjugator.reverso.net/index-".to_string() + language + "-" + 1751 + "-" + 2000 + ".html";
+        let urls: [String; 8] = ["0"; 8];
+        for n in 0..=7 {
+            let first_int = (250 * n) + 1;
+            let last_int = 250 * (n + 1);
+            let url = "https://conjugator.reverso.net/index-".to_string() + language + "-" + first_int + "-" + last_int + ".html";
+            urls(n) = url;
+        }
+
+        // save urls
+
+        // get request using url
+
+        // scrape verbs from url string
+
+        // save verbs
 
 
-        let url = "https://conjugator.reverso.net/conjugation-".to_string() + language + "-verb-" + verb + ".html";
+        // move outside of this function
+        for verb in verbs {
+            // get url for each verbs
+            let url = "https://conjugator.reverso.net/conjugation-".to_string() + language + "-verb-" + verb + ".html";
+
+            // do get request on each url
+
+            // scrape needed info --- Todo: split this up into steps
+        }
     }
 }}
 }
