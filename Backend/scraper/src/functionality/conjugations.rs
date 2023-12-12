@@ -30,6 +30,7 @@ use crate::helper_functions::{
 use std::{
     collections::{BTreeMap, HashSet},
     env,
+    fs::{self, File},
     result,
     time::Duration,
     thread,
@@ -132,8 +133,10 @@ fn read_or_form_verb_urls_vec_vec(languages: Vec<String>) -> Vec<Vec<String>> {
     
     // else
     for language in languages {
+        // see if urls file has content in there. If not, then create them
+        
         // create urls to scrape words from
-        let urls: [String; 8] = ["0"; 8];
+        let urls: [String; 8] = [String::from("0"); 8];
         for n in 0..=7 {
             let first_int = (250 * n) + 1;
             let last_int = 250 * (n + 1);
@@ -142,6 +145,10 @@ fn read_or_form_verb_urls_vec_vec(languages: Vec<String>) -> Vec<Vec<String>> {
         }
 
         // save urls
+        let urls_file_path: &str = "temp/text/language_urls.txt";
+        fs::remove_file(file_path).unwrap();
+        let mut urls_file: File = open_file(file_path).unwrap();
+        file.read_to_string(&mut content).unwrap();
 
         // get request using url
 
