@@ -1,4 +1,4 @@
-// Todo
+:w Todo
 use crate::data_types::{
     json_data::JsonData,
     field::{
@@ -124,12 +124,14 @@ fn read_model_data_from_json_data(model_content: &str) -> (Vec<JsonData>, Vec<St
 fn read_or_form_verb_urls_vec_vec(languages: Vec<String>) -> Vec<Vec<String>> {
 // try to read urls_vec_vec
     // Todo
-
+    let urls_vec_vec_file_path: &str = "temp/text/verb_urls.txt";
+    let mut urls_vec_vec_file: File = open_file(urls_vec_vec_file_path).unwrap();
+    urls_vec_vec_file.read_to_string(&mut).unwrap();
     
 // create urls_vec_vec
 
     // try to read words
-
+    
     
     // else
     for language in languages {
@@ -205,6 +207,12 @@ fn read_or_form_verb_urls_vec_vec(languages: Vec<String>) -> Vec<Vec<String>> {
 //             let mut model: String = String::new();
 //             let mut auxiliary_types: Vec<&str> = Vec::new();
 //             let mut form_types: Vec<&str> = vec![infinitive];
+//         
+//             for mut section in document.select(&top_section_container) {
+//         
+//             for mut section in document.select(&top_section_container) {
+//         
+//             for mut section in document.select(&top_section_container) {
 //         
 //             for mut section in document.select(&top_section_container) {
 //                 model = section.select(&model_selector).flat_map(|el| el.text().collect::<String>());
@@ -452,12 +460,6 @@ fn read_or_form_verb_urls_vec_vec(languages: Vec<String>) -> Vec<Vec<String>> {
 //                 .bind(ending_data.pk)
 //                 .bind(group)
 //                 .bind(ending)
-//                 .execute(&pool).await;
-//
-//             match insert_query {
-//                 Ok(res) => res,
-//                 Err(_) => {
-//                     let rewrite_query = sqlx::query("UPDATE verbs_ending SET group=($1), ending=($2), WHERE id=($3)")
 //                         .bind(group)
 //                         .bind(ending)
 //                         .bind(ending_data.pk)
