@@ -3,64 +3,75 @@ use crate::data_types::{
     json_data::JsonData,
     field::{
         Field,
-        FieldOptions,
+        // FieldOptions,
     },
     field_options::{
         LanguageField,
-        GroupField,
-        EndingField,
-        ModelField,
-        BaseField,
-        TenseField,
-        SubjectField,
-        AuxiliaryField,
-        ConjugateField,
-        ConjugationField,
+        // GroupField,
+        // EndingField,
+        // ModelField,
+        // BaseField,
+        // TenseField,
+        // SubjectField,
+        // AuxiliaryField,
+        // ConjugateField,
+        // ConjugationField,
     }
 };
 
 use crate::helper_functions::{
-    create_json_data_vec,
-    create_pool_connection,
-    save_data_to_json_file,
-    read_data_from_file,
-    scrape_html_from_url,
+    // create_json_data_vec,
+    // create_pool_connection,
+    // save_data_to_json_file,
+    read_html_from_file,
 };
 
 use std::{
-    collections::{BTreeMap, HashSet},
+    // collections::{BTreeMap, HashSet},
     env,
-    fs::{self, File},
-    result,
-    time::Duration,
-    thread,
+    // fs::{self, File},
+    // result,
+    // time::Duration,
+    // thread,
 };
 
 
 
 pub async fn run_conjugations_modules() {
+    // Read language data from file
     let language_content: String = read_html_from_file("temp/json/languages/languages.json");
-    let (_languages_data, languages) = read_language_data_from_json_data(language_content.as_str());
+    let (_languages_data, _languages) = read_language_data_from_json_data(language_content.as_str());
 
+    // Read group data from file
     let group_content: String = read_html_from_file("temp/json/models/groups.json");
-    let (_groups_data, groups) = read_group_data_from_json_data(group_content.as_str());
+    let _groups_data: Vec<JsonData> = serde_json::from_str(group_content.as_str()).unwrap();
 
+    // Read ending data from file
     let ending_content: String = read_html_from_file("temp/json/models/endings.json");
-    let (_endings_data, endings) = read_ending_data_from_json_data(ending_content.as_str());
+    let _endings_data: Vec<JsonData> = serde_json::from_str(ending_content.as_str()).unwrap();
 
+    // Read model data from file
     let model_content: String = read_html_from_file("temp/json/models/models.json");
-    let (_model_data, models) = read_model_data_from_json_data(model_content.as_str());
+    let _models_data: Vec<JsonData> = serde_json::from_str(model_content.as_str()).unwrap();
 
-    
-    // Try to read verb urls. If not there then build and save urls
-    let verb_urls_vec: Vec<Vec<&str>> = read_or_form_verb_urls_vec_vec(languages);
-    save_verb_urls(verb_urls_vec);
+    // Get regular exponential back off & error 429 backoff
+    let _backoff: i64 = env::var("backoff_values").unwrap().parse::<i64>().unwrap();
+    let _error_429_backoff: i64 = env::var("error_429_backoff_values").unwrap().parse::<i64>().unwrap();
 
-
-    // Get exponential back off: regular gap between requests and the gap you wait when you get a 429 error
-    let (exponential_backoff, error_429_backoff): i64 = env::var("read_exponential_backoff_values").unwrap();
-
-    
+    // // Fetch verb urls vector
+    // let verb_url_vec_vec: Vec<Vec<String>> = fetch_verb_url_vec_vec(languages, backoff, error_429_backoff);
+    // save_verb_urls(verb_urls_vec);
+    //
+    // // Fetch verbs vector
+    // let verb_vec_vec: Vec<Vec<String>> = fetch_verb_vec_vec(verb_url_vec_vec, backoff, error_429_backoff);
+    // save_verbs(verb_urls_vec);
+    //
+    // // Sort and save bases
+    // let base_vec_vec: Vec<Vec<String>> = create_base_vec_vec(verb_vec_vec);
+    //
+    // // Fetch conjugations vector
+    // let conjugations_vec_vec: Vec<Vec<String>> = fetch_conjugations_vec_vec(base_vec_vec, backoff, error_429_backoff);
+    // save_conjugations_vec_vec(conjugations_vec_vec);
 }
 
 
@@ -78,99 +89,55 @@ fn read_language_data_from_json_data(language_content: &str) -> (Vec<JsonData>, 
 }
 
 
-
-fn read_group_data_from_json_data(group_content: &str) -> (Vec<JsonData>, Vec<String>) {
-    let languages_data: Vec<JsonData> = serde_json::from_str(language_content).unwrap();
-    
-    let mut languages: Vec<String> = Vec::new();
-    for language_data in &languages_data {
-        if let Field::LanguageField(LanguageField { language }) = &language_data.fields {
-            languages.push(language.clone());
-        }
-    }
-    return (languages_data, languages);
-}
-
-
-
-fn read_ending_data_from_json_data(ending_content: &str) -> (Vec<JsonData>, Vec<String>) {
-    let languages_data: Vec<JsonData> = serde_json::from_str(language_content).unwrap();
-    
-    let mut languages: Vec<String> = Vec::new();
-    for language_data in &languages_data {
-        if let Field::LanguageField(LanguageField { language }) = &language_data.fields {
-            languages.push(language.clone());
-        }
-    }
-    return (languages_data, languages);
-}
-
-
-
-fn read_model_data_from_json_data(model_content: &str) -> (Vec<JsonData>, Vec<String>) {
-    let languages_data: Vec<JsonData> = serde_json::from_str(language_content).unwrap();
-    
-    let mut languages: Vec<String> = Vec::new();
-    for language_data in &languages_data {
-        if let Field::LanguageField(LanguageField { language }) = &language_data.fields {
-            languages.push(language.clone());
-        }
-    }
-    return (languages_data, languages);
-}
-
-
-
-fn read_or_form_verb_urls_vec_vec(languages: Vec<String>) -> Vec<Vec<String>> {
-// try to read urls_vec_vec
-    // Todo
-    let urls_vec_vec_file_path: &str = "temp/text/verb_urls.txt";
-    let mut urls_vec_vec_file: File = open_file(urls_vec_vec_file_path).unwrap();
-    urls_vec_vec_file.read_to_string(&mut).unwrap();
-    
-// create urls_vec_vec
-
-    // try to read words
-    
-    
-    // else
-    for language in languages {
-        // see if urls file has content in there. If not, then create them
-        
-        // create urls to scrape words from
-        let urls: [String; 8] = [String::from("0"); 8];
-        for n in 0..=7 {
-            let first_int = (250 * n) + 1;
-            let last_int = 250 * (n + 1);
-            let url = "https://conjugator.reverso.net/index-".to_string() + language + "-" + first_int + "-" + last_int + ".html";
-            urls(n) = url;
-        }
-
-        // save urls
-        let urls_file_path: &str = "temp/text/language_urls.txt";
-        fs::remove_file(file_path).unwrap();
-        let mut urls_file: File = open_file(file_path).unwrap();
-        file.read_to_string(&mut content).unwrap();
-
-        // get request using url
-
-        // scrape verbs from url string
-
-        // save verbs
-
-
-        // move outside of this function
-        for verb in verbs {
-            // get url for each verbs
-            let url = "https://conjugator.reverso.net/conjugation-".to_string() + language + "-verb-" + verb + ".html";
-
-            // do get request on each url
-
-            // scrape needed info --- Todo: split this up into steps
-        }
-    }
-}}
-}
+// fn fetch_verb_urls_vec_vec(languages: Vec<String>) -> Vec<Vec<String>> {
+// // try to read urls_vec_vec
+//     // Todo
+//     let urls_vec_vec_file_path: &str = "temp/text/verb_urls.txt";
+//     let mut urls_vec_vec_file: File = open_file(urls_vec_vec_file_path).unwrap();
+//     urls_vec_vec_file.read_to_string(&mut).unwrap();
+//     
+// // create urls_vec_vec
+//
+//     // try to read words
+//     
+//     
+//     // else
+//     for language in languages {
+//         // see if urls file has content in there. If not, then create them
+//         
+//         // create urls to scrape words from
+//         let urls: [String; 8] = [String::from("0"); 8];
+//         for n in 0..=7 {
+//             let first_int = (250 * n) + 1;
+//             let last_int = 250 * (n + 1);
+//             let url = "https://conjugator.reverso.net/index-".to_string() + language + "-" + first_int + "-" + last_int + ".html";
+//             urls(n) = url;
+//         }
+//
+//         // save urls
+//         let urls_file_path: &str = "temp/text/language_urls.txt";
+//         fs::remove_file(file_path).unwrap();
+//         let mut urls_file: File = open_file(file_path).unwrap();
+//         file.read_to_string(&mut content).unwrap();
+//
+//         // get request using url
+//
+//         // scrape verbs from url string
+//
+//         // save verbs
+//
+//
+//         // move outside of this function
+//         for verb in verbs {
+//             // get url for each verbs
+//             let url = "https://conjugator.reverso.net/conjugation-".to_string() + language + "-verb-" + verb + ".html";
+//
+//             // do get request on each url
+//
+//             // scrape needed info --- Todo: split this up into steps
+//         }
+//     }
+// }
 
 
 

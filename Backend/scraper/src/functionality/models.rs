@@ -60,14 +60,14 @@ pub async fn run_model_module() {
     let endings_vec_vec_map: Vec<Vec<BTreeMap<String, i64>>> = get_endings_vec_vec_map(endings_data);
 
     // obtain the model data and model: ending map, where 0: ending, 1: model
-    // let models_data_vec_vec: Vec<Vec<String>> = get_models_data_vec_vec(&document_vec, &endings_data);
-    // let models_data: Vec<JsonData> = create_json_data_vec(models_data_vec_vec, FieldOptions::ModelField);
-    // let models_vec_vec_map: Vec<Vec<BTreeMap<String, String>>> = get_models_vec_vec_map(models_data);
+    let models_data_vec_vec: Vec<Vec<String>> = get_models_data_vec_vec(&document_vec, &endings_data);
+    let models_data: Vec<JsonData> = create_json_data_vec(models_data_vec_vec, FieldOptions::ModelField);
+    let models_vec_vec_map: Vec<Vec<BTreeMap<String, String>>> = get_models_vec_vec_map(models_data);
 
 
-    // let endings_file_path: &str = "temp/json/models/endings.json";
-    // let models_file_path: &str = "temp/json/models/models.json";
-    // save_data_to_json_file(&models_data, models_file_path);
+    let endings_file_path: &str = "temp/json/models/endings.json";
+    let models_file_path: &str = "temp/json/models/models.json";
+    save_data_to_json_file(&models_data, models_file_path);
 
     // save_data_to_postgres(&groups_data, &endings_data, &models_data).await;
 }
