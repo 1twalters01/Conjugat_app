@@ -2,7 +2,8 @@ use std::io;
 
 use crate::functionality::{
     languages::run_languages_module,
-    models::run_model_module,
+    // models::run_model_module,
+    conjugations::run_conjugations_modules,
 };
 
 pub async fn initialise_process() {
@@ -30,7 +31,8 @@ pub async fn initialise_process() {
     }
 
     run_languages_module(languages).await;
-    run_model_module().await;
+    // run_model_module().await;
+    run_conjugations_modules().await;
 }
 
 

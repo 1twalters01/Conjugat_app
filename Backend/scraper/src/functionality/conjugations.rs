@@ -55,8 +55,8 @@ pub async fn run_conjugations_modules() {
     let _models_data: Vec<JsonData> = serde_json::from_str(model_content.as_str()).unwrap();
 
     // Get regular exponential back off & error 429 backoff
-    let _backoff: i64 = env::var("backoff_values").unwrap().parse::<i64>().unwrap();
-    let _error_429_backoff: i64 = env::var("error_429_backoff_values").unwrap().parse::<i64>().unwrap();
+    let _backoff: i64 = env::var("BACKOFF").unwrap().parse::<i64>().unwrap();
+    let _error_429_backoff: i64 = env::var("ERROR_429_BACKOFF").unwrap().parse::<i64>().unwrap();
 
     // // Fetch verb urls vector
     // let verb_url_vec_vec: Vec<Vec<String>> = fetch_verb_url_vec_vec(languages, backoff, error_429_backoff);

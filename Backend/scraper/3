@@ -55,25 +55,25 @@ pub async fn run_model_module() {
     let group_data_vec: Vec<JsonData> = create_json_data_vec(group_data_vec_vec, FieldOptions::GroupField);
     save_data_to_json_file(&group_data_vec, "temp/json/models/groups.json");
     let language_group_map_vec_vec: Vec<Vec<BTreeMap<String, i64>>> = get_language_group_map_vec_vec(group_data_vec);
-    save_language_group_map_vec_vec(&language_group_map_vec_vec, "temp/json/models/language_group_btreemap.json");
-
 
     // Create ending data and ending:group map
         // Where 0: group, 1: ending
     let ending_data_vec_vec: Vec<Vec<String>> = get_ending_data_vec_vec(&main_data, &language_group_map_vec_vec);
     let ending_data_vec: Vec<JsonData> = create_json_data_vec(ending_data_vec_vec, FieldOptions::EndingField);
     save_data_to_json_file(&ending_data_vec, "temp/json/models/endings.json");
-    let group_ending_map_vec_vec: Vec<Vec<BTreeMap<String, i64>>> = get_group_ending_map_vec_vec(ending_data_vec);
-    save_group_ending_map_vec_vec(&group_ending_map_vec_vec, "temp/json/models/language_group_btreemap.json");
+    let group_ending_map_vec_vec: Vec<Vec<BTreeMap<String, i64>>> = get_group_ending_vec_vec(ending_data_map);
 
     // Create model data and model:ending map
         // Where 0: ending, 1: model
     let model_data_vec_vec: Vec<Vec<String>> = get_model_data_vec_vec(&document_vec, &group_ending_map_vec_vec);
-    let model_data_vec: Vec<JsonData> = create_json_data_vec(model_data_vec_vec, FieldOptions::ModelField);
+    let model_data_vec: Vec<JsonData> = create_json_data_vec(models_data_vec_vec, FieldOptions::ModelField);
     save_data_to_json_file(&model_data_vec, "temp/json/models/models.json");
-    let ending_model_map_vec_vec: Vec<Vec<BTreeMap<String, String>>> = get_ending_model_map_vec_vec(model_data_vec);
-    save_ending_model_map_vec_vec(&ending_model_map_vec_vec, "temp/json/models/language_group_btreemap.json");
+    let group_model_map_vec_vec_map: Vec<Vec<BTreeMap<String, String>>> = get_models_vec_vec_map(models_data);
 
+
+    let endings_file_path: &str = "temp/json/models/endings.json";
+    let models_file_path: &str = "temp/json/models/models.json";
+    save_data_to_json_file(&models_data, models_file_path);
 
     // save_data_to_postgres(&groups_data, &endings_data, &models_data).await;
 }
@@ -143,11 +143,6 @@ fn get_group_data_vec_vec(main_data_vec: &Vec<Select>) -> Vec<Vec<String>> {
 }
 
 
-fn save_language_group_map_vec_vec(language_group_map_vec_vec: &Vec<Vec<BTreeMap<String, i64>>>, file_path: &str) {
-    println!("language_group_map_vec_vec: {:?}", language_group_map_vec_vec);
-    println!("file_path: {}", file_path);
-}
-
 fn get_language_group_map_vec_vec(group_data_vec: Vec<JsonData>) -> Vec<Vec<BTreeMap<String, i64>>> {
     // Outer vec by language
     // map os <group, language>
@@ -169,7 +164,7 @@ fn get_language_group_map_vec_vec(group_data_vec: Vec<JsonData>) -> Vec<Vec<BTre
 }
 
 
-fn get_ending_data_vec_vec(main_data_vec: &Vec<Select>, groups_vec_vec_map: &Vec<Vec<BTreeMap<String, i64>>>) -> Vec<Vec<String>> {
+fn get_ending_data_vec_vec(main_data_vec: &Vec<Select>, groups_vec_vec_map: Vec<Vec<BTreeMap<String, i64>>>) -> Vec<Vec<String>> {
     let ending_selector = scraper::Selector::parse("p[class=ending]").unwrap();
     let group_selector = scraper::Selector::parse("p[class=group]").unwrap();
     let mut endings_data_vec_vec: Vec<Vec<String>> = Vec::new();
@@ -188,12 +183,6 @@ fn get_ending_data_vec_vec(main_data_vec: &Vec<Select>, groups_vec_vec_map: &Vec
     }
 
     return ending_data_vec_vec;
-}
-
-
-fn save_group_ending_map_vec_vec(group_ending_map_vec_vec: &Vec<Vec<BTreeMap<String, i64>>>, file_path: &str) {
-    println!("group_ending_map_vec_vec: {:?}", group_ending_map_vec_vec);
-    println!("file_path: {}", file_path);
 }
 
 
@@ -217,7 +206,7 @@ fn get_group_ending_map_vec_vec(ending_data_vec: Vec<JsonData>) -> Vec<Vec<BTree
 }
 
     
-fn get_model_data_vec_vec(document_vec: &Vec<Html>, ending_group_map_vec_vec: &Vec<Vec<BTreeMap<String, i64>>> ) -> Vec<Vec<String>> {
+fn get_model_data_vec_vec(document_vec: &Vec<Html>) -> Vec<Vec<String>> {
     let all_selector = scraper::Selector::parse("div.model-row").unwrap();
     let model_selector = scraper:: Selector::parse("").unwrap();
     let ending_selector = scraper::Selector::parse("").unwrap();
@@ -240,17 +229,11 @@ fn get_model_data_vec_vec(document_vec: &Vec<Html>, ending_group_map_vec_vec: &V
 }
 
 
-fn save_ending_model_map_vec_vec(ending_model_map_vec_vec: &Vec<Vec<BTreeMap<String, String>>>, file_path: &str) {
-    println!("ending_model_map_vec_vec: {:?}", ending_model_map_vec_vec);
-    println!("file_path: {}", file_path);
-}
-
-
-fn get_ending_model_map_vec_vec(model_data_vec: Vec<JsonData>) -> Vec<Vec<BTreeMap<String, String>>> {
+fn get_ending_model_map_vec_vec(model_data: Vec<JsonData>) -> Vec<Vec<BTreeMap<String, i64>>> {
     // map os <model, ending>
-    let mut model_vec_vec_map: Vec<Vec<BTreeMap<String, String>>> = Vec::new(); 
-    for model_data in model_data_vec {
-        let mut model_map: BTreeMap<String, String> = BTreeMap::new();
+    let mut model_vec_vec_map: Vec<Vec<BTreeMap<String, i64>>> = Vec::new(); 
+    for model_data in models_data {
+        let mut model_map: BTreeMap<String, i64> = BTreeMap::new();
         if let Field::ModelField(ModelField { model, ending }) = &model_data.fields {
             let group_id: i64 = group.parse::<i64>().unwrap();
            ending_map.insert(ending.to_owned(), group_id);
@@ -262,7 +245,7 @@ fn get_ending_model_map_vec_vec(model_data_vec: Vec<JsonData>) -> Vec<Vec<BTreeM
         }
     }
 
-    return model_vec_vec_map;
+    return ending_vec_vec_map;
 }
 
 
