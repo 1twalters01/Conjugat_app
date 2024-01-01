@@ -40,19 +40,23 @@ use std::{
 pub async fn run_conjugations_modules() {
     // Read language data from file
     let language_content: String = read_html_from_file("temp/json/languages/languages.json");
-    let (_languages_data, _languages) = read_language_data_from_json_data(language_content.as_str());
+    let (_language_data_vec, _language_vec) = read_language_data_from_json_data(language_content.as_str());
+    // println!("language_data_vec: {:#?}", _language_data_vec);
 
     // Read group data from file
     let group_content: String = read_html_from_file("temp/json/models/groups.json");
-    let _groups_data: Vec<JsonData> = serde_json::from_str(group_content.as_str()).unwrap();
+    let _group_data_vec: Vec<JsonData> = serde_json::from_str(group_content.as_str()).unwrap();
+    // println!("group_data_vec: {:#?}", _group_data_vec);
 
     // Read ending data from file
     let ending_content: String = read_html_from_file("temp/json/models/endings.json");
-    let _endings_data: Vec<JsonData> = serde_json::from_str(ending_content.as_str()).unwrap();
+    let _ending_data_vec: Vec<JsonData> = serde_json::from_str(ending_content.as_str()).unwrap();
+    // println!("ending_data_vec: {:#?}", _ending_data_vec);
 
     // Read model data from file
     let model_content: String = read_html_from_file("temp/json/models/models.json");
-    let _models_data: Vec<JsonData> = serde_json::from_str(model_content.as_str()).unwrap();
+    let _model_data_vec: Vec<JsonData> = serde_json::from_str(model_content.as_str()).unwrap();
+    println!("model_data_vec: {:#?}", _model_data_vec);
 
     // Get regular exponential back off & error 429 backoff
     let _backoff: i64 = env::var("BACKOFF").unwrap().parse::<i64>().unwrap();
