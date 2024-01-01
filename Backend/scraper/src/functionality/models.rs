@@ -1,3 +1,5 @@
+#[warn(unused_assignments)]
+
 // Todo
 use crate::data_types::{
     json_data::JsonData,
@@ -14,15 +16,15 @@ use crate::data_types::{
 };
 
 use scraper::{
-    html::Select,
+    // html::Select,
     Html
 };
 
 use crate::helper_functions::{
     create_json_data_vec,
     save_data_to_json_file,
-    // create_pool_connection,
     read_html_from_file,
+    // create_pool_connection,
     // async_scrape_html_from_url,
 };
 
@@ -46,16 +48,9 @@ pub async fn run_model_module() {
     let content_vec: Vec<String> = get_model_html_vec(language_vec);
 
 
-    // Parse html for each language's model page
-    let document_vec: Vec<Html> = content_vec.into_iter()
-        .map(|extract| scraper::Html::parse_document(&extract))
-        .collect::<Vec<Html>>();
-    let main_data: Vec<Select> = get_main_data(&document_vec);
-
-
     // Create group data and group:language map
         // Where column 0: language, column 1: group
-    let group_data_vec_vec: Vec<Vec<String>> = get_group_data_vec_vec(&main_data, &language_pk_map_vec);
+    let group_data_vec_vec: Vec<Vec<String>> = get_group_data_vec_vec(content_vec.clone(), &language_pk_map_vec);
     let group_data_vec: Vec<JsonData> = create_json_data_vec(group_data_vec_vec, FieldOptions::GroupField);
     save_data_to_json_file(&group_data_vec, "temp/json/models/groups.json");
     let group_language_id_map_vec: Vec<BTreeMap<String, i64>> = get_group_language_id_map_vec(group_data_vec);
@@ -64,20 +59,20 @@ pub async fn run_model_module() {
 
     // Create ending data and ending:group map
         // Where 0: group, 1: ending
-    let ending_data_vec_vec: Vec<Vec<String>> = get_ending_data_vec(&main_data, &group_language_id_map_vec);
+    let ending_data_vec_vec: Vec<Vec<String>> = get_ending_data_vec(content_vec.clone(), &group_language_id_map_vec);
     let ending_data_vec: Vec<JsonData> = create_json_data_vec(ending_data_vec_vec, FieldOptions::EndingField);
     save_data_to_json_file(&ending_data_vec, "temp/json/models/endings.json");
-    let ending_group_id_map_vec_vec: Vec<Vec<BTreeMap<String, i64>>> = get_ending_group_id_map_vec_vec(ending_data_vec);
-    save_ending_group_id_map_vec_vec(&ending_group_id_map_vec_vec, "temp/json/models/language_group_btreemap.json");
+    let ending_group_id_map_vec: Vec<BTreeMap<String, i64>> = get_ending_group_id_map_vec(ending_data_vec);
+    save_ending_group_id_map_vec(&ending_group_id_map_vec, "temp/json/models/language_group_btreemap.json");
 
 
     // Create model data and model:ending map
         // Where 0: ending, 1: model
-    let model_data_vec_vec: Vec<Vec<String>> = get_model_data_vec_vec(&document_vec, &ending_group_id_map_vec_vec);
+    let model_data_vec_vec: Vec<Vec<String>> = get_model_data_vec_vec(content_vec.clone(), &ending_group_id_map_vec);
     let model_data_vec: Vec<JsonData> = create_json_data_vec(model_data_vec_vec, FieldOptions::ModelField);
     save_data_to_json_file(&model_data_vec, "temp/json/models/models.json");
-    let model_ending_id_map_vec_vec: Vec<Vec<BTreeMap<String, String>>> = get_model_ending_id_map_vec_vec(model_data_vec);
-    save_model_ending_id_map_vec_vec(&model_ending_id_map_vec_vec, "temp/json/models/language_group_btreemap.json");
+    let model_ending_id_map_vec: Vec<BTreeMap<String, i64>> = get_model_ending_id_map_vec_vec(model_data_vec);
+    save_model_ending_id_map_vec(&model_ending_id_map_vec, "temp/json/models/language_group_btreemap.json");
 
 
     // save_data_to_postgres(&groups_data, &endings_data, &models_data).await;
@@ -98,7 +93,7 @@ fn read_language_data_from_json_data(language_content: &str) -> (Vec<JsonData>, 
 }
 
 
-fn get_language_pk_map_vec(language_data_vec: &Vec<JsonData>, language_vec: &Vec<String>) -> Vec<BTreeMap<String, i64>> {
+fn get_language_pk_map_vec(language_data_vec: &Vec<JsonData>, _language_vec: &Vec<String>) -> Vec<BTreeMap<String, i64>> {
     let mut language_pk_map_vec: Vec<BTreeMap<String, i64>> = Vec::new();
 
     for language_data in language_data_vec {
@@ -125,31 +120,40 @@ fn get_model_html_vec(language_vec: Vec<String>) -> Vec<String> {
     return content_vec;
 }
 
+fn get_group_data_vec_vec(content_vec: Vec<String>, _language_pk_map: &Vec<BTreeMap<String, i64>>) -> Vec<Vec<String>> {
+    // Have to repeatedly have this or rust will complain:
+        // trait is not fulfilled for main_data_vec to implement clone and I cba to implement
+        // it (though I probably should)
+        // cannot use &main_data_vec as that would make it a shared reference meaning you
+        // can't use .into_iter on it
 
-fn get_main_data(document_vec: &Vec<Html>) -> Vec<Select> {
     let main_selector = scraper::Selector::parse("div.model-row").unwrap();
-    let main_data = document_vec.iter().enumerate()
-        .map(|(index, document)| document.select(&main_selector)).collect::<Vec<_>>();
-    
-    return main_data;
-}
+    let document_vec: Vec<Html> = content_vec.into_iter()
+        .map(|extract| scraper::Html::parse_document(&extract))
+        .collect::<Vec<Html>>();
+    let main_data_vec = document_vec.iter()
+        .map(|document| document.select(&main_selector)).collect::<Vec<_>>();
 
 
-fn get_group_data_vec_vec(main_data_vec: &Vec<Select>, language_data: &Vec<BTreeMap<String, i64>>) -> Vec<Vec<String>> {
     let group_selector = scraper::Selector::parse("p[class=group]").unwrap();
     let mut group_data_vec_vec: Vec<Vec<String>> = Vec::new();
    
     for (index, main_data) in main_data_vec.into_iter().enumerate() {
-        let mut groups: Vec<&str> = main_data.into_iter()
+        // let mut group_vec: Vec<&str> = Vec::new();
+    
+        // for extract in main_data.into_iter() {
+        // }
+
+        let mut group_vec = main_data.into_iter()
             .map(|data| data.select(&group_selector).next().unwrap().text().collect::<Vec<_>>())
             .collect::<Vec<_>>()
             .iter().filter(|testvec| testvec.len() > 0)
             .map(|testvec| testvec[0]).collect::<Vec<_>>();
 
-        groups.sort();
-        groups.dedup();
+        group_vec.sort();
+        group_vec.dedup();
 
-        for group in groups {
+        for group in group_vec {
             let group_vec: Vec<String> = vec![index.to_string(), group.to_string()];
             group_data_vec_vec.push(group_vec);
         }
@@ -171,7 +175,7 @@ fn get_group_language_id_map_vec(group_data_vec: Vec<JsonData>) -> Vec<BTreeMap<
             if language_id > group_language_id_map_vec.len().to_string().parse::<i64>().unwrap() {
                 group_language_id_map_vec.push(group_language_id_map);
             } else {
-                group_language_id_map_vec[language_id.to_string().parse::<usize>().unwrap()].insert(group.to_owned(), language_id);
+                group_language_id_map_vec[language_id.to_string().parse::<usize>().unwrap()].append(&mut group_language_id_map);
             }
         }
     }
@@ -186,25 +190,35 @@ fn save_group_language_id_map_vec(group_language_id_map_vec_vec: &Vec<BTreeMap<S
 }
 
 
-fn get_ending_data_vec(main_data_vec: &Vec<Select>, group_language_id_map_vec: &Vec<BTreeMap<String, i64>>) -> Vec<Vec<String>> {
+fn get_ending_data_vec(content_vec: Vec<String>, group_language_id_map_vec: &Vec<BTreeMap<String, i64>>) -> Vec<Vec<String>> {
+    let main_selector = scraper::Selector::parse("div.model-row").unwrap();
+    let document_vec: Vec<Html> = content_vec.into_iter()
+        .map(|extract| scraper::Html::parse_document(&extract))
+        .collect::<Vec<Html>>();
+    let main_data_vec = document_vec.iter()
+        .map(|document| document.select(&main_selector)).collect::<Vec<_>>();
+
+
     let ending_selector = scraper::Selector::parse("p[class=ending]").unwrap();
     let group_selector = scraper::Selector::parse("p[class=group]").unwrap();
     let mut ending_data_vec_vec: Vec<Vec<String>> = Vec::new();
-    let mut ending_count: i64 = 0;
     
     for (index, main_data) in main_data_vec.into_iter().enumerate() {
-        let mut ending_group_array_vec = main_data.into_iter()
+        let mut ending_group_array_vec: Vec<Vec<Vec<String>>> = main_data.into_iter()
             .map(|data| vec![data.select(&ending_selector).next()
-                            .unwrap().text().collect::<Vec<&str>>(),
+                            .unwrap().text().collect::<Vec<&str>>()
+                            .into_iter().map(|data| data.to_string()).collect::<Vec<String>>(),
                          data.select(&group_selector).next()
-                            .unwrap().text().collect::<Vec<&str>>()])
+                            .unwrap().text().collect::<Vec<&str>>()
+                            .into_iter().map(|data| data.to_string()).collect::<Vec<String>>(),
+                         ])
             .collect::<Vec<_>>();
             
             for ending_group_array in ending_group_array_vec.iter_mut() {
                 for item in ending_group_array.iter_mut() {
-                    if item[1] == "" {item[1] = group_language_id_map_vec[index].get("-").unwrap().to_string().as_str()}
-                    else {item[1] = group_language_id_map_vec[index].get(item[1]).unwrap().to_string().as_str()}
-                }     
+                    if item[1] == "" {item[1] = group_language_id_map_vec[index].get("-").unwrap().to_string()}
+                    else {item[1] = group_language_id_map_vec[index].get(&item[1]).unwrap().to_string()}
+                }
             }
 
         ending_group_array_vec.sort();
@@ -218,85 +232,108 @@ fn get_ending_data_vec(main_data_vec: &Vec<Select>, group_language_id_map_vec: &
 
             ending_data_vec_vec.push(ending_data_vec);
         }
-        // endings_groups_vec.sort();
-        // endings_groups_vec.dedup();
     }
 
     return ending_data_vec_vec;
 }
 
 
-fn get_ending_group_id_map_vec_vec(ending_data_vec: Vec<JsonData>) -> Vec<Vec<BTreeMap<String, i64>>> {
+fn get_ending_group_id_map_vec(ending_data_vec: Vec<JsonData>) -> Vec<BTreeMap<String, i64>> {
     // map os <ending, group>
-    let mut ending_vec_vec_map: Vec<Vec<BTreeMap<String, i64>>> = Vec::new(); 
+    let mut ending_group_id_map_vec: Vec<BTreeMap<String, i64>> = Vec::new(); 
     for ending_data in ending_data_vec {
-        let mut ending_map: BTreeMap<String, i64> = BTreeMap::new();
+        let mut ending_group_id_map: BTreeMap<String, i64> = BTreeMap::new();
         if let Field::EndingField(EndingField { ending, group }) = &ending_data.fields {
             let group_id: i64 = group.parse::<i64>().unwrap();
-           ending_map.insert(ending.to_owned(), group_id);
-            if group_id > ending_vec_vec_map.len().to_string().parse::<i64>().unwrap() {
-                ending_vec_vec_map.push(Vec::from([ending_map]));
+            ending_group_id_map.insert(ending.to_owned(), group_id);
+            if group_id > ending_group_id_map_vec.len().to_string().parse::<i64>().unwrap() {
+                ending_group_id_map_vec.push(ending_group_id_map);
             } else {
-                ending_vec_vec_map[group_id.to_string().parse::<usize>().unwrap()].push(ending_map);
+                ending_group_id_map_vec[group_id.to_string().parse::<usize>().unwrap()].append(&mut ending_group_id_map);
             }
         }
     }
 
-    return ending_vec_vec_map;
+    return ending_group_id_map_vec;
 }
 
     
-fn save_ending_group_id_map_vec_vec(ending_group_id_map_vec_vec: &Vec<Vec<BTreeMap<String, i64>>>, file_path: &str) {
+fn save_ending_group_id_map_vec(ending_group_id_map_vec_vec: &Vec<BTreeMap<String, i64>>, file_path: &str) {
     println!("ending_group_id_map_vec_vec: {:?}", ending_group_id_map_vec_vec);
     println!("file_path: {}", file_path);
 }
 
 
-fn get_model_data_vec_vec(document_vec: &Vec<Html>, ending_group_map_vec_vec: &Vec<Vec<BTreeMap<String, i64>>> ) -> Vec<Vec<String>> {
-    let all_selector = scraper::Selector::parse("div.model-row").unwrap();
-    let model_selector = scraper:: Selector::parse("").unwrap();
-    let ending_selector = scraper::Selector::parse("").unwrap();
-    let mut models_data_vec_vec: Vec<Vec<String>> = Vec::new();
-    let mut model_count: i64 = 0;
+fn get_model_data_vec_vec(content_vec: Vec<String>, ending_group_id_map_vec: &Vec<BTreeMap<String, i64>> ) -> Vec<Vec<String>> {
+    let main_selector = scraper::Selector::parse("div.model-row").unwrap();
+    let document_vec: Vec<Html> = content_vec.into_iter()
+        .map(|extract| scraper::Html::parse_document(&extract))
+        .collect::<Vec<Html>>();
+    let main_data_vec = document_vec.iter()
+        .map(|document| document.select(&main_selector)).collect::<Vec<_>>();
 
-    for (index, document) in document_vec.into_iter().enumerate() {
-        let mut models_endings_vec = document.select(&all_selector).into_iter()
-            .map(|all_scraped| [all_scraped.select(model_selector).next.unwrap().text.collect::<Vec<_>>(),
-                                all_scraped.select(&ending_selector).next.unwrap().text.collect::<Vec<_>>()]) // use map to turn word into int
-            .collect::<Vec<_>>()
-            .iter().filter() // Make all empty groups be equal to "-"
-            .map(|testvecvec| testvecvec.map(|testvec| testvec[0]).collect::<Vec<_>>()).collect::<Vec<_>>();
 
-        models_endings_vec.sort();
-        models_endings_vec.dudup();
+    let model_selector = scraper:: Selector::parse("p[class=model]").unwrap();
+    let ending_selector = scraper::Selector::parse("p[class=ending]").unwrap();
+    let mut model_data_vec_vec: Vec<Vec<String>> = Vec::new();
+    
+    for (index, main_data) in main_data_vec.into_iter().enumerate() {
+        let mut model_ending_array_vec: Vec<Vec<Vec<String>>> = main_data.into_iter()
+            .map(|data| vec![data.select(&model_selector).next()
+                                .unwrap().text().collect::<Vec<_>>()
+                            .into_iter().map(|data| data.to_string()).collect::<Vec<String>>(),
+                            data.select(&ending_selector).next()
+                                .unwrap().text().collect::<Vec<_>>() // use map to turn word into int
+                            .into_iter().map(|data| data.to_string()).collect::<Vec<String>>()])
+
+            .collect::<Vec<_>>();
+
+        for model_ending_array in model_ending_array_vec.iter_mut() {
+            for item in model_ending_array.iter_mut() {
+                if item[1] == "" {item[1] = ending_group_id_map_vec[index].get("-").unwrap().to_string()}
+                else {item[1] = ending_group_id_map_vec[index].get(&item[1]).unwrap().to_string()}
+            }     
+        }
+        
+        model_ending_array_vec.sort();
+        model_ending_array_vec.dedup();
+       
+        for (index, model_ending) in model_ending_array_vec.into_iter().enumerate() {
+            let model_data_vec: Vec<String> = vec![
+                model_ending[index][0].to_string(),
+                model_ending[index][1].to_string()
+            ];
+
+            model_data_vec_vec.push(model_data_vec);
+        } 
     }
 
-    return models_data_vec_vec;
+    return model_data_vec_vec;
 }
 
 
-fn get_model_ending_id_map_vec_vec(model_data_vec: Vec<JsonData>) -> Vec<Vec<BTreeMap<String, String>>> {
+fn get_model_ending_id_map_vec_vec(model_data_vec: Vec<JsonData>) -> Vec<BTreeMap<String, i64>> {
     // map os <model, ending>
-    let mut model_vec_vec_map: Vec<Vec<BTreeMap<String, String>>> = Vec::new(); 
+    let mut model_ending_id_map_vec: Vec<BTreeMap<String, i64>> = Vec::new(); 
     for model_data in model_data_vec {
-        let mut model_map: BTreeMap<String, String> = BTreeMap::new();
+        let mut model_ending_id_map: BTreeMap<String, i64> = BTreeMap::new();
         if let Field::ModelField(ModelField { model, ending }) = &model_data.fields {
-            let group_id: i64 = group.parse::<i64>().unwrap();
-           ending_map.insert(ending.to_owned(), group_id);
-            if group_id > ending_vec_vec_map.len().to_string().parse::<i64>().unwrap() {
-                ending_vec_vec_map.push(Vec::from([ending_map]));
+            let ending_id: i64 = ending.parse::<i64>().unwrap();
+            model_ending_id_map.insert(model.to_owned(), ending_id);
+            if ending_id > model_ending_id_map_vec.len().to_string().parse::<i64>().unwrap() {
+                model_ending_id_map_vec.push(model_ending_id_map);
             } else {
-                ending_vec_vec_map[group_id.to_string().parse::<usize>().unwrap()].push(ending_map);
+                model_ending_id_map_vec[ending_id.to_string().parse::<usize>().unwrap()].append(&mut model_ending_id_map);
             }
         }
     }
 
-    return model_vec_vec_map;
+    return model_ending_id_map_vec;
 }
 
 
-fn save_model_ending_id_map_vec_vec(ending_model_map_vec_vec: &Vec<Vec<BTreeMap<String, String>>>, file_path: &str) {
-    println!("ending_model_map_vec_vec: {:?}", ending_model_map_vec_vec);
+fn save_model_ending_id_map_vec(ending_model_map_vec: &Vec<BTreeMap<String, i64>>, file_path: &str) {
+    println!("ending_model_map_vec: {:?}", ending_model_map_vec);
     println!("file_path: {}", file_path);
 }
 

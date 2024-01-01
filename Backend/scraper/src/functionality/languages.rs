@@ -2,10 +2,10 @@
 use crate::data_types::{
     json_data::JsonData,
     field::{
-        Field,
+        // Field,
         FieldOptions,
     },
-    field_options::LanguageField,
+    // field_options::LanguageField,
 };
 
 use crate::helper_functions::{
@@ -32,6 +32,8 @@ pub async fn run_languages_module(languages: Vec<String>) {
     let languages_data: Vec<JsonData> = create_json_data_vec(language_data_vec_vec, FieldOptions::LanguageField); 
     let file_path: &str = "temp/json/languages/languages.json";
     save_data_to_json_file(&languages_data, file_path);
+
+    // println!("language data: {:#?}", languages_data);
     // save_language_data_to_postgres(&languages_data).await;
 }
 

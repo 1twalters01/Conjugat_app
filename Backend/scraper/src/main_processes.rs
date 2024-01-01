@@ -2,7 +2,7 @@ use std::io;
 
 use crate::functionality::{
     languages::run_languages_module,
-    // models::run_model_module,
+    models::run_model_module,
     conjugations::run_conjugations_modules,
 };
 
@@ -11,14 +11,15 @@ pub async fn initialise_process() {
     let mut buffer = String::new();
     io::stdin().read_line(&mut buffer).unwrap();
     let trimmed_buffer: &str = buffer.trim();
-
     let languages_str: Vec<&str> = trimmed_buffer.split(", ").collect::<Vec<&str>>();
     let mut languages: Vec<String> = Vec::new();
-    for language in languages_str {
-        languages.push(language.to_string());
-    }
 
-    println!("{:?}", languages);
+    for language in languages_str {
+        if language.len() > 0 {
+            println!("{}", language);
+            languages.push(language.to_string());
+        }
+    }
 
     if languages.is_empty() {
         languages = Vec::from([
@@ -30,8 +31,10 @@ pub async fn initialise_process() {
         ]);
     }
 
+    println!("languages: {:?}", languages);
+
     run_languages_module(languages).await;
-    // run_model_module().await;
+    run_model_module().await;
     run_conjugations_modules().await;
 }
 
