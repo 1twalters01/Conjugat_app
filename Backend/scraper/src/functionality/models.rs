@@ -53,15 +53,22 @@ pub async fn run_model_module() {
     let group_data_vec_vec: Vec<Vec<String>> = get_group_data_vec_vec(content_vec.clone(), &language_pk_map_vec);
     let group_data_vec: Vec<JsonData> = create_json_data_vec(group_data_vec_vec, FieldOptions::GroupField);
     save_data_to_json_file(&group_data_vec, "temp/json/models/groups.json");
-    let group_language_id_map_vec: Vec<BTreeMap<String, i64>> = get_group_language_id_map_vec(group_data_vec);
+    println!("\ngroup_data_vec: {:#?}", group_data_vec);
+    let group_language_id_map_vec: Vec<BTreeMap<String, i64>> = get_group_language_id_map_vec(group_data_vec.clone());
     save_group_language_id_map_vec(&group_language_id_map_vec, "temp/json/models/language_group_btreemap.json");
+    println!("group_language_id_map_vec: {:?}", group_language_id_map_vec);
+    let group_pk_map_vec: Vec<BTreeMap<String, i64>> = get_group_pk_map_vec(group_data_vec.clone());
+    save_group_pk_map_vec(&group_pk_map_vec, "temp/json/models/group_btreemap.json");
+    println!("group_pk_map_vec: {:?}", group_pk_map_vec);
 
 
     // Create ending data and ending:group map
         // Where 0: group, 1: ending
-    let ending_data_vec_vec: Vec<Vec<String>> = get_ending_data_vec(content_vec.clone(), &group_language_id_map_vec);
+    let ending_data_vec_vec: Vec<Vec<String>> = get_ending_data_vec(content_vec.clone(), &group_pk_map_vec);
     let ending_data_vec: Vec<JsonData> = create_json_data_vec(ending_data_vec_vec, FieldOptions::EndingField);
+    println!("\nending_data_vec: {:#?}", ending_data_vec);
     save_data_to_json_file(&ending_data_vec, "temp/json/models/endings.json");
+    // save_data_to_json_file(&ending_data_vec, "temp/json/models/endings.json");
     let ending_group_id_map_vec: Vec<BTreeMap<String, i64>> = get_ending_group_id_map_vec(ending_data_vec);
     save_ending_group_id_map_vec(&ending_group_id_map_vec, "temp/json/models/language_group_btreemap.json");
 
@@ -153,11 +160,15 @@ fn get_group_data_vec_vec(content_vec: Vec<String>, _language_pk_map: &Vec<BTree
         group_vec.sort();
         group_vec.dedup();
 
+        group_data_vec_vec.push(vec![index.to_string(), "-".to_string()]);
         for group in group_vec {
             let group_vec: Vec<String> = vec![index.to_string(), group.to_string()];
             group_data_vec_vec.push(group_vec);
         }
     }
+
+    // group_data_vec_vec.sort();
+    // group_data_vec_vec.dedup();
 
     return group_data_vec_vec;
 }
@@ -172,8 +183,10 @@ fn get_group_language_id_map_vec(group_data_vec: Vec<JsonData>) -> Vec<BTreeMap<
         if let Field::GroupField(GroupField { group, language }) = &group_data.fields {
             let language_id: i64 = language.parse::<i64>().unwrap();
             group_language_id_map.insert(group.to_owned(), language_id);
-            if language_id > group_language_id_map_vec.len().to_string().parse::<i64>().unwrap() {
+
+            if language_id >= group_language_id_map_vec.len().to_string().parse::<i64>().unwrap() {
                 group_language_id_map_vec.push(group_language_id_map);
+                group_language_id_map_vec[language_id.to_string().parse::<usize>().unwrap()].insert(String::from("-"), language_id);
             } else {
                 group_language_id_map_vec[language_id.to_string().parse::<usize>().unwrap()].append(&mut group_language_id_map);
             }
@@ -190,7 +203,34 @@ fn save_group_language_id_map_vec(group_language_id_map_vec_vec: &Vec<BTreeMap<S
 }
 
 
-fn get_ending_data_vec(content_vec: Vec<String>, group_language_id_map_vec: &Vec<BTreeMap<String, i64>>) -> Vec<Vec<String>> {
+fn get_group_pk_map_vec(group_data_vec: Vec<JsonData>) -> Vec<BTreeMap<String, i64>> {
+    // map os <group, pk>
+    let mut group_pk_map_vec: Vec<BTreeMap<String, i64>> = Vec::new(); 
+    for group_data in group_data_vec {
+        let mut group_pk_map: BTreeMap<String, i64> = BTreeMap::new();
+        if let Field::GroupField(GroupField { group, language }) = &group_data.fields {
+            let language_id: i64 = language.parse::<i64>().unwrap();
+            group_pk_map.insert(group.to_owned(), group_data.pk);
+            if language_id >= group_pk_map_vec.len().to_string().parse::<i64>().unwrap() {
+                group_pk_map_vec.push(group_pk_map);
+            } else {
+                group_pk_map_vec[language_id.to_string().parse::<usize>().unwrap()].append(&mut group_pk_map);
+            }
+
+        }
+    }
+
+    return group_pk_map_vec;
+}
+
+
+fn save_group_pk_map_vec(group_pk_map_vec_vec: &Vec<BTreeMap<String, i64>>, file_path: &str) {
+    println!("group_pk_map_vec_vec: {:?}", group_pk_map_vec_vec);
+    println!("file_path: {}", file_path);
+}
+
+
+fn get_ending_data_vec(content_vec: Vec<String>, group_pk_map_vec: &Vec<BTreeMap<String, i64>>) -> Vec<Vec<String>> {
     let main_selector = scraper::Selector::parse("div.model-row").unwrap();
     let document_vec: Vec<Html> = content_vec.into_iter()
         .map(|extract| scraper::Html::parse_document(&extract))
@@ -207,32 +247,44 @@ fn get_ending_data_vec(content_vec: Vec<String>, group_language_id_map_vec: &Vec
         let mut ending_group_array_vec: Vec<Vec<Vec<String>>> = main_data.into_iter()
             .map(|data| vec![data.select(&ending_selector).next()
                             .unwrap().text().collect::<Vec<&str>>()
-                            .into_iter().map(|data| data.to_string()).collect::<Vec<String>>(),
+                            .into_iter().map(|data| data.trim().to_string()).collect::<Vec<String>>(),
                          data.select(&group_selector).next()
                             .unwrap().text().collect::<Vec<&str>>()
-                            .into_iter().map(|data| data.to_string()).collect::<Vec<String>>(),
+                            .into_iter().map(|data| data.trim().to_string()).collect::<Vec<String>>(),
                          ])
             .collect::<Vec<_>>();
-            
-            for ending_group_array in ending_group_array_vec.iter_mut() {
-                for item in ending_group_array.iter_mut() {
-                    if item[1] == "" {item[1] = group_language_id_map_vec[index].get("-").unwrap().to_string()}
-                    else {item[1] = group_language_id_map_vec[index].get(&item[1]).unwrap().to_string()}
-                }
+        // println!("index: {}", index); 
+        // println!("ending_group_array_vec: {:?}", ending_group_array_vec);
+
+        println!("group_pk_map_vec: {:?}", group_pk_map_vec);
+        for ending_group_array in ending_group_array_vec.iter_mut() {
+            // println!("ending_group_array: {:?}", ending_group_array);
+            if ending_group_array[1].len() == 0 {
+                ending_group_array[1].push("-".to_string());
+            } else {
             }
+            ending_group_array[1][0] = group_pk_map_vec[index].get(&ending_group_array[1][0]).unwrap().to_string()
+        }
 
         ending_group_array_vec.sort();
         ending_group_array_vec.dedup();
+        // println!("ending_group_array_vec: {:#?}", ending_group_array_vec);
        
-        for (index, ending_group) in ending_group_array_vec.into_iter().enumerate() {
+        for ending_group in ending_group_array_vec.into_iter() {
+            // println!("ending_group: {:?}", ending_group);
+            // println!("ending_group[0][0]: {:?}", ending_group[0][0]);
+            // println!("ending_group[1][0]: {:?}", ending_group[1][0]);
             let ending_data_vec: Vec<String> = vec![
-                ending_group[index][0].to_string(),
-                ending_group[index][1].to_string()
+                ending_group[1][0].to_string(),
+                ending_group[0][0].to_string()
             ];
 
             ending_data_vec_vec.push(ending_data_vec);
         }
     }
+
+    // ending_data_vec_vec.sort();
+    // ending_data_vec_vec.dedup();
 
     return ending_data_vec_vec;
 }
@@ -281,10 +333,10 @@ fn get_model_data_vec_vec(content_vec: Vec<String>, ending_group_id_map_vec: &Ve
         let mut model_ending_array_vec: Vec<Vec<Vec<String>>> = main_data.into_iter()
             .map(|data| vec![data.select(&model_selector).next()
                                 .unwrap().text().collect::<Vec<_>>()
-                            .into_iter().map(|data| data.to_string()).collect::<Vec<String>>(),
+                            .into_iter().map(|data| data.trim().to_string()).collect::<Vec<String>>(),
                             data.select(&ending_selector).next()
                                 .unwrap().text().collect::<Vec<_>>() // use map to turn word into int
-                            .into_iter().map(|data| data.to_string()).collect::<Vec<String>>()])
+                            .into_iter().map(|data| data.trim().to_string()).collect::<Vec<String>>()])
 
             .collect::<Vec<_>>();
 

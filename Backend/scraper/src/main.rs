@@ -1,3 +1,5 @@
+#[warn(dead_code)]
+
 mod args;
 mod data_types;
 

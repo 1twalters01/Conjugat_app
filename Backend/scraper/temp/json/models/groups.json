@@ -4,7 +4,7 @@
     "pk": 1,
     "fields": {
       "language": "0",
-      "group": "1st"
+      "group": "-"
     }
   },
   {
@@ -12,7 +12,7 @@
     "pk": 2,
     "fields": {
       "language": "0",
-      "group": "2nd"
+      "group": "1st"
     }
   },
   {
@@ -20,7 +20,7 @@
     "pk": 3,
     "fields": {
       "language": "0",
-      "group": "3rd"
+      "group": "2nd"
     }
   },
   {
@@ -28,15 +28,15 @@
     "pk": 4,
     "fields": {
       "language": "0",
-      "group": "aux."
+      "group": "3rd"
     }
   },
   {
     "model": "verbs.groups",
     "pk": 5,
     "fields": {
-      "language": "1",
-      "group": "1st"
+      "language": "0",
+      "group": "aux."
     }
   },
   {
@@ -44,7 +44,7 @@
     "pk": 6,
     "fields": {
       "language": "1",
-      "group": "2nd"
+      "group": "-"
     }
   },
   {
@@ -52,7 +52,7 @@
     "pk": 7,
     "fields": {
       "language": "1",
-      "group": "3rd"
+      "group": "1st"
     }
   },
   {
@@ -60,23 +60,23 @@
     "pk": 8,
     "fields": {
       "language": "1",
-      "group": "aux."
+      "group": "2nd"
     }
   },
   {
     "model": "verbs.groups",
     "pk": 9,
     "fields": {
-      "language": "2",
-      "group": "1st"
+      "language": "1",
+      "group": "3rd"
     }
   },
   {
     "model": "verbs.groups",
     "pk": 10,
     "fields": {
-      "language": "2",
-      "group": "2nd"
+      "language": "1",
+      "group": "aux."
     }
   },
   {
@@ -84,7 +84,7 @@
     "pk": 11,
     "fields": {
       "language": "2",
-      "group": "3rd"
+      "group": "-"
     }
   },
   {
@@ -92,31 +92,31 @@
     "pk": 12,
     "fields": {
       "language": "2",
-      "group": "aux."
+      "group": "1st"
     }
   },
   {
     "model": "verbs.groups",
     "pk": 13,
     "fields": {
-      "language": "3",
-      "group": "1st"
+      "language": "2",
+      "group": "2nd"
     }
   },
   {
     "model": "verbs.groups",
     "pk": 14,
     "fields": {
-      "language": "3",
-      "group": "2nd"
+      "language": "2",
+      "group": "3rd"
     }
   },
   {
     "model": "verbs.groups",
     "pk": 15,
     "fields": {
-      "language": "3",
-      "group": "3rd"
+      "language": "2",
+      "group": "aux."
     }
   },
   {
@@ -124,12 +124,52 @@
     "pk": 16,
     "fields": {
       "language": "3",
-      "group": "aux."
+      "group": "-"
     }
   },
   {
     "model": "verbs.groups",
     "pk": 17,
+    "fields": {
+      "language": "3",
+      "group": "1st"
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 18,
+    "fields": {
+      "language": "3",
+      "group": "2nd"
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 19,
+    "fields": {
+      "language": "3",
+      "group": "3rd"
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 20,
+    "fields": {
+      "language": "3",
+      "group": "aux."
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 21,
+    "fields": {
+      "language": "4",
+      "group": "-"
+    }
+  },
+  {
+    "model": "verbs.groups",
+    "pk": 22,
     "fields": {
       "language": "4",
       "group": "aux."

@@ -1,0 +1,2146 @@
+[
+  {
+    "model": "verbs.endings",
+    "pk": 1,
+    "fields": {
+      "group": "3",
+      "ending": "-aber"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 2,
+    "fields": {
+      "group": "5",
+      "ending": "-aber"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 3,
+    "fields": {
+      "group": "3",
+      "ending": "-acer"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 4,
+    "fields": {
+      "group": "2",
+      "ending": "-ar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 5,
+    "fields": {
+      "group": "5",
+      "ending": "-ar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 6,
+    "fields": {
+      "group": "4",
+      "ending": "-bir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 7,
+    "fields": {
+      "group": "3",
+      "ending": "-caber"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 8,
+    "fields": {
+      "group": "2",
+      "ending": "-car"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 9,
+    "fields": {
+      "group": "3",
+      "ending": "-cer"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 10,
+    "fields": {
+      "group": "4",
+      "ending": "-cir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 11,
+    "fields": {
+      "group": "4",
+      "ending": "-ebir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 12,
+    "fields": {
+      "group": "2",
+      "ending": "-ebrar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 13,
+    "fields": {
+      "group": "4",
+      "ending": "-ecir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 14,
+    "fields": {
+      "group": "3",
+      "ending": "-eder"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 15,
+    "fields": {
+      "group": "4",
+      "ending": "-edir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 16,
+    "fields": {
+      "group": "2",
+      "ending": "-edrar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 17,
+    "fields": {
+      "group": "2",
+      "ending": "-egar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 18,
+    "fields": {
+      "group": "4",
+      "ending": "-egir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 19,
+    "fields": {
+      "group": "4",
+      "ending": "-eguir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 20,
+    "fields": {
+      "group": "2",
+      "ending": "-elar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 21,
+    "fields": {
+      "group": "2",
+      "ending": "-eldar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 22,
+    "fields": {
+      "group": "2",
+      "ending": "-emblar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 23,
+    "fields": {
+      "group": "2",
+      "ending": "-embrar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 24,
+    "fields": {
+      "group": "4",
+      "ending": "-emir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 25,
+    "fields": {
+      "group": "2",
+      "ending": "-emplar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 26,
+    "fields": {
+      "group": "4",
+      "ending": "-enchir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 27,
+    "fields": {
+      "group": "2",
+      "ending": "-endar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 28,
+    "fields": {
+      "group": "3",
+      "ending": "-ender"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 29,
+    "fields": {
+      "group": "4",
+      "ending": "-endir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 30,
+    "fields": {
+      "group": "2",
+      "ending": "-endrar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 31,
+    "fields": {
+      "group": "3",
+      "ending": "-ener"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 32,
+    "fields": {
+      "group": "4",
+      "ending": "-enir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 33,
+    "fields": {
+      "group": "2",
+      "ending": "-ensar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 34,
+    "fields": {
+      "group": "2",
+      "ending": "-entar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 35,
+    "fields": {
+      "group": "4",
+      "ending": "-entir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 36,
+    "fields": {
+      "group": "2",
+      "ending": "-enzar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 37,
+    "fields": {
+      "group": "3",
+      "ending": "-er"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 38,
+    "fields": {
+      "group": "2",
+      "ending": "-erbar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 39,
+    "fields": {
+      "group": "2",
+      "ending": "-erdar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 40,
+    "fields": {
+      "group": "3",
+      "ending": "-erder"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 41,
+    "fields": {
+      "group": "3",
+      "ending": "-erer"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 42,
+    "fields": {
+      "group": "4",
+      "ending": "-erguir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 43,
+    "fields": {
+      "group": "4",
+      "ending": "-erir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 44,
+    "fields": {
+      "group": "2",
+      "ending": "-ernar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 45,
+    "fields": {
+      "group": "3",
+      "ending": "-erner"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 46,
+    "fields": {
+      "group": "4",
+      "ending": "-ernir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 47,
+    "fields": {
+      "group": "2",
+      "ending": "-errar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 48,
+    "fields": {
+      "group": "2",
+      "ending": "-ertar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 49,
+    "fields": {
+      "group": "3",
+      "ending": "-erter"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 50,
+    "fields": {
+      "group": "4",
+      "ending": "-ertir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 51,
+    "fields": {
+      "group": "4",
+      "ending": "-ervir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 52,
+    "fields": {
+      "group": "2",
+      "ending": "-esar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 53,
+    "fields": {
+      "group": "2",
+      "ending": "-estar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 54,
+    "fields": {
+      "group": "4",
+      "ending": "-estir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 55,
+    "fields": {
+      "group": "2",
+      "ending": "-estrar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 56,
+    "fields": {
+      "group": "2",
+      "ending": "-etar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 57,
+    "fields": {
+      "group": "4",
+      "ending": "-etir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 58,
+    "fields": {
+      "group": "2",
+      "ending": "-evar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 59,
+    "fields": {
+      "group": "2",
+      "ending": "-ezar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 60,
+    "fields": {
+      "group": "4",
+      "ending": "-eír"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 61,
+    "fields": {
+      "group": "4",
+      "ending": "-eñir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 62,
+    "fields": {
+      "group": "2",
+      "ending": "-far"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 63,
+    "fields": {
+      "group": "2",
+      "ending": "-gar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 64,
+    "fields": {
+      "group": "3",
+      "ending": "-ger"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 65,
+    "fields": {
+      "group": "4",
+      "ending": "-gir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 66,
+    "fields": {
+      "group": "2",
+      "ending": "-iar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 67,
+    "fields": {
+      "group": "4",
+      "ending": "-ibir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 68,
+    "fields": {
+      "group": "2",
+      "ending": "-igar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 69,
+    "fields": {
+      "group": "2",
+      "ending": "-ijar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 70,
+    "fields": {
+      "group": "2",
+      "ending": "-ilar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 71,
+    "fields": {
+      "group": "2",
+      "ending": "-illar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 72,
+    "fields": {
+      "group": "2",
+      "ending": "-inar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 73,
+    "fields": {
+      "group": "2",
+      "ending": "-incar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 74,
+    "fields": {
+      "group": "4",
+      "ending": "-inchir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 75,
+    "fields": {
+      "group": "4",
+      "ending": "-ir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 76,
+    "fields": {
+      "group": "2",
+      "ending": "-irar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 77,
+    "fields": {
+      "group": "2",
+      "ending": "-irmar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 78,
+    "fields": {
+      "group": "2",
+      "ending": "-islar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 79,
+    "fields": {
+      "group": "2",
+      "ending": "-itar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 80,
+    "fields": {
+      "group": "2",
+      "ending": "-izar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 81,
+    "fields": {
+      "group": "3",
+      "ending": "-mper"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 82,
+    "fields": {
+      "group": "2",
+      "ending": "-obar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 83,
+    "fields": {
+      "group": "2",
+      "ending": "-oblar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 84,
+    "fields": {
+      "group": "2",
+      "ending": "-ocar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 85,
+    "fields": {
+      "group": "3",
+      "ending": "-ocer"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 86,
+    "fields": {
+      "group": "2",
+      "ending": "-odar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 87,
+    "fields": {
+      "group": "3",
+      "ending": "-oder"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 88,
+    "fields": {
+      "group": "4",
+      "ending": "-odrir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 89,
+    "fields": {
+      "group": "2",
+      "ending": "-ogar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 90,
+    "fields": {
+      "group": "2",
+      "ending": "-olar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 91,
+    "fields": {
+      "group": "2",
+      "ending": "-olcar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 92,
+    "fields": {
+      "group": "2",
+      "ending": "-oldar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 93,
+    "fields": {
+      "group": "3",
+      "ending": "-oler"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 94,
+    "fields": {
+      "group": "2",
+      "ending": "-olgar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 95,
+    "fields": {
+      "group": "2",
+      "ending": "-ollar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 96,
+    "fields": {
+      "group": "2",
+      "ending": "-oltar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 97,
+    "fields": {
+      "group": "3",
+      "ending": "-olver"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 98,
+    "fields": {
+      "group": "2",
+      "ending": "-onar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 99,
+    "fields": {
+      "group": "3",
+      "ending": "-oner"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 100,
+    "fields": {
+      "group": "2",
+      "ending": "-ontar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 101,
+    "fields": {
+      "group": "2",
+      "ending": "-ontrar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 102,
+    "fields": {
+      "group": "2",
+      "ending": "-onzar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 103,
+    "fields": {
+      "group": "2",
+      "ending": "-orar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 104,
+    "fields": {
+      "group": "2",
+      "ending": "-orcar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 105,
+    "fields": {
+      "group": "3",
+      "ending": "-orcer"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 106,
+    "fields": {
+      "group": "2",
+      "ending": "-ordar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 107,
+    "fields": {
+      "group": "3",
+      "ending": "-order"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 108,
+    "fields": {
+      "group": "4",
+      "ending": "-orir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 109,
+    "fields": {
+      "group": "4",
+      "ending": "-ormir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 110,
+    "fields": {
+      "group": "2",
+      "ending": "-ornar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 111,
+    "fields": {
+      "group": "2",
+      "ending": "-ortar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 112,
+    "fields": {
+      "group": "2",
+      "ending": "-orzar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 113,
+    "fields": {
+      "group": "2",
+      "ending": "-osar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 114,
+    "fields": {
+      "group": "2",
+      "ending": "-ostar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 115,
+    "fields": {
+      "group": "2",
+      "ending": "-ostrar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 116,
+    "fields": {
+      "group": "2",
+      "ending": "-ovar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 117,
+    "fields": {
+      "group": "3",
+      "ending": "-over"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 118,
+    "fields": {
+      "group": "2",
+      "ending": "-oñar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 119,
+    "fields": {
+      "group": "4",
+      "ending": "-quir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 120,
+    "fields": {
+      "group": "4",
+      "ending": "-rir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 121,
+    "fields": {
+      "group": "5",
+      "ending": "-ser"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 122,
+    "fields": {
+      "group": "2",
+      "ending": "-uar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 123,
+    "fields": {
+      "group": "2",
+      "ending": "-uchar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 124,
+    "fields": {
+      "group": "4",
+      "ending": "-udrir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 125,
+    "fields": {
+      "group": "4",
+      "ending": "-uir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 126,
+    "fields": {
+      "group": "2",
+      "ending": "-ular"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 127,
+    "fields": {
+      "group": "2",
+      "ending": "-ullar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 128,
+    "fields": {
+      "group": "2",
+      "ending": "-umar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 129,
+    "fields": {
+      "group": "2",
+      "ending": "-unar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 130,
+    "fields": {
+      "group": "4",
+      "ending": "-undir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 131,
+    "fields": {
+      "group": "2",
+      "ending": "-ungar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 132,
+    "fields": {
+      "group": "4",
+      "ending": "-unir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 133,
+    "fields": {
+      "group": "2",
+      "ending": "-untar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 134,
+    "fields": {
+      "group": "2",
+      "ending": "-upar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 135,
+    "fields": {
+      "group": "2",
+      "ending": "-usar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 136,
+    "fields": {
+      "group": "2",
+      "ending": "-ustar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 137,
+    "fields": {
+      "group": "3",
+      "ending": "-yacer"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 138,
+    "fields": {
+      "group": "2",
+      "ending": "-zar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 139,
+    "fields": {
+      "group": "4",
+      "ending": "-ír"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 140,
+    "fields": {
+      "group": "4",
+      "ending": "-üir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 141,
+    "fields": {
+      "group": "8",
+      "ending": "-aber"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 142,
+    "fields": {
+      "group": "10",
+      "ending": "-ar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 143,
+    "fields": {
+      "group": "7",
+      "ending": "-ar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 144,
+    "fields": {
+      "group": "7",
+      "ending": "-atar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 145,
+    "fields": {
+      "group": "8",
+      "ending": "-aver"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 146,
+    "fields": {
+      "group": "8",
+      "ending": "-azer"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 147,
+    "fields": {
+      "group": "7",
+      "ending": "-car"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 148,
+    "fields": {
+      "group": "8",
+      "ending": "-cer"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 149,
+    "fields": {
+      "group": "9",
+      "ending": "-cir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 150,
+    "fields": {
+      "group": "8",
+      "ending": "-der"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 151,
+    "fields": {
+      "group": "9",
+      "ending": "-dir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 152,
+    "fields": {
+      "group": "9",
+      "ending": "-ectir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 153,
+    "fields": {
+      "group": "9",
+      "ending": "-edir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 154,
+    "fields": {
+      "group": "9",
+      "ending": "-eguir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 155,
+    "fields": {
+      "group": "9",
+      "ending": "-elir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 156,
+    "fields": {
+      "group": "9",
+      "ending": "-emir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 157,
+    "fields": {
+      "group": "9",
+      "ending": "-enir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 158,
+    "fields": {
+      "group": "9",
+      "ending": "-entir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 159,
+    "fields": {
+      "group": "10",
+      "ending": "-er"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 160,
+    "fields": {
+      "group": "8",
+      "ending": "-er"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 161,
+    "fields": {
+      "group": "8",
+      "ending": "-erer"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 162,
+    "fields": {
+      "group": "9",
+      "ending": "-ergir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 163,
+    "fields": {
+      "group": "9",
+      "ending": "-erir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 164,
+    "fields": {
+      "group": "9",
+      "ending": "-ernir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 165,
+    "fields": {
+      "group": "9",
+      "ending": "-ertir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 166,
+    "fields": {
+      "group": "9",
+      "ending": "-ervir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 167,
+    "fields": {
+      "group": "9",
+      "ending": "-erzir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 168,
+    "fields": {
+      "group": "9",
+      "ending": "-espir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 169,
+    "fields": {
+      "group": "9",
+      "ending": "-estir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 170,
+    "fields": {
+      "group": "9",
+      "ending": "-etir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 171,
+    "fields": {
+      "group": "8",
+      "ending": "-ever"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 172,
+    "fields": {
+      "group": "8",
+      "ending": "-ger"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 173,
+    "fields": {
+      "group": "9",
+      "ending": "-gir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 174,
+    "fields": {
+      "group": "9",
+      "ending": "-guir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 175,
+    "fields": {
+      "group": "7",
+      "ending": "-iar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 176,
+    "fields": {
+      "group": "9",
+      "ending": "-ibir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 177,
+    "fields": {
+      "group": "9",
+      "ending": "-imir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 178,
+    "fields": {
+      "group": "10",
+      "ending": "-ir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 179,
+    "fields": {
+      "group": "9",
+      "ending": "-ir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 180,
+    "fields": {
+      "group": "8",
+      "ending": "-nder"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 181,
+    "fields": {
+      "group": "9",
+      "ending": "-obrir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 182,
+    "fields": {
+      "group": "8",
+      "ending": "-oder"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 183,
+    "fields": {
+      "group": "8",
+      "ending": "-oer"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 184,
+    "fields": {
+      "group": "9",
+      "ending": "-olir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 185,
+    "fields": {
+      "group": "8",
+      "ending": "-or"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 186,
+    "fields": {
+      "group": "9",
+      "ending": "-ormir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 187,
+    "fields": {
+      "group": "9",
+      "ending": "-orquir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 188,
+    "fields": {
+      "group": "9",
+      "ending": "-ortir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 189,
+    "fields": {
+      "group": "9",
+      "ending": "-ossir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 190,
+    "fields": {
+      "group": "8",
+      "ending": "-rer"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 191,
+    "fields": {
+      "group": "9",
+      "ending": "-rir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 192,
+    "fields": {
+      "group": "10",
+      "ending": "-ser"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 193,
+    "fields": {
+      "group": "9",
+      "ending": "-tir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 194,
+    "fields": {
+      "group": "7",
+      "ending": "-uar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 195,
+    "fields": {
+      "group": "9",
+      "ending": "-ubir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 196,
+    "fields": {
+      "group": "7",
+      "ending": "-udar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 197,
+    "fields": {
+      "group": "9",
+      "ending": "-udir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 198,
+    "fields": {
+      "group": "8",
+      "ending": "-uer"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 199,
+    "fields": {
+      "group": "9",
+      "ending": "-ugir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 200,
+    "fields": {
+      "group": "9",
+      "ending": "-uir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 201,
+    "fields": {
+      "group": "9",
+      "ending": "-ulir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 202,
+    "fields": {
+      "group": "9",
+      "ending": "-unir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 203,
+    "fields": {
+      "group": "9",
+      "ending": "-upir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 204,
+    "fields": {
+      "group": "9",
+      "ending": "-uspir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 205,
+    "fields": {
+      "group": "9",
+      "ending": "-uvir"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 206,
+    "fields": {
+      "group": "8",
+      "ending": "-zer"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 207,
+    "fields": {
+      "group": "7",
+      "ending": "-çar"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 208,
+    "fields": {
+      "group": "8",
+      "ending": "-ôr"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 209,
+    "fields": {
+      "group": "12",
+      "ending": "-andare"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 210,
+    "fields": {
+      "group": "13",
+      "ending": "-apere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 211,
+    "fields": {
+      "group": "12",
+      "ending": "-are"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 212,
+    "fields": {
+      "group": "13",
+      "ending": "-avere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 213,
+    "fields": {
+      "group": "15",
+      "ending": "-avere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 214,
+    "fields": {
+      "group": "13",
+      "ending": "-cere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 215,
+    "fields": {
+      "group": "13",
+      "ending": "-dere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 216,
+    "fields": {
+      "group": "13",
+      "ending": "-edere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 217,
+    "fields": {
+      "group": "13",
+      "ending": "-ellere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 218,
+    "fields": {
+      "group": "13",
+      "ending": "-enere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 219,
+    "fields": {
+      "group": "14",
+      "ending": "-enire"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 220,
+    "fields": {
+      "group": "13",
+      "ending": "-ere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 221,
+    "fields": {
+      "group": "15",
+      "ending": "-essere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 222,
+    "fields": {
+      "group": "13",
+      "ending": "-estringere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 223,
+    "fields": {
+      "group": "13",
+      "ending": "-ettere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 224,
+    "fields": {
+      "group": "13",
+      "ending": "-gere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 225,
+    "fields": {
+      "group": "13",
+      "ending": "-ggere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 226,
+    "fields": {
+      "group": "13",
+      "ending": "-gliere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 227,
+    "fields": {
+      "group": "13",
+      "ending": "-gnere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 228,
+    "fields": {
+      "group": "13",
+      "ending": "-guere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 229,
+    "fields": {
+      "group": "12",
+      "ending": "-iare"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 230,
+    "fields": {
+      "group": "13",
+      "ending": "-icere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 231,
+    "fields": {
+      "group": "13",
+      "ending": "-iere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 232,
+    "fields": {
+      "group": "13",
+      "ending": "-igere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 233,
+    "fields": {
+      "group": "13",
+      "ending": "-imere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 234,
+    "fields": {
+      "group": "13",
+      "ending": "-ingere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 235,
+    "fields": {
+      "group": "14",
+      "ending": "-ire"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 236,
+    "fields": {
+      "group": "13",
+      "ending": "-lere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 237,
+    "fields": {
+      "group": "13",
+      "ending": "-mere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 238,
+    "fields": {
+      "group": "13",
+      "ending": "-ndere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 239,
+    "fields": {
+      "group": "13",
+      "ending": "-nere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 240,
+    "fields": {
+      "group": "13",
+      "ending": "-olere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 241,
+    "fields": {
+      "group": "13",
+      "ending": "-ompere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 242,
+    "fields": {
+      "group": "13",
+      "ending": "-ondere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 243,
+    "fields": {
+      "group": "14",
+      "ending": "-orire"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 244,
+    "fields": {
+      "group": "13",
+      "ending": "-otere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 245,
+    "fields": {
+      "group": "13",
+      "ending": "-overe"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 246,
+    "fields": {
+      "group": "14",
+      "ending": "-pellire"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 247,
+    "fields": {
+      "group": "13",
+      "ending": "-re"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 248,
+    "fields": {
+      "group": "13",
+      "ending": "-rere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 249,
+    "fields": {
+      "group": "14",
+      "ending": "-rire"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 250,
+    "fields": {
+      "group": "13",
+      "ending": "-rre"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 251,
+    "fields": {
+      "group": "13",
+      "ending": "-scere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 252,
+    "fields": {
+      "group": "13",
+      "ending": "-secernere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 253,
+    "fields": {
+      "group": "13",
+      "ending": "-tere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 254,
+    "fields": {
+      "group": "14",
+      "ending": "-tire"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 255,
+    "fields": {
+      "group": "13",
+      "ending": "-ttere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 256,
+    "fields": {
+      "group": "14",
+      "ending": "-udire"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 257,
+    "fields": {
+      "group": "13",
+      "ending": "-uocere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 258,
+    "fields": {
+      "group": "13",
+      "ending": "-uotere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 259,
+    "fields": {
+      "group": "13",
+      "ending": "-uovere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 260,
+    "fields": {
+      "group": "13",
+      "ending": "-urre"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 261,
+    "fields": {
+      "group": "14",
+      "ending": "-uscire"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 262,
+    "fields": {
+      "group": "13",
+      "ending": "-vere"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 263,
+    "fields": {
+      "group": "17",
+      "ending": "-"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 264,
+    "fields": {
+      "group": "18",
+      "ending": "-"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 265,
+    "fields": {
+      "group": "19",
+      "ending": "-"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 266,
+    "fields": {
+      "group": "20",
+      "ending": "-"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 267,
+    "fields": {
+      "group": "21",
+      "ending": "-"
+    }
+  },
+  {
+    "model": "verbs.endings",
+    "pk": 268,
+    "fields": {
+      "group": "22",
+      "ending": "-"
+    }
+  }
+]
