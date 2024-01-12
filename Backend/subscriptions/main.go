@@ -4,7 +4,7 @@ package main
 import (
 	"fmt"
 	// "log"
-    "subscriptions/paypal"
+    // "subscriptions/paypal"
 )
 
 func main() {
@@ -13,7 +13,7 @@ func main() {
     tester();
 
     fmt.Println("ayo");
-    paypal.GetAccessToken()
+    // paypal.GetAccessToken()
 }
 
 func tester() {
