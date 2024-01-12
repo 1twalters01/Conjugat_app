@@ -1,5 +1,6 @@
-dr// Todo
+// Todo
 use crate::data_types::{
+    page_info::PageInfo,
     json_data::JsonData,
     field::{
         Field,
@@ -7,15 +8,15 @@ use crate::data_types::{
     },
     field_options::{
         LanguageField,
-        // GroupField,
-        // EndingField,
-        // ModelField,
-        // BaseField,
-        // TenseField,
-        // SubjectField,
-        // AuxiliaryField,
-        // ConjugateField,
-        // ConjugationField,
+        GroupField,
+        EndingField,
+        ModelField,
+        BaseField,
+        TenseField,
+        SubjectField,
+        AuxiliaryField,
+        ConjugateField,
+        ConjugationField,
     }
 };
 
@@ -67,18 +68,19 @@ pub async fn run_conjugations_modules() {
 
     // Fetch verb urls vector
     let verb_url_vec_vec: Vec<Vec<String>> = fetch_verb_url_vec_vec(language_vec, backoff, error_429_backoff);
-    save_verb_urls(verb_url_vec_vec, "temp/json/verb_urls.json");
 
-    // // Fetch verbs vector
-    // let verb_vec_vec: Vec<Vec<String>> = fetch_verb_vec_vec(verb_url_vec_vec, backoff, error_429_backoff);
-    // save_verbs(verb_urls_vec);
-    //
-    // // Sort and save bases
-    // let base_vec_vec: Vec<Vec<String>> = create_base_vec_vec(verb_vec_vec);
-    //
-    // // Fetch conjugations vector
-    // let conjugations_vec_vec: Vec<Vec<String>> = fetch_conjugations_vec_vec(base_vec_vec, backoff, error_429_backoff);
-    // save_conjugations_vec_vec(conjugations_vec_vec);
+    // Generate verb page information vector
+    let verb_page_info_vec_vec: Vec<Vec<VerbPageInfo>> = generate_verb_page_info_vec_vec(verb_url_vec_vec, backoff, error_429_backoff);
+    // println!("verb_page_info_vec: {:#?}", verb_page_info_vec);
+
+    // Fetch data vectors
+    let tense_vec_vec: Vec<JsonData> = extract_tense_json_data_vec(verb_page_info_vec_vec);
+    let base_vec_vec: Vec<JsonData> = extract_base_json_data_vec(verb_page_info_vec_vec);
+    let subject_vec_vec: Vec<JsonData> = extract_subject_json_data_vec(verb_page_info_vec_vec);
+    let auxiliary_vec_vec: Vec<JsonData> = extract_auxiliary_json_data_vec(verb_page_info_vec_vec);
+    let conjugate_vec_vec: Vec<JsonData> = extract_conjugate_json_data_vec(verb_page_info_vec_vec);
+    let conjugation_vec_vec: Vec<JsonData> = extract_conjugation_json_data_vec(verb_page_info_vec_vec);
+
 }
 
 
@@ -104,23 +106,18 @@ fn fetch_verb_url_vec_vec(language_vec: Vec<String>, backoff: i64, error_429_bac
 
 
     let verb_url_vec_vec: Vec<Vec<String>> = match verb_url_vec_vec_file_result {
-        Ok(verb_url_vec_vec) => {
-            verb_url_vec_vec
-                // TODO
-                // check how many urls there are for each language
-                // continue scraping from the correct point if <2000 for a language
-        },
-        Err(err) => {
-            let url_listing_vec_vec = generate_url_listing_vec_vec(language_vec);
+        Ok(verb_url_vec_vec) => verb_url_vec_vec,
+
+        Err(_) => {
+            let url_listing_vec_vec = generate_url_listing_vec_vec(&language_vec);
             println!("url_listing_vec_vec: {:?}", url_listing_vec_vec);
 
-            // TODO
-            // let verb_vec_vec = scrape_url_listing_vec_vec(url_listing_vec_vec, backoff, error_429_backoff);
+            let verb_vec_vec: Vec<Vec<String>> = scrape_url_listing_vec_vec(url_listing_vec_vec, backoff, error_429_backoff);
 
-            // let verb_url_vec = generate_verb_url_vec_vec(verb_vec_vec);
+            let verb_url_vec_vec: Vec<Vec<String>> = generate_verb_url_vec_vec(verb_vec_vec, language_vec);
+            save_verb_urls(&verb_url_vec_vec, "temp/json/verb_urls.json");
 
-            println!("err: {}", err);
-            panic!("EYYYYYYYYYYYYYOOOOOOOOO");
+            return verb_url_vec_vec;
         }
     };
 
@@ -129,11 +126,11 @@ fn fetch_verb_url_vec_vec(language_vec: Vec<String>, backoff: i64, error_429_bac
 }
 
 
-fn generate_url_listing_vec_vec(language_vec: Vec<String>) -> Vec<Vec<String>> {
+fn generate_url_listing_vec_vec(language_vec: &Vec<String>) -> Vec<Vec<String>> {
     let mut url_listing_vec_vec: Vec<Vec<String>> = Vec::new();
 
     let url_val_array: [i64; 8] = [0, 1, 2, 3, 4, 5, 6, 7];
-    for language in &language_vec {
+    for language in language_vec {
         let url_listing_vec: Vec<String> = url_val_array.map(|val|
             String::from("https://conjugator.reverso.net/index-")
             + language.as_str() + "-" + &(250*(val) + 1).to_string()
@@ -146,13 +143,116 @@ fn generate_url_listing_vec_vec(language_vec: Vec<String>) -> Vec<Vec<String>> {
     return url_listing_vec_vec;
 }
 
+fn scrape_url_listing_vec_vec(url_listing_vec: Vec<Vec<String>>, backoff: i64, error_429_backoff: i64) -> Vec<Vec<String>> {
+    let mut verb_vec_vec: Vec<Vec<String>> = Vec::new();
 
-fn save_verb_urls(verb_urls_vec: Vec<Vec<String>>, file_path: &str) {
-    let serialized_data: String = serde_json::to_string_pretty(&verb_urls_vec).unwrap();
+    for url_vec in &url_listing_vec {
+        let verb_vec: Vec<String> = Vec::new();
+        todo!()
+    }
+
+    return verb_vec_vec;
+}
+
+
+fn generate_verb_url_vec_vec(verb_vec_vec: Vec<Vec<String>>, language_vec: Vec<String>) -> Vec<Vec<String>> {
+    let verb_url_vec_vec: Vec<Vec<String>> = verb_vec_vec.into_iter().enumerate()
+        .map(|(index, verb_vec)|
+            verb_vec.into_iter().map(|verb| String::from("https://conjugator.reverso.net/conjugation-")
+                + language_vec[index].as_str() + "-verb-" + verb.as_str() + "html")
+            .collect::<Vec<String>>())
+        .collect::<Vec<Vec<String>>>();
+
+    return verb_url_vec_vec;
+}
+
+
+fn save_verb_urls(verb_urls_vec: &Vec<Vec<String>>, file_path: &str) {
+    let serialized_data: String = serde_json::to_string_pretty(verb_urls_vec).unwrap();
     fs::remove_file(file_path).unwrap();
     let mut file = open_file(file_path).unwrap();
     append_file(&mut file, &serialized_data);
 }
+
+
+fn generate_verb_page_info_vec_vec(verb_url_vec_vec: Vec<Vec<String>>, backoff: i64, error_429_backoff: i64) -> Vec<Vec<PageInfo>> {
+    let mut verb_page_info_vec_vec: Vec<Vec<PageInfo>> = Vec::new();
+
+
+
+    return verb_page_info_vec_vec;
+}
+
+
+fn extract_base_json_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -> Vec<JsonData> {
+    let mut base_json_data_vec: Vec<JsonData> = Vec::new();
+
+
+
+    return base_json_data_vec;
+}
+
+
+fn extract_tense_json_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -> Vec<JsonData> {
+    let mut tense_json_data_vec: Vec<JsonData> = Vec::new();
+
+
+
+    return tense_json_data_vec;
+}
+
+
+fn extract_subject_json_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -> Vec<JsonData> {
+    let mut subject_json_data_vec: Vec<JsonData> = Vec::new();
+
+
+
+    return subject_json_data_vec;
+}
+
+
+fn extract_auxiliary_json_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -> Vec<JsonData> {
+    let mut auxiliary_json_data_vec: Vec<JsonData> = Vec::new();
+
+
+    return auxiliary_json_data_vec 
+}
+
+
+fn extract_conjugate_json_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -> Vec<JsonData> {
+    let mut conjugate_json_data_vec: Vec<JsonData> = Vec::new();
+
+
+
+    return conjugate_json_data_vec;
+}
+
+
+fn extract_conjugation_json_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -> Vec<JsonData> {
+    let mut conjugation_json_data_vec: Vec<JsonData> = Vec::new();
+
+
+
+    return conjugation_json_data_vec;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // pub async fn run_conjugations_modules() {
 //     // get vectors for the languages, groups, endings, and models
