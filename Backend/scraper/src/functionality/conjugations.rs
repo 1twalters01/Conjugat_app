@@ -237,7 +237,29 @@ fn extract_tense_json_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -> Ve
     for verb_page_info_vec in verb_page_info_vec_vec.into_iter() {
         for verb_page_info in verb_page_info_vec.into_iter() {
             let language: String = verb_page_info.metadata.language;
+            let tense_data: Tenses = verb_page_info.tenses
 
+            // Split tense into mood and tense???
+            // change tense fields to option(String) instead of String?
+            let tense: Option(Vec<String>) = match tense_data {
+                tense.major != None && tense.minor != None => {
+                    return tense.major + " " + tense.minor.as_str();
+                },
+                
+                tense.major != None && tense.minor == None => {
+
+                },
+                
+                tense.major == None && tense.minor != None => {
+                    return verb
+                },
+                
+                tense.major == None && tense.minor == None => {
+                
+                }
+            }
+                
+                
         }
     }
 
