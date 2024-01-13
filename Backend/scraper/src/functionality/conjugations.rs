@@ -183,10 +183,40 @@ fn generate_verb_page_info_vec_vec(verb_url_vec_vec: Vec<Vec<String>>, backoff: 
     return verb_page_info_vec_vec;
 }
 
+// pub struct PageInfo {
+//     pub metadata: PageMetadata,
+
+//     pub tenses: Vec<Tenses>,
+//     pub subjects: Vec<String>,
+//     pub auxiliaries: Vec<String>,
+//     pub conjugates: Vec<Vec<String>>,
+// }
+
+// struct PageMetadata {
+//     pub language: String,
+//     pub model: String,
+//     pub base: String,
+//     pub auxiliary: Vec<String>,
+//     pub forms: Vec<String>,
+//     pub similar_verbs: Vec<String>,
+//     pub other_verbs: Vec<String>,
+// }
+
+// struct Tenses {
+//     major: String,
+//     minor: String,
+// }
 
 fn extract_base_json_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -> Vec<JsonData> {
     let mut base_json_data_vec: Vec<JsonData> = Vec::new();
 
+    for verb_page_info_vec in verb_page_info_vec_vec.into_iter() {
+        for verb_page_info in verb_page_info_vec.into_iter() {
+            let language = verb_page_info.metadata.language;
+            let base = verb_page_info.metadata.base;
+            
+        }
+    }
 
 
     return base_json_data_vec;
@@ -195,6 +225,12 @@ fn extract_base_json_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -> Vec
 
 fn extract_tense_json_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -> Vec<JsonData> {
     let mut tense_json_data_vec: Vec<JsonData> = Vec::new();
+
+    for verb_page_info_vec in verb_page_info_vec_vec.into_iter() {
+        for verb_page_info in verb_page_info_vec.into_iter() {
+            
+        }
+    }
 
 
 
@@ -205,6 +241,12 @@ fn extract_tense_json_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -> Ve
 fn extract_subject_json_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -> Vec<JsonData> {
     let mut subject_json_data_vec: Vec<JsonData> = Vec::new();
 
+    for verb_page_info_vec in verb_page_info_vec_vec.into_iter() {
+        for verb_page_info in verb_page_info_vec.into_iter() {
+            
+        }
+    }
+
 
 
     return subject_json_data_vec;
@@ -214,6 +256,12 @@ fn extract_subject_json_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -> 
 fn extract_auxiliary_json_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -> Vec<JsonData> {
     let mut auxiliary_json_data_vec: Vec<JsonData> = Vec::new();
 
+    for verb_page_info_vec in verb_page_info_vec_vec.into_iter() {
+        for verb_page_info in verb_page_info_vec.into_iter() {
+            
+        }
+    }
+
 
     return auxiliary_json_data_vec 
 }
@@ -221,6 +269,12 @@ fn extract_auxiliary_json_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -
 
 fn extract_conjugate_json_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -> Vec<JsonData> {
     let mut conjugate_json_data_vec: Vec<JsonData> = Vec::new();
+
+    for verb_page_info_vec in verb_page_info_vec_vec.into_iter() {
+        for verb_page_info in verb_page_info_vec.into_iter() {
+            
+        }
+    }
 
 
 
@@ -230,6 +284,12 @@ fn extract_conjugate_json_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -
 
 fn extract_conjugation_json_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -> Vec<JsonData> {
     let mut conjugation_json_data_vec: Vec<JsonData> = Vec::new();
+
+    for verb_page_info_vec in verb_page_info_vec_vec.into_iter() {
+        for verb_page_info in verb_page_info_vec.into_iter() {
+            
+        }
+    }
 
 
 
