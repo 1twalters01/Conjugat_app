@@ -270,16 +270,24 @@ fn extract_tense_json_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -> Ve
 
 
 fn extract_subject_json_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -> Vec<JsonData> {
-    let mut subject_json_data_vec: Vec<JsonData> = Vec::new();
-
+    let mut subject_data_vec_vec: Vec<Vec<String>> = Vec::new();
+    
     for verb_page_info_vec in verb_page_info_vec_vec.into_iter() {
         for verb_page_info in verb_page_info_vec.into_iter() {
-            let language = verb_page_info.metadata.language;
-            
+            let language: String = verb_page_info.metadata.language;
+            let subjects: Vec<String> = verb_page_info.subjects;
+
+            for subject in subjects {
+                let subject_data_vec: Vec<String> = String::from([language, subject]);
+                if subject_data_vec_vec.contains(subject_data_vec) == 0 {
+                    subject_data_vec_vec.push(subject_data_vec);
+                }
+                
+            }
         }
     }
 
-
+    let subject_json_data_vec: Vec<JsonData> = create_json_data_vec(subject_data_vec_vec, FieldOptions::SubjectField);
 
     return subject_json_data_vec;
 }
