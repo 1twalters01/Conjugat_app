@@ -207,17 +207,25 @@ fn generate_verb_page_info_vec_vec(verb_url_vec_vec: Vec<Vec<String>>, backoff: 
 //     minor: String,
 // }
 
-fn extract_base_json_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -> Vec<JsonData> {
+fn extract_base_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -> Vec<JsonData> {
+    let mut base_data_vec_vec: Vec<Vec<String>> = Vec::new();
     let mut base_json_data_vec: Vec<JsonData> = Vec::new();
 
     for verb_page_info_vec in verb_page_info_vec_vec.into_iter() {
         for verb_page_info in verb_page_info_vec.into_iter() {
-            let language = verb_page_info.metadata.language;
-            let base = verb_page_info.metadata.base;
-            
+            let rank: String = verb_page_info.metadata.rank;
+            let language: String = verb_page_info.metadata.language;
+            let base: String = verb_page_info.metadata.base;
+
+            let base_data_vec = Vec::from([rank, language, base]);
+
+            if base_data_vec_vec.contains(base_data_vec) == 0 {
+                base_data_vec_vec.push(base_data_vec);
+            }
         }
     }
-
+    
+    let base_json_data_vec: Vec<JsonData> = create_json_data_vec(base_data_vec_vec, FieldOptions::BaseField);
 
     return base_json_data_vec;
 }
@@ -228,7 +236,8 @@ fn extract_tense_json_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -> Ve
 
     for verb_page_info_vec in verb_page_info_vec_vec.into_iter() {
         for verb_page_info in verb_page_info_vec.into_iter() {
-            
+            let language: String = verb_page_info.metadata.language;
+
         }
     }
 
@@ -243,6 +252,7 @@ fn extract_subject_json_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -> 
 
     for verb_page_info_vec in verb_page_info_vec_vec.into_iter() {
         for verb_page_info in verb_page_info_vec.into_iter() {
+            let language = verb_page_info.metadata.language;
             
         }
     }
@@ -258,6 +268,7 @@ fn extract_auxiliary_json_data_vec(verb_page_info_vec_vec: Vec<Vec<PageInfo>>) -
 
     for verb_page_info_vec in verb_page_info_vec_vec.into_iter() {
         for verb_page_info in verb_page_info_vec.into_iter() {
+            let language = verb_page_info.metadata.language;
             
         }
     }
