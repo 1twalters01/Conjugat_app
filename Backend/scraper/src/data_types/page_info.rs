@@ -1,14 +1,18 @@
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct PageInfo {
     pub metadata: PageMetadata,
 
-    pub tenses: Vec<Tenses>,
+    pub tenses: Vec<Tense>,
     pub subjects: Vec<String>,
     pub auxiliaries: Vec<String>,
     pub conjugates: Vec<Vec<String>>,
 }
 
+
+#[derive(Debug, Clone, PartialEq, Eq)]
 struct PageMetadata {
     pub language: String,
+    pub rank: String,
     pub model: String,
     pub base: String,
     pub auxiliary: Vec<String>,
@@ -17,7 +21,11 @@ struct PageMetadata {
     pub other_verbs: Vec<String>,
 }
 
-struct Tenses {
-    major: String,
-    minor: String,
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Tense {
+    pub major: Option<String>,
+    pub minor: Option<String>,
 }
+
+
+pub trait PageInfoIterator: Iterator {}
