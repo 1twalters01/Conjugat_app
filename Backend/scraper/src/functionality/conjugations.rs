@@ -75,7 +75,7 @@ pub async fn run_conjugations_modules() {
     // println!("verb_page_info_vec: {:#?}", verb_page_info_vec);
 
     // Fetch data vectors
-    let base_vec_vec: Vec<JsonData> = extract_base_data_vec(&verb_page_info_vec_vec);
+    let base_vec_vec: Vec<JsonData> = extract_base_json_data_vec(&verb_page_info_vec_vec);
     let tense_vec_vec: Vec<JsonData> = extract_tense_json_data_vec(&verb_page_info_vec_vec);
     let subject_vec_vec: Vec<JsonData> = extract_subject_json_data_vec(&verb_page_info_vec_vec);
     let auxiliary_vec_vec: Vec<JsonData> = extract_auxiliary_json_data_vec(&verb_page_info_vec_vec);
@@ -187,7 +187,7 @@ fn generate_verb_page_info_vec_vec(verb_url_vec_vec: Vec<Vec<String>>, backoff: 
 // pub struct PageInfo {
 //     pub metadata: PageMetadata,
 
-//     pub tenses: Vec<Tenses>,
+//     pub tenses: Vec<Tense>,
 //     pub subjects: Vec<String>,
 //     pub auxiliaries: Vec<String>,
 //     pub conjugates: Vec<Vec<String>>,
@@ -203,14 +203,14 @@ fn generate_verb_page_info_vec_vec(verb_url_vec_vec: Vec<Vec<String>>, backoff: 
 //     pub other_verbs: Vec<String>,
 // }
 
-// struct Tenses {
+// struct Tense {
 //     major: String,
 //     minor: String,
 // }
 
-fn extract_base_data_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>) -> Vec<JsonData> {
+
+fn extract_base_json_data_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>) -> Vec<JsonData> {
     let mut base_data_vec_vec: Vec<Vec<String>> = Vec::new();
-    let mut base_json_data_vec: Vec<JsonData> = Vec::new();
 
     for verb_page_info_vec in verb_page_info_vec_vec.into_iter() {
         for verb_page_info in verb_page_info_vec.into_iter() {
@@ -227,7 +227,6 @@ fn extract_base_data_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>) -> Vec<Jso
     }
     
     let base_json_data_vec: Vec<JsonData> = create_json_data_vec(base_data_vec_vec, FieldOptions::BaseField);
-
     return base_json_data_vec;
 }
 
@@ -241,25 +240,25 @@ fn extract_tense_json_data_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>) -> V
             let tense_data_vec: Vec<Tense> = verb_page_info.tenses;
 
             for tense_data in tense_data_vec {
-                // Split tense into mood and tense???
-                // change tense fields to option(String) instead of String?
-                let mut tense: Vec<String> = match tense_data {
-                    Tense { major: Some(major), minor: Some(minor) } => {
+                let tense: Vec<String> = match tense_data {
+                    Tense { major: Some(_), minor: Some(_) } => {
                         Vec::from([tense_data.major.unwrap(), tense_data.minor.unwrap()])
-                    }
+                    },
 
-                    Tense { major: None, minor: None } => {
-                        Vec::from([String::new(), String::new()])
-                    },
-                    Tense { major: Some(major), minor: None } => {
-                        Vec::from([tense_data.major.unwrap(), String::new()])
-                    },
-                    Tense { major: None, minor: Some(minor) } => {
-                        Vec::from([String::new(), tense_data.minor.unwrap()])
+                    Tense { major: Some(_), minor: None } => {
+                        Vec::from([tense_data.major.unwrap(), String::from("")])
                     }
+                
+                    Tense { major: None, minor: None } => {
+                        Vec::from([String::from(""), String::from("")])
+                    },
+
+                    Tense { major: None, minor: Some(_) } => {
+                        Vec::from([String::from(""), tense_data.minor.unwrap()])
+                    },
                 };
 
-                if tense_vec.contains(&tense) == false {
+                if tense_vec.contains(&tense) {
                     tense_vec.push(tense);
                 }
             }
@@ -267,9 +266,6 @@ fn extract_tense_json_data_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>) -> V
     }
 
     let tense_json_data_vec: Vec<JsonData> = create_json_data_vec(tense_vec, FieldOptions::TenseField);
-
-
-
     return tense_json_data_vec;
 }
 
@@ -279,12 +275,12 @@ fn extract_subject_json_data_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>) ->
     
     for verb_page_info_vec in verb_page_info_vec_vec.into_iter() {
         for verb_page_info in verb_page_info_vec.into_iter() {
-            let language: String = verb_page_info.metadata.language;
-            let subjects: Vec<String> = verb_page_info.subjects;
+            let language: String = verb_page_info.metadata.language.clone();
+            let subjects: Vec<String> = verb_page_info.subjects.clone();
 
             for subject in subjects {
-                let subject_data_vec: Vec<String> = String::from([language, subject]);
-                if subject_data_vec_vec.contains(subject_data_vec) == 0 {
+                let subject_data_vec: Vec<String> = Vec::from([language.clone(), subject]);
+                if subject_data_vec_vec.contains(&subject_data_vec) == false {
                     subject_data_vec_vec.push(subject_data_vec);
                 }
                 
@@ -293,22 +289,28 @@ fn extract_subject_json_data_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>) ->
     }
 
     let subject_json_data_vec: Vec<JsonData> = create_json_data_vec(subject_data_vec_vec, FieldOptions::SubjectField);
-
     return subject_json_data_vec;
 }
 
 
 fn extract_auxiliary_json_data_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>) -> Vec<JsonData> {
-    let mut auxiliary_json_data_vec: Vec<JsonData> = Vec::new();
+    let mut auxiliary_data_vec_vec: Vec<Vec<String>> = Vec::new();
 
     for verb_page_info_vec in verb_page_info_vec_vec.into_iter() {
         for verb_page_info in verb_page_info_vec.into_iter() {
-            let language = verb_page_info.metadata.language;
-            
+            let language = verb_page_info.metadata.language.clone();
+            let auxiliaries: Vec<String> = verb_page_info.auxiliaries.clone(); 
+
+            for auxiliary in auxiliaries {
+                let auxiliary_data_vec: Vec<String> = Vec::from([language.clone(), auxiliary]);
+                if auxiliary_data_vec_vec.contains(&auxiliary_data_vec) {
+                    auxiliary_data_vec_vec.push(auxiliary_data_vec);
+                }
+            }
         }
     }
 
-
+    let auxiliary_json_data_vec: Vec<JsonData> = create_json_data_vec(auxiliary_data_vec_vec, FieldOptions::AuxiliaryField);
     return auxiliary_json_data_vec 
 }
 

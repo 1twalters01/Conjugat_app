@@ -39,7 +39,7 @@ pub async fn run_languages_module(languages: Vec<String>) {
 
 
 // Improve this function
-fn is_vector_valid(vector: &Vec<String>) -> result::Result<bool, &str> {
+pub(crate) fn is_vector_valid(vector: &Vec<String>) -> result::Result<bool, &str> {
     let hs: HashSet<String> = vector
         .iter()
         .cloned()
