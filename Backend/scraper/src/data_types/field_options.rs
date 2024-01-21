@@ -1,4 +1,4 @@
-usse serde::{Serialize, Deserialize};
+use serde::{Serialize, Deserialize};
 
 
 #[derive(Ord, PartialEq, Eq, PartialOrd, Debug, Serialize, Deserialize, Clone)]
@@ -34,7 +34,12 @@ pub struct BaseField {
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct TenseField {
     pub language: String,
-    pub tense: String,
+    pub tense: TenseSubfield,
+}
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct TenseSubfield {
+    pub major: String,
+    pub minor: String,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]

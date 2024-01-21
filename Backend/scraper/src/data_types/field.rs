@@ -6,12 +6,13 @@ use crate::data_types::field_options::{
     ModelField,
     BaseField,
     TenseField,
+    TenseSubfield,
     SubjectField,
     AuxiliaryField,
     ConjugateField,
     ConjugationField,
     SentenceField,
-};
+ };
 
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -91,8 +92,9 @@ impl Field {
             },
 
             FieldOptions::TenseField => {
+                let tense_subfield = TenseSubfield { major: String::new(), minor: String::new() };
                 let tense_field = TenseField {
-                    tense: String::new(),
+                    tense: tense_subfield,
                     language: String::new(),
                 };
                 return Field::TenseField(tense_field)

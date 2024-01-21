@@ -20,6 +20,7 @@ use crate::data_types::{
         EndingField,
         BaseField,
         TenseField,
+        TenseSubfield,
         SubjectField,
         AuxiliaryField,
         ConjugateField,
@@ -137,9 +138,13 @@ pub fn create_json_data_vec(data_vec_vec: Vec<Vec<String>>, field_type: FieldOpt
             },
 
             FieldOptions::TenseField => {
+                let tense_subfield = TenseSubfield {
+                    major: data[1].clone(),
+                    minor: data[2].clone()
+                };
                 let tense_field = TenseField {
                     language: data[0].clone(),
-                    tense: data[1].clone(),
+                    tense: tense_subfield,
                 };
                 Field::TenseField(tense_field)
             },
