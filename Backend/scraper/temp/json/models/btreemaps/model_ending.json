@@ -3,866 +3,1604 @@
     "-": 0
   },
   {
-    "-": 1
+    "-": 1,
+    "amar": 1,
+    "andar": 1,
+    "dar": 1,
+    "desdar": 1,
+    "llegar": 1,
+    "obstar": 1,
+    "raspahilar": 1,
+    "respahilar": 1,
+    "respailar": 1
   },
   {
     "-": 2,
-    "abeldar": 2,
-    "acertar": 2,
-    "acordar": 2,
-    "acornar": 2,
-    "actuar": 2,
-    "adestrar": 2,
-    "aforar": 2,
-    "ahijar": 2,
-    "ahincar": 2,
-    "ahirmar": 2,
-    "ahitar": 2,
-    "ahuchar": 2,
-    "airar": 2,
-    "aislar": 2,
-    "amar": 2,
-    "ampliar": 2,
-    "andar": 2,
-    "aporcar": 2,
-    "apretar": 2,
-    "asolar": 2,
-    "atraillar": 2,
-    "atravesar": 2,
-    "aullar": 2,
-    "aunar": 2,
-    "aungar": 2,
-    "aupar": 2,
-    "avergonzar": 2,
-    "averiguar": 2,
-    "barahustar": 2,
-    "cabrahigar": 2,
-    "cazar": 2,
-    "cimentar": 2,
-    "clocar": 2,
-    "colgar": 2,
-    "comenzar": 2,
-    "contar": 2,
-    "costar": 2,
-    "dar": 2,
-    "degollar": 2,
-    "desaforar": 2,
-    "descafeinar": 2,
-    "desdar": 2,
-    "desempedrar": 2,
-    "desencovar": 2,
-    "desengrosar": 2,
-    "desherbar": 2,
-    "deslendrar": 2,
-    "desmembrar": 2,
-    "desosar": 2,
-    "embaular": 2,
-    "empezar": 2,
-    "encontrar": 2,
-    "engorar": 2,
-    "engrosar": 2,
-    "enraizar": 2,
-    "entortar": 2,
-    "envernar": 2,
-    "enzainar": 2,
-    "errar": 2,
-    "estatuar": 2,
-    "estregar": 2,
-    "evacuar": 2,
-    "expatriar": 2,
-    "far": 2,
-    "follar": 2,
-    "forzar": 2,
-    "garuar": 2,
-    "gobernar": 2,
-    "guiar": 2,
-    "jamerdar": 2,
-    "jugar": 2,
-    "llegar": 2,
-    "manifestar": 2,
-    "melar": 2,
-    "mostrar": 2,
-    "negar": 2,
-    "nevar": 2,
     "neviscar": 2,
-    "obstar": 2,
-    "pensar": 2,
-    "poblar": 2,
-    "probar": 2,
-    "quebrar": 2,
-    "raspahilar": 2,
-    "recomendar": 2,
-    "regoldar": 2,
-    "rehusar": 2,
-    "renovar": 2,
-    "resollar": 2,
-    "respahilar": 2,
-    "respailar": 2,
-    "reuntar": 2,
-    "revolcar": 2,
-    "rodar": 2,
-    "rogar": 2,
-    "ruar": 2,
-    "sacar": 2,
-    "sahumar": 2,
-    "sembrar": 2,
-    "sentar": 2,
-    "serrar": 2,
-    "sobrehilar": 2,
-    "soldar": 2,
-    "soltar": 2,
-    "sonar": 2,
-    "soterrar": 2,
-    "soñar": 2,
-    "temblar": 2,
-    "templar": 2,
-    "trocar": 2,
-    "volar": 2
+    "sacar": 2
   },
   {
     "-": 3,
-    "acaecer": 3,
-    "aponer": 3,
-    "atañer": 3,
-    "caber": 3,
-    "caer": 3,
-    "cerner": 3,
-    "cocer": 3,
-    "coger": 3,
-    "contener": 3,
-    "creer": 3,
-    "deber": 3,
-    "doler": 3,
-    "empecer": 3,
-    "hacer": 3,
-    "heder": 3,
-    "llover": 3,
-    "morder": 3,
-    "mover": 3,
-    "oler": 3,
-    "parecer": 3,
-    "perder": 3,
-    "placer": 3,
-    "poder": 3,
-    "poner": 3,
-    "prever": 3,
-    "querer": 3,
-    "raer": 3,
-    "roer": 3,
-    "romper": 3,
-    "saber": 3,
-    "tardecer": 3,
-    "tañer": 3,
-    "tender": 3,
-    "tener": 3,
-    "torcer": 3,
-    "traer": 3,
-    "valer": 3,
-    "vencer": 3,
-    "ver": 3,
-    "verter": 3,
-    "volver": 3,
-    "yacer": 3
+    "quebrar": 3
   },
   {
     "-": 4,
-    "adquirir": 4,
-    "argüir": 4,
-    "asir": 4,
-    "balbucir": 4,
-    "bruñir": 4,
-    "concebir": 4,
-    "concernir": 4,
-    "contraír": 4,
-    "cubrir": 4,
-    "decir": 4,
-    "delinquir": 4,
-    "describir": 4,
-    "desvaír": 4,
-    "devenir": 4,
-    "dirigir": 4,
-    "discernir": 4,
-    "distinguir": 4,
-    "dormir": 4,
-    "elegir": 4,
-    "embaír": 4,
-    "erguir": 4,
-    "escribir": 4,
-    "esparcir": 4,
-    "gemir": 4,
-    "henchir": 4,
-    "hendir": 4,
-    "hervir": 4,
-    "huir": 4,
-    "infecir": 4,
-    "invehír": 4,
-    "invertir": 4,
-    "ir": 4,
-    "lucir": 4,
-    "maldecir": 4,
-    "manir": 4,
-    "morir": 4,
-    "oír": 4,
-    "pedir": 4,
-    "podrir": 4,
-    "predecir": 4,
-    "preferir": 4,
-    "prohibir": 4,
-    "pudrir": 4,
-    "refreír": 4,
-    "rehenchir": 4,
-    "rehinchir": 4,
-    "rehuir": 4,
-    "rehundir": 4,
-    "rendir": 4,
-    "repetir": 4,
-    "reunir": 4,
-    "reír": 4,
-    "salir": 4,
-    "seguir": 4,
-    "sentir": 4,
-    "servir": 4,
-    "sonreír": 4,
-    "sostituir": 4,
-    "teñir": 4,
-    "traducir": 4,
-    "usucapir": 4,
-    "venir": 4,
-    "vestir": 4,
-    "vivir": 4
+    "desempedrar": 4
   },
   {
     "-": 5,
-    "estar": 5,
-    "haber": 5,
-    "ser": 5
+    "estregar": 5,
+    "negar": 5
   },
   {
-    "-": 6
+    "-": 6,
+    "melar": 6
   },
   {
     "-": 7,
-    "aceitar": 7,
-    "anunciar": 7,
-    "averiguar": 7,
-    "chegar": 7,
-    "comerciar": 7,
-    "começar": 7,
-    "dar": 7,
-    "dispersar": 7,
-    "entregar": 7,
-    "expressar": 7,
-    "ficar": 7,
-    "ganhar": 7,
-    "grassar": 7,
-    "matar": 7,
-    "neviscar": 7,
-    "odiar": 7,
-    "pagar": 7,
-    "recear": 7,
-    "relampaguear": 7,
-    "saudar": 7
+    "abeldar": 7
   },
   {
     "-": 8,
-    "acontecer": 8,
-    "antepor": 8,
-    "aprazer": 8,
-    "aquecer": 8,
-    "caber": 8,
-    "chover": 8,
-    "conviver": 8,
-    "crer": 8,
-    "dizer": 8,
-    "doer": 8,
-    "eleger": 8,
-    "erguer": 8,
-    "escrever": 8,
-    "fazer": 8,
-    "haver": 8,
-    "jazer": 8,
-    "later": 8,
-    "ler": 8,
-    "moer": 8,
-    "morrer": 8,
-    "obter": 8,
-    "perder": 8,
-    "poder": 8,
-    "prazer": 8,
-    "precaver": 8,
-    "prender": 8,
-    "proteger": 8,
-    "prover": 8,
-    "pôr": 8,
-    "querer": 8,
-    "reaver": 8,
-    "requerer": 8,
-    "saber": 8,
-    "suspender": 8,
-    "trazer": 8,
-    "valer": 8,
-    "vender": 8,
-    "ver": 8
+    "temblar": 8
   },
   {
     "-": 9,
-    "abrir": 9,
-    "acudir": 9,
-    "agir": 9,
-    "agredir": 9,
-    "arguir": 9,
-    "avir": 9,
-    "bramir": 9,
-    "bulir": 9,
-    "cerzir": 9,
-    "concernir": 9,
-    "corrigir": 9,
-    "cuspir": 9,
-    "descobrir": 9,
-    "despir": 9,
-    "destituir": 9,
-    "destruir": 9,
-    "distinguir": 9,
-    "distribuir": 9,
-    "divergir": 9,
-    "divertir": 9,
-    "dormir": 9,
-    "embair": 9,
-    "emergir": 9,
-    "engolir": 9,
-    "entupir": 9,
-    "expelir": 9,
-    "exprimir": 9,
-    "extinguir": 9,
-    "falir": 9,
-    "fremir": 9,
-    "frigir": 9,
-    "fugir": 9,
-    "fulgir": 9,
-    "garantir": 9,
-    "inserir": 9,
-    "investir": 9,
-    "omitir": 9,
-    "ouvir": 9,
-    "pedir": 9,
-    "polir": 9,
-    "preferir": 9,
-    "prevenir": 9,
-    "proibir": 9,
-    "reflectir": 9,
-    "repelir": 9,
-    "repetir": 9,
-    "ressarcir": 9,
-    "retorquir": 9,
-    "reunir": 9,
-    "rir": 9,
-    "ruir": 9,
-    "sair": 9,
-    "seguir": 9,
-    "sentir": 9,
-    "servir": 9,
-    "sortir": 9,
-    "subir": 9,
-    "tossir": 9,
-    "traduzir": 9,
-    "ungir": 9,
-    "vir": 9
+    "desmembrar": 9,
+    "sembrar": 9
   },
   {
     "-": 10,
-    "estar": 10,
-    "ir": 10,
-    "ser": 10,
-    "ter": 10
+    "templar": 10
   },
   {
-    "-": 11
+    "-": 11,
+    "recomendar": 11
   },
   {
     "-": 12,
-    "aggradare": 12,
-    "amare": 12,
-    "andare": 12,
-    "assuefare": 12,
-    "cercare": 12,
-    "cominciare": 12,
-    "dare": 12,
-    "disfare": 12,
-    "distare": 12,
-    "fare": 12,
-    "giocare": 12,
-    "inviare": 12,
-    "lanciare": 12,
-    "lavare": 12,
-    "legare": 12,
-    "locare": 12,
-    "mangiare": 12,
-    "obliare": 12,
-    "ostare": 12,
-    "pagare": 12,
-    "ridare": 12,
-    "ristare": 12,
-    "sciare": 12,
-    "stare": 12,
-    "studiare": 12
+    "deslendrar": 12
   },
   {
     "-": 13,
-    "accendere": 13,
-    "adempiere": 13,
-    "affiggere": 13,
-    "ardere": 13,
-    "ascondere": 13,
-    "assistere": 13,
-    "assolvere": 13,
-    "assumere": 13,
-    "avellere": 13,
-    "battere": 13,
-    "bere": 13,
-    "cadere": 13,
-    "calere": 13,
-    "cedere": 13,
-    "chiedere": 13,
-    "chiudere": 13,
-    "cingere": 13,
-    "cogliere": 13,
-    "compiere": 13,
-    "comprimere": 13,
-    "concedere": 13,
-    "concernere": 13,
-    "condurre": 13,
-    "connettere": 13,
-    "conoscere": 13,
-    "correre": 13,
-    "credere": 13,
-    "crescere": 13,
-    "cuocere": 13,
-    "decidere": 13,
-    "delinquere": 13,
-    "detergere": 13,
-    "devolvere": 13,
-    "diligere": 13,
-    "dirigere": 13,
-    "discutere": 13,
-    "distinguere": 13,
-    "distruggere": 13,
-    "divergere": 13,
-    "dolere": 13,
-    "dovere": 13,
-    "eccellere": 13,
-    "emergere": 13,
-    "esigere": 13,
-    "espandere": 13,
-    "espellere": 13,
-    "esplodere": 13,
-    "esprimere": 13,
-    "estrovertere": 13,
-    "evolvere": 13,
-    "flettere": 13,
-    "fondere": 13,
-    "fottere": 13,
-    "friggere": 13,
-    "fulgere": 13,
-    "giungere": 13,
-    "godere": 13,
-    "imbevere": 13,
-    "incombere": 13,
-    "insistere": 13,
-    "ledere": 13,
-    "leggere": 13,
-    "licere": 13,
-    "lucere": 13,
-    "mescere": 13,
-    "mettere": 13,
-    "molcere": 13,
-    "mordere": 13,
-    "muovere": 13,
-    "nascere": 13,
-    "nuocere": 13,
-    "parere": 13,
-    "pendere": 13,
-    "perdere": 13,
-    "permanere": 13,
-    "persuadere": 13,
-    "piacere": 13,
-    "piangere": 13,
-    "piovere": 13,
-    "plaudere": 13,
-    "porgere": 13,
-    "porre": 13,
-    "potere": 13,
-    "prendere": 13,
-    "prevedere": 13,
-    "prudere": 13,
-    "radere": 13,
-    "recere": 13,
-    "redigere": 13,
-    "redimere": 13,
-    "restringere": 13,
-    "riavere": 13,
-    "ridere": 13,
-    "rimanere": 13,
-    "ripetere": 13,
-    "risiedere": 13,
-    "risplendere": 13,
-    "rispondere": 13,
-    "rompere": 13,
-    "sapere": 13,
-    "scegliere": 13,
-    "scendere": 13,
-    "scindere": 13,
-    "scrivere": 13,
-    "scuotere": 13,
-    "secernere": 13,
-    "sedere": 13,
-    "serpere": 13,
-    "solere": 13,
-    "spandere": 13,
-    "spargere": 13,
-    "spegnere": 13,
-    "stringere": 13,
-    "svellere": 13,
-    "tangere": 13,
-    "temere": 13,
-    "tenere": 13,
-    "tessere": 13,
-    "torcere": 13,
-    "trarre": 13,
-    "valere": 13,
-    "vedere": 13,
-    "vendere": 13,
-    "vergere": 13,
-    "vigere": 13,
-    "vincere": 13,
-    "vivere": 13,
-    "volere": 13,
-    "volgere": 13
+    "pensar": 13
   },
   {
     "-": 14,
-    "apparire": 14,
-    "aprire": 14,
-    "compire": 14,
-    "cucire": 14,
-    "dire": 14,
-    "eseguire": 14,
-    "finire": 14,
-    "fuggire": 14,
-    "gire": 14,
-    "inferire": 14,
-    "mentire": 14,
-    "morire": 14,
-    "offrire": 14,
-    "punire": 14,
-    "riempire": 14,
-    "salire": 14,
-    "seguire": 14,
-    "sentire": 14,
-    "seppellire": 14,
-    "stridire": 14,
-    "trasparire": 14,
-    "udire": 14,
-    "uscire": 14,
-    "venire": 14,
-    "vestire": 14
+    "cimentar": 14,
+    "sentar": 14
   },
   {
     "-": 15,
-    "avere": 15,
-    "essere": 15
+    "comenzar": 15
   },
   {
-    "-": 16
+    "-": 16,
+    "desherbar": 16
   },
   {
     "-": 17,
-    "acheter": 17,
-    "adirer": 17,
-    "aliéner": 17,
-    "appeler": 17,
-    "aérer": 17,
-    "balayer": 17,
-    "commencer": 17,
-    "courbaturer": 17,
-    "céder": 17,
-    "célébrer": 17,
-    "douer": 17,
-    "dépecer": 17,
-    "enfiévrer": 17,
-    "envoyer": 17,
-    "exécrer": 17,
-    "hypothéquer": 17,
-    "incomber": 17,
-    "intégrer": 17,
-    "jeter": 17,
-    "lever": 17,
-    "liserer": 17,
-    "léguer": 17,
-    "léser": 17,
-    "manger": 17,
-    "marcher": 17,
-    "neiger": 17,
-    "peler": 17,
-    "peser": 17,
-    "promener": 17,
-    "protéger": 17,
-    "pénétrer": 17,
-    "rapiécer": 17,
-    "receper": 17,
-    "recéper": 17,
-    "régler": 17,
-    "régner": 17,
-    "répéter": 17,
-    "révéler": 17,
-    "semer": 17,
-    "sevrer": 17,
-    "sécher": 17,
-    "urger": 17,
-    "venter": 17,
-    "verglacer": 17,
-    "écrémer": 17
+    "jamerdar": 17
   },
   {
     "-": 18,
-    "dormir": 18,
-    "faillir": 18,
-    "finir": 18,
-    "impartir": 18,
-    "maudire": 18
+    "envernar": 18,
+    "gobernar": 18
   },
   {
     "-": 19,
-    "absoudre": 19,
-    "accroire": 19,
-    "accroître": 19,
-    "acquérir": 19,
-    "advenir": 19,
-    "aller": 19,
-    "apparoir": 19,
-    "ardre": 19,
-    "assaillir": 19,
-    "asseoir": 19,
-    "assoir": 19,
-    "attendre": 19,
-    "avenir": 19,
-    "battre": 19,
-    "boire": 19,
-    "bouillir": 19,
-    "braire": 19,
-    "bruire": 19,
-    "chaloir": 19,
-    "choir": 19,
-    "circoncire": 19,
-    "clore": 19,
-    "comparoir": 19,
-    "conclure": 19,
-    "confire": 19,
-    "connaître": 19,
-    "coudre": 19,
-    "courir": 19,
-    "craindre": 19,
-    "croire": 19,
-    "croître": 19,
-    "cueillir": 19,
-    "cuire": 19,
-    "devoir": 19,
-    "dire": 19,
-    "déchoir": 19,
-    "déclore": 19,
-    "enclore": 19,
-    "endormir": 19,
-    "faire": 19,
-    "falloir": 19,
-    "fleurir": 19,
-    "forfaire": 19,
-    "foutre": 19,
-    "frire": 19,
-    "fuir": 19,
-    "gésir": 19,
-    "haïr": 19,
-    "huir": 19,
-    "inclure": 19,
-    "interdire": 19,
-    "issir": 19,
-    "lire": 19,
-    "mentir": 19,
-    "messeoir": 19,
-    "mettre": 19,
-    "moudre": 19,
-    "mourir": 19,
-    "mouvoir": 19,
-    "naître": 19,
-    "nuire": 19,
-    "occire": 19,
-    "ouvrir": 19,
-    "ouïr": 19,
-    "parfaire": 19,
-    "paître": 19,
-    "plaire": 19,
-    "pleuvoir": 19,
-    "pourvoir": 19,
-    "pouvoir": 19,
-    "prendre": 19,
-    "prévaloir": 19,
-    "prévoir": 19,
-    "recevoir": 19,
-    "recroître": 19,
-    "revaloir": 19,
-    "rire": 19,
-    "rompre": 19,
-    "résoudre": 19,
-    "savoir": 19,
-    "seoir": 19,
-    "servir": 19,
-    "sourdre": 19,
-    "stupéfaire": 19,
-    "suffire": 19,
-    "suivre": 19,
-    "surseoir": 19,
-    "survivre": 19,
-    "taire": 19,
-    "tenir": 19,
-    "traire": 19,
-    "vaincre": 19,
-    "valoir": 19,
-    "vivre": 19,
-    "voir": 19,
-    "vouloir": 19,
-    "vêtir": 19,
-    "échoir": 19,
-    "éclore": 19,
-    "écrire": 19,
-    "émouvoir": 19
+    "errar": 19,
+    "serrar": 19,
+    "soterrar": 19
   },
   {
     "-": 20,
-    "avoir": 20,
-    "être": 20
+    "acertar": 20
   },
   {
     "-": 21,
-    "abide": 21,
-    "awake": 21,
-    "bag": 21,
-    "bear": 21,
-    "beat": 21,
-    "bed": 21,
-    "beget": 21,
-    "begin": 21,
-    "bend": 21,
-    "beseech": 21,
-    "bite": 21,
-    "blow": 21,
-    "break": 21,
-    "bring": 21,
-    "burn": 21,
-    "buy": 21,
-    "cancel": 21,
-    "catch": 21,
-    "choose": 21,
-    "come": 21,
-    "crow": 21,
-    "cry": 21,
-    "dare": 21,
-    "dig": 21,
-    "dive": 21,
-    "draw": 21,
-    "drive": 21,
-    "dye": 21,
-    "eat": 21,
-    "echo": 21,
-    "fall": 21,
-    "feel": 21,
-    "fight": 21,
-    "find": 21,
-    "flee": 21,
-    "fling": 21,
-    "fly": 21,
-    "forbid": 21,
-    "forecast": 21,
-    "forget": 21,
-    "freeze": 21,
-    "gel": 21,
-    "get": 21,
-    "gild": 21,
-    "give": 21,
-    "go": 21,
-    "grow": 21,
-    "hang": 21,
-    "heave": 21,
-    "hide": 21,
-    "hold": 21,
-    "interweave": 21,
-    "ko": 21,
-    "lade": 21,
-    "lead": 21,
-    "leave": 21,
-    "lie": 21,
-    "light": 21,
-    "lose": 21,
-    "make": 21,
-    "meet": 21,
-    "obey": 21,
-    "pay": 21,
-    "picnic": 21,
-    "prove": 21,
-    "put": 21,
-    "quiz": 21,
-    "race": 21,
-    "rid": 21,
-    "ride": 21,
-    "rise": 21,
-    "rob": 21,
-    "run": 21,
-    "scan": 21,
-    "see": 21,
-    "seek": 21,
-    "shave": 21,
-    "shear": 21,
-    "shed": 21,
-    "shine": 21,
-    "shoe": 21,
-    "shoot": 21,
-    "show": 21,
-    "sing": 21,
-    "sink": 21,
-    "sit": 21,
-    "slay": 21,
-    "sleep": 21,
-    "slide": 21,
-    "slink": 21,
-    "smell": 21,
-    "sneak": 21,
-    "sow": 21,
-    "speed": 21,
-    "spin": 21,
-    "stand": 21,
-    "stave": 21,
-    "steal": 21,
-    "stick": 21,
-    "stop": 21,
-    "strike": 21,
-    "sum": 21,
-    "swear": 21,
-    "swell": 21,
-    "swim": 21,
-    "take": 21,
-    "tar": 21,
-    "teach": 21,
-    "tell": 21,
-    "think": 21,
-    "tie": 21,
-    "tread": 21,
-    "trot": 21,
-    "wed": 21,
-    "win": 21,
-    "wish": 21,
-    "write": 21
+    "atravesar": 21
   },
   {
     "-": 22,
-    "be": 22,
-    "do": 22,
-    "have": 22
+    "manifestar": 22
+  },
+  {
+    "-": 23,
+    "adestrar": 23
+  },
+  {
+    "-": 24,
+    "apretar": 24
+  },
+  {
+    "-": 25,
+    "nevar": 25
+  },
+  {
+    "-": 26,
+    "empezar": 26
+  },
+  {
+    "-": 27,
+    "far": 27
+  },
+  {
+    "-": 28,
+    "jugar": 28
+  },
+  {
+    "-": 29,
+    "ampliar": 29,
+    "expatriar": 29,
+    "guiar": 29
+  },
+  {
+    "-": 30,
+    "cabrahigar": 30
+  },
+  {
+    "-": 31,
+    "ahijar": 31
+  },
+  {
+    "-": 32,
+    "sobrehilar": 32
+  },
+  {
+    "-": 33,
+    "atraillar": 33
+  },
+  {
+    "-": 34,
+    "descafeinar": 34,
+    "enzainar": 34
+  },
+  {
+    "-": 35,
+    "ahincar": 35
+  },
+  {
+    "-": 36,
+    "airar": 36
+  },
+  {
+    "-": 37,
+    "ahirmar": 37
+  },
+  {
+    "-": 38,
+    "aislar": 38
+  },
+  {
+    "-": 39,
+    "ahitar": 39
+  },
+  {
+    "-": 40,
+    "enraizar": 40
+  },
+  {
+    "-": 41,
+    "probar": 41
+  },
+  {
+    "-": 42,
+    "poblar": 42
+  },
+  {
+    "-": 43,
+    "clocar": 43,
+    "trocar": 43
+  },
+  {
+    "-": 44,
+    "rodar": 44
+  },
+  {
+    "-": 45,
+    "rogar": 45
+  },
+  {
+    "-": 46,
+    "asolar": 46,
+    "volar": 46
+  },
+  {
+    "-": 47,
+    "revolcar": 47
+  },
+  {
+    "-": 48,
+    "regoldar": 48,
+    "soldar": 48
+  },
+  {
+    "-": 49,
+    "colgar": 49
+  },
+  {
+    "-": 50,
+    "degollar": 50,
+    "follar": 50,
+    "resollar": 50
+  },
+  {
+    "-": 51,
+    "soltar": 51
+  },
+  {
+    "-": 52,
+    "sonar": 52
+  },
+  {
+    "-": 53,
+    "contar": 53
+  },
+  {
+    "-": 54,
+    "encontrar": 54
+  },
+  {
+    "-": 55,
+    "avergonzar": 55
+  },
+  {
+    "-": 56,
+    "aforar": 56,
+    "desaforar": 56,
+    "engorar": 56
+  },
+  {
+    "-": 57,
+    "aporcar": 57
+  },
+  {
+    "-": 58,
+    "acordar": 58
+  },
+  {
+    "-": 59,
+    "acornar": 59
+  },
+  {
+    "-": 60,
+    "entortar": 60
+  },
+  {
+    "-": 61,
+    "forzar": 61
+  },
+  {
+    "-": 62,
+    "desengrosar": 62,
+    "desosar": 62,
+    "engrosar": 62
+  },
+  {
+    "-": 63,
+    "costar": 63
+  },
+  {
+    "-": 64,
+    "mostrar": 64
+  },
+  {
+    "-": 65,
+    "desencovar": 65,
+    "renovar": 65
+  },
+  {
+    "-": 66,
+    "soñar": 66
+  },
+  {
+    "-": 67,
+    "actuar": 67,
+    "averiguar": 67,
+    "estatuar": 67,
+    "evacuar": 67,
+    "garuar": 67,
+    "ruar": 67
+  },
+  {
+    "-": 68,
+    "ahuchar": 68
+  },
+  {
+    "-": 69,
+    "embaular": 69
+  },
+  {
+    "-": 70,
+    "aullar": 70
+  },
+  {
+    "-": 71,
+    "sahumar": 71
+  },
+  {
+    "-": 72,
+    "aunar": 72
+  },
+  {
+    "-": 73,
+    "aungar": 73
+  },
+  {
+    "-": 74,
+    "reuntar": 74
+  },
+  {
+    "-": 75,
+    "aupar": 75
+  },
+  {
+    "-": 76,
+    "rehusar": 76
+  },
+  {
+    "-": 77,
+    "barahustar": 77
+  },
+  {
+    "-": 78,
+    "cazar": 78
+  },
+  {
+    "-": 79,
+    "saber": 79
+  },
+  {
+    "-": 80,
+    "hacer": 80,
+    "placer": 80
+  },
+  {
+    "-": 81,
+    "caber": 81
+  },
+  {
+    "-": 82,
+    "acaecer": 82,
+    "empecer": 82,
+    "parecer": 82,
+    "tardecer": 82,
+    "vencer": 82
+  },
+  {
+    "-": 83,
+    "heder": 83
+  },
+  {
+    "-": 84,
+    "tender": 84
+  },
+  {
+    "-": 85,
+    "contener": 85,
+    "tener": 85
+  },
+  {
+    "-": 86,
+    "atañer": 86,
+    "caer": 86,
+    "creer": 86,
+    "deber": 86,
+    "prever": 86,
+    "raer": 86,
+    "roer": 86,
+    "tañer": 86,
+    "traer": 86,
+    "valer": 86,
+    "ver": 86
+  },
+  {
+    "-": 87,
+    "perder": 87
+  },
+  {
+    "-": 88,
+    "querer": 88
+  },
+  {
+    "-": 89,
+    "cerner": 89
+  },
+  {
+    "-": 90,
+    "verter": 90
+  },
+  {
+    "-": 91,
+    "coger": 91
+  },
+  {
+    "-": 92,
+    "romper": 92
+  },
+  {
+    "-": 93,
+    "cocer": 93
+  },
+  {
+    "-": 94,
+    "poder": 94
+  },
+  {
+    "-": 95,
+    "doler": 95,
+    "oler": 95
+  },
+  {
+    "-": 96,
+    "volver": 96
+  },
+  {
+    "-": 97,
+    "aponer": 97,
+    "poner": 97
+  },
+  {
+    "-": 98,
+    "torcer": 98
+  },
+  {
+    "-": 99,
+    "morder": 99
+  },
+  {
+    "-": 100,
+    "llover": 100,
+    "mover": 100
+  },
+  {
+    "-": 101,
+    "yacer": 101
+  },
+  {
+    "-": 102,
+    "describir": 102,
+    "escribir": 102
+  },
+  {
+    "-": 103,
+    "esparcir": 103,
+    "lucir": 103,
+    "traducir": 103
+  },
+  {
+    "-": 104,
+    "concebir": 104
+  },
+  {
+    "-": 105,
+    "decir": 105,
+    "infecir": 105,
+    "maldecir": 105,
+    "predecir": 105
+  },
+  {
+    "-": 106,
+    "pedir": 106
+  },
+  {
+    "-": 107,
+    "elegir": 107
+  },
+  {
+    "-": 108,
+    "seguir": 108
+  },
+  {
+    "-": 109,
+    "gemir": 109
+  },
+  {
+    "-": 110,
+    "henchir": 110,
+    "rehenchir": 110
+  },
+  {
+    "-": 111,
+    "hendir": 111,
+    "rendir": 111
+  },
+  {
+    "-": 112,
+    "devenir": 112,
+    "venir": 112
+  },
+  {
+    "-": 113,
+    "sentir": 113
+  },
+  {
+    "-": 114,
+    "erguir": 114
+  },
+  {
+    "-": 115,
+    "preferir": 115
+  },
+  {
+    "-": 116,
+    "concernir": 116,
+    "discernir": 116
+  },
+  {
+    "-": 117,
+    "invertir": 117
+  },
+  {
+    "-": 118,
+    "hervir": 118,
+    "servir": 118
+  },
+  {
+    "-": 119,
+    "vestir": 119
+  },
+  {
+    "-": 120,
+    "repetir": 120
+  },
+  {
+    "-": 121,
+    "refreír": 121,
+    "reír": 121,
+    "sonreír": 121
+  },
+  {
+    "-": 122,
+    "teñir": 122
+  },
+  {
+    "-": 123,
+    "dirigir": 123
+  },
+  {
+    "-": 124,
+    "prohibir": 124
+  },
+  {
+    "-": 125,
+    "rehinchir": 125
+  },
+  {
+    "-": 126,
+    "asir": 126,
+    "balbucir": 126,
+    "bruñir": 126,
+    "huir": 126,
+    "ir": 126,
+    "manir": 126,
+    "salir": 126,
+    "sostituir": 126,
+    "usucapir": 126,
+    "vivir": 126
+  },
+  {
+    "-": 127,
+    "podrir": 127
+  },
+  {
+    "-": 128,
+    "morir": 128
+  },
+  {
+    "-": 129,
+    "dormir": 129
+  },
+  {
+    "-": 130,
+    "delinquir": 130
+  },
+  {
+    "-": 131,
+    "adquirir": 131,
+    "cubrir": 131
+  },
+  {
+    "-": 132,
+    "pudrir": 132
+  },
+  {
+    "-": 133,
+    "distinguir": 133,
+    "rehuir": 133
+  },
+  {
+    "-": 134,
+    "rehundir": 134
+  },
+  {
+    "-": 135,
+    "reunir": 135
+  },
+  {
+    "-": 136,
+    "contraír": 136,
+    "desvaír": 136,
+    "embaír": 136,
+    "invehír": 136,
+    "oír": 136
+  },
+  {
+    "-": 137,
+    "argüir": 137
+  },
+  {
+    "-": 138,
+    "haber": 138
+  },
+  {
+    "-": 139,
+    "estar": 139
+  },
+  {
+    "-": 140,
+    "ser": 140
+  },
+  {
+    "-": 141,
+    "aceitar": 141,
+    "anunciar": 141,
+    "chegar": 141,
+    "dar": 141,
+    "dispersar": 141,
+    "entregar": 141,
+    "expressar": 141,
+    "ganhar": 141,
+    "grassar": 141,
+    "pagar": 141,
+    "recear": 141,
+    "relampaguear": 141
+  },
+  {
+    "-": 142,
+    "matar": 142
+  },
+  {
+    "-": 143,
+    "ficar": 143,
+    "neviscar": 143
+  },
+  {
+    "-": 144,
+    "comerciar": 144,
+    "odiar": 144
+  },
+  {
+    "-": 145,
+    "averiguar": 145
+  },
+  {
+    "-": 146,
+    "saudar": 146
+  },
+  {
+    "-": 147,
+    "começar": 147
+  },
+  {
+    "-": 148,
+    "caber": 148,
+    "saber": 148
+  },
+  {
+    "-": 149,
+    "haver": 149,
+    "reaver": 149
+  },
+  {
+    "-": 150,
+    "aprazer": 150,
+    "fazer": 150,
+    "prazer": 150,
+    "trazer": 150
+  },
+  {
+    "-": 151,
+    "acontecer": 151,
+    "aquecer": 151
+  },
+  {
+    "-": 152,
+    "perder": 152,
+    "suspender": 152
+  },
+  {
+    "-": 153,
+    "chover": 153,
+    "conviver": 153,
+    "crer": 153,
+    "jazer": 153,
+    "later": 153,
+    "ler": 153,
+    "obter": 153,
+    "precaver": 153,
+    "prover": 153,
+    "valer": 153,
+    "vender": 153,
+    "ver": 153
+  },
+  {
+    "-": 154,
+    "querer": 154
+  },
+  {
+    "-": 155,
+    "escrever": 155
+  },
+  {
+    "-": 156,
+    "eleger": 156,
+    "proteger": 156
+  },
+  {
+    "-": 157,
+    "prender": 157
+  },
+  {
+    "-": 158,
+    "poder": 158
+  },
+  {
+    "-": 159,
+    "doer": 159,
+    "moer": 159
+  },
+  {
+    "-": 160,
+    "antepor": 160
+  },
+  {
+    "-": 161,
+    "morrer": 161,
+    "requerer": 161
+  },
+  {
+    "-": 162,
+    "erguer": 162
+  },
+  {
+    "-": 163,
+    "dizer": 163
+  },
+  {
+    "-": 164,
+    "pôr": 164
+  },
+  {
+    "-": 165,
+    "ressarcir": 165
+  },
+  {
+    "-": 166,
+    "pedir": 166
+  },
+  {
+    "-": 167,
+    "reflectir": 167
+  },
+  {
+    "-": 168,
+    "agredir": 168
+  },
+  {
+    "-": 169,
+    "seguir": 169
+  },
+  {
+    "-": 170,
+    "expelir": 170
+  },
+  {
+    "-": 171,
+    "fremir": 171
+  },
+  {
+    "-": 172,
+    "prevenir": 172
+  },
+  {
+    "-": 173,
+    "sentir": 173
+  },
+  {
+    "-": 174,
+    "divergir": 174,
+    "emergir": 174
+  },
+  {
+    "-": 175,
+    "inserir": 175,
+    "preferir": 175
+  },
+  {
+    "-": 176,
+    "concernir": 176
+  },
+  {
+    "-": 177,
+    "divertir": 177
+  },
+  {
+    "-": 178,
+    "servir": 178
+  },
+  {
+    "-": 179,
+    "cerzir": 179
+  },
+  {
+    "-": 180,
+    "despir": 180
+  },
+  {
+    "-": 181,
+    "investir": 181
+  },
+  {
+    "-": 182,
+    "repetir": 182
+  },
+  {
+    "-": 183,
+    "agir": 183,
+    "corrigir": 183,
+    "frigir": 183,
+    "fulgir": 183,
+    "ungir": 183
+  },
+  {
+    "-": 184,
+    "distinguir": 184,
+    "extinguir": 184
+  },
+  {
+    "-": 185,
+    "proibir": 185
+  },
+  {
+    "-": 186,
+    "exprimir": 186
+  },
+  {
+    "-": 187,
+    "avir": 187,
+    "bramir": 187,
+    "destituir": 187,
+    "distribuir": 187,
+    "embair": 187,
+    "falir": 187,
+    "garantir": 187,
+    "repelir": 187,
+    "rir": 187,
+    "sair": 187,
+    "traduzir": 187,
+    "vir": 187
+  },
+  {
+    "-": 188,
+    "descobrir": 188
+  },
+  {
+    "-": 189,
+    "engolir": 189,
+    "polir": 189
+  },
+  {
+    "-": 190,
+    "dormir": 190
+  },
+  {
+    "-": 191,
+    "retorquir": 191
+  },
+  {
+    "-": 192,
+    "sortir": 192
+  },
+  {
+    "-": 193,
+    "tossir": 193
+  },
+  {
+    "-": 194,
+    "abrir": 194
+  },
+  {
+    "-": 195,
+    "omitir": 195
+  },
+  {
+    "-": 196,
+    "subir": 196
+  },
+  {
+    "-": 197,
+    "acudir": 197
+  },
+  {
+    "-": 198,
+    "fugir": 198
+  },
+  {
+    "-": 199,
+    "arguir": 199,
+    "destruir": 199,
+    "ruir": 199
+  },
+  {
+    "-": 200,
+    "bulir": 200
+  },
+  {
+    "-": 201,
+    "reunir": 201
+  },
+  {
+    "-": 202,
+    "entupir": 202
+  },
+  {
+    "-": 203,
+    "cuspir": 203
+  },
+  {
+    "-": 204,
+    "ouvir": 204
+  },
+  {
+    "-": 205,
+    "estar": 205
+  },
+  {
+    "-": 206,
+    "ter": 206
+  },
+  {
+    "-": 207,
+    "ir": 207
+  },
+  {
+    "-": 208,
+    "ser": 208
+  },
+  {
+    "-": 209,
+    "andare": 209
+  },
+  {
+    "-": 210,
+    "aggradare": 210,
+    "amare": 210,
+    "assuefare": 210,
+    "cercare": 210,
+    "dare": 210,
+    "disfare": 210,
+    "distare": 210,
+    "fare": 210,
+    "giocare": 210,
+    "inviare": 210,
+    "lavare": 210,
+    "legare": 210,
+    "locare": 210,
+    "obliare": 210,
+    "ostare": 210,
+    "pagare": 210,
+    "ridare": 210,
+    "ristare": 210,
+    "sciare": 210,
+    "stare": 210,
+    "studiare": 210
+  },
+  {
+    "-": 211,
+    "cominciare": 211,
+    "lanciare": 211,
+    "mangiare": 211
+  },
+  {
+    "-": 212,
+    "sapere": 212
+  },
+  {
+    "-": 213,
+    "riavere": 213
+  },
+  {
+    "-": 214,
+    "torcere": 214,
+    "vincere": 214
+  },
+  {
+    "-": 215,
+    "ardere": 215,
+    "cedere": 215,
+    "chiedere": 215,
+    "chiudere": 215,
+    "concedere": 215,
+    "decidere": 215,
+    "espandere": 215,
+    "esplodere": 215,
+    "ledere": 215,
+    "mordere": 215,
+    "perdere": 215,
+    "persuadere": 215,
+    "prudere": 215,
+    "radere": 215,
+    "ridere": 215,
+    "spandere": 215
+  },
+  {
+    "-": 216,
+    "prevedere": 216,
+    "sedere": 216,
+    "vedere": 216
+  },
+  {
+    "-": 217,
+    "avellere": 217,
+    "espellere": 217
+  },
+  {
+    "-": 218,
+    "tenere": 218
+  },
+  {
+    "-": 219,
+    "assistere": 219,
+    "battere": 219,
+    "cadere": 219,
+    "concernere": 219,
+    "credere": 219,
+    "delinquere": 219,
+    "estrovertere": 219,
+    "fottere": 219,
+    "godere": 219,
+    "imbevere": 219,
+    "incombere": 219,
+    "insistere": 219,
+    "lucere": 219,
+    "mescere": 219,
+    "molcere": 219,
+    "pendere": 219,
+    "piacere": 219,
+    "piovere": 219,
+    "plaudere": 219,
+    "recere": 219,
+    "ripetere": 219,
+    "risiedere": 219,
+    "risplendere": 219,
+    "serpere": 219,
+    "temere": 219,
+    "tessere": 219,
+    "vendere": 219,
+    "vigere": 219
+  },
+  {
+    "-": 220,
+    "restringere": 220
+  },
+  {
+    "-": 221,
+    "mettere": 221
+  },
+  {
+    "-": 222,
+    "cingere": 222,
+    "detergere": 222,
+    "divergere": 222,
+    "emergere": 222,
+    "fulgere": 222,
+    "giungere": 222,
+    "piangere": 222,
+    "porgere": 222,
+    "spargere": 222,
+    "tangere": 222,
+    "vergere": 222,
+    "volgere": 222
+  },
+  {
+    "-": 223,
+    "affiggere": 223,
+    "distruggere": 223,
+    "friggere": 223,
+    "leggere": 223
+  },
+  {
+    "-": 224,
+    "cogliere": 224,
+    "scegliere": 224
+  },
+  {
+    "-": 225,
+    "spegnere": 225
+  },
+  {
+    "-": 226,
+    "distinguere": 226
+  },
+  {
+    "-": 227,
+    "licere": 227
+  },
+  {
+    "-": 228,
+    "adempiere": 228,
+    "compiere": 228
+  },
+  {
+    "-": 229,
+    "diligere": 229,
+    "dirigere": 229,
+    "esigere": 229,
+    "redigere": 229
+  },
+  {
+    "-": 230,
+    "comprimere": 230,
+    "esprimere": 230,
+    "redimere": 230
+  },
+  {
+    "-": 231,
+    "stringere": 231
+  },
+  {
+    "-": 232,
+    "calere": 232,
+    "eccellere": 232,
+    "svellere": 232,
+    "valere": 232
+  },
+  {
+    "-": 233,
+    "assumere": 233
+  },
+  {
+    "-": 234,
+    "accendere": 234,
+    "ascondere": 234,
+    "prendere": 234,
+    "rispondere": 234,
+    "scendere": 234,
+    "scindere": 234
+  },
+  {
+    "-": 235,
+    "permanere": 235,
+    "rimanere": 235
+  },
+  {
+    "-": 236,
+    "dolere": 236,
+    "solere": 236,
+    "volere": 236
+  },
+  {
+    "-": 237,
+    "rompere": 237
+  },
+  {
+    "-": 238,
+    "fondere": 238
+  },
+  {
+    "-": 239,
+    "potere": 239
+  },
+  {
+    "-": 240,
+    "dovere": 240
+  },
+  {
+    "-": 241,
+    "bere": 241
+  },
+  {
+    "-": 242,
+    "correre": 242,
+    "parere": 242
+  },
+  {
+    "-": 243,
+    "porre": 243,
+    "trarre": 243
+  },
+  {
+    "-": 244,
+    "conoscere": 244,
+    "crescere": 244,
+    "nascere": 244
+  },
+  {
+    "-": 245,
+    "secernere": 245
+  },
+  {
+    "-": 246,
+    "discutere": 246
+  },
+  {
+    "-": 247,
+    "connettere": 247,
+    "flettere": 247
+  },
+  {
+    "-": 248,
+    "cuocere": 248,
+    "nuocere": 248
+  },
+  {
+    "-": 249,
+    "scuotere": 249
+  },
+  {
+    "-": 250,
+    "muovere": 250
+  },
+  {
+    "-": 251,
+    "condurre": 251
+  },
+  {
+    "-": 252,
+    "assolvere": 252,
+    "devolvere": 252,
+    "evolvere": 252,
+    "scrivere": 252,
+    "vivere": 252
+  },
+  {
+    "-": 253,
+    "venire": 253
+  },
+  {
+    "-": 254,
+    "compire": 254,
+    "cucire": 254,
+    "dire": 254,
+    "eseguire": 254,
+    "finire": 254,
+    "fuggire": 254,
+    "gire": 254,
+    "inferire": 254,
+    "mentire": 254,
+    "punire": 254,
+    "riempire": 254,
+    "salire": 254,
+    "seguire": 254,
+    "stridire": 254,
+    "vestire": 254
+  },
+  {
+    "-": 255,
+    "morire": 255
+  },
+  {
+    "-": 256,
+    "seppellire": 256
+  },
+  {
+    "-": 257,
+    "apparire": 257,
+    "aprire": 257,
+    "offrire": 257,
+    "trasparire": 257
+  },
+  {
+    "-": 258,
+    "sentire": 258
+  },
+  {
+    "-": 259,
+    "udire": 259
+  },
+  {
+    "-": 260,
+    "uscire": 260
+  },
+  {
+    "-": 261,
+    "avere": 261
+  },
+  {
+    "-": 262,
+    "essere": 262
+  },
+  {
+    "-": 263,
+    "acheter": 263,
+    "adirer": 263,
+    "aliéner": 263,
+    "appeler": 263,
+    "aérer": 263,
+    "balayer": 263,
+    "commencer": 263,
+    "courbaturer": 263,
+    "céder": 263,
+    "célébrer": 263,
+    "douer": 263,
+    "dépecer": 263,
+    "enfiévrer": 263,
+    "envoyer": 263,
+    "exécrer": 263,
+    "hypothéquer": 263,
+    "incomber": 263,
+    "intégrer": 263,
+    "jeter": 263,
+    "lever": 263,
+    "liserer": 263,
+    "léguer": 263,
+    "léser": 263,
+    "manger": 263,
+    "marcher": 263,
+    "neiger": 263,
+    "peler": 263,
+    "peser": 263,
+    "promener": 263,
+    "protéger": 263,
+    "pénétrer": 263,
+    "rapiécer": 263,
+    "receper": 263,
+    "recéper": 263,
+    "régler": 263,
+    "régner": 263,
+    "répéter": 263,
+    "révéler": 263,
+    "semer": 263,
+    "sevrer": 263,
+    "sécher": 263,
+    "urger": 263,
+    "venter": 263,
+    "verglacer": 263,
+    "écrémer": 263
+  },
+  {
+    "-": 264,
+    "dormir": 264,
+    "faillir": 264,
+    "finir": 264,
+    "impartir": 264,
+    "maudire": 264
+  },
+  {
+    "-": 265,
+    "absoudre": 265,
+    "accroire": 265,
+    "accroître": 265,
+    "acquérir": 265,
+    "advenir": 265,
+    "aller": 265,
+    "apparoir": 265,
+    "ardre": 265,
+    "assaillir": 265,
+    "asseoir": 265,
+    "assoir": 265,
+    "attendre": 265,
+    "avenir": 265,
+    "battre": 265,
+    "boire": 265,
+    "bouillir": 265,
+    "braire": 265,
+    "bruire": 265,
+    "chaloir": 265,
+    "choir": 265,
+    "circoncire": 265,
+    "clore": 265,
+    "comparoir": 265,
+    "conclure": 265,
+    "confire": 265,
+    "connaître": 265,
+    "coudre": 265,
+    "courir": 265,
+    "craindre": 265,
+    "croire": 265,
+    "croître": 265,
+    "cueillir": 265,
+    "cuire": 265,
+    "devoir": 265,
+    "dire": 265,
+    "déchoir": 265,
+    "déclore": 265,
+    "enclore": 265,
+    "endormir": 265,
+    "faire": 265,
+    "falloir": 265,
+    "fleurir": 265,
+    "forfaire": 265,
+    "foutre": 265,
+    "frire": 265,
+    "fuir": 265,
+    "gésir": 265,
+    "haïr": 265,
+    "huir": 265,
+    "inclure": 265,
+    "interdire": 265,
+    "issir": 265,
+    "lire": 265,
+    "mentir": 265,
+    "messeoir": 265,
+    "mettre": 265,
+    "moudre": 265,
+    "mourir": 265,
+    "mouvoir": 265,
+    "naître": 265,
+    "nuire": 265,
+    "occire": 265,
+    "ouvrir": 265,
+    "ouïr": 265,
+    "parfaire": 265,
+    "paître": 265,
+    "plaire": 265,
+    "pleuvoir": 265,
+    "pourvoir": 265,
+    "pouvoir": 265,
+    "prendre": 265,
+    "prévaloir": 265,
+    "prévoir": 265,
+    "recevoir": 265,
+    "recroître": 265,
+    "revaloir": 265,
+    "rire": 265,
+    "rompre": 265,
+    "résoudre": 265,
+    "savoir": 265,
+    "seoir": 265,
+    "servir": 265,
+    "sourdre": 265,
+    "stupéfaire": 265,
+    "suffire": 265,
+    "suivre": 265,
+    "surseoir": 265,
+    "survivre": 265,
+    "taire": 265,
+    "tenir": 265,
+    "traire": 265,
+    "vaincre": 265,
+    "valoir": 265,
+    "vivre": 265,
+    "voir": 265,
+    "vouloir": 265,
+    "vêtir": 265,
+    "échoir": 265,
+    "éclore": 265,
+    "écrire": 265,
+    "émouvoir": 265
+  },
+  {
+    "-": 266,
+    "avoir": 266,
+    "être": 266
+  },
+  {
+    "-": 267,
+    "abide": 267,
+    "awake": 267,
+    "bag": 267,
+    "bear": 267,
+    "beat": 267,
+    "bed": 267,
+    "beget": 267,
+    "begin": 267,
+    "bend": 267,
+    "beseech": 267,
+    "bite": 267,
+    "blow": 267,
+    "break": 267,
+    "bring": 267,
+    "burn": 267,
+    "buy": 267,
+    "cancel": 267,
+    "catch": 267,
+    "choose": 267,
+    "come": 267,
+    "crow": 267,
+    "cry": 267,
+    "dare": 267,
+    "dig": 267,
+    "dive": 267,
+    "draw": 267,
+    "drive": 267,
+    "dye": 267,
+    "eat": 267,
+    "echo": 267,
+    "fall": 267,
+    "feel": 267,
+    "fight": 267,
+    "find": 267,
+    "flee": 267,
+    "fling": 267,
+    "fly": 267,
+    "forbid": 267,
+    "forecast": 267,
+    "forget": 267,
+    "freeze": 267,
+    "gel": 267,
+    "get": 267,
+    "gild": 267,
+    "give": 267,
+    "go": 267,
+    "grow": 267,
+    "hang": 267,
+    "heave": 267,
+    "hide": 267,
+    "hold": 267,
+    "interweave": 267,
+    "ko": 267,
+    "lade": 267,
+    "lead": 267,
+    "leave": 267,
+    "lie": 267,
+    "light": 267,
+    "lose": 267,
+    "make": 267,
+    "meet": 267,
+    "obey": 267,
+    "pay": 267,
+    "picnic": 267,
+    "prove": 267,
+    "put": 267,
+    "quiz": 267,
+    "race": 267,
+    "rid": 267,
+    "ride": 267,
+    "rise": 267,
+    "rob": 267,
+    "run": 267,
+    "scan": 267,
+    "see": 267,
+    "seek": 267,
+    "shave": 267,
+    "shear": 267,
+    "shed": 267,
+    "shine": 267,
+    "shoe": 267,
+    "shoot": 267,
+    "show": 267,
+    "sing": 267,
+    "sink": 267,
+    "sit": 267,
+    "slay": 267,
+    "sleep": 267,
+    "slide": 267,
+    "slink": 267,
+    "smell": 267,
+    "sneak": 267,
+    "sow": 267,
+    "speed": 267,
+    "spin": 267,
+    "stand": 267,
+    "stave": 267,
+    "steal": 267,
+    "stick": 267,
+    "stop": 267,
+    "strike": 267,
+    "sum": 267,
+    "swear": 267,
+    "swell": 267,
+    "swim": 267,
+    "take": 267,
+    "tar": 267,
+    "teach": 267,
+    "tell": 267,
+    "think": 267,
+    "tie": 267,
+    "tread": 267,
+    "trot": 267,
+    "wed": 267,
+    "win": 267,
+    "wish": 267,
+    "write": 267
+  },
+  {
+    "-": 268,
+    "be": 268,
+    "do": 268,
+    "have": 268
   }
 ]

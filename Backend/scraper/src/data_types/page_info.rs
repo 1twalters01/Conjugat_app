@@ -10,7 +10,7 @@ pub struct PageInfo {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct Phrase {
+pub struct Phrase  {
     pub subjects: Vec<String>,
     pub auxiliaries: Vec<String>,
     pub conjugates: Vec<String>,

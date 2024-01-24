@@ -57,8 +57,8 @@ pub struct AuxiliaryField {
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct ConjugateField {
     pub base: String,
-    pub conjugate: String,
     pub model: String,
+    pub conjugate: String,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]

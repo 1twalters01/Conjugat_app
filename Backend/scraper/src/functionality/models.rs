@@ -34,7 +34,7 @@ pub async fn run_model_module() {
     let language_content: String = read_html_from_file("temp/json/languages/languages.json");
     let (language_data_vec, language_vec) = read_language_data_from_json_data(language_content.as_str());
     let language_pk_map_vec: Vec<BTreeMap<String, i64>> = get_language_pk_map_vec(&language_data_vec, &language_vec);
-    save_string_i64_map_vec(&language_pk_map_vec, "temp/languages/btreemaps/languages.json");
+    save_string_i64_map_vec(&language_pk_map_vec, "temp/json/languages/btreemaps/languages.json");
 
     // Read html for each language's model page on Reverso (saved for convenience)
     let content_vec: Vec<String> = get_model_html_vec(language_vec);
@@ -49,7 +49,7 @@ pub async fn run_model_module() {
     let group_language_id_map_vec: Vec<BTreeMap<String, i64>> = get_group_language_id_map_vec(group_json_data_vec.clone());
     save_string_i64_map_vec(&group_language_id_map_vec, "temp/json/models/btreemaps/group_language.json");
     // println!("group_language_id_map_vec: {:?}", group_language_id_map_vec);
-    let group_pk_map_vec: Vec<BTreeMap<String, i64>> = get_group_pk_map_vec(group_json_data_vec);
+    let group_pk_map_vec: Vec<BTreeMap<String, i64>> = get_group_pk_map_vec(group_json_data_vec.clone());
     save_string_i64_map_vec(&group_pk_map_vec, "temp/json/models/btreemaps/groups.json");
     // println!("group_pk_map_vec: {:?}", group_pk_map_vec);
 
@@ -63,8 +63,9 @@ pub async fn run_model_module() {
     let ending_group_id_map_vec: Vec<BTreeMap<String, i64>> = get_ending_group_id_map_vec(ending_json_data_vec.clone());
     save_string_i64_map_vec(&ending_group_id_map_vec, "temp/json/models/btreemaps/ending_group.json");
     // println!("\nending_group_id_map_vec: {:?}", ending_group_id_map_vec);
-    let ending_language_id_map_vec: Vec<BTreeMap<String, i64>> = get_ending_language_id_map_vec(ending_json_data_vec.clone(), &group_language_id_map_vec);
+    let ending_language_id_map_vec: Vec<BTreeMap<String, i64>> = get_ending_language_id_map_vec(ending_json_data_vec.clone(), group_json_data_vec.clone());
     save_string_i64_map_vec(&ending_language_id_map_vec, "temp/json/models/btreemaps/ending_language.json");
+    // println!("\nending_language_id_map_vec: {:?}", ending_language_id_map_vec);
     let ending_pk_map_vec: Vec<BTreeMap<String, i64>> = get_ending_pk_map_vec(ending_json_data_vec.clone());
     save_string_i64_map_vec(&ending_pk_map_vec, "temp/json/models/btreemaps/endings.json");
     // println!("ending_pk_map_vec: {:?}", ending_pk_map_vec);
@@ -72,15 +73,16 @@ pub async fn run_model_module() {
 
     // Create model data and model:ending map
         // Where 0: ending, 1: model
-    let model_data_vec_vec: Vec<Vec<String>> = get_model_data_vec_vec(content_vec.clone(), &ending_pk_map_vec.clone(), &ending_group_id_map_vec, &group_pk_map_vec);
+    let model_data_vec_vec: Vec<Vec<String>> = get_model_data_vec_vec(content_vec.clone(), &ending_pk_map_vec.clone(), &group_pk_map_vec);
     let model_json_data_vec: Vec<JsonData> = create_json_data_vec(model_data_vec_vec, FieldOptions::ModelField);
     save_data_to_json_file(&model_json_data_vec, "temp/json/models/models.json");
     // println!("model_json_data_vec: {:#?}", model_json_data_vec);
-    // let model_ending_id_map_vec: Vec<BTreeMap<String, i64>> = get_model_ending_id_map_vec_vec(model_json_data_vec.clone());
-    // save_string_i64_map_vec(&model_ending_id_map_vec, "temp/json/models/btreemaps/model_ending.json");
+    let model_ending_id_map_vec: Vec<BTreeMap<String, i64>> = get_model_ending_id_map_vec(model_json_data_vec.clone());
+    save_string_i64_map_vec(&model_ending_id_map_vec, "temp/json/models/btreemaps/model_ending.json");
     // println!("model_ending_id_map_vec: {:?}", model_ending_id_map_vec);
-    let model_language_id_map_vec: Vec<BTreeMap<String, i64>> = get_model_language_id_map_vec(model_json_data_vec.clone(), &ending_language_id_map_vec);
+    let model_language_id_map_vec: Vec<BTreeMap<String, i64>> = get_model_language_id_map_vec(model_json_data_vec.clone(), ending_json_data_vec.clone(), group_json_data_vec.clone());
     save_string_i64_map_vec(&model_language_id_map_vec, "temp/json/models/btreemaps/model_language.json");
+    // println!("model_language_id_map_vec: {:?}", model_language_id_map_vec);
     let model_pk_map_vec: Vec<BTreeMap<String, i64>> = get_model_pk_map_vec(model_json_data_vec);
     save_string_i64_map_vec(&model_pk_map_vec, "temp/json/models/btreemaps/models.json");
     // println!("model_pk_map_vec: {:?}", model_pk_map_vec);
@@ -274,7 +276,7 @@ fn get_ending_data_vec(content_vec: Vec<String>, group_pk_map_vec: &Vec<BTreeMap
 
 
 fn get_ending_group_id_map_vec(ending_json_data_vec: Vec<JsonData>) -> Vec<BTreeMap<String, i64>> {
-    // map os <ending, group>
+    // map os <ending, language>
     let mut ending_group_id_map_vec: Vec<BTreeMap<String, i64>> = Vec::new(); 
     for ending_data in ending_json_data_vec {
         let mut ending_group_id_map: BTreeMap<String, i64> = BTreeMap::new();
@@ -295,7 +297,35 @@ fn get_ending_group_id_map_vec(ending_json_data_vec: Vec<JsonData>) -> Vec<BTree
     return ending_group_id_map_vec;
 }
 
-    
+
+fn get_ending_language_id_map_vec(ending_json_data_vec: Vec<JsonData>, group_json_data_vec: Vec<JsonData>) -> Vec<BTreeMap<String, i64>> {
+    // map os <ending, language>
+    let mut ending_language_id_map_vec: Vec<BTreeMap<String, i64>> = Vec::new(); 
+    for ending_data in ending_json_data_vec {
+        let mut ending_language_id_map: BTreeMap<String, i64> = BTreeMap::new();
+        if let Field::EndingField(EndingField { ending, group }) = &ending_data.fields {
+            let group_pk: i64 = group.parse::<i64>().unwrap() - 1;
+            
+            let mut language_id: i64 = 0;
+            if let Field::GroupField(GroupField { group:_, language }) = group_json_data_vec[group_pk.to_string().parse::<usize>().unwrap()].clone().fields {
+                language_id = language.parse::<i64>().unwrap();
+            }
+
+            ending_language_id_map.insert(ending.to_owned(), language_id);
+
+            while language_id >= ending_language_id_map_vec.len().to_string().parse::<i64>().unwrap() {
+                let mut initial_map: BTreeMap<String, i64> = BTreeMap::new();
+                initial_map.insert(String::from("-"), ending_language_id_map_vec.len().to_string().parse::<i64>().unwrap());
+                ending_language_id_map_vec.push(initial_map);
+            }
+
+            ending_language_id_map_vec[language_id.to_string().parse::<usize>().unwrap()].append(&mut ending_language_id_map);
+        }
+    }
+
+    return ending_language_id_map_vec;
+}
+
 
 
 fn get_ending_pk_map_vec(ending_json_data_vec: Vec<JsonData>) -> Vec<BTreeMap<String, i64>> {
@@ -322,7 +352,7 @@ fn get_ending_pk_map_vec(ending_json_data_vec: Vec<JsonData>) -> Vec<BTreeMap<St
 
 
 
-fn get_model_data_vec_vec(content_vec: Vec<String>, ending_pk_map_vec: &Vec<BTreeMap<String, i64>>, ending_group_id_map_vec: &Vec<BTreeMap<String, i64>>, group_pk_map_vec: &Vec<BTreeMap<String, i64>> ) -> Vec<Vec<String>> {
+fn get_model_data_vec_vec(content_vec: Vec<String>, ending_pk_map_vec: &Vec<BTreeMap<String, i64>>, group_pk_map_vec: &Vec<BTreeMap<String, i64>> ) -> Vec<Vec<String>> {
     let main_selector = scraper::Selector::parse("div.model-row").unwrap();
     let document_vec: Vec<Html> = content_vec.into_iter()
         .map(|extract| scraper::Html::parse_document(&extract))
@@ -361,10 +391,9 @@ fn get_model_data_vec_vec(content_vec: Vec<String>, ending_pk_map_vec: &Vec<BTre
             let group_index = group_pk_map_vec[index]
                 .get(&model_ending_array[2][0]).unwrap()
                 .to_string().parse::<usize>().unwrap();
-            let ending_group_id_map = ending_group_id_map_vec[group_index].clone();
-            let _ending_pk_map = ending_pk_map_vec[group_index].clone();
+            let ending_pk_map = ending_pk_map_vec[group_index].clone();
 
-            model_ending_array[1][0] = ending_group_id_map.get(&model_ending_array[1][0]).unwrap().to_string()
+            model_ending_array[1][0] = ending_pk_map.get(&model_ending_array[1][0]).unwrap().to_string()
         }
 
         
@@ -387,7 +416,7 @@ fn get_model_data_vec_vec(content_vec: Vec<String>, ending_pk_map_vec: &Vec<BTre
 }
 
 
-fn get_model_ending_id_map_vec_vec(model_json_data_vec: Vec<JsonData>) -> Vec<BTreeMap<String, i64>> {
+fn get_model_ending_id_map_vec(model_json_data_vec: Vec<JsonData>) -> Vec<BTreeMap<String, i64>> {
     // map os <model, ending>
     let mut model_ending_id_map_vec: Vec<BTreeMap<String, i64>> = Vec::new(); 
     for model_data in model_json_data_vec {
@@ -410,6 +439,38 @@ fn get_model_ending_id_map_vec_vec(model_json_data_vec: Vec<JsonData>) -> Vec<BT
 }
 
 
+fn get_model_language_id_map_vec(model_json_data_vec: Vec<JsonData>, ending_json_data_vec:Vec<JsonData>, group_json_data_vec: Vec<JsonData>) -> Vec<BTreeMap<String, i64>> {
+    // map os <model, ending>
+    let mut model_ending_id_map_vec: Vec<BTreeMap<String, i64>> = Vec::new(); 
+    for model_data in model_json_data_vec {
+        let mut model_ending_id_map: BTreeMap<String, i64> = BTreeMap::new();
+        if let Field::ModelField(ModelField { model, ending }) = &model_data.fields {
+            let ending_pk: i64 = ending.parse::<i64>().unwrap() - 1;
+            
+            let mut group_pk: i64 = 0;
+            if let Field::EndingField(EndingField { ending:_, group }) = ending_json_data_vec[ending_pk.to_string().parse::<usize>().unwrap()].clone().fields {
+                group_pk = group.parse::<i64>().unwrap() - 1;
+            }
+
+            let mut language_id: i64 = 0;
+            if let Field::GroupField(GroupField { group:_, language }) = group_json_data_vec[group_pk.to_string().parse::<usize>().unwrap()].clone().fields {
+                language_id = language.parse::<i64>().unwrap();
+            }
+
+            model_ending_id_map.insert(model.to_owned(), language_id);
+
+            while language_id >= model_ending_id_map_vec.len().to_string().parse::<i64>().unwrap() {
+                let mut initial_map: BTreeMap<String, i64> = BTreeMap::new();
+                initial_map.insert(String::from("-"), model_ending_id_map_vec.len().to_string().parse::<i64>().unwrap());
+                model_ending_id_map_vec.push(initial_map);
+            }
+
+            model_ending_id_map_vec[language_id.to_string().parse::<usize>().unwrap()].append(&mut model_ending_id_map);
+        }
+    }
+
+    return model_ending_id_map_vec;
+}
 
 
 fn get_model_pk_map_vec(model_json_data_vec: Vec<JsonData>) -> Vec<BTreeMap<String, i64>> {
