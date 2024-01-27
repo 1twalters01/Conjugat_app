@@ -124,7 +124,7 @@ pub async fn run_conjugations_modules() {
         &verb_page_info_vec_vec, &tense_pk_map_vec, &subject_pk_map_vec, &auxiliary_pk_map_vec, &conjugate_pk_map_vec);
     let conjugation_json_data_vec: Vec<JsonData> = create_json_data_vec(conjugation_data_vec_vec, FieldOptions::ConjugationField);
     save_data_to_json_file(&conjugation_json_data_vec, "temp/json/conjugations/conjugations.json");
-    let conjugation_pk_map_vec: Vec<BTreeMap<String, i64>> = get_conjugation_pk_map_vec(conjugation_json_data_vec, base_json_data_vec);
+    let conjugation_pk_map_vec: Vec<BTreeMap<String, i64>> = get_conjugation_pk_map_vec(conjugation_json_data_vec, conjugate_json_data_vec, base_json_data_vec);
     save_string_i64_map_vec(&conjugation_pk_map_vec, "temp/json/conjugations/btreemaps/conjugation.json");
 
 }
@@ -484,7 +484,7 @@ fn extract_conjugation_data_vec_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>,
 }
 
 
-fn get_conjugation_pk_map_vec(conjugation_json_data_vec: Vec<JsonData>, base_json_data_vec: Vec<JsonData>) -> Vec<BTreeMap<String, i64>>  {
+fn get_conjugation_pk_map_vec(conjugation_json_data_vec: Vec<JsonData>, conjugate_json_data_vec: Vec<JsonData>, base_json_data_vec: Vec<JsonData>) -> Vec<BTreeMap<String, i64>>  {
     let mut conjugation_pk_map_vec: Vec<BTreeMap<String, i64>> = Vec::new();
     for conjugation_data in conjugation_json_data_vec {
         let mut conjugation_pk_map: BTreeMap<String, i64> = BTreeMap::new();
