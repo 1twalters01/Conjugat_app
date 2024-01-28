@@ -29,35 +29,7 @@ use crate::data_types::{
     },
 };
 
-pub fn open_file(file_path: &str) -> result::Result<File, io::Error> {
-    let file_result = OpenOptions::new().write(true).read(true).open(file_path);
 
-    let file = match file_result {
-        Ok(file) => Ok(file),
-        Err(error) => match error.kind() {
-            // If file not found then create the file else recoverable error
-            ErrorKind::NotFound => match File::create(file_path) {
-                Ok(file) => Ok(file),
-                Err(e) => return Err(e),
-            },
-            
-            other_error_kind => {
-                // Make better error message
-                let msg = "Problem opening the file";
-                Err(Error::new(other_error_kind, msg))
-            },
-        },
-    };
-
-    return file;
-}
-
-pub fn append_file(file: &mut File, content: &String) {
-    let old_content: String = String::new();
-    let new_content: String = old_content + content;
-    // let check: () = file.write_all(new_content.as_bytes()).unwrap();
-    file.write_all(new_content.as_bytes()).unwrap();
-}
 
 
 // pub async fn async_scrape_html_from_url(url: String) -> String {
@@ -91,7 +63,7 @@ pub fn read_html_from_file(file_path: &str) -> String {
 pub fn create_json_data_vec(data_vec_vec: Vec<Vec<String>>, field_type: FieldOptions) -> Vec<JsonData> {
     let mut json_data: Vec<JsonData> = Vec::new();
     let mut primary_key: i64 = 0;
-   
+
 
     for (_index2, data) in data_vec_vec.into_iter().enumerate() {
         primary_key = primary_key + 1;
@@ -211,13 +183,6 @@ pub fn create_json_data_vec(data_vec_vec: Vec<Vec<String>>, field_type: FieldOpt
     return json_data;
 }
 
-
-pub fn save_data_to_json_file(data:&Vec<JsonData>, file_path: &str) {
-    let serialized_data: String = serde_json::to_string_pretty(&data).unwrap();
-    fs::remove_file(file_path).unwrap();
-    let mut file = open_file(file_path).unwrap();
-    append_file(&mut file, &serialized_data);
-}
 
 pub async fn create_pool_connection() -> Pool<Postgres> {
     let pgusername: String = env::var("PG_USERNAME").unwrap();

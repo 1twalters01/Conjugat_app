@@ -488,7 +488,7 @@ fn get_conjugation_pk_map_vec(conjugation_json_data_vec: Vec<JsonData>, conjugat
     let mut conjugation_pk_map_vec: Vec<BTreeMap<String, i64>> = Vec::new();
     for conjugation_data in conjugation_json_data_vec {
         let mut conjugation_pk_map: BTreeMap<String, i64> = BTreeMap::new();
-        if let Field::ConjugationField(ConjugationField { rank, tense, subject, auxiliary, conjugate }) = &conjugate_data.fields {
+        if let Field::ConjugationField(ConjugationField { rank, tense, subject, auxiliary, conjugate }) = &conjugation_data.fields {
             let conjugate_pk: i64 = conjugate.parse::<i64>().unwrap() - 1;
 
             let mut base_pk: i64 = 0;
@@ -514,18 +514,6 @@ fn get_conjugation_pk_map_vec(conjugation_json_data_vec: Vec<JsonData>, conjugat
 
     return conjugation_pk_map_vec;
 }
-
-
-fn save_string_i64_map_vec(string_i64_map_vec: &Vec<BTreeMap<String, i64>>, file_path: &str) {
-    let serialized_data: String = serde_json::to_string_pretty(&string_i64_map_vec).unwrap();
-    fs::remove_file(file_path).unwrap();
-    let mut file = open_file(file_path).unwrap();
-    append_file(&mut file, &serialized_data);
-
-    // println!("string_i64_map_vec: {:?}", string_i64_map_vec);
-    // println!("file_path: {}", file_path);
-}
-
 
 
 
