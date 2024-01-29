@@ -53,7 +53,7 @@ async fn save_data_to_postgres(json_data_vec: &Vec<JsonData>) -> Result<(), io::
         let field_result = match &json_data.fields {
             Field::LanguageField(LanguageField{language}) => save_language_field_to_postgres(pool, language),
             Field::GroupField(GroupField{language, group}) => save_group_field_to_postgres(pool, language, group),
-            Field::EndingField(EndingField{group, ending}) => save_ending_field_to_postgres(pool, group, ending,
+            Field::EndingField(EndingField{group, ending}) => save_ending_field_to_postgres(pool, group, ending),
             Field::ModelField(ModelField{ending, model}) => save_model_field_to_postgres(pool, ending, model),
             Field::BaseField(BaseField{rank, language, base}) => save_base_field_to_postgres(pool, rank, language, base),
             Field::TenseField(TenseField{language, tense}) => save_tense_field_to_postgres(pool, language, tense),
@@ -74,7 +74,28 @@ async fn save_data_to_postgres(json_data_vec: &Vec<JsonData>) -> Result<(), io::
 }
 
 async fn save_language_field_to_postgres(pool: Postgres<Postgres>, language: &str) -> Result<(), Error> {
+    if let Field::LanguageField(LanguageField { language }) = &language_data.fields {
+        let insert_query = sqlx::query("INSERT INTO verbs_language (id, language) VALUES ($1, $2)")
+            .bind(language_data.pk)
+            .bind(language)
+            .execute(&pool).await;
 
+        match insert_query {
+            Ok(res) => {res},
+            Err(_) => {
+                let update_query = sqlx::query("UPDATE verbs_lanauge SET lanague=($1), WHERE id=($2)")
+                    .bind(language)
+                    .bind(language_data.pk)
+                    .execute(&pool).await;
+
+                let update_result = match update_query {
+                    Ok(res) => res,
+                    Err(err) => panic!("Error: {:?}", err),
+                };
+                update_result
+            }
+        };
+    }
 }
 
 async fn save_group_field_to_postgres(pool: Pool<Postgres>, language: &str, group: &str) -> Result<(), Error> {
@@ -131,8 +152,7 @@ async fn save_ending_field_to_postgres(pool: Pool<Postgres>, group: &str, ending
 }
 
 
-for model_data in models_data {
-    println!("{:?} {:?}", model_data, model_data.pk);
+async fn save_model_field_to_postgres(pool: Pool<Postgres>, ending: &str, model: &str) -> Result<(), Error> {
     if let Field::ModelField(ModelField { ending, model }) = &model_data.fields {
         let insert_query = sqlx::query("INSERT INTO verbs_model (id, ending, model) VALUES ($1, $2, $3)")
             .bind(model_data.pk)
@@ -156,11 +176,8 @@ for model_data in models_data {
                 rewrite_result
             },
         };
-    } else {
-        panic!("non-model in model field");
-    };
+    }
 }
 
-async fn pg_language_field() {
 
-}
+async fn save_base_field_to_postgres() -> Result<(), Error> {}
