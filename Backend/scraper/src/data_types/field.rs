@@ -94,6 +94,7 @@ impl Field {
             FieldOptions::TenseField => {
                 let tense_subfield = TenseSubfield { major: String::new(), minor: String::new() };
                 let tense_field = TenseField {
+                    rank: 0,
                     tense: tense_subfield,
                     language: String::new(),
                 };
@@ -102,6 +103,7 @@ impl Field {
 
             FieldOptions::SubjectField => {
                 let subject_field = SubjectField {
+                    rank: 0,
                     subject: String::new(),
                     language: String::new(),
                 };
@@ -118,6 +120,7 @@ impl Field {
 
             FieldOptions::ConjugateField => {
                 let conjugate_field = ConjugateField {
+                    rank: 0,
                     base: String::new(),
                     conjugate: String::new(),
                     model: String::new(),

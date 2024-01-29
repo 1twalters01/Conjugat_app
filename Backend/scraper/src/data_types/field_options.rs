@@ -33,6 +33,7 @@ pub struct BaseField {
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct TenseField {
+    pub rank: i64,
     pub language: String,
     pub tense: TenseSubfield,
 }
@@ -44,6 +45,7 @@ pub struct TenseSubfield {
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SubjectField {
+    pub rank: i64,
     pub language: String,
     pub subject: String,
 }
@@ -56,6 +58,7 @@ pub struct AuxiliaryField {
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct ConjugateField {
+    pub rank: i64,
     pub base: String,
     pub model: String,
     pub conjugate: String,
