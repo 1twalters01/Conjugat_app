@@ -46,13 +46,6 @@ use crate::data_types::{
 //     return content
 // }
 
-pub fn read_html_from_file(file_path: &str) -> String {
-    let mut content: String = String::new();
-    let mut file: File = open_file(file_path).unwrap();
-    file.read_to_string(&mut content).unwrap();
-    // append_file(&mut file, &content);
-    return content
-}
 
 // pub fn read_data_from_file(file_path: &str) -> Vec<JsonData> {
 //     let content: String = read_html_from_file(file_path);

@@ -1,43 +1,60 @@
-// Todo
 use crate::data_types::{
-    field::FieldOptions::LanguageField,
+    field::{
+        Field,
+        FieldOptions,
+    },
     json_data::{
         JsonData,
         create_json_data_vec_from_vec_vec_string,
     },
+    field_options,
 };
 
 use crate::helper_functions::{
-    save_functions::save_json_data_vec_to_file,
-    postgres_functions::save_data_to_postgres,
+    // postgres_functions::save_data_to_postgres,
+    save_functions::{
+        save_json_data_vec_to_file,
+        save_map_vec_to_file,
+    },
 };
 
 use std::{
-    collections::HashSet,
-    result,
+    collections::{
+        HashSet,
+        BTreeMap,
+    },
+    result::Result,
 };
 
 
 
-pub async fn run_languages_module(languages: Vec<String>) {
-    match is_vector_valid(&languages) {
-        Ok(res) => if res == false {panic!("invalid language vector")},
+pub async fn run_languages_module(language_vec: Vec<String>) {
+    // validate language vector
+    match is_language_vector_valid(&language_vec) {
+        Ok(res) => if res == false { panic!("invalid language vector") },
         Err(err) => panic!("{}", err),
     };
 
-    let language_data_vec_vec: Vec<Vec<String>> = form_vec_vec(languages);
+    // create json data vector for the languages
+    let language_vec_vec: Vec<Vec<String>> = reform_language_vec_vec(language_vec);
+    let language_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(language_vec_vec, FieldOptions::LanguageField); 
 
-    let languages_data: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(language_data_vec_vec, LanguageField); 
+    // save json data vector
     let file_path: &str = "temp/json/languages/languages.json";
-    save_json_data_vec_to_file(&languages_data, file_path);
+    save_json_data_vec_to_file(&language_json_data_vec, file_path);
+    println!("language data: {:#?}", language_json_data_vec);
 
-    println!("language data: {:#?}", languages_data);
-    save_data_to_postgres(&languages_data);
+    // create language maps
+    let language_pk_map_vec: Vec<BTreeMap<String, i64>> = get_language_pk_map_vec(&language_json_data_vec);
+    save_map_vec_to_file(&language_pk_map_vec, "temp/json/languages/btreemaps/languages.json");
+
+    // save language data to postgres
+    // save_data_to_postgres(&language_json_data_vec);
 }
 
 
 // Improve this function
-pub(crate) fn is_vector_valid(vector: &Vec<String>) -> result::Result<bool, &str> {
+pub(crate) fn is_language_vector_valid(vector: &Vec<String>) -> Result<bool, &str> {
     let hs: HashSet<String> = vector
         .iter()
         .cloned()
@@ -57,7 +74,7 @@ pub(crate) fn is_vector_valid(vector: &Vec<String>) -> result::Result<bool, &str
 }
 
 
-fn form_vec_vec(languages: Vec<String>) -> Vec<Vec<String>> {
+fn reform_language_vec_vec(languages: Vec<String>) -> Vec<Vec<String>> {
     let mut languages_data_vec_vec: Vec<Vec<String>> = Vec::new();
     for language in languages {
         let data: Vec<String> = Vec::from([language]);
@@ -65,5 +82,20 @@ fn form_vec_vec(languages: Vec<String>) -> Vec<Vec<String>> {
     }
     
     return languages_data_vec_vec;
+}
+
+
+fn get_language_pk_map_vec(language_data_vec: &Vec<JsonData>) -> Vec<BTreeMap<String, i64>> {
+    let mut language_pk_map_vec: Vec<BTreeMap<String, i64>> = Vec::new();
+
+    for language_data in language_data_vec {
+        if let Field::LanguageField(field_options::LanguageField { language }) = &language_data.fields {
+            let mut language_pk_map: BTreeMap<String, i64> = BTreeMap::new();
+            language_pk_map.insert(language.clone(), language_data.pk);
+            language_pk_map_vec.push(language_pk_map);
+        }
+    }
+
+    return language_pk_map_vec;
 }
 
