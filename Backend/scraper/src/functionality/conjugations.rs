@@ -1,40 +1,40 @@
-use crate::data_types::{
-    page_info::{
-        PageInfo,
-        Tense,
-        Phrase
+use crate::{
+    data_types::{
+        page_info::{
+            PageInfo,
+            Tense,
+            Phrase
+        },
+        json_data::{
+            JsonData,
+            create_json_data_vec_from_vec_vec_string
+        },
+        field::{
+            Field,
+            FieldOptions,
+        },
+        field_options::{
+            LanguageField,
+            BaseField,
+            TenseField,
+            SubjectField,
+            AuxiliaryField,
+            ConjugateField,
+            ConjugationField,
+        },
     },
-    json_data::{
-        JsonData,
-        create_json_data_vec_from_vec_vec_string
-    },
-    field::{
-        Field,
-        FieldOptions,
-    },
-    field_options::{
-        LanguageField,
-        // GroupField,
-        // EndingField,
-        // ModelField,
-        BaseField,
-        TenseField,
-        SubjectField,
-        AuxiliaryField,
-        ConjugateField,
-        ConjugationField,
+    helper_functions::{
+        // postgres_functions::save_data_to_postgres,
+        read_functions::{
+            read_file_to_string,
+            read_file_to_string_none,
+        },
+        save_functions::{
+            save_json_data_vec_to_file,
+            save_map_vec_to_file,
+            save_string_vec_vec_to_file,
+        },
     }
-};
-
-use crate::helper_functions::{
-    // postgres_functions::save_data_to_postgres,
-    read_functions::read_file_to_string,
-    save_functions::{
-        save_json_data_vec_to_file,
-        save_map_vec_to_file,
-        save_string_vec_vec_to_file,
-    },
-
 };
 
 use std::{
@@ -79,7 +79,7 @@ pub async fn run_conjugations_modules() {
     println!("backoff: {}, error 429 backoff: {}", backoff, error_429_backoff);
 
     // Fetch verb urls vector
-    let verb_url_vec_vec: Vec<Vec<String>> = fetch_verb_url_vec_vec(language_vec, backoff, error_429_backoff);
+    let (verb_url_vec_vec, backoff, error_429_backoff) = fetch_verb_url_vec_vec(language_vec, backoff, error_429_backoff).await;
 
     // Generate verb page information vector
     let verb_page_info_vec_vec: Vec<Vec<PageInfo>> = generate_verb_page_info_vec_vec(verb_url_vec_vec, backoff_duration, error_429_backoff_duration);
@@ -148,10 +148,10 @@ fn read_language_data_from_json_data(language_content: &str) -> (Vec<JsonData>, 
 }
 
 
-fn fetch_verb_url_vec_vec(language_vec: Vec<String>, backoff: u64, error_429_backoff: u64) -> Vec<Vec<String>> {
+async fn fetch_verb_url_vec_vec(language_vec: Vec<String>, backoff: u64, error_429_backoff: u64) -> (Vec<Vec<String>>, u64, u64) {
 // try to read urls_vec_vec otherwise scrape from reverso
     let verb_url_vec_vec_file_path: &str = "temp/json/conjugations/verb_urls.json";
-    let verb_url_vec_content: String = read_file_to_string(verb_url_vec_vec_file_path);
+    let verb_url_vec_content: String = read_file_to_string_none(verb_url_vec_vec_file_path);
     let verb_url_vec_vec_file_result: Result<Vec<Vec<String>>, serde_json::Error>
             = serde_json::from_str(verb_url_vec_content.as_str());
 
@@ -163,17 +163,19 @@ fn fetch_verb_url_vec_vec(language_vec: Vec<String>, backoff: u64, error_429_bac
             let url_listing_vec_vec = generate_url_listing_vec_vec(&language_vec);
             println!("url_listing_vec_vec: {:?}", url_listing_vec_vec);
 
-            let verb_vec_vec: Vec<Vec<String>> = scrape_url_listing_vec_vec(url_listing_vec_vec, backoff, error_429_backoff);
+            let (verb_vec_vec, backoff, error_429_backoff) = scrape_url_listing_vec_vec(url_listing_vec_vec, backoff, error_429_backoff).await;
+            println!("verb_vec_vec: {:?}", verb_vec_vec);
 
             let verb_url_vec_vec: Vec<Vec<String>> = generate_verb_url_vec_vec(verb_vec_vec, language_vec);
-            save_string_vec_vec_to_file(&verb_url_vec_vec, "temp/json/verb_urls.json");
+            save_string_vec_vec_to_file(&verb_url_vec_vec, "temp/json/conjugations/verb_urls.json");
+            println!("verb_url_vec_vec: {:?}", verb_url_vec_vec);
 
-            return verb_url_vec_vec;
+            return (verb_url_vec_vec, backoff, error_429_backoff);
         }
     };
 
     println!("verb_url_vec_vec: {:?}", verb_url_vec_vec);
-    return verb_url_vec_vec;
+    return (verb_url_vec_vec, backoff, error_429_backoff);
 }
 
 
@@ -194,9 +196,9 @@ fn generate_url_listing_vec_vec(language_vec: &Vec<String>) -> Vec<Vec<String>> 
     return url_listing_vec_vec;
 }
 
-fn scrape_url_listing_vec_vec(url_listing_vec_vec: Vec<Vec<String>>, mut backoff: u64, mut error_429_backoff: u64) -> Vec<Vec<String>> {
-    let mut verb_vec_vec: Vec<Vec<String>> = Vec::new();
-
+async fn scrape_url_listing_vec_vec(url_listing_vec_vec: Vec<Vec<String>>, mut backoff: u64, mut error_429_backoff: u64) -> (Vec<Vec<String>>, u64, u64) {
+    let mut verb_vec_vec: Vec<Vec<String>> = url_listing_vec_vec.clone().into_iter().map(|_| Vec::new()).collect::<Vec<Vec<String>>>();
+        
     for (index, url_listing_vec) in url_listing_vec_vec.into_iter().enumerate() {
         for url_listing in url_listing_vec {
             let mut valid_response_bool: bool = false;
@@ -204,7 +206,7 @@ fn scrape_url_listing_vec_vec(url_listing_vec_vec: Vec<Vec<String>>, mut backoff
             let mut response: String = String::new();
 
             while valid_response_bool == false {
-                let request = reqwest::blocking::get(url_listing.clone()).unwrap();
+                let request = reqwest::get(url_listing.clone()).await.unwrap();
 
                 match request.status() {
                     reqwest::StatusCode::OK => valid_response_bool = true,
@@ -212,17 +214,18 @@ fn scrape_url_listing_vec_vec(url_listing_vec_vec: Vec<Vec<String>>, mut backoff
                     other => panic!("{:?}", other),
                 };
 
-                response = request.text().unwrap();
+                response = request.text().await.unwrap();
 
                 if valid_response_bool == false {
 
                     if response_loop_count == 0 {
-                        // increase backoff
-                        backoff = (backoff as f64 * 1.2) as u64 / 1;
+                        backoff = ((backoff + 1) as f64 * 1.2).round() as u64;
+                        env::set_var("BACKOFF", backoff.to_string());
+                        // save new backoff to env
                     } else {
-                        // increase error_429_backoff
-                        error_429_backoff = (error_429_backoff as f64 * 1.2) as u64 / 1;
-
+                        error_429_backoff = ((error_429_backoff + 1) as f64 * 1.2).round() as u64;
+                        env::set_var("ERROR_429_BACKOFF", error_429_backoff.to_string());
+                        // save new error_429_backoff to env
                     }
 
                     let error_429_backoff_duration: Duration = time::Duration::from_secs(error_429_backoff);
@@ -240,8 +243,11 @@ fn scrape_url_listing_vec_vec(url_listing_vec_vec: Vec<Vec<String>>, mut backoff
 
             // map to get the vec of verbs
             let li_selector = scraper::Selector::parse("li").unwrap();
-            let mut verb_vec: Vec<String> = section.select(&li_selector).map(|li| li.text().collect::<String>()).collect::<Vec<String>>();
+            let mut verb_vec: Vec<String> = section.select(&li_selector).map(|li| li.text().collect::<String>().split_whitespace().collect()).collect::<Vec<String>>();
+            validate_verb_vec(&mut verb_vec);
+
             verb_vec_vec[index].append(&mut verb_vec);
+            println!("verb_vec_vec[{}]: {:?}", index, verb_vec_vec[index]);
 
             // wait the backoff duration
             let backoff_duration: Duration = time::Duration::from_secs(backoff);
@@ -249,16 +255,18 @@ fn scrape_url_listing_vec_vec(url_listing_vec_vec: Vec<Vec<String>>, mut backoff
         }
     }
 
-    return verb_vec_vec;
+    return (verb_vec_vec, backoff, error_429_backoff);
 }
 
+
+fn validate_verb_vec(verb_vec: &Vec<String>) {}
 
 
 fn generate_verb_url_vec_vec(verb_vec_vec: Vec<Vec<String>>, language_vec: Vec<String>) -> Vec<Vec<String>> {
     let verb_url_vec_vec: Vec<Vec<String>> = verb_vec_vec.into_iter().enumerate()
         .map(|(index, verb_vec)|
             verb_vec.into_iter().map(|verb| String::from("https://conjugator.reverso.net/conjugation-")
-                + language_vec[index].as_str() + "-verb-" + verb.as_str() + "html")
+                + language_vec[index].as_str() + "-verb-" + verb.as_str() + ".html")
             .collect::<Vec<String>>())
         .collect::<Vec<Vec<String>>>();
 

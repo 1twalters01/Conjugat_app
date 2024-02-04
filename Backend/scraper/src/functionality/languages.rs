@@ -42,7 +42,6 @@ pub async fn run_languages_module(language_vec: Vec<String>) {
     // save json data vector
     let file_path: &str = "temp/json/languages/languages.json";
     save_json_data_vec_to_file(&language_json_data_vec, file_path);
-    println!("language data: {:#?}", language_json_data_vec);
 
     // create language maps
     let language_pk_map_vec: Vec<BTreeMap<String, i64>> = get_language_pk_map_vec(&language_json_data_vec);

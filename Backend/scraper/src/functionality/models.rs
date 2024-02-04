@@ -33,7 +33,8 @@ pub async fn run_model_module() {
     // Read languages data from file
     let language_content: String = read_file_to_string("temp/json/languages/languages.json");
     let language_vec = read_language_vec_from_language_json_data(language_content.as_str());
-    let language_pk_map_vec: Vec<BTreeMap<String, i64>> = serde_json::from_str(&language_content).unwrap();
+    let language_map_content: String = read_file_to_string("temp/json/languages/btreemaps/languages.json");
+    let language_pk_map_vec: Vec<BTreeMap<String, i64>> = serde_json::from_str(&language_map_content).unwrap();
 
     // Read html for each language's model page on Reverso (saved for convenience)
     let content_vec: Vec<String> = get_model_content_vec(language_vec);

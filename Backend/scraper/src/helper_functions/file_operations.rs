@@ -36,8 +36,6 @@ pub fn open_or_create_file(file_path: &str) -> Result<File, io::Error> {
 }
 
 pub fn create_file(file_path: &str) -> Result<File, io::Error> {
-    let file_result = OpenOptions::new().write(true).read(true).open(file_path);
-
     // If file not found then create the file else recoverable error
     match File::create(file_path) {
         Ok(file) => return Ok(file),
@@ -56,20 +54,22 @@ pub fn append_file(file: &mut File, content: &String) -> result::Result<(), io::
     let mut old_content: String = String::new();
     file.read_to_string(&mut old_content).unwrap();
     let new_content: String = old_content + content;
-    match file.write_all(new_content.as_bytes()) {
+    println!("{}", new_content);
+    match file.write_all(&new_content.as_bytes()) {
         Ok(_) => return Ok(()),
         Err(err) => return Err(err),
     };
 }
 
 pub fn delete_file(file_path: &str) -> result::Result<(), io::Error> {
-    let file_result = match fs::remove_file(file_path) {
+    match fs::remove_file(file_path) {
         Ok(()) => return Ok(()),
-        Err(error) => match error.kind(){
-            ErrorKind::NotFound => return Ok(()),
+        Err(error) => match error.kind() {
+            ErrorKind::NotFound => {}// return Ok(()),
             other_error_kind => return Err(Error::new(other_error_kind, "Error")),
         },
     };
-
+    
+    return Ok(());
 }
 
