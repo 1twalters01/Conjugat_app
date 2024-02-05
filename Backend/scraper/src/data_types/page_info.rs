@@ -2,10 +2,12 @@
 pub struct PageInfo {
     pub metadata: PageMetadata,
 
-    pub tenses: Vec<Tense>,
+    pub major_tenses: Vec<String>,
+    pub minor_tenses: Vec<String>,
     pub subjects: Vec<String>,
     pub auxiliaries: Vec<String>,
     pub conjugates: Vec<String>,
+    pub tenses: Vec<Tense>,
     pub phrases: Vec<Vec<Phrase>>,
 }
 
@@ -13,10 +15,12 @@ impl PageInfo {
     pub fn new() -> PageInfo {
         let page_info = PageInfo {
             metadata: PageMetadata::new(),
-            tenses: Vec::new(),
+            major_tenses: Vec::new(),
+            minor_tenses: Vec::new(),
             subjects: Vec::new(),
             auxiliaries: Vec::new(),
             conjugates: Vec::new(),
+            tenses: Vec::new(),
             phrases: Vec::new(),
         };
 
@@ -24,6 +28,7 @@ impl PageInfo {
     }
 }
 
+// make this the commented out version instead
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Phrase  {
     pub subject: String,
@@ -42,6 +47,27 @@ impl Phrase {
         return phrase;
     }
 }
+
+// #[derive(Debug, Clone, PartialEq, Eq)]
+// pub struct Phrase  {
+//     pub phrase: Vec<String>,
+//     pub subject: Vec<String>,
+//     pub auxiliary: Vec<String>,
+//     pub conjugate: Vec<String>,
+// }
+//
+// impl Phrase {
+//     pub fn new() -> Phrase {
+//         let phrase = Phrase {
+//             phrase: Vec::new(),
+//             subject: Vec::new(),
+//             auxiliary: Vec::new(),
+//             conjugate: Vec::new(),
+//         };
+//
+//         return phrase;
+//     }
+// }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct PageMetadata {

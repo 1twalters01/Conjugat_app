@@ -3,6 +3,10 @@ use crate::data_types::json_data::JsonData;
 use crate::helper_functions::file_operations::{append_file, create_file, delete_file, write_file};
 
 
+pub fn save_env(key: &str, value: &str) {
+
+}
+
 // Don't type check with the compiler
 pub fn save_data_to_file<T>(data: &T, file_path: &str)
 where T: serde::Serialize {

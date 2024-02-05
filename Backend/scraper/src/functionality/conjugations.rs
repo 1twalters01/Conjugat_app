@@ -30,6 +30,7 @@ use crate::{
             read_file_to_string_none,
         },
         save_functions::{
+            save_env,
             save_json_data_vec_to_file,
             save_map_vec_to_file,
             save_string_vec_vec_to_file,
@@ -48,6 +49,7 @@ use std::{
     thread,
 };
 
+use itertools::Itertools;
 
 
 pub async fn run_conjugations_modules() {
@@ -73,16 +75,18 @@ pub async fn run_conjugations_modules() {
 
     // Get regular exponential back off & error 429 backoff
     let mut backoff: u64 = env::var("BACKOFF").unwrap().parse::<u64>().unwrap();
-    let mut backoff_duration: Duration = time::Duration::from_secs(backoff);
     let mut error_429_backoff: u64 = env::var("ERROR_429_BACKOFF").unwrap().parse::<u64>().unwrap();
-    let mut error_429_backoff_duration: Duration = time::Duration::from_secs(error_429_backoff);
-    println!("backoff: {}, error 429 backoff: {}", backoff, error_429_backoff);
 
     // Fetch verb urls vector
-    let (verb_url_vec_vec, backoff, error_429_backoff) = fetch_verb_url_vec_vec(language_vec, backoff, error_429_backoff).await;
+    let (verb_url_vec_vec, backoff_res, error_429_backoff_res) = fetch_verb_url_vec_vec(language_vec.clone(), backoff, error_429_backoff).await;
+
+    backoff = backoff_res;
+    error_429_backoff = error_429_backoff_res;
+    // let mut backoff_duration = time::Duration::from_secs(backoff);
+    // let mut error_429_backoff_duration = time::Duration::from_secs(error_429_backoff);
 
     // Generate verb page information vector
-    let verb_page_info_vec_vec: Vec<Vec<PageInfo>> = generate_verb_page_info_vec_vec(verb_url_vec_vec, backoff_duration, error_429_backoff_duration);
+    let verb_page_info_vec_vec: Vec<Vec<PageInfo>> = generate_verb_page_info_vec_vec(language_vec.clone(), verb_url_vec_vec, backoff, error_429_backoff).await;
     // println!("verb_page_info_vec: {:#?}", verb_page_info_vec);
 
 
@@ -161,20 +165,16 @@ async fn fetch_verb_url_vec_vec(language_vec: Vec<String>, backoff: u64, error_4
 
         Err(_) => {
             let url_listing_vec_vec = generate_url_listing_vec_vec(&language_vec);
-            println!("url_listing_vec_vec: {:?}", url_listing_vec_vec);
-
             let (verb_vec_vec, backoff, error_429_backoff) = scrape_url_listing_vec_vec(url_listing_vec_vec, backoff, error_429_backoff).await;
-            println!("verb_vec_vec: {:?}", verb_vec_vec);
 
             let verb_url_vec_vec: Vec<Vec<String>> = generate_verb_url_vec_vec(verb_vec_vec, language_vec);
             save_string_vec_vec_to_file(&verb_url_vec_vec, "temp/json/conjugations/verb_urls.json");
-            println!("verb_url_vec_vec: {:?}", verb_url_vec_vec);
 
             return (verb_url_vec_vec, backoff, error_429_backoff);
         }
     };
 
-    println!("verb_url_vec_vec: {:?}", verb_url_vec_vec);
+    // println!("verb_url_vec_vec: {:?}", verb_url_vec_vec);
     return (verb_url_vec_vec, backoff, error_429_backoff);
 }
 
@@ -221,10 +221,12 @@ async fn scrape_url_listing_vec_vec(url_listing_vec_vec: Vec<Vec<String>>, mut b
                     if response_loop_count == 0 {
                         backoff = ((backoff + 1) as f64 * 1.2).round() as u64;
                         env::set_var("BACKOFF", backoff.to_string());
+                        save_env("BACKOFF", &backoff.to_string());
                         // save new backoff to env
                     } else {
                         error_429_backoff = ((error_429_backoff + 1) as f64 * 1.2).round() as u64;
                         env::set_var("ERROR_429_BACKOFF", error_429_backoff.to_string());
+                        save_env("ERROR_429BACKOFF", &error_429_backoff.to_string());
                         // save new error_429_backoff to env
                     }
 
@@ -243,7 +245,7 @@ async fn scrape_url_listing_vec_vec(url_listing_vec_vec: Vec<Vec<String>>, mut b
 
             // map to get the vec of verbs
             let li_selector = scraper::Selector::parse("li").unwrap();
-            let mut verb_vec: Vec<String> = section.select(&li_selector).map(|li| li.text().collect::<String>().split_whitespace().collect()).collect::<Vec<String>>();
+            let mut verb_vec: Vec<String> = section.select(&li_selector).map(|li| li.text().collect::<String>().trim().to_string()).collect::<Vec<String>>();
             validate_verb_vec(&mut verb_vec);
 
             verb_vec_vec[index].append(&mut verb_vec);
@@ -259,7 +261,8 @@ async fn scrape_url_listing_vec_vec(url_listing_vec_vec: Vec<Vec<String>>, mut b
 }
 
 
-fn validate_verb_vec(verb_vec: &Vec<String>) {}
+fn validate_verb_vec(_verb_vec: &Vec<String>) {
+}
 
 
 fn generate_verb_url_vec_vec(verb_vec_vec: Vec<Vec<String>>, language_vec: Vec<String>) -> Vec<Vec<String>> {
@@ -278,7 +281,7 @@ fn generate_verb_url_vec_vec(verb_vec_vec: Vec<Vec<String>>, language_vec: Vec<S
 // and turn get all the data out of it and put into the PageInfo struct
 // inner vec for each verb in a language
 // outer vec for each language
-fn generate_verb_page_info_vec_vec(verb_url_vec_vec: Vec<Vec<String>>, backoff: Duration, error_429_backoff: Duration) -> Vec<Vec<PageInfo>> {
+async fn generate_verb_page_info_vec_vec(language_vec: Vec<String>, verb_url_vec_vec: Vec<Vec<String>>, mut backoff: u64, mut error_429_backoff: u64) -> Vec<Vec<PageInfo>> {
     let mut page_info_vec_vec: Vec<Vec<PageInfo>> = Vec::new();
 
     for (index, verb_url_vec) in verb_url_vec_vec.into_iter().enumerate() {
@@ -286,8 +289,43 @@ fn generate_verb_page_info_vec_vec(verb_url_vec_vec: Vec<Vec<String>>, backoff: 
         let mut count: u64 = 0;
 
         for verb_url in verb_url_vec {
+            count += 1;
+            let mut valid_response_bool: bool = false;
+            let mut response_loop_count: usize = 0;
+            let mut response: String = String::new();
+
+            while valid_response_bool == false {
+                let request = reqwest::get(verb_url.clone()).await.unwrap();
+
+                match request.status() {
+                    reqwest::StatusCode::OK => valid_response_bool = true,
+                    reqwest::StatusCode::TOO_MANY_REQUESTS => panic!("Too many requests"),
+                    other => panic!("{:?}", other),
+                };
+
+                response = request.text().await.unwrap();
+
+                if valid_response_bool == false {
+
+                    if response_loop_count == 0 {
+                        backoff = ((backoff + 1) as f64 * 1.2).round() as u64;
+                        env::set_var("BACKOFF", backoff.to_string());
+                        save_env("BACKOFF", &backoff.to_string());
+                        // save new backoff to env
+                    } else {
+                        error_429_backoff = ((error_429_backoff + 1) as f64 * 1.2).round() as u64;
+                        env::set_var("ERROR_429_BACKOFF", error_429_backoff.to_string());
+                        save_env("ERROR_429BACKOFF", &error_429_backoff.to_string());
+                        // save new error_429_backoff to env
+                    }
+
+                    let error_429_backoff_duration: Duration = time::Duration::from_secs(error_429_backoff);
+                    thread::sleep(error_429_backoff_duration);
+                    response_loop_count += 1;
+                }
+            }
+
             // do earlier validation
-            let response: String = reqwest::blocking::get(verb_url).unwrap().text().unwrap();
             let mut content: String = String::new();
             content.push_str(response.as_str());
             let document = scraper::Html::parse_document(&content);
@@ -295,81 +333,102 @@ fn generate_verb_page_info_vec_vec(verb_url_vec_vec: Vec<Vec<String>>, backoff: 
             let mut page_info: PageInfo = PageInfo::new();
 
             // metadata
-            let metadata_section_selector = scraper::Selector::parse("").unwrap();
-            let base_selector = scraper::Selector::parse("").unwrap();
-            let model_selector = scraper::Selector::parse("").unwrap();
-            let forms_selector = scraper::Selector::parse("").unwrap();
-            let language_selector = scraper::Selector::parse("").unwrap();
-            let auxiliary_selector = scraper::Selector::parse("").unwrap();
-            let other_verbs_selector = scraper::Selector::parse("").unwrap();
-            let similar_verbs_selector = scraper::Selector::parse("").unwrap();
+            // let metadata_section_selector = scraper::Selector::parse("").unwrap();
+            let model_selector = scraper::Selector::parse("span#ch_lblModel>a").unwrap();
+            let base_selector = scraper::Selector::parse("a#ch_lblVerb").unwrap();
+            let auxiliary_selector = scraper::Selector::parse("span#ch_lblAuxiliary>a").unwrap();
+            let forms_selector = scraper::Selector::parse("span#ch_lblAutreForm>a").unwrap();
+            let similar_verbs_selector = scraper::Selector::parse("div.word-wrap-descr>a").unwrap();
+            let other_verbs_selector = scraper::Selector::parse("div.verb-others-list>a").unwrap();
 
-            let metadata_section = document.select(&metadata_section_selector).next().unwrap();
+            // let metadata_section = document.select(&metadata_section_selector).next().unwrap();
+            page_info.metadata.language = language_vec[index].clone();
             page_info.metadata.rank = count.to_string();
-            page_info.metadata.base = metadata_section.select(&base_selector).next().unwrap().text().collect::<String>();
-            page_info.metadata.model = metadata_section.select(&model_selector).next().unwrap().text().collect::<String>();
-            page_info.metadata.forms = metadata_section.select(&forms_selector).map(|form| form.text().collect::<String>()).collect::<Vec<String>>();
-            page_info.metadata.language = metadata_section.select(&language_selector).next().unwrap().text().collect::<String>();
-            page_info.metadata.auxiliary = metadata_section.select(&auxiliary_selector).map(|auxiliary| auxiliary.text().collect::<String>()).collect::<Vec<String>>();
-            page_info.metadata.other_verbs = metadata_section.select(&other_verbs_selector).map(|other| other.text().collect::<String>()).collect::<Vec<String>>();
-            page_info.metadata.similar_verbs = metadata_section.select(&similar_verbs_selector).map(|similar| similar.text().collect::<String>()).collect::<Vec<String>>();
+            page_info.metadata.model = document.select(&model_selector).next().unwrap().text().collect::<String>().trim().to_string();
+            page_info.metadata.base = document.select(&base_selector).next().unwrap().text().collect::<String>().trim().to_string();
+            page_info.metadata.auxiliary = document.select(&auxiliary_selector).map(|auxiliary| auxiliary.text().collect::<String>().trim().to_string()).collect::<Vec<String>>();
+            page_info.metadata.forms = document.select(&forms_selector).map(|form| form.text().collect::<String>().trim().to_string()).collect::<Vec<String>>();
+            page_info.metadata.similar_verbs = document.select(&similar_verbs_selector).map(|similar| similar.text().collect::<String>().trim().to_string()).collect::<Vec<String>>();
+            page_info.metadata.other_verbs = document.select(&other_verbs_selector).map(|other| other.text().collect::<String>().trim().to_string()).collect::<Vec<String>>();
 
             // data
-            let main_section_selector = scraper::Selector::parse("").unwrap();
-            let subjects_selector = scraper::Selector::parse("").unwrap();
-            let auxiliaries_selector = scraper::Selector::parse("").unwrap();
-            let conjugates_selector = scraper::Selector::parse("").unwrap();
+            let subjects_selector = scraper::Selector::parse("i.graytxt").unwrap();
+            let auxiliaries_selector = scraper::Selector::parse("i.auxgraytxt").unwrap();
+            let conjugates_selector = scraper::Selector::parse("i.verbtxt").unwrap();
+
+            page_info.subjects = document.select(&subjects_selector).map(|subject| subject.text().collect::<String>().trim().to_string())
+                .collect::<Vec<String>>().into_iter().unique().collect::<Vec<String>>();
+            page_info.auxiliaries = document.select(&auxiliaries_selector).map(|auxiliary| auxiliary.text().collect::<String>().trim().to_string())
+                .collect::<Vec<String>>().into_iter().unique().collect::<Vec<String>>();
+            page_info.conjugates = document.select(&conjugates_selector).map(|conjugate| conjugate.text().collect::<String>().trim().to_string())
+                .collect::<Vec<String>>().into_iter().unique().collect::<Vec<String>>();
+
+            let main_section_selector = scraper::Selector::parse("div.word-wrap").unwrap();
+            let tense_selector = scraper::Selector::parse("div[mobile-title]").unwrap();
+            let major_tense_selector = scraper::Selector::parse("div.word-wrap-title>h4").unwrap();
 
             let main_section = document.select(&main_section_selector).next().unwrap();
-            page_info.subjects = document.select(&subjects_selector).map(|subject| subject.text().collect::<String>()).collect::<Vec<String>>();
-            page_info.subjects.dedup();
-            page_info.auxiliaries = document.select(&auxiliaries_selector).map(|auxiliary| auxiliary.text().collect::<String>()).collect::<Vec<String>>();
-            page_info.auxiliaries.dedup();
-            page_info.conjugates = document.select(&conjugates_selector).map(|conjugate| conjugate.text().collect::<String>()).collect::<Vec<String>>();
-            page_info.conjugates.dedup();
-
-            let mini_section = scraper::Selector::parse("").unwrap();
-            let major_tense_selector = scraper::Selector::parse("").unwrap();
-            let minor_tense_selector = scraper::Selector::parse("").unwrap();
-            let phrase_selector = scraper::Selector::parse("").unwrap();
-
-            let all_div_selector = scraper::Selector::parse("").unwrap();
             // let minor_tense = main_section.select(&minor_tense_selector).map(|minor_tense| minor_tense.text().collect::<String>()).collect::<Vec<String>>();
-            let mut major_tense: String = String::new();
-            let mut minor_tense: String = String::new();
 
-            for div in main_section.select(&all_div_selector) { // read through every single div in main section
-                // if div class = class for major tense
-                match div.select(&major_tense_selector).next() {
-                    Some (_) => {
-                        major_tense = div.select(&major_tense_selector).next().unwrap().text().collect::<String>();
-                    },
-                    None => {},
-                }
+            // Get tenses
+            let tense_vec: Vec<String> = main_section.select(&tense_selector).map(|tense| tense.value().attr("mobile-title").unwrap().trim().to_string())
+                .collect::<Vec<String>>();
+            // println!("tense_vec: {:?}", tense_vec);
 
-                // if div class = class for minor tense
-                match div.select(&minor_tense_selector).next() {
-                    Some(_) => {
-                        minor_tense = div.select(&minor_tense_selector).next().unwrap().text().collect::<String>();
-                        let tense = Tense {
-                            major: major_tense.clone(),
+            // Get major tense parts
+            let major_tense_vec = main_section.select(&major_tense_selector).map(|major_tense| major_tense.text().collect::<String>().trim().to_string())
+                .collect::<Vec<String>>().into_iter().unique().collect::<Vec<String>>();
+            // println!("major_tense_vec: {:?}", major_tense_vec);
+
+            // Derive minor tenses
+            let mut minor_tense_vec: Vec<String> = Vec::new();
+            let mut tense_struct_vec: Vec<Tense> = Vec::new();
+
+            for tense in &tense_vec {
+                let minor_tense;
+                for major_tense in &major_tense_vec {
+                    if tense.contains(major_tense) {
+                        minor_tense = tense.replace(major_tense, "").trim().to_string();
+                        if minor_tense.len() > 0 { minor_tense_vec.push(minor_tense.clone()) };
+
+                        tense_struct_vec.push(Tense {
+                            major: major_tense.to_owned(),
                             minor: minor_tense,
-                        };
+                        });
 
-                        page_info.tenses.push(tense);
-                    }, 
-                    None => {},
+                        break;
+                    }
+
                 }
             }
+
+            page_info.major_tenses = major_tense_vec.into_iter().unique().collect();
+            page_info.minor_tenses = minor_tense_vec.into_iter().unique().collect();
+            page_info.tenses = tense_struct_vec;
+
+
+
+            let mini_section = scraper::Selector::parse("div.wrap-three-col").unwrap();
+            let phrase_selector = scraper::Selector::parse("li").unwrap();
 
             for mini_section in main_section.select(&mini_section) {
                 let mut phrase_vec: Vec<Phrase> = Vec::new();
                 for phrase_section in mini_section.select(&phrase_selector) {
-                    let phrase: Phrase = Phrase {
-                        subject: phrase_section.select(&subjects_selector).next().unwrap().text().collect::<String>(),
-                        auxiliary: phrase_section.select(&auxiliaries_selector).next().unwrap().text().collect::<String>(),
-                        conjugate: phrase_section.select(&conjugates_selector).next().unwrap().text().collect::<String>(),
+                    // let phrase: Vec<String> = phrase_section.map(|phrase| phrase);
+                    let subject = match phrase_section.select(&subjects_selector).next() {
+                        None => String::new(),
+                        Some(subject) => subject.text().collect::<String>().trim().to_string(),
                     };
+                    let auxiliary = match phrase_section.select(&auxiliaries_selector).next() {
+                        None => String::new(),
+                        Some(auxiliary) => auxiliary.text().collect::<String>().trim().to_string(),
+                    };
+                    let conjugate = match phrase_section.select(&conjugates_selector).next() {
+                        None => String::new(),
+                        Some(conjugate) => conjugate.text().collect::<String>().trim().to_string(),
+                    };
+ 
+                    let phrase: Phrase = Phrase {subject, auxiliary, conjugate};
 
                     phrase_vec.push(phrase);
                 }
@@ -377,8 +436,10 @@ fn generate_verb_page_info_vec_vec(verb_url_vec_vec: Vec<Vec<String>>, backoff: 
                 page_info.phrases.push(phrase_vec);
             }
 
-
             page_info_vec.push(page_info);
+
+            println!("page_info_vec: {:#?}", page_info_vec);
+            // panic!("\n\n\npause here boss");
         }
 
         page_info_vec_vec.push(page_info_vec);
