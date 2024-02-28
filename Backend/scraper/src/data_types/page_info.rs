@@ -28,46 +28,46 @@ impl PageInfo {
     }
 }
 
-// make this the commented out version instead
-#[derive(Debug, Clone, PartialEq, Eq)]
-pub struct Phrase  {
-    pub subject: String,
-    pub auxiliary: String,
-    pub conjugate: String,
-}
-
-impl Phrase {
-    pub fn new() -> Phrase {
-        let phrase = Phrase {
-            subject: String::new(),
-            auxiliary: String::new(),
-            conjugate: String::new(),
-        };
-
-        return phrase;
-    }
-}
-
+// // make this the commented out version instead
 // #[derive(Debug, Clone, PartialEq, Eq)]
 // pub struct Phrase  {
-//     pub phrase: Vec<String>,
-//     pub subject: Vec<String>,
-//     pub auxiliary: Vec<String>,
-//     pub conjugate: Vec<String>,
+//     pub subject: String,
+//     pub auxiliary: String,
+//     pub conjugate: String,
 // }
 //
 // impl Phrase {
 //     pub fn new() -> Phrase {
 //         let phrase = Phrase {
-//             phrase: Vec::new(),
-//             subject: Vec::new(),
-//             auxiliary: Vec::new(),
-//             conjugate: Vec::new(),
+//             subject: String::new(),
+//             auxiliary: String::new(),
+//             conjugate: String::new(),
 //         };
 //
 //         return phrase;
 //     }
 // }
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Phrase  {
+    pub phrase: Vec<String>,
+    pub subjects: Vec<String>,
+    pub auxiliaries: Vec<String>,
+    pub conjugates: Vec<String>,
+}
+
+impl Phrase {
+    pub fn new() -> Phrase {
+        let phrase = Phrase {
+            phrase: Vec::new(),
+            subjects: Vec::new(),
+            auxiliaries: Vec::new(),
+            conjugates: Vec::new(),
+        };
+
+        return phrase;
+    }
+}
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct PageMetadata {

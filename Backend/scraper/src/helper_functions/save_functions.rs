@@ -1,10 +1,43 @@
-use std::collections::BTreeMap;
+use std::{
+    collections::BTreeMap,
+    io::{Error, ErrorKind},
+    fs::read_to_string,
+};
 use crate::data_types::json_data::JsonData;
 use crate::helper_functions::file_operations::{append_file, create_file, delete_file, write_file};
 
+use super::file_operations::open_file;
 
-pub fn save_env(key: &str, value: &str) {
 
+pub fn save_env(key: &str, value: &str) -> Result<(), Error> {
+    let env_file_path = "./.env";
+    // read in env file
+    let env_content: String = read_to_string(env_file_path).unwrap();
+    // split string by "\n"
+    let split_env_content: Vec<&str> = env_content.split("\n").collect::<Vec<&str>>();
+    // split by "="
+    let mut env_tree: BTreeMap<&str, &str> = BTreeMap::new();
+    let _ = split_env_content.into_iter()
+        .map(|field| env_tree.insert(field.split_once("=").unwrap().0, field.split_once("=").unwrap().1));
+
+    // if key == key then remove everything past = and append value
+    match env_tree.contains_key(key) {
+        true => {
+            let mut new_env_content = String::new();
+            env_tree.insert(key, value);
+            for (key, value) in env_tree {
+                let field = key.to_string() + "=" + value + "\n";
+                new_env_content.push_str(field.as_str());
+            }
+
+            let mut env_file = open_file(env_file_path).unwrap();
+            write_file(&mut env_file, &new_env_content).unwrap();
+
+            return Ok(())
+        },
+        // if key not in env return error
+        false => return Err(Error::new(ErrorKind::InvalidData, format!("Invalid env key"))),
+    }
 }
 
 // Don't type check with the compiler

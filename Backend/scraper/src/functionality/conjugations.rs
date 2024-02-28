@@ -210,8 +210,9 @@ async fn scrape_url_listing_vec_vec(url_listing_vec_vec: Vec<Vec<String>>, mut b
 
                 match request.status() {
                     reqwest::StatusCode::OK => valid_response_bool = true,
-                    reqwest::StatusCode::TOO_MANY_REQUESTS => panic!("Too many requests"),
-                    other => panic!("{:?}", other),
+                    // reqwest::StatusCode::TOO_MANY_REQUESTS => panic!("Too many requests"),
+                    // other => panic!("{:?}", other),
+                    _ => {}
                 };
 
                 response = request.text().await.unwrap();
@@ -221,12 +222,12 @@ async fn scrape_url_listing_vec_vec(url_listing_vec_vec: Vec<Vec<String>>, mut b
                     if response_loop_count == 0 {
                         backoff = ((backoff + 1) as f64 * 1.2).round() as u64;
                         env::set_var("BACKOFF", backoff.to_string());
-                        save_env("BACKOFF", &backoff.to_string());
+                        save_env("BACKOFF", &backoff.to_string()).unwrap();
                         // save new backoff to env
                     } else {
                         error_429_backoff = ((error_429_backoff + 1) as f64 * 1.2).round() as u64;
                         env::set_var("ERROR_429_BACKOFF", error_429_backoff.to_string());
-                        save_env("ERROR_429BACKOFF", &error_429_backoff.to_string());
+                        save_env("ERROR_429_BACKOFF", &error_429_backoff.to_string()).unwrap();
                         // save new error_429_backoff to env
                     }
 
@@ -290,6 +291,9 @@ async fn generate_verb_page_info_vec_vec(language_vec: Vec<String>, verb_url_vec
 
         for verb_url in verb_url_vec {
             count += 1;
+
+            // check if verb has already been scraped
+
             let mut valid_response_bool: bool = false;
             let mut response_loop_count: usize = 0;
             let mut response: String = String::new();
@@ -299,8 +303,9 @@ async fn generate_verb_page_info_vec_vec(language_vec: Vec<String>, verb_url_vec
 
                 match request.status() {
                     reqwest::StatusCode::OK => valid_response_bool = true,
-                    reqwest::StatusCode::TOO_MANY_REQUESTS => panic!("Too many requests"),
-                    other => panic!("{:?}", other),
+                    // reqwest::StatusCode::TOO_MANY_REQUESTS => panic!("Too many requests"),
+                    // other => panic!("{:?}", other),
+                    _ => {},
                 };
 
                 response = request.text().await.unwrap();
@@ -310,12 +315,12 @@ async fn generate_verb_page_info_vec_vec(language_vec: Vec<String>, verb_url_vec
                     if response_loop_count == 0 {
                         backoff = ((backoff + 1) as f64 * 1.2).round() as u64;
                         env::set_var("BACKOFF", backoff.to_string());
-                        save_env("BACKOFF", &backoff.to_string());
+                        save_env("BACKOFF", &backoff.to_string()).unwrap();
                         // save new backoff to env
                     } else {
                         error_429_backoff = ((error_429_backoff + 1) as f64 * 1.2).round() as u64;
                         env::set_var("ERROR_429_BACKOFF", error_429_backoff.to_string());
-                        save_env("ERROR_429BACKOFF", &error_429_backoff.to_string());
+                        save_env("ERROR_429BACKOFF", &error_429_backoff.to_string()).unwrap();
                         // save new error_429_backoff to env
                     }
 
@@ -410,25 +415,36 @@ async fn generate_verb_page_info_vec_vec(language_vec: Vec<String>, verb_url_vec
 
             let mini_section = scraper::Selector::parse("div.wrap-three-col").unwrap();
             let phrase_selector = scraper::Selector::parse("li").unwrap();
+            let single_phrase_selector = scraper::Selector::parse("i").unwrap();
 
             for mini_section in main_section.select(&mini_section) {
                 let mut phrase_vec: Vec<Phrase> = Vec::new();
                 for phrase_section in mini_section.select(&phrase_selector) {
-                    // let phrase: Vec<String> = phrase_section.map(|phrase| phrase);
-                    let subject = match phrase_section.select(&subjects_selector).next() {
-                        None => String::new(),
-                        Some(subject) => subject.text().collect::<String>().trim().to_string(),
+                    let mut phrase: Vec<String> = phrase_section.select(&single_phrase_selector).map(|phrase| phrase.text().collect::<String>().trim().to_string()).collect::<Vec<String>>();
+                    phrase = match phrase.len() {
+                        0 => Vec::new(),
+                        _ => phrase,
                     };
-                    let auxiliary = match phrase_section.select(&auxiliaries_selector).next() {
-                        None => String::new(),
-                        Some(auxiliary) => auxiliary.text().collect::<String>().trim().to_string(),
+
+                    let mut subjects: Vec<String> = phrase_section.select(&subjects_selector).map(|subject| subject.text().collect::<String>().trim().to_string()).collect::<Vec<String>>();
+                    subjects = match subjects.len() {
+                        0 => Vec::new(),
+                        _ => subjects,
                     };
-                    let conjugate = match phrase_section.select(&conjugates_selector).next() {
-                        None => String::new(),
-                        Some(conjugate) => conjugate.text().collect::<String>().trim().to_string(),
+
+                    let mut auxiliaries: Vec<String> = phrase_section.select(&auxiliaries_selector).map(|auxiliary| auxiliary.text().collect::<String>().trim().to_string()).collect::<Vec<String>>();
+                    auxiliaries = match auxiliaries.len() {
+                        0 => Vec::new(),
+                        _ => auxiliaries,
+                    };
+
+                    let mut conjugates: Vec<String> = phrase_section.select(&conjugates_selector).map(|conjugate| conjugate.text().collect::<String>().trim().to_string()).collect::<Vec<String>>();
+                    conjugates = match conjugates.len() {
+                        0 => Vec::new(),
+                        _ => conjugates,
                     };
  
-                    let phrase: Phrase = Phrase {subject, auxiliary, conjugate};
+                    let phrase: Phrase = Phrase {phrase, subjects, auxiliaries, conjugates};
 
                     phrase_vec.push(phrase);
                 }
@@ -437,6 +453,8 @@ async fn generate_verb_page_info_vec_vec(language_vec: Vec<String>, verb_url_vec
             }
 
             page_info_vec.push(page_info);
+
+            // save page_info_vec
 
             println!("page_info_vec: {:#?}", page_info_vec);
             // panic!("\n\n\npause here boss");
@@ -676,9 +694,9 @@ fn extract_conjugation_data_vec_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>,
                     // make tense_pk_map_vec a Vec<BTreeMap<Tense, i64>>?
                     let rank: String = verb_page_info.metadata.rank.clone();
                     let tense = tense_pk_map_vec[index].get(&(verb_page_info.tenses[index].clone().major+ " " + verb_page_info.tenses[index].clone().minor.as_str())).unwrap().to_string();
-                    let subject = subject_pk_map_vec[index].get(&phrase.subject).unwrap().to_string();
-                    let auxiliary = auxiliary_pk_map_vec[index].get(&phrase.auxiliary).unwrap().to_string();
-                    let conjugate = conjugate_pk_map_vec[index].get(&phrase.conjugate).unwrap().to_string();
+                    let subject = subject_pk_map_vec[index].get(&phrase.subjects[0]).unwrap().to_string();
+                    let auxiliary = auxiliary_pk_map_vec[index].get(&phrase.auxiliaries[0]).unwrap().to_string();
+                    let conjugate = conjugate_pk_map_vec[index].get(&phrase.conjugates[0]).unwrap().to_string();
 
                     let conjugation_data_vec: Vec<String> = Vec::from([rank, tense, subject, auxiliary, conjugate]);
                     conjugation_data_vec_vec.push(conjugation_data_vec);
