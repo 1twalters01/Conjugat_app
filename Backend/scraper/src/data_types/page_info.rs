@@ -1,4 +1,6 @@
-#[derive(Debug, Clone, PartialEq, Eq)]
+use serde::{Serialize, Deserialize};
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct PageInfo {
     pub metadata: PageMetadata,
 
@@ -7,6 +9,8 @@ pub struct PageInfo {
     pub subjects: Vec<String>,
     pub auxiliaries: Vec<String>,
     pub conjugates: Vec<String>,
+    pub particles: Vec<String>,
+    // pub other: Vec<String>,
     pub tenses: Vec<Tense>,
     pub phrases: Vec<Vec<Phrase>>,
 }
@@ -20,6 +24,8 @@ impl PageInfo {
             subjects: Vec::new(),
             auxiliaries: Vec::new(),
             conjugates: Vec::new(),
+            particles: Vec::new(),
+            // other: Vec::new(),
             tenses: Vec::new(),
             phrases: Vec::new(),
         };
@@ -48,12 +54,14 @@ impl PageInfo {
 //     }
 // }
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Phrase  {
     pub phrase: Vec<String>,
     pub subjects: Vec<String>,
     pub auxiliaries: Vec<String>,
     pub conjugates: Vec<String>,
+    pub particles: Vec<String>,
+    pub other: Vec<String>,
 }
 
 impl Phrase {
@@ -63,13 +71,15 @@ impl Phrase {
             subjects: Vec::new(),
             auxiliaries: Vec::new(),
             conjugates: Vec::new(),
+            particles: Vec::new(),
+            other: Vec::new(),
         };
 
         return phrase;
     }
 }
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct PageMetadata {
     pub language: String,
     pub rank: String,
@@ -98,7 +108,7 @@ impl PageMetadata {
     }
 }
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Tense {
     pub major: String,
     pub minor: String,

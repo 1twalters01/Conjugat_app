@@ -10,17 +10,31 @@ use super::file_operations::open_file;
 
 
 pub fn save_env(key: &str, value: &str) -> Result<(), Error> {
-    let env_file_path = "./.env";
+    let env_file_path = ".env";
     // read in env file
     let env_content: String = read_to_string(env_file_path).unwrap();
+    println!("env content: {}", env_content);
     // split string by "\n"
-    let split_env_content: Vec<&str> = env_content.split("\n").collect::<Vec<&str>>();
+    let mut split_env_content: Vec<&str> = env_content.split("\n").collect::<Vec<&str>>();
+    split_env_content.retain(|&x| x.len() > 0);
+    println!("split env file: {:?}", split_env_content);
     // split by "="
     let mut env_tree: BTreeMap<&str, &str> = BTreeMap::new();
-    let _ = split_env_content.into_iter()
-        .map(|field| env_tree.insert(field.split_once("=").unwrap().0, field.split_once("=").unwrap().1));
+    for field in split_env_content.iter() {
+        println!("field: {:?}", field);
+        let split_field = field.split("=").collect::<Vec<&str>>();
+        println!("split: {:?}", split_field);
+        env_tree.insert(split_field[0], split_field[1]);
+        println!("env tree: {:?}", env_tree);
+    }
+    // let test = split_env_content.into_iter()
+        // .map(|field| env_tree.insert(field.split_once("=").unwrap().0, field.split_once("=").unwrap().1));
+    // println!("\ntest: {:?}", test);
 
     // if key == key then remove everything past = and append value
+    println!("\nkey: {:?}", key);
+    println!("\nvalue: {:?}", value);
+    println!("\nenv tree: {:?}", env_tree);
     match env_tree.contains_key(key) {
         true => {
             let mut new_env_content = String::new();
