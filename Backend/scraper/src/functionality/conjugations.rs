@@ -1,18 +1,8 @@
 use crate::{
     data_types::{
-        page_info::{
-            PageInfo,
-            Tense,
-            Phrase
-        },
-        json_data::{
-            JsonData,
-            create_json_data_vec_from_vec_vec_string
-        },
-        field::{
-            Field,
-            FieldOptions,
-        },
+        page_info::{PageInfo, Tense, Phrase},
+        json_data::{JsonData, create_json_data_vec_from_vec_vec_string},
+        field::{Field, FieldOptions},
         field_options::{
             LanguageField,
             BaseField,
@@ -25,32 +15,27 @@ use crate::{
     },
     helper_functions::{
         // postgres_functions::save_data_to_postgres,
-        read_functions::{
-            read_file_to_string,
-            read_file_to_string_none,
-        },
+        file_operations::create_file,
+        read_functions::{read_file_to_string, read_file_to_string_none},
         save_functions::{
             save_env,
             save_json_data_vec_to_file,
             save_map_vec_to_file,
             save_string_vec_vec_to_file, save_data_to_file,
-        }, file_operations::create_file,
+        },
     }
 };
 
 use std::{
     env,
     collections::BTreeMap,
-    // result,
-    time::{
-        self,
-        Duration,
-    },
+    time::Duration,
     thread,
-    fs::{read_to_string},
+    fs::read_to_string,
 };
 
 use itertools::Itertools;
+use scraper::Node;
 
 
 pub async fn run_conjugations_modules() {
@@ -93,8 +78,8 @@ pub async fn run_conjugations_modules() {
 
 
 
+    panic!("\n\n\npause here boss");
     // Read necessary pk map vec
-    let language_content: String = read_file_to_string("temp/json/languages/languages.json");
     let language_pk_map_vec: Vec<BTreeMap<String, i64>> = serde_json::from_str(&language_content).unwrap();
     let model_content: String = read_file_to_string("temp/json/models/btreemaps/model_language.json");
     let model_language_id_map_vec: Vec<BTreeMap<String, i64>> = serde_json::from_str(&model_content).unwrap();
@@ -232,7 +217,7 @@ async fn scrape_url_listing_vec_vec(url_listing_vec_vec: Vec<Vec<String>>, mut b
                         // save new error_429_backoff to env
                     }
 
-                    let error_429_backoff_duration: Duration = time::Duration::from_secs(error_429_backoff);
+                    let error_429_backoff_duration: Duration = Duration::from_secs(error_429_backoff);
                     thread::sleep(error_429_backoff_duration);
                     response_loop_count += 1;
                 }
@@ -254,7 +239,7 @@ async fn scrape_url_listing_vec_vec(url_listing_vec_vec: Vec<Vec<String>>, mut b
             println!("verb_vec_vec[{}]: {:?}", index, verb_vec_vec[index]);
 
             // wait the backoff duration
-            let backoff_duration: Duration = time::Duration::from_secs(backoff);
+            let backoff_duration: Duration = Duration::from_secs(backoff);
             thread::sleep(backoff_duration);
         }
     }
@@ -320,7 +305,7 @@ async fn generate_verb_page_info_vec_vec(language_vec: Vec<String>, verb_url_vec
             let mut response_loop_count: usize = 0;
             let mut response: String = String::new();
 
-            let backoff_duration: Duration = time::Duration::from_secs(backoff);
+            let backoff_duration: Duration = Duration::from_secs(backoff);
             thread::sleep(backoff_duration);
 
             while valid_response_bool == false {
@@ -349,7 +334,7 @@ async fn generate_verb_page_info_vec_vec(language_vec: Vec<String>, verb_url_vec
                         // save new error_429_backoff to env
                     }
 
-                    let error_429_backoff_duration: Duration = time::Duration::from_secs(error_429_backoff);
+                    let error_429_backoff_duration: Duration = Duration::from_secs(error_429_backoff);
                     thread::sleep(error_429_backoff_duration);
                     response_loop_count += 1;
                 }
@@ -443,23 +428,45 @@ async fn generate_verb_page_info_vec_vec(language_vec: Vec<String>, verb_url_vec
 
             let mini_section = scraper::Selector::parse("div.wrap-three-col").unwrap();
             let phrase_selector = scraper::Selector::parse("li").unwrap();
-            let single_phrase_selector = scraper::Selector::parse("i[class]").unwrap();
-            let test_selector = scraper::Selector::parse("i[h]").unwrap();
-            let test_sub_selector = scraper::Selector::parse("i[h]>i").unwrap();
+            let conjugates_fused_selector = scraper::Selector::parse("i[h]").unwrap();
+            let i_selector = scraper::Selector::parse("i").unwrap();
 
             for mini_section in main_section.select(&mini_section) {
                 let mut phrase_vec: Vec<Phrase> = Vec::new();
                 for phrase_section in mini_section.select(&phrase_selector) {
-                    let mut phrase: Vec<String> = phrase_section.select(&single_phrase_selector)
+                    let mut phrase: Vec<String> = phrase_section.select(&i_selector)
                         .map(|phrase| {
-                            phrase.select(&test_sub_selector)
-                            .text().collect::<String>().trim().to_string()
+                            match phrase.first_child().unwrap().has_children() {
+                                true => phrase.text().collect::<String>().trim().to_string(),
+                                false => {
+                                    // let mut res = String::new();
+                                    // match phrase.parent().unwrap().value().clone() {
+                                    //     Node::Element(elem) => {
+                                    //         let near = elem.name();
+                                    //         if near == "li" {
+                                    //             res = phrase.text().collect::<String>().trim().to_string()
+                                    //         }
+                                    //         res
+                                    //         // println!("elem: {:?}", near);
+                                    //     },
+                                    //     _ => String::new(),
+                                    // }
+                                    let parent_value = phrase.parent().unwrap().value();
+                                    if let Node::Element(element) = parent_value {
+                                        if element.name() == "li" {
+                                            phrase.text().collect::<String>().trim().to_string()
+                                        } else { String::new() }
+                                    } else { String::new() }
+                                },
+                            }
                         })
                         .collect::<Vec<String>>();
+                    phrase.retain(|s| s.len() > 0);
                     phrase = match phrase.len() {
                         0 => Vec::new(),
                         _ => phrase,
                     };
+                    // println!("phrase: {:?}", phrase);
 
                     let mut other: Vec<String> = phrase.clone();
                     other.sort();
@@ -486,10 +493,7 @@ async fn generate_verb_page_info_vec_vec(language_vec: Vec<String>, verb_url_vec
                         },
                     };
 
-                    let conjugates_fused: Vec<String> = phrase_section.select(&test_selector).map(|test| test.text().collect::<String>().trim().to_string()).collect::<Vec<String>>();
-                    let conjugates_unfused: Vec<String> = phrase_section.select(&test_sub_selector).map(|test| test.text().collect::<String>().trim().to_string()).collect::<Vec<String>>(); 
-                    println!("conjugates fused: {:?}", conjugates_fused);
-                    println!("conjugates unfused: {:?}", conjugates_unfused);
+                    let conjugates_fused: Vec<String> = phrase_section.select(&conjugates_fused_selector).map(|test| test.text().collect::<String>().trim().to_string()).collect::<Vec<String>>();
                     let mut conjugates: Vec<String> = phrase_section.select(&conjugates_selector).map(|conjugate| conjugate.text().collect::<String>().trim().to_string()).collect::<Vec<String>>();
                     conjugates = match conjugates_fused.len() {
                         0 => match conjugates.len() {
@@ -502,15 +506,12 @@ async fn generate_verb_page_info_vec_vec(language_vec: Vec<String>, verb_url_vec
                             },
                         },
                         _ => {
-                            for conjugate in conjugates_unfused.iter() {
+                            for conjugate in conjugates_fused.iter() {
                                 other.remove(other.binary_search(conjugate).unwrap());
                             }
                             conjugates_fused.to_owned()
                         },
                     };
-
-                    println!("conjugates fused: {:?}", conjugates_fused);
-                    println!("conjugates end : {:?}", conjugates);
 
                     let mut particles: Vec<String> = phrase_section.select(&particles_selector).map(|particle| particle.text().collect::<String>().trim().to_string()).collect::<Vec<String>>();
                     particles = match particles.len() {
