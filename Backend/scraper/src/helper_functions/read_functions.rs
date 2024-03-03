@@ -13,7 +13,7 @@ pub fn read_file_to_string(file_path: &str) -> String {
     return content
 }
 
-pub fn read_file_to_string_none(file_path: &str) -> String {
+pub fn read_file_to_string_or_none(file_path: &str) -> String {
     let mut content: String = String::new();
 
     let mut file: File = open_or_create_file(file_path).unwrap();

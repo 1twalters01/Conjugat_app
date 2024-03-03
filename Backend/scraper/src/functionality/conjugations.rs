@@ -16,7 +16,7 @@ use crate::{
     helper_functions::{
         // postgres_functions::save_data_to_postgres,
         file_operations::create_file,
-        read_functions::{read_file_to_string, read_file_to_string_none},
+        read_functions::{read_file_to_string, read_file_to_string_or_none},
         save_functions::{
             save_env,
             save_json_data_vec_to_file,
@@ -72,13 +72,22 @@ pub async fn run_conjugations_modules() {
     // let mut error_429_backoff_duration = time::Duration::from_secs(error_429_backoff);
 
     // Generate verb page information vector
-    let verb_page_info_vec_vec: Vec<Vec<PageInfo>> = generate_verb_page_info_vec_vec(language_vec.clone(), verb_url_vec_vec, backoff, error_429_backoff).await;
+    let mut verb_page_info_vec_vec: Vec<Vec<PageInfo>> = generate_verb_page_info_vec_vec(language_vec.clone(), verb_url_vec_vec, backoff, error_429_backoff).await;
     // println!("verb_page_info_vec: {:#?}", verb_page_info_vec);
 
 
 
 
     panic!("\n\n\npause here boss");
+
+
+    verb_page_info_vec_vec = extend_verb_page_info_vec_vec(language_vec.clone(), verb_page_info_vec_vec.clone(), backoff, error_429_backoff).await;
+
+
+    panic!("\n\n\npause here boss");
+
+
+
     // Read necessary pk map vec
     let language_pk_map_vec: Vec<BTreeMap<String, i64>> = serde_json::from_str(&language_content).unwrap();
     let model_content: String = read_file_to_string("temp/json/models/btreemaps/model_language.json");
@@ -141,7 +150,7 @@ fn read_language_data_from_json_data(language_content: &str) -> (Vec<JsonData>, 
 async fn fetch_verb_url_vec_vec(language_vec: Vec<String>, backoff: u64, error_429_backoff: u64) -> (Vec<Vec<String>>, u64, u64) {
 // try to read urls_vec_vec otherwise scrape from reverso
     let verb_url_vec_vec_file_path: &str = "temp/json/conjugations/verb_urls.json";
-    let verb_url_vec_content: String = read_file_to_string_none(verb_url_vec_vec_file_path);
+    let verb_url_vec_content: String = read_file_to_string_or_none(verb_url_vec_vec_file_path);
     let verb_url_vec_vec_file_result: Result<Vec<Vec<String>>, serde_json::Error>
             = serde_json::from_str(verb_url_vec_content.as_str());
 
@@ -255,12 +264,16 @@ fn validate_verb_vec(_verb_vec: &Vec<String>) {
 fn generate_verb_url_vec_vec(verb_vec_vec: Vec<Vec<String>>, language_vec: Vec<String>) -> Vec<Vec<String>> {
     let verb_url_vec_vec: Vec<Vec<String>> = verb_vec_vec.into_iter().enumerate()
         .map(|(index, verb_vec)|
-            verb_vec.into_iter().map(|verb| String::from("https://conjugator.reverso.net/conjugation-")
-                + language_vec[index].as_str() + "-verb-" + verb.as_str() + ".html")
+            verb_vec.into_iter().map(|verb| generate_verb_url(&verb, &language_vec[index]))
             .collect::<Vec<String>>())
         .collect::<Vec<Vec<String>>>();
 
     return verb_url_vec_vec;
+}
+
+fn generate_verb_url(verb: &str, language: &str) -> String {
+    return String::from("https://conjugator.reverso.net/conjugation-")
+        + language + "-verb-" + verb + ".html";
 }
 
 
@@ -272,7 +285,16 @@ async fn generate_verb_page_info_vec_vec(language_vec: Vec<String>, verb_url_vec
     let mut page_info_vec_vec: Vec<Vec<PageInfo>> = Vec::new();
 
     for (index, verb_url_vec) in verb_url_vec_vec.into_iter().enumerate() {
-        let mut page_info_vec: Vec<PageInfo> = Vec::new();
+        let page_info_vec_file_path: String = String::from("temp/json/conjugations/") + language_vec[index].as_str() + "_page_info.json";
+        let scraped_verb_vec_file_path: String = String::from("temp/json/conjugations/") + language_vec[index].as_str() + "_scraped_verb_vec.json";
+
+        let page_info_vec_content: String = read_file_to_string_or_none(&page_info_vec_file_path);
+        let mut page_info_vec: Vec<PageInfo> = match serde_json::from_str(page_info_vec_content.as_str()) {
+            Ok(vec) => vec,
+            Err(_) => Vec::new(),
+        };
+        // let mut page_info_vec: Vec<PageInfo> = Vec::new();
+ 
         let mut count: u64 = 0;
 
         for verb_url in verb_url_vec {
@@ -281,8 +303,6 @@ async fn generate_verb_page_info_vec_vec(language_vec: Vec<String>, verb_url_vec
             // check if verb has already been scraped
             let verb: String = verb_url[0..verb_url.find(".html").unwrap()]
                 .split('-').last().unwrap().to_string();
-            let page_info_vec_file_path: String = String::from("temp/json/conjugations/") + language_vec[index].as_str() + "_page_info.json";
-            let scraped_verb_vec_file_path: String = String::from("temp/json/conjugations/") + language_vec[index].as_str() + "_scraped_verb_vec.json";
             
             let scraped_verb_content: String = match read_to_string(scraped_verb_vec_file_path.as_str()) { 
                 Ok(content) => content,
@@ -546,6 +566,294 @@ async fn generate_verb_page_info_vec_vec(language_vec: Vec<String>, verb_url_vec
     }
 
     return page_info_vec_vec;
+}
+
+async fn extend_verb_page_info_vec_vec(language_vec: Vec<String>, verb_page_info_vec_vec: Vec<Vec<PageInfo>>, mut backoff: u64, mut error_429_backoff: u64) -> Vec<Vec<PageInfo>> {
+    for (index, verb_page_info_vec) in verb_page_info_vec_vec.clone().into_iter().enumerate() {
+        let page_info_vec_file_path: String = String::from("temp/json/conjugations/") + language_vec[index].as_str() + "_page_info.json";
+        let scraped_verb_vec_file_path: String = String::from("temp/json/conjugations/") + language_vec[index].as_str() + "_scraped_verb_vec.json";
+        // let mut count: u64 = 0;
+
+        for mut verb_page_info in verb_page_info_vec.into_iter() {
+            let mut verb_vec:Vec<String> = Vec::new();
+            verb_vec.append(&mut verb_page_info.metadata.similar_verbs);
+            verb_vec.append(&mut verb_page_info.metadata.other_verbs);
+
+            for verb in &verb_vec {
+                let scraped_verb_content: String = match read_to_string(scraped_verb_vec_file_path.as_str()) { 
+                    Ok(content) => content,
+                    Err(_) => {
+                        create_file(&scraped_verb_vec_file_path).unwrap();
+                        String::new()
+                    },
+                };
+
+                let mut scraped_verb_vec: Vec<String> = match serde_json::from_str(&scraped_verb_content) {
+                    Ok(content) => content,
+                    Err(_) => Vec::new(),
+                };
+
+                if scraped_verb_vec.contains(&verb) {
+                    continue;
+                // }
+
+                let verb_url = generate_verb_url(verb, &language_vec[index]);
+                
+                let mut valid_response_bool: bool = false;
+                let mut response_loop_count: usize = 0;
+                let mut response: String = String::new();
+
+                let backoff_duration: Duration = Duration::from_secs(backoff);
+                thread::sleep(backoff_duration);
+
+                while valid_response_bool == false {
+                    let request = reqwest::get(verb_url.clone()).await.unwrap();
+
+                    match request.status() {
+                        reqwest::StatusCode::OK => valid_response_bool = true,
+                        // reqwest::StatusCode::TOO_MANY_REQUESTS => panic!("Too many requests"),
+                        // other => panic!("{:?}", other),
+                        _ => {},
+                    };
+
+                    response = request.text().await.unwrap();
+
+                    if valid_response_bool == false {
+
+                        if response_loop_count == 0 {
+                            backoff = ((backoff + 1) as f64 * 1.2).round() as u64;
+                            env::set_var("BACKOFF", backoff.to_string());
+                            save_env("BACKOFF", &backoff.to_string()).unwrap();
+                        // save new backoff to env
+                        } else {
+                            error_429_backoff = ((error_429_backoff + 1) as f64 * 1.2).round() as u64;
+                            env::set_var("ERROR_429_BACKOFF", error_429_backoff.to_string());
+                            save_env("ERROR_429_BACKOFF", &error_429_backoff.to_string()).unwrap();
+                            // save new error_429_backoff to env
+                        }
+
+                        let error_429_backoff_duration: Duration = Duration::from_secs(error_429_backoff);
+                        thread::sleep(error_429_backoff_duration);
+                        response_loop_count += 1;
+                    }
+                }
+
+
+                // do earlier validation
+                let mut content: String = String::new();
+                content.push_str(response.as_str());
+                let document = scraper::Html::parse_document(&content);
+    
+                let mut page_info: PageInfo = PageInfo::new();
+    
+                // metadata
+                // let metadata_section_selector = scraper::Selector::parse("").unwrap();
+                let model_selector = scraper::Selector::parse("span#ch_lblModel>a").unwrap();
+                let base_selector = scraper::Selector::parse("a#ch_lblVerb").unwrap();
+                let auxiliary_selector = scraper::Selector::parse("span#ch_lblAuxiliary>a").unwrap();
+                let forms_selector = scraper::Selector::parse("span#ch_lblAutreForm>a").unwrap();
+                let similar_verbs_selector = scraper::Selector::parse("div.word-wrap-descr>a").unwrap();
+                let other_verbs_selector = scraper::Selector::parse("div.verb-others-list>a").unwrap();
+
+                // let metadata_section = document.select(&metadata_section_selector).next().unwrap();
+                page_info.metadata.language = language_vec[index].clone();
+                page_info.metadata.rank = count.to_string();
+                page_info.metadata.model = document.select(&model_selector).next().unwrap().text().collect::<String>().trim().to_string();
+                page_info.metadata.base = document.select(&base_selector).next().unwrap().text().collect::<String>().trim().to_string();
+                page_info.metadata.auxiliary = document.select(&auxiliary_selector).map(|auxiliary| auxiliary.text().collect::<String>().trim().to_string()).collect::<Vec<String>>();
+                page_info.metadata.forms = document.select(&forms_selector).map(|form| form.text().collect::<String>().trim().to_string()).collect::<Vec<String>>();
+                page_info.metadata.similar_verbs = document.select(&similar_verbs_selector).map(|similar| similar.text().collect::<String>().trim().to_string()).collect::<Vec<String>>();
+                page_info.metadata.other_verbs = document.select(&other_verbs_selector).map(|other| other.text().collect::<String>().trim().to_string()).collect::<Vec<String>>();
+
+                // data
+                let subjects_selector = scraper::Selector::parse("i.graytxt").unwrap();
+                let auxiliaries_selector = scraper::Selector::parse("i.auxgraytxt").unwrap();
+                let conjugates_selector = scraper::Selector::parse("i.verbtxt").unwrap();
+                let particles_selector = scraper::Selector::parse("i.particletxt").unwrap();
+
+                page_info.subjects = document.select(&subjects_selector).map(|subject| subject.text().collect::<String>().trim().to_string())
+                    .collect::<Vec<String>>().into_iter().unique().collect::<Vec<String>>();
+                page_info.auxiliaries = document.select(&auxiliaries_selector).map(|auxiliary| auxiliary.text().collect::<String>().trim().to_string())
+                    .collect::<Vec<String>>().into_iter().unique().collect::<Vec<String>>();
+                page_info.conjugates = document.select(&conjugates_selector).map(|conjugate| conjugate.text().collect::<String>().trim().to_string())
+                    .collect::<Vec<String>>().into_iter().unique().collect::<Vec<String>>();
+                page_info.particles = document.select(&particles_selector).map(|particle| particle.text().collect::<String>().trim().to_string())
+                    .collect::<Vec<String>>().into_iter().unique().collect::<Vec<String>>();
+
+                let main_section_selector = scraper::Selector::parse("div.word-wrap").unwrap();
+                let tense_selector = scraper::Selector::parse("div[mobile-title]").unwrap();
+                let major_tense_selector = scraper::Selector::parse("div.word-wrap-title>h4").unwrap();
+
+                let main_section = document.select(&main_section_selector).next().unwrap();
+                // let minor_tense = main_section.select(&minor_tense_selector).map(|minor_tense| minor_tense.text().collect::<String>()).collect::<Vec<String>>();
+
+                // Get tenses
+                let tense_vec: Vec<String> = main_section.select(&tense_selector).map(|tense| tense.value().attr("mobile-title").unwrap().trim().to_string())
+                    .collect::<Vec<String>>();
+                // println!("tense_vec: {:?}", tense_vec);
+
+                // Get major tense parts
+                let major_tense_vec = main_section.select(&major_tense_selector).map(|major_tense| major_tense.text().collect::<String>().trim().to_string())
+                    .collect::<Vec<String>>().into_iter().unique().collect::<Vec<String>>();
+                // println!("major_tense_vec: {:?}", major_tense_vec);
+
+                // Derive minor tenses
+                let mut minor_tense_vec: Vec<String> = Vec::new();
+                let mut tense_struct_vec: Vec<Tense> = Vec::new();
+
+                for tense in &tense_vec {
+                    let minor_tense;
+                    for major_tense in &major_tense_vec {
+                        if tense.contains(major_tense) {
+                            minor_tense = tense.replace(major_tense, "").trim().to_string();
+                            if minor_tense.len() > 0 { minor_tense_vec.push(minor_tense.clone()) };
+
+                            tense_struct_vec.push(Tense {
+                                major: major_tense.to_owned(),
+                                minor: minor_tense,
+                            });
+
+                            break;
+                        }
+    
+                    }
+                }
+
+                page_info.major_tenses = major_tense_vec.into_iter().unique().collect();
+                page_info.minor_tenses = minor_tense_vec.into_iter().unique().collect();
+                page_info.tenses = tense_struct_vec;
+
+
+
+                let mini_section = scraper::Selector::parse("div.wrap-three-col").unwrap();
+                let phrase_selector = scraper::Selector::parse("li").unwrap();
+                let conjugates_fused_selector = scraper::Selector::parse("i[h]").unwrap();
+                let i_selector = scraper::Selector::parse("i").unwrap();
+
+                for mini_section in main_section.select(&mini_section) {
+                    let mut phrase_vec: Vec<Phrase> = Vec::new();
+                    for phrase_section in mini_section.select(&phrase_selector) {
+                        let mut phrase: Vec<String> = phrase_section.select(&i_selector)
+                            .map(|phrase| {
+                                match phrase.first_child().unwrap().has_children() {
+                                    true => phrase.text().collect::<String>().trim().to_string(),
+                                    false => {
+                                        // let mut res = String::new();
+                                        // match phrase.parent().unwrap().value().clone() {
+                                        //     Node::Element(elem) => {
+                                        //         let near = elem.name();
+                                        //         if near == "li" {
+                                        //             res = phrase.text().collect::<String>().trim().to_string()
+                                        //         }
+                                        //         res
+                                        //         // println!("elem: {:?}", near);
+                                        //     },
+                                        //     _ => String::new(),
+                                        // }
+                                        let parent_value = phrase.parent().unwrap().value();
+                                        if let Node::Element(element) = parent_value {
+                                            if element.name() == "li" {
+                                                phrase.text().collect::<String>().trim().to_string()
+                                            } else { String::new() }
+                                        } else { String::new() }
+                                    },
+                                }
+                            })
+                            .collect::<Vec<String>>();
+                        phrase.retain(|s| s.len() > 0);
+                        phrase = match phrase.len() {
+                            0 => Vec::new(),
+                            _ => phrase,
+                        };
+                        // println!("phrase: {:?}", phrase);
+
+                        let mut other: Vec<String> = phrase.clone();
+                        other.sort();
+
+                        let mut subjects: Vec<String> = phrase_section.select(&subjects_selector).map(|subject| subject.text().collect::<String>().trim().to_string()).collect::<Vec<String>>();
+                        subjects = match subjects.len() {
+                            0 => Vec::new(),
+                            _ => {
+                                for subject in subjects.iter() {
+                                    other.remove(other.binary_search(subject).unwrap());
+                                }
+                                subjects
+                            },
+                        };
+
+                        let mut auxiliaries: Vec<String> = phrase_section.select(&auxiliaries_selector).map(|auxiliary| auxiliary.text().collect::<String>().trim().to_string()).collect::<Vec<String>>();
+                        auxiliaries = match auxiliaries.len() {
+                            0 => Vec::new(),
+                            _ => {
+                                for auxiliary in auxiliaries.iter() {
+                                    other.remove(other.binary_search(auxiliary).unwrap());
+                                }
+                                auxiliaries
+                            },
+                        };
+
+                        let conjugates_fused: Vec<String> = phrase_section.select(&conjugates_fused_selector).map(|test| test.text().collect::<String>().trim().to_string()).collect::<Vec<String>>();
+                        let mut conjugates: Vec<String> = phrase_section.select(&conjugates_selector).map(|conjugate| conjugate.text().collect::<String>().trim().to_string()).collect::<Vec<String>>();
+                        conjugates = match conjugates_fused.len() {
+                            0 => match conjugates.len() {
+                                0 => Vec::new(),
+                                _ => {
+                                    for conjugate in conjugates.iter() {
+                                        other.remove(other.binary_search(conjugate).unwrap());
+                                    }
+                                    conjugates
+                                },
+                            },
+                            _ => {
+                                for conjugate in conjugates_fused.iter() {
+                                    other.remove(other.binary_search(conjugate).unwrap());
+                                }
+                                conjugates_fused.to_owned()
+                            },
+                        };
+
+                        let mut particles: Vec<String> = phrase_section.select(&particles_selector).map(|particle| particle.text().collect::<String>().trim().to_string()).collect::<Vec<String>>();
+                        particles = match particles.len() {
+                            0 => Vec::new(),
+                            _ => {
+                                for particle in particles.iter() {
+                                    other.remove(other.binary_search(particle).unwrap());
+                                }
+                                particles
+                            },
+                        };
+    
+                        let phrase: Phrase = Phrase {phrase, subjects, auxiliaries, conjugates, particles, other};
+
+                        phrase_vec.push(phrase);
+                    }
+
+                    page_info.phrases.push(phrase_vec);
+                }
+                verb_page_info_vec.push(page_info);
+                scraped_verb_vec.push(verb.to_string());
+            
+                save_data_to_file(&verb_page_info_vec, &page_info_vec_file_path);
+                save_data_to_file(&scraped_verb_vec, &scraped_verb_vec_file_path);
+
+                println!("page_info_vec: {:#?}", verb_page_info_vec);
+
+
+
+
+
+
+
+                println!("language: {}", language_vec[index]);
+                println!("verb_page_info: {:?}", verb_page_info);
+                println!("backoff: {}", backoff);
+                println!("error_429_backoff: {}", error_429_backoff);
+            }
+        }
+    }
+
+    return verb_page_info_vec_vec;
+
 }
 
 
