@@ -595,7 +595,7 @@ async fn extend_verb_page_info_vec_vec(language_vec: Vec<String>, verb_page_info
 
                 if scraped_verb_vec.contains(&verb) {
                     continue;
-                // }
+                }
 
                 let verb_url = generate_verb_url(verb, &language_vec[index]);
                 
@@ -837,17 +837,6 @@ async fn extend_verb_page_info_vec_vec(language_vec: Vec<String>, verb_page_info
                 save_data_to_file(&scraped_verb_vec, &scraped_verb_vec_file_path);
 
                 println!("page_info_vec: {:#?}", verb_page_info_vec);
-
-
-
-
-
-
-
-                println!("language: {}", language_vec[index]);
-                println!("verb_page_info: {:?}", verb_page_info);
-                println!("backoff: {}", backoff);
-                println!("error_429_backoff: {}", error_429_backoff);
             }
         }
     }
