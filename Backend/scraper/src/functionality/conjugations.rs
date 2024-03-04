@@ -568,16 +568,18 @@ async fn generate_verb_page_info_vec_vec(language_vec: Vec<String>, verb_url_vec
     return page_info_vec_vec;
 }
 
-async fn extend_verb_page_info_vec_vec(language_vec: Vec<String>, verb_page_info_vec_vec: Vec<Vec<PageInfo>>, mut backoff: u64, mut error_429_backoff: u64) -> Vec<Vec<PageInfo>> {
-    for (index, verb_page_info_vec) in verb_page_info_vec_vec.clone().into_iter().enumerate() {
-        let page_info_vec_file_path: String = String::from("temp/json/conjugations/") + language_vec[index].as_str() + "_page_info.json";
-        let scraped_verb_vec_file_path: String = String::from("temp/json/conjugations/") + language_vec[index].as_str() + "_scraped_verb_vec.json";
-        // let mut count: u64 = 0;
+async fn extend_verb_page_info_vec_vec(language_vec: Vec<String>, mut verb_page_info_vec_vec: Vec<Vec<PageInfo>>, mut backoff: u64, mut error_429_backoff: u64) -> Vec<Vec<PageInfo>> {
+    for verb_page_info_vec_index in 0..verb_page_info_vec_vec.len() {
+        // let verb_page_info_vec = verb_page_info_vec_vec[verb_page_info_vec_index];
 
-        for mut verb_page_info in verb_page_info_vec.into_iter() {
-            let mut verb_vec:Vec<String> = Vec::new();
-            verb_vec.append(&mut verb_page_info.metadata.similar_verbs);
-            verb_vec.append(&mut verb_page_info.metadata.other_verbs);
+    // for (index, mut verb_page_info_vec) in verb_page_info_vec_vec.into_iter().enumerate() {
+        let page_info_vec_file_path: String = String::from("temp/json/conjugations/") + language_vec[verb_page_info_vec_index].as_str() + "_page_info.json";
+        let scraped_verb_vec_file_path: String = String::from("temp/json/conjugations/") + language_vec[verb_page_info_vec_index].as_str() + "_scraped_verb_vec.json";
+
+        for verb_page_info_index in 0..verb_page_info_vec_vec[verb_page_info_vec_index].len() {
+        // for mut verb_page_info in verb_page_info_vec.into_iter() {
+            let mut verb_vec:Vec<String> = verb_page_info_vec_vec[verb_page_info_vec_index][verb_page_info_index].metadata.similar_verbs.clone();
+            verb_vec.extend(verb_page_info_vec_vec[verb_page_info_vec_index][verb_page_info_index].metadata.other_verbs.clone());
 
             for verb in &verb_vec {
                 let scraped_verb_content: String = match read_to_string(scraped_verb_vec_file_path.as_str()) { 
@@ -592,12 +594,13 @@ async fn extend_verb_page_info_vec_vec(language_vec: Vec<String>, verb_page_info
                     Ok(content) => content,
                     Err(_) => Vec::new(),
                 };
+                let count: u64 = scraped_verb_vec.len()as u64;
 
                 if scraped_verb_vec.contains(&verb) {
                     continue;
                 }
 
-                let verb_url = generate_verb_url(verb, &language_vec[index]);
+                let verb_url = generate_verb_url(verb, &language_vec[verb_page_info_vec_index]);
                 
                 let mut valid_response_bool: bool = false;
                 let mut response_loop_count: usize = 0;
@@ -656,7 +659,7 @@ async fn extend_verb_page_info_vec_vec(language_vec: Vec<String>, verb_page_info
                 let other_verbs_selector = scraper::Selector::parse("div.verb-others-list>a").unwrap();
 
                 // let metadata_section = document.select(&metadata_section_selector).next().unwrap();
-                page_info.metadata.language = language_vec[index].clone();
+                page_info.metadata.language = language_vec[verb_page_info_vec_index].clone();
                 page_info.metadata.rank = count.to_string();
                 page_info.metadata.model = document.select(&model_selector).next().unwrap().text().collect::<String>().trim().to_string();
                 page_info.metadata.base = document.select(&base_selector).next().unwrap().text().collect::<String>().trim().to_string();
@@ -830,18 +833,18 @@ async fn extend_verb_page_info_vec_vec(language_vec: Vec<String>, verb_page_info
 
                     page_info.phrases.push(phrase_vec);
                 }
-                verb_page_info_vec.push(page_info);
+                verb_page_info_vec_vec[verb_page_info_vec_index].push(page_info);
                 scraped_verb_vec.push(verb.to_string());
             
-                save_data_to_file(&verb_page_info_vec, &page_info_vec_file_path);
+                save_data_to_file(&verb_page_info_vec_vec[verb_page_info_vec_index], &page_info_vec_file_path);
                 save_data_to_file(&scraped_verb_vec, &scraped_verb_vec_file_path);
 
-                println!("page_info_vec: {:#?}", verb_page_info_vec);
+                println!("page_info_vec: {:#?}", verb_page_info_vec_vec[verb_page_info_vec_index]);
             }
         }
     }
 
-    return verb_page_info_vec_vec;
+    return verb_page_info_vec_vec.to_owned();
 
 }
 
