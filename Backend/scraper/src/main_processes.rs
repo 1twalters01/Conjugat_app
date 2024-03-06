@@ -4,6 +4,7 @@ use crate::functionality::{
     languages::run_languages_module,
     models::run_model_module,
     conjugations::run_conjugations_modules,
+    resurrection::run_resurrection_module
 };
 
 pub async fn initialise_process() {
@@ -40,28 +41,7 @@ pub async fn initialise_process() {
 
 
 pub fn continue_process() {
-    println!("Enter the languages you would like to scrape below:");
-    let mut buffer = String::new();
-    io::stdin().read_line(&mut buffer).unwrap();
-    let trimmed_buffer = buffer.trim();
-
-    let languages = trimmed_buffer.split(", ").collect::<Vec<&str>>();
-    println!("{:?}", languages);
-
-
-
-
-    // TODO
-    println!("What words would you like to scrape?");
-    buffer = String::new();
-    io::stdin().read_line(&mut buffer).unwrap();
-    let trimmed_buffer = buffer.trim();
-
-    // Split by lanugae
-    let infinitives = trimmed_buffer.split(",").collect::<Vec<&str>>();
-    println!("{:?}", infinitives);
-
-    println!("continue");
+    run_resurrection_module();
 }
 
 

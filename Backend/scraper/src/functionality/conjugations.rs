@@ -78,7 +78,7 @@ pub async fn run_conjugations_modules() {
 
 
 
-    panic!("\n\n\npause here boss");
+    // panic!("\n\n\npause here boss");
 
 
     verb_page_info_vec_vec = extend_verb_page_info_vec_vec(language_vec.clone(), verb_page_info_vec_vec.clone(), backoff, error_429_backoff).await;
