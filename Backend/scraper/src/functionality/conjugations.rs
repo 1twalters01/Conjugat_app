@@ -594,13 +594,20 @@ async fn extend_verb_page_info_vec_vec(language_vec: Vec<String>, mut verb_page_
                     Ok(content) => content,
                     Err(_) => Vec::new(),
                 };
-                let count: u64 = scraped_verb_vec.len()as u64;
+                let count: u64 = scraped_verb_vec.len()as u64 + 1;
 
                 if scraped_verb_vec.contains(&verb) {
                     continue;
                 }
+                if verb.is_empty() {
+                    continue;
+                }
+
+                println!("verb: {:?}", verb);
 
                 let verb_url = generate_verb_url(verb, &language_vec[verb_page_info_vec_index]);
+                println!("verb_page_info: {:#?}", verb_page_info_vec_vec[verb_page_info_vec_index][verb_page_info_index].metadata);
+                println!("verb: {:?}", verb_url);
                 
                 let mut valid_response_bool: bool = false;
                 let mut response_loop_count: usize = 0;
@@ -832,6 +839,7 @@ async fn extend_verb_page_info_vec_vec(language_vec: Vec<String>, mut verb_page_
                     }
 
                     page_info.phrases.push(phrase_vec);
+                    println!("page_info: {:#?}", page_info);
                 }
                 verb_page_info_vec_vec[verb_page_info_vec_index].push(page_info);
                 scraped_verb_vec.push(verb.to_string());
@@ -839,7 +847,6 @@ async fn extend_verb_page_info_vec_vec(language_vec: Vec<String>, mut verb_page_
                 save_data_to_file(&verb_page_info_vec_vec[verb_page_info_vec_index], &page_info_vec_file_path);
                 save_data_to_file(&scraped_verb_vec, &scraped_verb_vec_file_path);
 
-                println!("page_info_vec: {:#?}", verb_page_info_vec_vec[verb_page_info_vec_index]);
             }
         }
     }
