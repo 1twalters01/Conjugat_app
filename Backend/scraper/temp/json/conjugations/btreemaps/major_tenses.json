@@ -1,0 +1,44 @@
+[
+  {
+    "Gerundio": 4,
+    "Imperativo": 2,
+    "Indicativo": 1,
+    "Infinitivo": 5,
+    "Participio Pasado": 6,
+    "Subjuntivo": 3
+  },
+  {
+    "Condicional": 9,
+    "Conjuntivo / Subjuntivo": 8,
+    "Gerúndio": 10,
+    "Imperativo": 12,
+    "Indicativo": 7,
+    "Infinitivo": 11,
+    "Particípio": 13
+  },
+  {
+    "Condizionale": 16,
+    "Congiuntivo": 15,
+    "Gerundio": 18,
+    "Imperativo Presente": 17,
+    "Indicativo": 14,
+    "Infinito Presente": 19,
+    "Participio": 20
+  },
+  {
+    "Conditionnel": 23,
+    "Impératif": 25,
+    "Impératif Présent": 27,
+    "Indicatif": 21,
+    "Infinitif": 26,
+    "Participe": 24,
+    "Subjonctif": 22
+  },
+  {
+    "Imperative": 29,
+    "Indicative": 28,
+    "Infinitive": 31,
+    "Participle": 30,
+    "Perfect participle": 32
+  }
+]

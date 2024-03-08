@@ -209,8 +209,8 @@ pub fn create_json_data_vec_from_vec_vec_string(data_vec_vec: Vec<Vec<String>>, 
 
             FieldOptions::TenseField => {
                 let tense_subfield = TenseSubfield {
-                    major: data[2].clone(),
-                    minor: data[3].clone()
+                    major: data[1].clone(),
+                    minor: data[2].clone()
                 };
                 let tense_field = TenseField {
                     rank: data[0].parse::<i64>().unwrap(),

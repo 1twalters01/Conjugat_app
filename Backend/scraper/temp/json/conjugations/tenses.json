@@ -4,10 +4,9 @@
     "pk": 1,
     "fields": {
       "rank": 1,
-      "language": "1",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Presente"
+        "major": "1",
+        "minor": "1"
       }
     }
   },
@@ -16,10 +15,9 @@
     "pk": 2,
     "fields": {
       "rank": 2,
-      "language": "1",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Futuro"
+        "major": "1",
+        "minor": "2"
       }
     }
   },
@@ -28,10 +26,9 @@
     "pk": 3,
     "fields": {
       "rank": 3,
-      "language": "1",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Pretérito imperfecto"
+        "major": "1",
+        "minor": "3"
       }
     }
   },
@@ -40,10 +37,9 @@
     "pk": 4,
     "fields": {
       "rank": 4,
-      "language": "1",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Pretérito perfecto compuesto"
+        "major": "1",
+        "minor": "4"
       }
     }
   },
@@ -52,10 +48,9 @@
     "pk": 5,
     "fields": {
       "rank": 5,
-      "language": "1",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Pretérito pluscuamperfecto"
+        "major": "1",
+        "minor": "5"
       }
     }
   },
@@ -64,10 +59,9 @@
     "pk": 6,
     "fields": {
       "rank": 6,
-      "language": "1",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Pretérito anterior"
+        "major": "1",
+        "minor": "6"
       }
     }
   },
@@ -76,10 +70,9 @@
     "pk": 7,
     "fields": {
       "rank": 7,
-      "language": "1",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Futuro perfecto"
+        "major": "1",
+        "minor": "7"
       }
     }
   },
@@ -88,10 +81,9 @@
     "pk": 8,
     "fields": {
       "rank": 8,
-      "language": "1",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Condicional perfecto"
+        "major": "1",
+        "minor": "8"
       }
     }
   },
@@ -100,10 +92,9 @@
     "pk": 9,
     "fields": {
       "rank": 9,
-      "language": "1",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Condicional"
+        "major": "1",
+        "minor": "9"
       }
     }
   },
@@ -112,10 +103,9 @@
     "pk": 10,
     "fields": {
       "rank": 10,
-      "language": "1",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Pretérito perfecto simple"
+        "major": "1",
+        "minor": "10"
       }
     }
   },
@@ -124,10 +114,9 @@
     "pk": 11,
     "fields": {
       "rank": 11,
-      "language": "1",
       "tense": {
-        "major": "Imperativo",
-        "minor": ""
+        "major": "2",
+        "minor": "11"
       }
     }
   },
@@ -136,10 +125,9 @@
     "pk": 12,
     "fields": {
       "rank": 12,
-      "language": "1",
       "tense": {
-        "major": "Subjuntivo",
-        "minor": "Presente"
+        "major": "3",
+        "minor": "1"
       }
     }
   },
@@ -148,10 +136,9 @@
     "pk": 13,
     "fields": {
       "rank": 13,
-      "language": "1",
       "tense": {
-        "major": "Subjuntivo",
-        "minor": "Futuro"
+        "major": "3",
+        "minor": "2"
       }
     }
   },
@@ -160,10 +147,9 @@
     "pk": 14,
     "fields": {
       "rank": 14,
-      "language": "1",
       "tense": {
-        "major": "Subjuntivo",
-        "minor": "Pretérito imperfecto"
+        "major": "3",
+        "minor": "3"
       }
     }
   },
@@ -172,10 +158,9 @@
     "pk": 15,
     "fields": {
       "rank": 15,
-      "language": "1",
       "tense": {
-        "major": "Subjuntivo",
-        "minor": "Pretérito pluscuamperfecto"
+        "major": "3",
+        "minor": "5"
       }
     }
   },
@@ -184,10 +169,9 @@
     "pk": 16,
     "fields": {
       "rank": 16,
-      "language": "1",
       "tense": {
-        "major": "Subjuntivo",
-        "minor": "Futuro perfecto"
+        "major": "3",
+        "minor": "7"
       }
     }
   },
@@ -196,10 +180,9 @@
     "pk": 17,
     "fields": {
       "rank": 17,
-      "language": "1",
       "tense": {
-        "major": "Subjuntivo",
-        "minor": "Pretérito imperfecto (2)"
+        "major": "3",
+        "minor": "12"
       }
     }
   },
@@ -208,10 +191,9 @@
     "pk": 18,
     "fields": {
       "rank": 18,
-      "language": "1",
       "tense": {
-        "major": "Subjuntivo",
-        "minor": "Pretérito pluscuamperfecto (2)"
+        "major": "3",
+        "minor": "13"
       }
     }
   },
@@ -220,10 +202,9 @@
     "pk": 19,
     "fields": {
       "rank": 19,
-      "language": "1",
       "tense": {
-        "major": "Subjuntivo",
-        "minor": "Pretérito perfecto"
+        "major": "3",
+        "minor": "14"
       }
     }
   },
@@ -232,10 +213,9 @@
     "pk": 20,
     "fields": {
       "rank": 20,
-      "language": "1",
       "tense": {
-        "major": "Gerundio",
-        "minor": ""
+        "major": "4",
+        "minor": "11"
       }
     }
   },
@@ -244,10 +224,9 @@
     "pk": 21,
     "fields": {
       "rank": 21,
-      "language": "1",
       "tense": {
-        "major": "Gerundio",
-        "minor": "compuesto"
+        "major": "4",
+        "minor": "15"
       }
     }
   },
@@ -256,10 +235,9 @@
     "pk": 22,
     "fields": {
       "rank": 22,
-      "language": "1",
       "tense": {
-        "major": "Infinitivo",
-        "minor": ""
+        "major": "5",
+        "minor": "11"
       }
     }
   },
@@ -268,10 +246,9 @@
     "pk": 23,
     "fields": {
       "rank": 23,
-      "language": "1",
       "tense": {
-        "major": "Infinitivo",
-        "minor": "compuesto"
+        "major": "5",
+        "minor": "15"
       }
     }
   },
@@ -280,10 +257,9 @@
     "pk": 24,
     "fields": {
       "rank": 24,
-      "language": "1",
       "tense": {
-        "major": "Participio Pasado",
-        "minor": ""
+        "major": "6",
+        "minor": "11"
       }
     }
   },
@@ -292,10 +268,9 @@
     "pk": 25,
     "fields": {
       "rank": 1,
-      "language": "2",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Presente"
+        "major": "7",
+        "minor": "16"
       }
     }
   },
@@ -304,10 +279,9 @@
     "pk": 26,
     "fields": {
       "rank": 2,
-      "language": "2",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Pretérito Perfeito"
+        "major": "7",
+        "minor": "17"
       }
     }
   },
@@ -316,10 +290,9 @@
     "pk": 27,
     "fields": {
       "rank": 3,
-      "language": "2",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Pretérito Imperfeito"
+        "major": "7",
+        "minor": "18"
       }
     }
   },
@@ -328,10 +301,9 @@
     "pk": 28,
     "fields": {
       "rank": 4,
-      "language": "2",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Pretérito Mais-que-Perfeito"
+        "major": "7",
+        "minor": "19"
       }
     }
   },
@@ -340,10 +312,9 @@
     "pk": 29,
     "fields": {
       "rank": 5,
-      "language": "2",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Pretérito Perfeito Composto"
+        "major": "7",
+        "minor": "20"
       }
     }
   },
@@ -352,10 +323,9 @@
     "pk": 30,
     "fields": {
       "rank": 6,
-      "language": "2",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Pretérito Mais-que-Perfeito Composto"
+        "major": "7",
+        "minor": "21"
       }
     }
   },
@@ -364,10 +334,9 @@
     "pk": 31,
     "fields": {
       "rank": 7,
-      "language": "2",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Pretérito Mais-que-Perfeito Anterior"
+        "major": "7",
+        "minor": "22"
       }
     }
   },
@@ -376,10 +345,9 @@
     "pk": 32,
     "fields": {
       "rank": 8,
-      "language": "2",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Futuro do Presente Simples"
+        "major": "7",
+        "minor": "23"
       }
     }
   },
@@ -388,10 +356,9 @@
     "pk": 33,
     "fields": {
       "rank": 9,
-      "language": "2",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Futuro do Presente Composto"
+        "major": "7",
+        "minor": "24"
       }
     }
   },
@@ -400,10 +367,9 @@
     "pk": 34,
     "fields": {
       "rank": 10,
-      "language": "2",
       "tense": {
-        "major": "Conjuntivo / Subjuntivo",
-        "minor": "Presente"
+        "major": "8",
+        "minor": "16"
       }
     }
   },
@@ -412,10 +378,9 @@
     "pk": 35,
     "fields": {
       "rank": 11,
-      "language": "2",
       "tense": {
-        "major": "Conjuntivo / Subjuntivo",
-        "minor": "Pretérito Perfeito"
+        "major": "8",
+        "minor": "17"
       }
     }
   },
@@ -424,10 +389,9 @@
     "pk": 36,
     "fields": {
       "rank": 12,
-      "language": "2",
       "tense": {
-        "major": "Conjuntivo / Subjuntivo",
-        "minor": "Pretérito Imperfeito"
+        "major": "8",
+        "minor": "18"
       }
     }
   },
@@ -436,10 +400,9 @@
     "pk": 37,
     "fields": {
       "rank": 13,
-      "language": "2",
       "tense": {
-        "major": "Conjuntivo / Subjuntivo",
-        "minor": "Pretérito Mais-que-Perfeito Composto"
+        "major": "8",
+        "minor": "21"
       }
     }
   },
@@ -448,10 +411,9 @@
     "pk": 38,
     "fields": {
       "rank": 14,
-      "language": "2",
       "tense": {
-        "major": "Conjuntivo / Subjuntivo",
-        "minor": "Futuro"
+        "major": "8",
+        "minor": "25"
       }
     }
   },
@@ -460,10 +422,9 @@
     "pk": 39,
     "fields": {
       "rank": 15,
-      "language": "2",
       "tense": {
-        "major": "Conjuntivo / Subjuntivo",
-        "minor": "Futuro Composto"
+        "major": "8",
+        "minor": "26"
       }
     }
   },
@@ -472,10 +433,9 @@
     "pk": 40,
     "fields": {
       "rank": 16,
-      "language": "2",
       "tense": {
-        "major": "Condicional",
-        "minor": "Futuro do Pretérito Simples"
+        "major": "9",
+        "minor": "27"
       }
     }
   },
@@ -484,10 +444,9 @@
     "pk": 41,
     "fields": {
       "rank": 17,
-      "language": "2",
       "tense": {
-        "major": "Condicional",
-        "minor": "Futuro do Pretérito Composto"
+        "major": "9",
+        "minor": "28"
       }
     }
   },
@@ -496,10 +455,9 @@
     "pk": 42,
     "fields": {
       "rank": 18,
-      "language": "2",
       "tense": {
-        "major": "Gerúndio",
-        "minor": ""
+        "major": "10",
+        "minor": "29"
       }
     }
   },
@@ -508,10 +466,9 @@
     "pk": 43,
     "fields": {
       "rank": 19,
-      "language": "2",
       "tense": {
-        "major": "Infinitivo",
-        "minor": ""
+        "major": "11",
+        "minor": "29"
       }
     }
   },
@@ -520,10 +477,9 @@
     "pk": 44,
     "fields": {
       "rank": 20,
-      "language": "2",
       "tense": {
-        "major": "Imperativo",
-        "minor": ""
+        "major": "12",
+        "minor": "29"
       }
     }
   },
@@ -532,10 +488,9 @@
     "pk": 45,
     "fields": {
       "rank": 21,
-      "language": "2",
       "tense": {
-        "major": "Imperativo",
-        "minor": "Negativo"
+        "major": "12",
+        "minor": "30"
       }
     }
   },
@@ -544,10 +499,9 @@
     "pk": 46,
     "fields": {
       "rank": 22,
-      "language": "2",
       "tense": {
-        "major": "Particípio",
-        "minor": ""
+        "major": "13",
+        "minor": "29"
       }
     }
   },
@@ -556,10 +510,9 @@
     "pk": 47,
     "fields": {
       "rank": 1,
-      "language": "3",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Presente"
+        "major": "14",
+        "minor": "31"
       }
     }
   },
@@ -568,10 +521,9 @@
     "pk": 48,
     "fields": {
       "rank": 2,
-      "language": "3",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Imperfetto"
+        "major": "14",
+        "minor": "32"
       }
     }
   },
@@ -580,10 +532,9 @@
     "pk": 49,
     "fields": {
       "rank": 3,
-      "language": "3",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Passato remoto"
+        "major": "14",
+        "minor": "33"
       }
     }
   },
@@ -592,10 +543,9 @@
     "pk": 50,
     "fields": {
       "rank": 4,
-      "language": "3",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Futuro semplice"
+        "major": "14",
+        "minor": "34"
       }
     }
   },
@@ -604,10 +554,9 @@
     "pk": 51,
     "fields": {
       "rank": 5,
-      "language": "3",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Passato prossimo"
+        "major": "14",
+        "minor": "35"
       }
     }
   },
@@ -616,10 +565,9 @@
     "pk": 52,
     "fields": {
       "rank": 6,
-      "language": "3",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Trapassato prossimo"
+        "major": "14",
+        "minor": "36"
       }
     }
   },
@@ -628,10 +576,9 @@
     "pk": 53,
     "fields": {
       "rank": 7,
-      "language": "3",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Trapassato remoto"
+        "major": "14",
+        "minor": "37"
       }
     }
   },
@@ -640,10 +587,9 @@
     "pk": 54,
     "fields": {
       "rank": 8,
-      "language": "3",
       "tense": {
-        "major": "Indicativo",
-        "minor": "Futuro anteriore"
+        "major": "14",
+        "minor": "38"
       }
     }
   },
@@ -652,10 +598,9 @@
     "pk": 55,
     "fields": {
       "rank": 9,
-      "language": "3",
       "tense": {
-        "major": "Congiuntivo",
-        "minor": "Presente"
+        "major": "15",
+        "minor": "31"
       }
     }
   },
@@ -664,10 +609,9 @@
     "pk": 56,
     "fields": {
       "rank": 10,
-      "language": "3",
       "tense": {
-        "major": "Congiuntivo",
-        "minor": "Passato"
+        "major": "15",
+        "minor": "39"
       }
     }
   },
@@ -676,10 +620,9 @@
     "pk": 57,
     "fields": {
       "rank": 11,
-      "language": "3",
       "tense": {
-        "major": "Congiuntivo",
-        "minor": "Imperfetto"
+        "major": "15",
+        "minor": "32"
       }
     }
   },
@@ -688,10 +631,9 @@
     "pk": 58,
     "fields": {
       "rank": 12,
-      "language": "3",
       "tense": {
-        "major": "Congiuntivo",
-        "minor": "Trapassato"
+        "major": "15",
+        "minor": "40"
       }
     }
   },
@@ -700,10 +642,9 @@
     "pk": 59,
     "fields": {
       "rank": 13,
-      "language": "3",
       "tense": {
-        "major": "Condizionale",
-        "minor": "Presente"
+        "major": "16",
+        "minor": "31"
       }
     }
   },
@@ -712,10 +653,9 @@
     "pk": 60,
     "fields": {
       "rank": 14,
-      "language": "3",
       "tense": {
-        "major": "Condizionale",
-        "minor": "Passato"
+        "major": "16",
+        "minor": "39"
       }
     }
   },
@@ -724,10 +664,9 @@
     "pk": 61,
     "fields": {
       "rank": 15,
-      "language": "3",
       "tense": {
-        "major": "Imperativo Presente",
-        "minor": ""
+        "major": "17",
+        "minor": "41"
       }
     }
   },
@@ -736,10 +675,9 @@
     "pk": 62,
     "fields": {
       "rank": 16,
-      "language": "3",
       "tense": {
-        "major": "Gerundio",
-        "minor": "Presente"
+        "major": "18",
+        "minor": "31"
       }
     }
   },
@@ -748,10 +686,9 @@
     "pk": 63,
     "fields": {
       "rank": 17,
-      "language": "3",
       "tense": {
-        "major": "Gerundio",
-        "minor": "Passato"
+        "major": "18",
+        "minor": "39"
       }
     }
   },
@@ -760,10 +697,9 @@
     "pk": 64,
     "fields": {
       "rank": 18,
-      "language": "3",
       "tense": {
-        "major": "Infinito Presente",
-        "minor": ""
+        "major": "19",
+        "minor": "41"
       }
     }
   },
@@ -772,10 +708,9 @@
     "pk": 65,
     "fields": {
       "rank": 19,
-      "language": "3",
       "tense": {
-        "major": "Participio",
-        "minor": "Presente"
+        "major": "20",
+        "minor": "31"
       }
     }
   },
@@ -784,10 +719,9 @@
     "pk": 66,
     "fields": {
       "rank": 20,
-      "language": "3",
       "tense": {
-        "major": "Participio",
-        "minor": "Passato"
+        "major": "20",
+        "minor": "39"
       }
     }
   },
@@ -796,10 +730,9 @@
     "pk": 67,
     "fields": {
       "rank": 1,
-      "language": "4",
       "tense": {
-        "major": "Indicatif",
-        "minor": "Présent"
+        "major": "21",
+        "minor": "42"
       }
     }
   },
@@ -808,10 +741,9 @@
     "pk": 68,
     "fields": {
       "rank": 2,
-      "language": "4",
       "tense": {
-        "major": "Indicatif",
-        "minor": "Imparfait"
+        "major": "21",
+        "minor": "43"
       }
     }
   },
@@ -820,10 +752,9 @@
     "pk": 69,
     "fields": {
       "rank": 3,
-      "language": "4",
       "tense": {
-        "major": "Indicatif",
-        "minor": "Futur"
+        "major": "21",
+        "minor": "44"
       }
     }
   },
@@ -832,10 +763,9 @@
     "pk": 70,
     "fields": {
       "rank": 4,
-      "language": "4",
       "tense": {
-        "major": "Indicatif",
-        "minor": "Passé simple"
+        "major": "21",
+        "minor": "45"
       }
     }
   },
@@ -844,10 +774,9 @@
     "pk": 71,
     "fields": {
       "rank": 5,
-      "language": "4",
       "tense": {
-        "major": "Indicatif",
-        "minor": "Passé composé"
+        "major": "21",
+        "minor": "46"
       }
     }
   },
@@ -856,10 +785,9 @@
     "pk": 72,
     "fields": {
       "rank": 6,
-      "language": "4",
       "tense": {
-        "major": "Indicatif",
-        "minor": "Plus-que-parfait"
+        "major": "21",
+        "minor": "47"
       }
     }
   },
@@ -868,10 +796,9 @@
     "pk": 73,
     "fields": {
       "rank": 7,
-      "language": "4",
       "tense": {
-        "major": "Indicatif",
-        "minor": "Passé antérieur"
+        "major": "21",
+        "minor": "48"
       }
     }
   },
@@ -880,10 +807,9 @@
     "pk": 74,
     "fields": {
       "rank": 8,
-      "language": "4",
       "tense": {
-        "major": "Indicatif",
-        "minor": "Futur antérieur"
+        "major": "21",
+        "minor": "49"
       }
     }
   },
@@ -892,10 +818,9 @@
     "pk": 75,
     "fields": {
       "rank": 9,
-      "language": "4",
       "tense": {
-        "major": "Subjonctif",
-        "minor": "Présent"
+        "major": "22",
+        "minor": "42"
       }
     }
   },
@@ -904,10 +829,9 @@
     "pk": 76,
     "fields": {
       "rank": 10,
-      "language": "4",
       "tense": {
-        "major": "Subjonctif",
-        "minor": "Imparfait"
+        "major": "22",
+        "minor": "43"
       }
     }
   },
@@ -916,10 +840,9 @@
     "pk": 77,
     "fields": {
       "rank": 11,
-      "language": "4",
       "tense": {
-        "major": "Subjonctif",
-        "minor": "Plus-que-parfait"
+        "major": "22",
+        "minor": "47"
       }
     }
   },
@@ -928,10 +851,9 @@
     "pk": 78,
     "fields": {
       "rank": 12,
-      "language": "4",
       "tense": {
-        "major": "Subjonctif",
-        "minor": "Passé"
+        "major": "22",
+        "minor": "50"
       }
     }
   },
@@ -940,10 +862,9 @@
     "pk": 79,
     "fields": {
       "rank": 13,
-      "language": "4",
       "tense": {
-        "major": "Conditionnel",
-        "minor": "Présent"
+        "major": "23",
+        "minor": "42"
       }
     }
   },
@@ -952,10 +873,9 @@
     "pk": 80,
     "fields": {
       "rank": 14,
-      "language": "4",
       "tense": {
-        "major": "Conditionnel",
-        "minor": "Passé première forme"
+        "major": "23",
+        "minor": "51"
       }
     }
   },
@@ -964,10 +884,9 @@
     "pk": 81,
     "fields": {
       "rank": 15,
-      "language": "4",
       "tense": {
-        "major": "Conditionnel",
-        "minor": "Passé deuxième forme"
+        "major": "23",
+        "minor": "52"
       }
     }
   },
@@ -976,10 +895,9 @@
     "pk": 82,
     "fields": {
       "rank": 16,
-      "language": "4",
       "tense": {
-        "major": "Participe",
-        "minor": "Présent"
+        "major": "24",
+        "minor": "42"
       }
     }
   },
@@ -988,10 +906,9 @@
     "pk": 83,
     "fields": {
       "rank": 17,
-      "language": "4",
       "tense": {
-        "major": "Participe",
-        "minor": "Passé composé"
+        "major": "24",
+        "minor": "46"
       }
     }
   },
@@ -1000,10 +917,9 @@
     "pk": 84,
     "fields": {
       "rank": 18,
-      "language": "4",
       "tense": {
-        "major": "Participe",
-        "minor": "Passé"
+        "major": "24",
+        "minor": "50"
       }
     }
   },
@@ -1012,10 +928,9 @@
     "pk": 85,
     "fields": {
       "rank": 19,
-      "language": "4",
       "tense": {
-        "major": "Impératif",
-        "minor": "Présent"
+        "major": "25",
+        "minor": "42"
       }
     }
   },
@@ -1024,10 +939,9 @@
     "pk": 86,
     "fields": {
       "rank": 20,
-      "language": "4",
       "tense": {
-        "major": "Impératif",
-        "minor": "Passé"
+        "major": "25",
+        "minor": "50"
       }
     }
   },
@@ -1036,10 +950,9 @@
     "pk": 87,
     "fields": {
       "rank": 21,
-      "language": "4",
       "tense": {
-        "major": "Infinitif",
-        "minor": "Présent"
+        "major": "26",
+        "minor": "42"
       }
     }
   },
@@ -1048,10 +961,9 @@
     "pk": 88,
     "fields": {
       "rank": 22,
-      "language": "4",
       "tense": {
-        "major": "Infinitif",
-        "minor": "Passé"
+        "major": "26",
+        "minor": "50"
       }
     }
   },
@@ -1060,10 +972,9 @@
     "pk": 89,
     "fields": {
       "rank": 19,
-      "language": "4",
       "tense": {
-        "major": "Impératif Présent",
-        "minor": ""
+        "major": "27",
+        "minor": "53"
       }
     }
   },
@@ -1072,10 +983,9 @@
     "pk": 90,
     "fields": {
       "rank": 1,
-      "language": "5",
       "tense": {
-        "major": "Indicative",
-        "minor": "Present"
+        "major": "28",
+        "minor": "54"
       }
     }
   },
@@ -1084,10 +994,9 @@
     "pk": 91,
     "fields": {
       "rank": 2,
-      "language": "5",
       "tense": {
-        "major": "Indicative",
-        "minor": "Preterite"
+        "major": "28",
+        "minor": "55"
       }
     }
   },
@@ -1096,10 +1005,9 @@
     "pk": 92,
     "fields": {
       "rank": 3,
-      "language": "5",
       "tense": {
-        "major": "Indicative",
-        "minor": "Present continuous"
+        "major": "28",
+        "minor": "56"
       }
     }
   },
@@ -1108,10 +1016,9 @@
     "pk": 93,
     "fields": {
       "rank": 4,
-      "language": "5",
       "tense": {
-        "major": "Indicative",
-        "minor": "Present perfect"
+        "major": "28",
+        "minor": "57"
       }
     }
   },
@@ -1120,10 +1027,9 @@
     "pk": 94,
     "fields": {
       "rank": 5,
-      "language": "5",
       "tense": {
-        "major": "Indicative",
-        "minor": "Future"
+        "major": "28",
+        "minor": "58"
       }
     }
   },
@@ -1132,10 +1038,9 @@
     "pk": 95,
     "fields": {
       "rank": 6,
-      "language": "5",
       "tense": {
-        "major": "Indicative",
-        "minor": "Future perfect"
+        "major": "28",
+        "minor": "59"
       }
     }
   },
@@ -1144,10 +1049,9 @@
     "pk": 96,
     "fields": {
       "rank": 7,
-      "language": "5",
       "tense": {
-        "major": "Indicative",
-        "minor": "Past continous"
+        "major": "28",
+        "minor": "60"
       }
     }
   },
@@ -1156,10 +1060,9 @@
     "pk": 97,
     "fields": {
       "rank": 8,
-      "language": "5",
       "tense": {
-        "major": "Indicative",
-        "minor": "Past perfect"
+        "major": "28",
+        "minor": "61"
       }
     }
   },
@@ -1168,10 +1071,9 @@
     "pk": 98,
     "fields": {
       "rank": 9,
-      "language": "5",
       "tense": {
-        "major": "Indicative",
-        "minor": "Future continuous"
+        "major": "28",
+        "minor": "62"
       }
     }
   },
@@ -1180,10 +1082,9 @@
     "pk": 99,
     "fields": {
       "rank": 10,
-      "language": "5",
       "tense": {
-        "major": "Indicative",
-        "minor": "Present perfect continuous"
+        "major": "28",
+        "minor": "63"
       }
     }
   },
@@ -1192,10 +1093,9 @@
     "pk": 100,
     "fields": {
       "rank": 11,
-      "language": "5",
       "tense": {
-        "major": "Indicative",
-        "minor": "Past perfect continuous"
+        "major": "28",
+        "minor": "64"
       }
     }
   },
@@ -1204,10 +1104,9 @@
     "pk": 101,
     "fields": {
       "rank": 12,
-      "language": "5",
       "tense": {
-        "major": "Indicative",
-        "minor": "Future perfect continuous"
+        "major": "28",
+        "minor": "65"
       }
     }
   },
@@ -1216,10 +1115,9 @@
     "pk": 102,
     "fields": {
       "rank": 13,
-      "language": "5",
       "tense": {
-        "major": "Imperative",
-        "minor": ""
+        "major": "29",
+        "minor": "66"
       }
     }
   },
@@ -1228,10 +1126,9 @@
     "pk": 103,
     "fields": {
       "rank": 14,
-      "language": "5",
       "tense": {
-        "major": "Participle",
-        "minor": "Present"
+        "major": "30",
+        "minor": "54"
       }
     }
   },
@@ -1240,10 +1137,9 @@
     "pk": 104,
     "fields": {
       "rank": 15,
-      "language": "5",
       "tense": {
-        "major": "Participle",
-        "minor": "Past"
+        "major": "30",
+        "minor": "67"
       }
     }
   },
@@ -1252,10 +1148,9 @@
     "pk": 105,
     "fields": {
       "rank": 16,
-      "language": "5",
       "tense": {
-        "major": "Infinitive",
-        "minor": ""
+        "major": "31",
+        "minor": "66"
       }
     }
   },
@@ -1264,10 +1159,9 @@
     "pk": 106,
     "fields": {
       "rank": 17,
-      "language": "5",
       "tense": {
-        "major": "Perfect participle",
-        "minor": ""
+        "major": "32",
+        "minor": "66"
       }
     }
   }

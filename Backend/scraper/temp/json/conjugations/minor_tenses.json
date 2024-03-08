@@ -1,0 +1,538 @@
+[
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 1,
+    "fields": {
+      "minor_tense": "Presente",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 2,
+    "fields": {
+      "minor_tense": "Futuro",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 3,
+    "fields": {
+      "minor_tense": "Pretérito imperfecto",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 4,
+    "fields": {
+      "minor_tense": "Pretérito perfecto compuesto",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 5,
+    "fields": {
+      "minor_tense": "Pretérito pluscuamperfecto",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 6,
+    "fields": {
+      "minor_tense": "Pretérito anterior",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 7,
+    "fields": {
+      "minor_tense": "Futuro perfecto",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 8,
+    "fields": {
+      "minor_tense": "Condicional perfecto",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 9,
+    "fields": {
+      "minor_tense": "Condicional",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 10,
+    "fields": {
+      "minor_tense": "Pretérito perfecto simple",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 11,
+    "fields": {
+      "minor_tense": "",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 12,
+    "fields": {
+      "minor_tense": "Pretérito imperfecto (2)",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 13,
+    "fields": {
+      "minor_tense": "Pretérito pluscuamperfecto (2)",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 14,
+    "fields": {
+      "minor_tense": "Pretérito perfecto",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 15,
+    "fields": {
+      "minor_tense": "compuesto",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 16,
+    "fields": {
+      "minor_tense": "Presente",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 17,
+    "fields": {
+      "minor_tense": "Pretérito Perfeito",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 18,
+    "fields": {
+      "minor_tense": "Pretérito Imperfeito",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 19,
+    "fields": {
+      "minor_tense": "Pretérito Mais-que-Perfeito",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 20,
+    "fields": {
+      "minor_tense": "Pretérito Perfeito Composto",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 21,
+    "fields": {
+      "minor_tense": "Pretérito Mais-que-Perfeito Composto",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 22,
+    "fields": {
+      "minor_tense": "Pretérito Mais-que-Perfeito Anterior",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 23,
+    "fields": {
+      "minor_tense": "Futuro do Presente Simples",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 24,
+    "fields": {
+      "minor_tense": "Futuro do Presente Composto",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 25,
+    "fields": {
+      "minor_tense": "Futuro",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 26,
+    "fields": {
+      "minor_tense": "Futuro Composto",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 27,
+    "fields": {
+      "minor_tense": "Futuro do Pretérito Simples",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 28,
+    "fields": {
+      "minor_tense": "Futuro do Pretérito Composto",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 29,
+    "fields": {
+      "minor_tense": "",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 30,
+    "fields": {
+      "minor_tense": "Negativo",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 31,
+    "fields": {
+      "minor_tense": "Presente",
+      "language": "3"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 32,
+    "fields": {
+      "minor_tense": "Imperfetto",
+      "language": "3"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 33,
+    "fields": {
+      "minor_tense": "Passato remoto",
+      "language": "3"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 34,
+    "fields": {
+      "minor_tense": "Futuro semplice",
+      "language": "3"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 35,
+    "fields": {
+      "minor_tense": "Passato prossimo",
+      "language": "3"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 36,
+    "fields": {
+      "minor_tense": "Trapassato prossimo",
+      "language": "3"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 37,
+    "fields": {
+      "minor_tense": "Trapassato remoto",
+      "language": "3"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 38,
+    "fields": {
+      "minor_tense": "Futuro anteriore",
+      "language": "3"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 39,
+    "fields": {
+      "minor_tense": "Passato",
+      "language": "3"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 40,
+    "fields": {
+      "minor_tense": "Trapassato",
+      "language": "3"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 41,
+    "fields": {
+      "minor_tense": "",
+      "language": "3"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 42,
+    "fields": {
+      "minor_tense": "Présent",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 43,
+    "fields": {
+      "minor_tense": "Imparfait",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 44,
+    "fields": {
+      "minor_tense": "Futur",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 45,
+    "fields": {
+      "minor_tense": "Passé simple",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 46,
+    "fields": {
+      "minor_tense": "Passé composé",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 47,
+    "fields": {
+      "minor_tense": "Plus-que-parfait",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 48,
+    "fields": {
+      "minor_tense": "Passé antérieur",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 49,
+    "fields": {
+      "minor_tense": "Futur antérieur",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 50,
+    "fields": {
+      "minor_tense": "Passé",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 51,
+    "fields": {
+      "minor_tense": "Passé première forme",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 52,
+    "fields": {
+      "minor_tense": "Passé deuxième forme",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 53,
+    "fields": {
+      "minor_tense": "",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 54,
+    "fields": {
+      "minor_tense": "Present",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 55,
+    "fields": {
+      "minor_tense": "Preterite",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 56,
+    "fields": {
+      "minor_tense": "Present continuous",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 57,
+    "fields": {
+      "minor_tense": "Present perfect",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 58,
+    "fields": {
+      "minor_tense": "Future",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 59,
+    "fields": {
+      "minor_tense": "Future perfect",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 60,
+    "fields": {
+      "minor_tense": "Past continous",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 61,
+    "fields": {
+      "minor_tense": "Past perfect",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 62,
+    "fields": {
+      "minor_tense": "Future continuous",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 63,
+    "fields": {
+      "minor_tense": "Present perfect continuous",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 64,
+    "fields": {
+      "minor_tense": "Past perfect continuous",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 65,
+    "fields": {
+      "minor_tense": "Future perfect continuous",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 66,
+    "fields": {
+      "minor_tense": "",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.minor_tenses",
+    "pk": 67,
+    "fields": {
+      "minor_tense": "Past",
+      "language": "5"
+    }
+  }
+]

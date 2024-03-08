@@ -93,4 +93,3 @@ pub struct SentenceField {
     pub char_length: i64,
 }
 
-

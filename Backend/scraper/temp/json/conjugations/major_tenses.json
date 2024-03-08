@@ -1,0 +1,258 @@
+[
+  {
+    "model": "verbs.major_tenses",
+    "pk": 1,
+    "fields": {
+      "major_tense": "Indicativo",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 2,
+    "fields": {
+      "major_tense": "Imperativo",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 3,
+    "fields": {
+      "major_tense": "Subjuntivo",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 4,
+    "fields": {
+      "major_tense": "Gerundio",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 5,
+    "fields": {
+      "major_tense": "Infinitivo",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 6,
+    "fields": {
+      "major_tense": "Participio Pasado",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 7,
+    "fields": {
+      "major_tense": "Indicativo",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 8,
+    "fields": {
+      "major_tense": "Conjuntivo / Subjuntivo",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 9,
+    "fields": {
+      "major_tense": "Condicional",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 10,
+    "fields": {
+      "major_tense": "Gerúndio",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 11,
+    "fields": {
+      "major_tense": "Infinitivo",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 12,
+    "fields": {
+      "major_tense": "Imperativo",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 13,
+    "fields": {
+      "major_tense": "Particípio",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 14,
+    "fields": {
+      "major_tense": "Indicativo",
+      "language": "3"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 15,
+    "fields": {
+      "major_tense": "Congiuntivo",
+      "language": "3"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 16,
+    "fields": {
+      "major_tense": "Condizionale",
+      "language": "3"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 17,
+    "fields": {
+      "major_tense": "Imperativo Presente",
+      "language": "3"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 18,
+    "fields": {
+      "major_tense": "Gerundio",
+      "language": "3"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 19,
+    "fields": {
+      "major_tense": "Infinito Presente",
+      "language": "3"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 20,
+    "fields": {
+      "major_tense": "Participio",
+      "language": "3"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 21,
+    "fields": {
+      "major_tense": "Indicatif",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 22,
+    "fields": {
+      "major_tense": "Subjonctif",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 23,
+    "fields": {
+      "major_tense": "Conditionnel",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 24,
+    "fields": {
+      "major_tense": "Participe",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 25,
+    "fields": {
+      "major_tense": "Impératif",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 26,
+    "fields": {
+      "major_tense": "Infinitif",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 27,
+    "fields": {
+      "major_tense": "Impératif Présent",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 28,
+    "fields": {
+      "major_tense": "Indicative",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 29,
+    "fields": {
+      "major_tense": "Imperative",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 30,
+    "fields": {
+      "major_tense": "Participle",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 31,
+    "fields": {
+      "major_tense": "Infinitive",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.major_tenses",
+    "pk": 32,
+    "fields": {
+      "major_tense": "Perfect participle",
+      "language": "5"
+    }
+  }
+]

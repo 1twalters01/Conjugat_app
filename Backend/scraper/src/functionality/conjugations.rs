@@ -103,22 +103,22 @@ pub async fn run_conjugations_modules() {
 
     // CREATE MAJOR AND MINOR TENSE JSONDATA VECS FOR THIS AND LINK THOSE TO TENSE
     let major_tense_data_vec_vec: Vec<Vec<String>> = extract_major_tense_data_vec_vec(&verb_page_info_vec_vec, &language_pk_map_vec);
-    let major_tense_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(major_tense_data_vec_vec, FieldOptions::TenseField);
+    let major_tense_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(major_tense_data_vec_vec, FieldOptions::MajorTenseField);
     save_json_data_vec_to_file(&major_tense_json_data_vec, "temp/json/conjugations/major_tenses.json");
     let major_tense_pk_map_vec: Vec<BTreeMap<String, i64>> = get_major_tense_pk_map_vec(major_tense_json_data_vec.clone(), &language_vec);
     save_map_vec_to_file(&major_tense_pk_map_vec, "temp/json/conjugations/btreemaps/major_tenses.json");
 
     let minor_tense_data_vec_vec: Vec<Vec<String>> = extract_minor_tense_data_vec_vec(&verb_page_info_vec_vec, &language_pk_map_vec);
-    let minor_tense_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(minor_tense_data_vec_vec, FieldOptions::TenseField);
+    let minor_tense_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(minor_tense_data_vec_vec, FieldOptions::MinorTenseField);
     save_json_data_vec_to_file(&minor_tense_json_data_vec, "temp/json/conjugations/minor_tenses.json");
     let minor_tense_pk_map_vec: Vec<BTreeMap<String, i64>> = get_minor_tense_pk_map_vec(minor_tense_json_data_vec.clone(), &language_vec);
     save_map_vec_to_file(&minor_tense_pk_map_vec, "temp/json/conjugations/btreemaps/minor_tenses.json");
 
 
-    let tense_data_vec_vec: Vec<Vec<String>> = extract_tense_data_vec_vec(&verb_page_info_vec_vec, &language_pk_map_vec);
-    let tense_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(tense_data_vec_vec, FieldOptions::TenseField);
+    let tense_data_vec_vec: Vec<Vec<String>> = extract_tense_data_vec_vec(&verb_page_info_vec_vec, &major_tense_pk_map_vec, &minor_tense_pk_map_vec);
+    let tense_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(tense_data_vec_vec.clone(), FieldOptions::TenseField);
     save_json_data_vec_to_file(&tense_json_data_vec, "temp/json/conjugations/tenses.json");
-    let tense_pk_map_vec: Vec<BTreeMap<String, i64>> = get_tense_pk_map_vec(tense_json_data_vec.clone(), &language_vec, major_tense_json_data_vec);
+    let tense_pk_map_vec: Vec<BTreeMap<String, i64>> = get_tense_pk_map_vec(tense_json_data_vec.clone(), &language_vec, &major_tense_pk_map_vec);
     save_map_vec_to_file(&tense_pk_map_vec, "temp/json/conjugations/btreemaps/tenses.json");
 
 
@@ -139,13 +139,12 @@ pub async fn run_conjugations_modules() {
     let conjugate_data_vec_vec: Vec<Vec<String>> = extract_conjugate_data_vec_vec(&verb_page_info_vec_vec, &base_pk_map_vec, &model_language_id_map_vec);
     let conjugate_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(conjugate_data_vec_vec, FieldOptions::ConjugateField);
     save_json_data_vec_to_file(&conjugate_json_data_vec, "temp/json/conjugations/conjugates.json");
+    panic!("\n\n\npause here boss");
     let conjugate_pk_map_vec: Vec<BTreeMap<String, i64>> = get_conjugate_pk_map_vec(conjugate_json_data_vec.clone(), base_json_data_vec.clone(), &language_vec);
     save_map_vec_to_file(&conjugate_pk_map_vec, "temp/json/conjugations/btreemaps/conjugate.json");
     
-    panic!("\n\n\npause here boss");
 
-    let conjugation_data_vec_vec: Vec<Vec<String>> = extract_conjugation_data_vec_vec(
-        &verb_page_info_vec_vec, &tense_pk_map_vec, &subject_pk_map_vec, &auxiliary_pk_map_vec, &conjugate_pk_map_vec);
+    let conjugation_data_vec_vec: Vec<Vec<String>> = extract_conjugation_data_vec_vec(&verb_page_info_vec_vec, &tense_pk_map_vec, &subject_pk_map_vec, &auxiliary_pk_map_vec, &conjugate_pk_map_vec);
     let conjugation_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(conjugation_data_vec_vec, FieldOptions::ConjugationField);
     save_json_data_vec_to_file(&conjugation_json_data_vec, "temp/json/conjugations/conjugations.json");
     let conjugation_pk_map_vec: Vec<BTreeMap<String, i64>> = get_conjugation_pk_map_vec(conjugation_json_data_vec, conjugate_json_data_vec, base_json_data_vec, &language_vec);
@@ -290,8 +289,7 @@ fn generate_verb_url_vec_vec(verb_vec_vec: Vec<Vec<String>>, language_vec: Vec<S
 }
 
 fn generate_verb_url(verb: &str, language: &str) -> String {
-    return String::from("https://conjugator.reverso.net/conjugation-")
-        + language + "-verb-" + verb + ".html";
+    return String::from("https://conjugator.reverso.net/conjugation-") + language + "-verb-" + verb + ".html";
 }
 
 
@@ -917,12 +915,13 @@ fn extract_major_tense_data_vec_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>,
 
 fn get_major_tense_pk_map_vec(major_tense_json_data_vec: Vec<JsonData>, language_vec: &Vec<String>) -> Vec<BTreeMap<String, i64>>  {
     let mut major_tense_pk_map_vec: Vec<BTreeMap<String, i64>> = language_vec.into_iter().map(|_| BTreeMap::new()).collect();
-    let mut count_vec: Vec<i64> = language_vec.into_iter().map(|_| 0).collect();
+    // let mut count_vec: Vec<i64> = language_vec.into_iter().map(|_| 0).collect();
     for major_tense_data in major_tense_json_data_vec {
         if let Field::MajorTenseField(MajorTenseField { language, major_tense }) = &major_tense_data.fields {
             let language_id: i64 = language.parse::<i64>().unwrap();
-            major_tense_pk_map_vec[language_id.to_string().parse::<usize>().unwrap() - 1].insert(major_tense.clone(), count_vec[language_id as usize]);
-            count_vec[language_id as usize] += 1;
+            major_tense_pk_map_vec[language_id as usize - 1].insert(major_tense.clone(), major_tense_data.pk);
+            // major_tense_pk_map_vec[language_id as usize - 1].insert(major_tense.clone(), count_vec[language_id as usize - 1]);
+            // count_vec[language_id as usize - 1] += 1;
         }
     }
 
@@ -967,21 +966,22 @@ fn get_minor_tense_pk_map_vec(minor_tense_json_data_vec: Vec<JsonData>, language
     return minor_tense_pk_map_vec;
 }
 
-fn extract_tense_data_vec_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>, language_pk_map_vec: &Vec<BTreeMap<String, i64>>) -> Vec<Vec<String>> {
+fn extract_tense_data_vec_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>, major_tense_pk_map: &Vec<BTreeMap<String, i64>>, minor_tense_pk_map: &Vec<BTreeMap<String, i64>>) -> Vec<Vec<String>> {
     let mut tense_data_vec_vec: Vec<Vec<String>> = Vec::new();
 
-    for (index, verb_page_info_vec) in verb_page_info_vec_vec.into_iter().enumerate() {
+    for (language_index, verb_page_info_vec) in verb_page_info_vec_vec.into_iter().enumerate() {
         let mut tense_vec: Vec<Tense> = Vec::new();
         for verb_page_info in verb_page_info_vec.into_iter() {
-            let language: String = language_pk_map_vec[index].get(&verb_page_info.metadata.language.clone()).unwrap().to_string();
             let tense_data_vec: Vec<Tense> = verb_page_info.tenses.clone();
 
-            for (index2, tense_data) in tense_data_vec.into_iter().enumerate() {
+            for (index, tense_data) in tense_data_vec.into_iter().enumerate() {
                 if tense_vec.contains(&tense_data) { continue }
                 tense_vec.push(tense_data.clone());
 
-                let rank: String = (index2 + 1).to_string();
-                let tense: Vec<String> = Vec::from([rank, language.clone(), tense_data.major, tense_data.minor]);
+                let rank: String = (index + 1).to_string();
+                let major_tense: String = major_tense_pk_map[language_index].get(&tense_data.major).unwrap().to_string();
+                let minor_tense: String = minor_tense_pk_map[language_index].get(&tense_data.minor).unwrap().to_string();
+                let tense: Vec<String> = Vec::from([rank, major_tense, minor_tense]);
 
                 if tense_data_vec_vec.contains(&tense) == false {
                     tense_data_vec_vec.push(tense);
@@ -994,17 +994,26 @@ fn extract_tense_data_vec_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>, langu
 }
 
 
-fn get_tense_pk_map_vec(tense_json_data_vec: Vec<JsonData>, language_vec: &Vec<String>, major_tense_json_data_vec: Vec<JsonData>) -> Vec<BTreeMap<String, i64>>  {
+fn get_tense_pk_map_vec(tense_json_data_vec: Vec<JsonData>, language_vec: &Vec<String>, major_tense_pk_map_vec: &Vec<BTreeMap<String, i64>>) -> Vec<BTreeMap<String, i64>>  {
     let mut tense_pk_map_vec: Vec<BTreeMap<String, i64>> = language_vec.into_iter().map(|_| BTreeMap::new()).collect();
     for tense_data in tense_json_data_vec {
         if let Field::TenseField(TenseField { rank:_, tense }) = &tense_data.fields {
-            let mut language_id: i64 = 0;
+            let mut language_id: usize = 0;
 
-            if let Field::MajorTenseField(MajorTenseField { language, major_tense:_ }) = major_tense_json_data_vec[tense_data.pk.to_string().parse::<usize>().unwrap()].clone().fields {
-                language_id = language.parse::<i64>().unwrap();
+            for (index, btree) in major_tense_pk_map_vec.iter().enumerate() {
+                let mut cont: bool = false;
+                for value in btree.values() {
+                    if &tense.major.parse::<i64>().unwrap() == value {
+                        language_id = index as usize;
+                        cont = true;
+                        break
+                    }
+                }
+
+                if cont == true { break }
             }
 
-            tense_pk_map_vec[language_id.to_string().parse::<usize>().unwrap() - 1].insert(tense.major.clone() + "|" + tense.minor.as_str(), tense_data.pk);
+            tense_pk_map_vec[language_id].insert(tense.major.clone() + "|" + tense.minor.as_str(), tense_data.pk);
         }
     }
 
@@ -1091,13 +1100,15 @@ fn get_auxiliary_pk_map_vec(auxiliary_json_data_vec: Vec<JsonData>, language_vec
 }
 
 
-fn extract_conjugate_data_vec_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>, base_pk_map_vec: &Vec<BTreeMap<String, i64>>, model_language_id_map_vec: &Vec<BTreeMap<String, i64>>) -> Vec<Vec<String>> {
+fn extract_conjugate_data_vec_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>, base_pk_map_vec: &Vec<BTreeMap<String, i64>>, model_pk_map_vec: &Vec<BTreeMap<String, i64>>) -> Vec<Vec<String>> {
     let mut conjugate_data_vec_vec: Vec<Vec<String>> = Vec::new();
 
     for (index, verb_page_info_vec) in verb_page_info_vec_vec.into_iter().enumerate() {
         for verb_page_info in verb_page_info_vec.into_iter() {
             let base: String = base_pk_map_vec[index].get(&verb_page_info.metadata.base.clone()).unwrap().to_string();
-            let model: String = model_language_id_map_vec[index].get(&verb_page_info.metadata.model.clone()).unwrap().to_string();
+            println!("base: {:?}, base_id: {:?}", verb_page_info.metadata.base.clone(), base);
+            let model: String = model_pk_map_vec[index].get(&verb_page_info.metadata.model.clone()).unwrap().to_string();
+            println!("model: {:?}, model_id: {:?}", verb_page_info.metadata.model.clone(), model);
             let conjugates: Vec<String> = verb_page_info.conjugates.clone();
             for conjugate in conjugates {
                 let conjugate_data_vec: Vec<String> = Vec::from([base.clone(), model.clone(), conjugate]);
