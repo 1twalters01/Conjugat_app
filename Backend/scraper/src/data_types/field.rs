@@ -5,6 +5,8 @@ use crate::data_types::field_options::{
     EndingField,
     ModelField,
     BaseField,
+    MajorTenseField,
+    MinorTenseField,
     TenseField,
     TenseSubfield,
     SubjectField,
@@ -23,6 +25,8 @@ pub enum Field {
     EndingField(EndingField),
     ModelField(ModelField),
     BaseField(BaseField),
+    MajorTenseField(MajorTenseField),
+    MinorTenseField(MinorTenseField),
     TenseField(TenseField),
     SubjectField(SubjectField),
     AuxiliaryField(AuxiliaryField),
@@ -39,6 +43,8 @@ pub enum FieldOptions {
     EndingField,
     ModelField,
     BaseField,
+    MajorTenseField,
+    MinorTenseField,
     TenseField,
     SubjectField,
     AuxiliaryField,
@@ -91,12 +97,27 @@ impl Field {
                 return Field::BaseField(base_field)
             },
 
+            FieldOptions::MajorTenseField => {
+                let major_tense_field = MajorTenseField {
+                    major_tense: String::new(),
+                    language: String::new(),
+                };
+                return Field::MajorTenseField(major_tense_field)
+            },
+
+            FieldOptions::MinorTenseField => {
+                let minor_tense_field = MinorTenseField {
+                    minor_tense: String::new(),
+                    language: String::new(),
+                };
+                return Field::MinorTenseField(minor_tense_field)
+            },
+
             FieldOptions::TenseField => {
                 let tense_subfield = TenseSubfield { major: String::new(), minor: String::new() };
                 let tense_field = TenseField {
                     rank: 0,
                     tense: tense_subfield,
-                    language: String::new(),
                 };
                 return Field::TenseField(tense_field)
             },

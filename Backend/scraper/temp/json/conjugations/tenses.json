@@ -1,0 +1,1274 @@
+[
+  {
+    "model": "verbs.tenses",
+    "pk": 1,
+    "fields": {
+      "rank": 1,
+      "language": "1",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Presente"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 2,
+    "fields": {
+      "rank": 2,
+      "language": "1",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Futuro"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 3,
+    "fields": {
+      "rank": 3,
+      "language": "1",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Pretérito imperfecto"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 4,
+    "fields": {
+      "rank": 4,
+      "language": "1",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Pretérito perfecto compuesto"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 5,
+    "fields": {
+      "rank": 5,
+      "language": "1",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Pretérito pluscuamperfecto"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 6,
+    "fields": {
+      "rank": 6,
+      "language": "1",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Pretérito anterior"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 7,
+    "fields": {
+      "rank": 7,
+      "language": "1",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Futuro perfecto"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 8,
+    "fields": {
+      "rank": 8,
+      "language": "1",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Condicional perfecto"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 9,
+    "fields": {
+      "rank": 9,
+      "language": "1",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Condicional"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 10,
+    "fields": {
+      "rank": 10,
+      "language": "1",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Pretérito perfecto simple"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 11,
+    "fields": {
+      "rank": 11,
+      "language": "1",
+      "tense": {
+        "major": "Imperativo",
+        "minor": ""
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 12,
+    "fields": {
+      "rank": 12,
+      "language": "1",
+      "tense": {
+        "major": "Subjuntivo",
+        "minor": "Presente"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 13,
+    "fields": {
+      "rank": 13,
+      "language": "1",
+      "tense": {
+        "major": "Subjuntivo",
+        "minor": "Futuro"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 14,
+    "fields": {
+      "rank": 14,
+      "language": "1",
+      "tense": {
+        "major": "Subjuntivo",
+        "minor": "Pretérito imperfecto"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 15,
+    "fields": {
+      "rank": 15,
+      "language": "1",
+      "tense": {
+        "major": "Subjuntivo",
+        "minor": "Pretérito pluscuamperfecto"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 16,
+    "fields": {
+      "rank": 16,
+      "language": "1",
+      "tense": {
+        "major": "Subjuntivo",
+        "minor": "Futuro perfecto"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 17,
+    "fields": {
+      "rank": 17,
+      "language": "1",
+      "tense": {
+        "major": "Subjuntivo",
+        "minor": "Pretérito imperfecto (2)"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 18,
+    "fields": {
+      "rank": 18,
+      "language": "1",
+      "tense": {
+        "major": "Subjuntivo",
+        "minor": "Pretérito pluscuamperfecto (2)"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 19,
+    "fields": {
+      "rank": 19,
+      "language": "1",
+      "tense": {
+        "major": "Subjuntivo",
+        "minor": "Pretérito perfecto"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 20,
+    "fields": {
+      "rank": 20,
+      "language": "1",
+      "tense": {
+        "major": "Gerundio",
+        "minor": ""
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 21,
+    "fields": {
+      "rank": 21,
+      "language": "1",
+      "tense": {
+        "major": "Gerundio",
+        "minor": "compuesto"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 22,
+    "fields": {
+      "rank": 22,
+      "language": "1",
+      "tense": {
+        "major": "Infinitivo",
+        "minor": ""
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 23,
+    "fields": {
+      "rank": 23,
+      "language": "1",
+      "tense": {
+        "major": "Infinitivo",
+        "minor": "compuesto"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 24,
+    "fields": {
+      "rank": 24,
+      "language": "1",
+      "tense": {
+        "major": "Participio Pasado",
+        "minor": ""
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 25,
+    "fields": {
+      "rank": 1,
+      "language": "2",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Presente"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 26,
+    "fields": {
+      "rank": 2,
+      "language": "2",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Pretérito Perfeito"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 27,
+    "fields": {
+      "rank": 3,
+      "language": "2",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Pretérito Imperfeito"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 28,
+    "fields": {
+      "rank": 4,
+      "language": "2",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Pretérito Mais-que-Perfeito"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 29,
+    "fields": {
+      "rank": 5,
+      "language": "2",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Pretérito Perfeito Composto"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 30,
+    "fields": {
+      "rank": 6,
+      "language": "2",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Pretérito Mais-que-Perfeito Composto"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 31,
+    "fields": {
+      "rank": 7,
+      "language": "2",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Pretérito Mais-que-Perfeito Anterior"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 32,
+    "fields": {
+      "rank": 8,
+      "language": "2",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Futuro do Presente Simples"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 33,
+    "fields": {
+      "rank": 9,
+      "language": "2",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Futuro do Presente Composto"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 34,
+    "fields": {
+      "rank": 10,
+      "language": "2",
+      "tense": {
+        "major": "Conjuntivo / Subjuntivo",
+        "minor": "Presente"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 35,
+    "fields": {
+      "rank": 11,
+      "language": "2",
+      "tense": {
+        "major": "Conjuntivo / Subjuntivo",
+        "minor": "Pretérito Perfeito"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 36,
+    "fields": {
+      "rank": 12,
+      "language": "2",
+      "tense": {
+        "major": "Conjuntivo / Subjuntivo",
+        "minor": "Pretérito Imperfeito"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 37,
+    "fields": {
+      "rank": 13,
+      "language": "2",
+      "tense": {
+        "major": "Conjuntivo / Subjuntivo",
+        "minor": "Pretérito Mais-que-Perfeito Composto"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 38,
+    "fields": {
+      "rank": 14,
+      "language": "2",
+      "tense": {
+        "major": "Conjuntivo / Subjuntivo",
+        "minor": "Futuro"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 39,
+    "fields": {
+      "rank": 15,
+      "language": "2",
+      "tense": {
+        "major": "Conjuntivo / Subjuntivo",
+        "minor": "Futuro Composto"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 40,
+    "fields": {
+      "rank": 16,
+      "language": "2",
+      "tense": {
+        "major": "Condicional",
+        "minor": "Futuro do Pretérito Simples"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 41,
+    "fields": {
+      "rank": 17,
+      "language": "2",
+      "tense": {
+        "major": "Condicional",
+        "minor": "Futuro do Pretérito Composto"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 42,
+    "fields": {
+      "rank": 18,
+      "language": "2",
+      "tense": {
+        "major": "Gerúndio",
+        "minor": ""
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 43,
+    "fields": {
+      "rank": 19,
+      "language": "2",
+      "tense": {
+        "major": "Infinitivo",
+        "minor": ""
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 44,
+    "fields": {
+      "rank": 20,
+      "language": "2",
+      "tense": {
+        "major": "Imperativo",
+        "minor": ""
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 45,
+    "fields": {
+      "rank": 21,
+      "language": "2",
+      "tense": {
+        "major": "Imperativo",
+        "minor": "Negativo"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 46,
+    "fields": {
+      "rank": 22,
+      "language": "2",
+      "tense": {
+        "major": "Particípio",
+        "minor": ""
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 47,
+    "fields": {
+      "rank": 1,
+      "language": "3",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Presente"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 48,
+    "fields": {
+      "rank": 2,
+      "language": "3",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Imperfetto"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 49,
+    "fields": {
+      "rank": 3,
+      "language": "3",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Passato remoto"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 50,
+    "fields": {
+      "rank": 4,
+      "language": "3",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Futuro semplice"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 51,
+    "fields": {
+      "rank": 5,
+      "language": "3",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Passato prossimo"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 52,
+    "fields": {
+      "rank": 6,
+      "language": "3",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Trapassato prossimo"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 53,
+    "fields": {
+      "rank": 7,
+      "language": "3",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Trapassato remoto"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 54,
+    "fields": {
+      "rank": 8,
+      "language": "3",
+      "tense": {
+        "major": "Indicativo",
+        "minor": "Futuro anteriore"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 55,
+    "fields": {
+      "rank": 9,
+      "language": "3",
+      "tense": {
+        "major": "Congiuntivo",
+        "minor": "Presente"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 56,
+    "fields": {
+      "rank": 10,
+      "language": "3",
+      "tense": {
+        "major": "Congiuntivo",
+        "minor": "Passato"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 57,
+    "fields": {
+      "rank": 11,
+      "language": "3",
+      "tense": {
+        "major": "Congiuntivo",
+        "minor": "Imperfetto"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 58,
+    "fields": {
+      "rank": 12,
+      "language": "3",
+      "tense": {
+        "major": "Congiuntivo",
+        "minor": "Trapassato"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 59,
+    "fields": {
+      "rank": 13,
+      "language": "3",
+      "tense": {
+        "major": "Condizionale",
+        "minor": "Presente"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 60,
+    "fields": {
+      "rank": 14,
+      "language": "3",
+      "tense": {
+        "major": "Condizionale",
+        "minor": "Passato"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 61,
+    "fields": {
+      "rank": 15,
+      "language": "3",
+      "tense": {
+        "major": "Imperativo Presente",
+        "minor": ""
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 62,
+    "fields": {
+      "rank": 16,
+      "language": "3",
+      "tense": {
+        "major": "Gerundio",
+        "minor": "Presente"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 63,
+    "fields": {
+      "rank": 17,
+      "language": "3",
+      "tense": {
+        "major": "Gerundio",
+        "minor": "Passato"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 64,
+    "fields": {
+      "rank": 18,
+      "language": "3",
+      "tense": {
+        "major": "Infinito Presente",
+        "minor": ""
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 65,
+    "fields": {
+      "rank": 19,
+      "language": "3",
+      "tense": {
+        "major": "Participio",
+        "minor": "Presente"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 66,
+    "fields": {
+      "rank": 20,
+      "language": "3",
+      "tense": {
+        "major": "Participio",
+        "minor": "Passato"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 67,
+    "fields": {
+      "rank": 1,
+      "language": "4",
+      "tense": {
+        "major": "Indicatif",
+        "minor": "Présent"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 68,
+    "fields": {
+      "rank": 2,
+      "language": "4",
+      "tense": {
+        "major": "Indicatif",
+        "minor": "Imparfait"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 69,
+    "fields": {
+      "rank": 3,
+      "language": "4",
+      "tense": {
+        "major": "Indicatif",
+        "minor": "Futur"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 70,
+    "fields": {
+      "rank": 4,
+      "language": "4",
+      "tense": {
+        "major": "Indicatif",
+        "minor": "Passé simple"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 71,
+    "fields": {
+      "rank": 5,
+      "language": "4",
+      "tense": {
+        "major": "Indicatif",
+        "minor": "Passé composé"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 72,
+    "fields": {
+      "rank": 6,
+      "language": "4",
+      "tense": {
+        "major": "Indicatif",
+        "minor": "Plus-que-parfait"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 73,
+    "fields": {
+      "rank": 7,
+      "language": "4",
+      "tense": {
+        "major": "Indicatif",
+        "minor": "Passé antérieur"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 74,
+    "fields": {
+      "rank": 8,
+      "language": "4",
+      "tense": {
+        "major": "Indicatif",
+        "minor": "Futur antérieur"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 75,
+    "fields": {
+      "rank": 9,
+      "language": "4",
+      "tense": {
+        "major": "Subjonctif",
+        "minor": "Présent"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 76,
+    "fields": {
+      "rank": 10,
+      "language": "4",
+      "tense": {
+        "major": "Subjonctif",
+        "minor": "Imparfait"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 77,
+    "fields": {
+      "rank": 11,
+      "language": "4",
+      "tense": {
+        "major": "Subjonctif",
+        "minor": "Plus-que-parfait"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 78,
+    "fields": {
+      "rank": 12,
+      "language": "4",
+      "tense": {
+        "major": "Subjonctif",
+        "minor": "Passé"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 79,
+    "fields": {
+      "rank": 13,
+      "language": "4",
+      "tense": {
+        "major": "Conditionnel",
+        "minor": "Présent"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 80,
+    "fields": {
+      "rank": 14,
+      "language": "4",
+      "tense": {
+        "major": "Conditionnel",
+        "minor": "Passé première forme"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 81,
+    "fields": {
+      "rank": 15,
+      "language": "4",
+      "tense": {
+        "major": "Conditionnel",
+        "minor": "Passé deuxième forme"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 82,
+    "fields": {
+      "rank": 16,
+      "language": "4",
+      "tense": {
+        "major": "Participe",
+        "minor": "Présent"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 83,
+    "fields": {
+      "rank": 17,
+      "language": "4",
+      "tense": {
+        "major": "Participe",
+        "minor": "Passé composé"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 84,
+    "fields": {
+      "rank": 18,
+      "language": "4",
+      "tense": {
+        "major": "Participe",
+        "minor": "Passé"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 85,
+    "fields": {
+      "rank": 19,
+      "language": "4",
+      "tense": {
+        "major": "Impératif",
+        "minor": "Présent"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 86,
+    "fields": {
+      "rank": 20,
+      "language": "4",
+      "tense": {
+        "major": "Impératif",
+        "minor": "Passé"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 87,
+    "fields": {
+      "rank": 21,
+      "language": "4",
+      "tense": {
+        "major": "Infinitif",
+        "minor": "Présent"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 88,
+    "fields": {
+      "rank": 22,
+      "language": "4",
+      "tense": {
+        "major": "Infinitif",
+        "minor": "Passé"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 89,
+    "fields": {
+      "rank": 19,
+      "language": "4",
+      "tense": {
+        "major": "Impératif Présent",
+        "minor": ""
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 90,
+    "fields": {
+      "rank": 1,
+      "language": "5",
+      "tense": {
+        "major": "Indicative",
+        "minor": "Present"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 91,
+    "fields": {
+      "rank": 2,
+      "language": "5",
+      "tense": {
+        "major": "Indicative",
+        "minor": "Preterite"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 92,
+    "fields": {
+      "rank": 3,
+      "language": "5",
+      "tense": {
+        "major": "Indicative",
+        "minor": "Present continuous"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 93,
+    "fields": {
+      "rank": 4,
+      "language": "5",
+      "tense": {
+        "major": "Indicative",
+        "minor": "Present perfect"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 94,
+    "fields": {
+      "rank": 5,
+      "language": "5",
+      "tense": {
+        "major": "Indicative",
+        "minor": "Future"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 95,
+    "fields": {
+      "rank": 6,
+      "language": "5",
+      "tense": {
+        "major": "Indicative",
+        "minor": "Future perfect"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 96,
+    "fields": {
+      "rank": 7,
+      "language": "5",
+      "tense": {
+        "major": "Indicative",
+        "minor": "Past continous"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 97,
+    "fields": {
+      "rank": 8,
+      "language": "5",
+      "tense": {
+        "major": "Indicative",
+        "minor": "Past perfect"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 98,
+    "fields": {
+      "rank": 9,
+      "language": "5",
+      "tense": {
+        "major": "Indicative",
+        "minor": "Future continuous"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 99,
+    "fields": {
+      "rank": 10,
+      "language": "5",
+      "tense": {
+        "major": "Indicative",
+        "minor": "Present perfect continuous"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 100,
+    "fields": {
+      "rank": 11,
+      "language": "5",
+      "tense": {
+        "major": "Indicative",
+        "minor": "Past perfect continuous"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 101,
+    "fields": {
+      "rank": 12,
+      "language": "5",
+      "tense": {
+        "major": "Indicative",
+        "minor": "Future perfect continuous"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 102,
+    "fields": {
+      "rank": 13,
+      "language": "5",
+      "tense": {
+        "major": "Imperative",
+        "minor": ""
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 103,
+    "fields": {
+      "rank": 14,
+      "language": "5",
+      "tense": {
+        "major": "Participle",
+        "minor": "Present"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 104,
+    "fields": {
+      "rank": 15,
+      "language": "5",
+      "tense": {
+        "major": "Participle",
+        "minor": "Past"
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 105,
+    "fields": {
+      "rank": 16,
+      "language": "5",
+      "tense": {
+        "major": "Infinitive",
+        "minor": ""
+      }
+    }
+  },
+  {
+    "model": "verbs.tenses",
+    "pk": 106,
+    "fields": {
+      "rank": 17,
+      "language": "5",
+      "tense": {
+        "major": "Perfect participle",
+        "minor": ""
+      }
+    }
+  }
+]

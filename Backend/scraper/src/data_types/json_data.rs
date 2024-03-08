@@ -10,6 +10,8 @@ use crate::data_types::{
         ModelField,
         EndingField,
         BaseField,
+        MajorTenseField,
+        MinorTenseField,
         TenseField,
         TenseSubfield,
         SubjectField,
@@ -70,6 +72,22 @@ impl JsonData {
                     model: String::from("verbs.bases"),
                     pk: 0,
                     fields: Field::default(FieldOptions::BaseField),
+                }
+            },
+
+            FieldOptions::MajorTenseField => {
+                return JsonData {
+                    model: String::from("verbs.major_tenses"),
+                    pk: 0,
+                    fields: Field::default(FieldOptions::MajorTenseField),
+                }
+            },
+
+            FieldOptions::MinorTenseField => {
+                return JsonData {
+                    model: String::from("verbs.minor_tenses"),
+                    pk: 0,
+                    fields: Field::default(FieldOptions::MinorTenseField),
                 }
             },
 
@@ -173,6 +191,22 @@ pub fn create_json_data_vec_from_vec_vec_string(data_vec_vec: Vec<Vec<String>>, 
                 Field::BaseField(base_field)
             },
 
+            FieldOptions::MajorTenseField => {
+                let major_tense_field = MajorTenseField {
+                    language: data[0].clone(),
+                    major_tense: data[1].clone(),
+                };
+                Field::MajorTenseField(major_tense_field)
+            },
+
+            FieldOptions::MinorTenseField => {
+                let minor_tense_field = MinorTenseField {
+                    language: data[0].clone(),
+                    minor_tense: data[1].clone(),
+                };
+                Field::MinorTenseField(minor_tense_field)
+            },
+
             FieldOptions::TenseField => {
                 let tense_subfield = TenseSubfield {
                     major: data[2].clone(),
@@ -180,7 +214,6 @@ pub fn create_json_data_vec_from_vec_vec_string(data_vec_vec: Vec<Vec<String>>, 
                 };
                 let tense_field = TenseField {
                     rank: data[0].parse::<i64>().unwrap(),
-                    language: data[1].clone(),
                     tense: tense_subfield,
                 };
                 Field::TenseField(tense_field)

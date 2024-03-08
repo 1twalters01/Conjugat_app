@@ -32,9 +32,20 @@ pub struct BaseField {
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct MajorTenseField {
+    pub major_tense: String,
+    pub language: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct MinorTenseField {
+    pub minor_tense: String,
+    pub language: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct TenseField {
     pub rank: i64,
-    pub language: String,
     pub tense: TenseSubfield,
 }
 #[derive(Debug, Serialize, Deserialize, Clone)]

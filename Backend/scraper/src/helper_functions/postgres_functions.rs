@@ -15,6 +15,8 @@ use crate::data_types::{
         ModelField,
         EndingField,
         BaseField,
+        MajorTenseField,
+        MinorTenseField,
         TenseField,
         TenseSubfield,
         SubjectField,
@@ -56,7 +58,9 @@ pub async fn save_data_to_postgres(json_data_vec: &Vec<JsonData>) -> Result<(), 
             Field::EndingField(EndingField{group, ending}) => save_ending_field_to_postgres(&pool, pk, group, ending).await,
             Field::ModelField(ModelField{ending, model}) => save_model_field_to_postgres(&pool, pk, ending, model).await,
             Field::BaseField(BaseField{rank, language, base}) => save_base_field_to_postgres(&pool, pk, rank, language, base).await,
-            Field::TenseField(TenseField{rank, language, tense}) => save_tense_field_to_postgres(&pool, pk, rank, language, tense).await,
+            Field::MajorTenseField(MajorTenseField{language, major_tense}) => save_major_tense_field_to_postgres(&pool, pk, language, major_tense).await,
+            Field::MinorTenseField(MinorTenseField{language, minor_tense}) => save_minor_tense_field_to_postgres(&pool, pk, language, minor_tense).await,
+            Field::TenseField(TenseField{rank, tense}) => save_tense_field_to_postgres(&pool, pk, rank, tense).await,
             Field::SubjectField(SubjectField{rank, language, subject}) => save_subject_field_to_postgres(&pool, pk, rank, language, subject).await,
             Field::AuxiliaryField(AuxiliaryField{language, auxiliary}) => save_auxiliary_field_to_postgres(&pool, pk, language, auxiliary).await,
             Field::ConjugateField(ConjugateField{rank, base, conjugate, model}) => save_conjugate_field_to_postgres(&pool, pk, rank, base, model, conjugate).await,
@@ -211,12 +215,62 @@ async fn save_base_field_to_postgres(pool: &Pool<Postgres>, pk: i64, rank: &i64,
     };
 }
 
+async fn save_major_tense_field_to_postgres(pool: &Pool<Postgres>, pk: i64, language: &str, tense_major: &str) -> Result<(), Error> {
+    let insert_query = sqlx::query("INSERT INTO verbs_major_tense (id, language, tense_major) VALUES ($1, $2, $3)")
+        .bind(pk)
+        .bind(language)
+        .bind(&tense_major)
+        .execute(pool)
+        .await;
 
-async fn save_tense_field_to_postgres(pool: &Pool<Postgres>, pk: i64, rank: &i64, language: &str, tense: &TenseSubfield) -> Result<(), Error> {
-    let insert_query = sqlx::query("INSERT INTO verbs_tense (id, rank, language, tense_major, tense_minor) VALUES ($1, $2, $3, $4, $5)")
+    match insert_query {
+        Ok(_) => return Ok(()),
+        Err(_) => {
+            let rewrite_query = sqlx::query("UPDATE verbs_major_tense SET language=($1), tense_major=($2) WHERE id=($3)")
+                .bind(language)
+                .bind(&tense_major)
+                .bind(pk)
+                .execute(pool)
+                .await;
+
+            match rewrite_query {
+                Ok(_) => return Ok(()),
+                Err(err) => panic!("Error: {:?}", err),
+            };
+        },
+    };
+}
+
+async fn save_minor_tense_field_to_postgres(pool: &Pool<Postgres>, pk: i64, language: &str, tense_minor: &str) -> Result<(), Error> {
+    let insert_query = sqlx::query("INSERT INTO verbs_minor_tense (id, language, tense_minor) VALUES ($1, $2, $3)")
+        .bind(pk)
+        .bind(language)
+        .bind(&tense_minor)
+        .execute(pool)
+        .await;
+
+    match insert_query {
+        Ok(_) => return Ok(()),
+        Err(_) => {
+            let rewrite_query = sqlx::query("UPDATE verbs_tense SET language=($1), tense_minor=($2) WHERE id=($3)")
+                .bind(language)
+                .bind(&tense_minor)
+                .bind(pk)
+                .execute(pool)
+                .await;
+
+            match rewrite_query {
+                Ok(_) => return Ok(()),
+                Err(err) => panic!("Error: {:?}", err),
+            };
+        },
+    };
+}
+
+async fn save_tense_field_to_postgres(pool: &Pool<Postgres>, pk: i64, rank: &i64, tense: &TenseSubfield) -> Result<(), Error> {
+    let insert_query = sqlx::query("INSERT INTO verbs_tense (id, rank, tense_major, tense_minor) VALUES ($1, $2, $3, $4)")
         .bind(pk)
         .bind(rank)
-        .bind(language)
         .bind(&tense.major)
         .bind(&tense.minor)
         .execute(pool)
@@ -225,9 +279,8 @@ async fn save_tense_field_to_postgres(pool: &Pool<Postgres>, pk: i64, rank: &i64
     match insert_query {
         Ok(_) => return Ok(()),
         Err(_) => {
-            let rewrite_query = sqlx::query("UPDATE verbs_tense SET rank=($1), language=($2), tense_major=($3), tense_minor=($4) WHERE id=($5)")
+            let rewrite_query = sqlx::query("UPDATE verbs_tense SET rank=($1), tense_major=($2), tense_minor=($3) WHERE id=($4)")
                 .bind(rank)
-                .bind(language)
                 .bind(&tense.major)
                 .bind(&tense.minor)
                 .bind(pk)
