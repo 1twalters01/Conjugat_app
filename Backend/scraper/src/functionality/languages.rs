@@ -1,28 +1,17 @@
-use crate::data_types::{
-    field::{
-        Field,
-        FieldOptions,
+use crate::{
+    data_types::{
+        field::{Field, FieldOptions},
+        json_data::{JsonData, create_json_data_vec_from_vec_vec_string},
+        field_options,
     },
-    json_data::{
-        JsonData,
-        create_json_data_vec_from_vec_vec_string,
-    },
-    field_options,
-};
-
-use crate::helper_functions::{
-    // postgres_functions::save_data_to_postgres,
-    save_functions::{
-        save_json_data_vec_to_file,
-        save_map_vec_to_file,
+    helper_functions::{
+        // postgres_functions::save_data_to_postgres,
+        save_functions::{save_json_data_vec_to_file, save_btree_map_to_file},
     },
 };
 
 use std::{
-    collections::{
-        HashSet,
-        BTreeMap,
-    },
+    collections::{HashSet, BTreeMap},
     result::Result,
 };
 
@@ -40,12 +29,13 @@ pub async fn run_languages_module(language_vec: Vec<String>) {
     let language_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(language_vec_vec, FieldOptions::LanguageField); 
 
     // save json data vector
-    let file_path: &str = "temp/json/languages/languages.json";
+    let json_data_file_path: &str = "temp/json/languages/languages.json";
     save_json_data_vec_to_file(&language_json_data_vec, file_path);
 
     // create language maps
     let language_pk_map: BTreeMap<String, i64> = get_language_pk_map_vec(&language_json_data_vec);
-    save_map_vec_to_file(&language_pk_map_vec, "temp/json/languages/btreemaps/languages.json");
+    let language_pk_map_file_path: &str = "temp/json/languages/btreemaps/languages.json";
+    save_btree_map_to_file(&language_pk_map_vec, language_pk_map_file_path);
 
     // save language data to postgres
     // save_data_to_postgres(&language_json_data_vec);
