@@ -44,7 +44,7 @@ pub async fn run_languages_module(language_vec: Vec<String>) {
     save_json_data_vec_to_file(&language_json_data_vec, file_path);
 
     // create language maps
-    let language_pk_map_vec: Vec<BTreeMap<String, i64>> = get_language_pk_map_vec(&language_json_data_vec);
+    let language_pk_map: BTreeMap<String, i64> = get_language_pk_map_vec(&language_json_data_vec);
     save_map_vec_to_file(&language_pk_map_vec, "temp/json/languages/btreemaps/languages.json");
 
     // save language data to postgres
@@ -84,14 +84,12 @@ fn reform_language_vec_vec(languages: Vec<String>) -> Vec<Vec<String>> {
 }
 
 
-fn get_language_pk_map_vec(language_data_vec: &Vec<JsonData>) -> Vec<BTreeMap<String, i64>> {
-    let mut language_pk_map_vec: Vec<BTreeMap<String, i64>> = Vec::new();
+fn get_language_pk_map_vec(language_data_vec: &Vec<JsonData>) -> BTreeMap<String, i64> {
+    let mut language_pk_map: BTreeMap<String, i64> = BTreeMap::new();
 
     for language_data in language_data_vec {
         if let Field::LanguageField(field_options::LanguageField { language }) = &language_data.fields {
-            let mut language_pk_map: BTreeMap<String, i64> = BTreeMap::new();
             language_pk_map.insert(language.clone(), language_data.pk);
-            language_pk_map_vec.push(language_pk_map);
         }
     }
 
