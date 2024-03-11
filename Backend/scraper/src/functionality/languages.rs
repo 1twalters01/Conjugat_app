@@ -46,7 +46,7 @@ pub async fn run_languages_module(language_vec: Vec<String>) {
 
 
 // Improve this function
-pub(crate) fn is_language_vector_valid(language_vec: &Vec<String>) -> Result<(), &str> {
+pub(crate) fn is_language_vector_valid(language_vec: &Vec<String>) -> Result<(), Error> {
     let language_hs: HashSet<String> = language_vec.iter().cloned().collect::<HashSet<String>>();
     
     if language_hs.len() != vector.len() {
