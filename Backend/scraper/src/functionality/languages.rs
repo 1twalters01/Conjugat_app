@@ -5,13 +5,14 @@ use crate::{
         field_options,
     },
     helper_functions::{
-        // postgres_functions::save_data_to_postgres,
         save_functions::{save_json_data_vec_to_file, save_btree_map_to_file},
+        // postgres_functions::save_data_to_postgres,
     },
 };
 
 use std::{
     collections::{HashSet, BTreeMap},
+    io:{Error, ErrorKind},
     result::Result,
 };
 
@@ -19,13 +20,15 @@ use std::{
 
 pub async fn run_languages_module(language_vec: Vec<String>) {
     // validate language vector
-    match is_language_vector_valid(&language_vec) {
-        Ok(res) => if res == false { panic!("invalid language vector") },
-        Err(err) => panic!("{}", err),
-    };
+    // match is_language_vector_valid(&language_vec) {
+    //     Ok(_) => {},
+    //     Err(err) => panic!("{}", err),
+    // };
 
     // create json data vector for the languages
-    let language_vec_vec: Vec<Vec<String>> = reform_language_vec_vec(language_vec);
+    //let language_vec_vec: Vec<Vec<String>> = reform_language_vec_to_language_vec_vec(language_vec);
+    is_language_vector_valid(&language_vec).unwrap();
+    let language_vec_vec: Vec<Vec<String>> = language_vec.map(|language| Vec::from([language]));
     let language_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(language_vec_vec, FieldOptions::LanguageField); 
 
     // save json data vector
@@ -43,35 +46,32 @@ pub async fn run_languages_module(language_vec: Vec<String>) {
 
 
 // Improve this function
-pub(crate) fn is_language_vector_valid(vector: &Vec<String>) -> Result<bool, &str> {
-    let hs: HashSet<String> = vector
-        .iter()
-        .cloned()
-        .collect::<HashSet<String>>();
+pub(crate) fn is_language_vector_valid(language_vec: &Vec<String>) -> Result<(), &str> {
+    let language_hs: HashSet<String> = language_vec.iter().cloned().collect::<HashSet<String>>();
     
-    if hs.len() != vector.len() {
+    if language_hs.len() != vector.len() {
         return Err("Vector has duplicated languages")
     }
 
-    for elem in hs {
+    for elem in language_hs {
         if elem == "" {
             return Err("Vector has null element(s)")
         }
     }
     
-    Ok(true)
+    Ok(())
 }
 
 
-fn reform_language_vec_vec(languages: Vec<String>) -> Vec<Vec<String>> {
-    let mut languages_data_vec_vec: Vec<Vec<String>> = Vec::new();
-    for language in languages {
-        let data: Vec<String> = Vec::from([language]);
-        languages_data_vec_vec.push(data);
-    }
+// fn reform_language_vec_to_language_vec_vec(languages: Vec<String>) -> Vec<Vec<String>> {
+//     let mut languages_data_vec_vec: Vec<Vec<String>> = Vec::new();
+//     for language in languages {
+//         let data: Vec<String> = Vec::from([language]);
+//         languages_data_vec_vec.push(data);
+//     }
     
-    return languages_data_vec_vec;
-}
+//     return languages_data_vec_vec;
+// }
 
 
 fn get_language_pk_map_vec(language_data_vec: &Vec<JsonData>) -> BTreeMap<String, i64> {
