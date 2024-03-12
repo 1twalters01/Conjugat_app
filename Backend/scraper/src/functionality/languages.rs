@@ -12,67 +12,73 @@ use crate::{
 
 use std::{
     collections::{HashSet, BTreeMap},
-    io:{Error, ErrorKind},
+    io::{Error, ErrorKind},
     result::Result,
 };
 
 
 
 pub async fn run_languages_module(language_vec: Vec<String>) {
-    // validate language vector
-    // match is_language_vector_valid(&language_vec) {
-    //     Ok(_) => {},
-    //     Err(err) => panic!("{}", err),
-    // };
-
     // create json data vector for the languages
-    //let language_vec_vec: Vec<Vec<String>> = reform_language_vec_to_language_vec_vec(language_vec);
     is_language_vector_valid(&language_vec).unwrap();
-    let language_vec_vec: Vec<Vec<String>> = language_vec.map(|language| Vec::from([language]));
+    let language_vec_vec: Vec<Vec<String>> = language_vec.into_iter().map(|language| Vec::from([language])).collect();
     let language_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(language_vec_vec, FieldOptions::LanguageField); 
 
     // save json data vector
     let json_data_file_path: &str = "temp/json/languages/languages.json";
-    save_json_data_vec_to_file(&language_json_data_vec, file_path);
+    save_json_data_vec_to_file(&language_json_data_vec, json_data_file_path);
 
     // create language maps
     let language_pk_map: BTreeMap<String, i64> = get_language_pk_map_vec(&language_json_data_vec);
     let language_pk_map_file_path: &str = "temp/json/languages/btreemaps/languages.json";
-    save_btree_map_to_file(&language_pk_map_vec, language_pk_map_file_path);
+    save_btree_map_to_file(&language_pk_map, language_pk_map_file_path);
 
     // save language data to postgres
     // save_data_to_postgres(&language_json_data_vec);
 }
 
 
-// Improve this function
 pub(crate) fn is_language_vector_valid(language_vec: &Vec<String>) -> Result<(), Error> {
     let language_hs: HashSet<String> = language_vec.iter().cloned().collect::<HashSet<String>>();
     
-    if language_hs.len() != vector.len() {
-        return Err("Vector has duplicated languages")
+    if language_hs.len() != language_vec.len() {
+        let error: Error = Error::new(
+            ErrorKind::InvalidData,
+            format!("Language vector has duplicated languages")
+        );
+        return Err(error);
     }
 
-    for elem in language_hs {
-        if elem == "" {
-            return Err("Vector has null element(s)")
-        }
+    if language_vec.contains(&String::new()) {
+        let error: Error = Error::new(
+            ErrorKind::InvalidData,
+            format!("Language vector has null element(s)")
+        );
+        return Err(error);
     }
-    
+
+    let alphabetic_language_vec: Vec<String> = language_vec.into_iter()
+        .filter_map(|language| if every(language.chars().map(|c| c.is_alphabetic())) {return Some(language.to_owned())} else {None}).collect();
+
+    if alphabetic_language_vec.len() != language_vec.len() {
+        let error: Error = Error::new(
+            ErrorKind::InvalidData,
+            format!("Language vector has languages with invalid characters")
+        );
+        return Err(error);
+    }
+
     Ok(())
 }
 
 
-// fn reform_language_vec_to_language_vec_vec(languages: Vec<String>) -> Vec<Vec<String>> {
-//     let mut languages_data_vec_vec: Vec<Vec<String>> = Vec::new();
-//     for language in languages {
-//         let data: Vec<String> = Vec::from([language]);
-//         languages_data_vec_vec.push(data);
-//     }
-    
-//     return languages_data_vec_vec;
-// }
-
+fn every<T, I>(v: I) -> bool
+where
+    I: IntoIterator<Item = T>,
+    T: std::ops::Not<Output = bool>,
+{
+    v.into_iter().all(|x| !!x)
+}
 
 fn get_language_pk_map_vec(language_data_vec: &Vec<JsonData>) -> BTreeMap<String, i64> {
     let mut language_pk_map: BTreeMap<String, i64> = BTreeMap::new();
@@ -83,6 +89,6 @@ fn get_language_pk_map_vec(language_data_vec: &Vec<JsonData>) -> BTreeMap<String
         }
     }
 
-    return language_pk_map_vec;
+    return language_pk_map;
 }
 

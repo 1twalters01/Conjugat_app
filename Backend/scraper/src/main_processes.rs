@@ -12,7 +12,8 @@ pub async fn initialise_process() {
     let mut buffer = String::new();
     io::stdin().read_line(&mut buffer).unwrap();
     let trimmed_buffer: &str = buffer.trim();
-    let languages_str: Vec<&str> = trimmed_buffer.split(", ").collect::<Vec<&str>>();
+    let mut languages_str: Vec<&str> = trimmed_buffer.split(",").collect::<Vec<&str>>();
+    languages_str = languages_str.into_iter().map(|l| l.trim()).collect();
     let mut languages: Vec<String> = Vec::new();
 
     for language in languages_str {

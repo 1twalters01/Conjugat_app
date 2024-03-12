@@ -12,7 +12,7 @@ pub enum ScrapeMode {
     /// Create the first set of conjugations
     Initialise,
     
-    /// Add additional conjugations
+    /// Recreate continued conjugation pageinfo vector
     Continue,
 }
 

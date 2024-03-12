@@ -89,6 +89,15 @@ where T: serde::Serialize, Y: serde::Serialize {
     write_file(&mut file, &serialized_data).unwrap();
 }
 
+// Check with the compiler that the data input is a BTreeMap with any input types
+pub fn save_btree_map_to_file<T, Y>(data: &BTreeMap<T, Y>, file_path: &str)
+where T: serde::Serialize, Y: serde::Serialize {
+    let serialized_data: String = serde_json::to_string_pretty(data).unwrap();
+    delete_file(file_path).unwrap();
+    let mut file = create_file(file_path).unwrap();
+    write_file(&mut file, &serialized_data).unwrap();
+}
+
 // Check with the compiler that the data input is a Vec<BTreeMap<String, i64>>
 pub fn save_string_i64_map_vec_to_file(string_i64_map_vec: &Vec<BTreeMap<String, i64>>, file_path: &str) {
     let serialized_data: String = serde_json::to_string_pretty(string_i64_map_vec).unwrap();
