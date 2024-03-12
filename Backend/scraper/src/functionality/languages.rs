@@ -22,7 +22,7 @@ pub async fn run_languages_module(language_vec: Vec<String>) {
     // create json data vector for the languages
     is_language_vector_valid(&language_vec).unwrap();
     let language_vec_vec: Vec<Vec<String>> = language_vec.into_iter().map(|language| Vec::from([language])).collect();
-    let language_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(language_vec_vec, FieldOptions::LanguageField); 
+    let language_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(&language_vec_vec, FieldOptions::LanguageField); 
 
     // save json data vector
     let json_data_file_path: &str = "temp/json/languages/languages.json";
@@ -30,8 +30,12 @@ pub async fn run_languages_module(language_vec: Vec<String>) {
 
     // create language maps
     let language_pk_map: BTreeMap<String, i64> = get_language_pk_map_vec(&language_json_data_vec);
-    let language_pk_map_file_path: &str = "temp/json/languages/btreemaps/languages.json";
+    let language_pk_map_file_path: &str = "temp/json/languages/btreemaps/language_pk.json";
     save_btree_map_to_file(&language_pk_map, language_pk_map_file_path);
+
+    let pk_language_map: BTreeMap<i64, String> = get_pk_language_map_vec(&language_json_data_vec);
+    let pk_language_map_file_path: &str = "temp/json/languages/btreemaps/pk_language.json";
+    save_btree_map_to_file(&pk_language_map, pk_language_map_file_path);
 
     // save language data to postgres
     // save_data_to_postgres(&language_json_data_vec);
@@ -58,7 +62,7 @@ pub(crate) fn is_language_vector_valid(language_vec: &Vec<String>) -> Result<(),
     }
 
     let alphabetic_language_vec: Vec<String> = language_vec.into_iter()
-        .filter_map(|language| if every(language.chars().map(|c| c.is_alphabetic())) {return Some(language.to_owned())} else {None}).collect();
+        .filter_map(|language| if every(language.chars().map(|c| c.is_alphabetic())) {Some(language.to_owned())} else {None}).collect();
 
     if alphabetic_language_vec.len() != language_vec.len() {
         let error: Error = Error::new(
@@ -80,12 +84,24 @@ where
     v.into_iter().all(|x| !!x)
 }
 
+fn get_pk_language_map_vec(language_data_vec: &Vec<JsonData>) -> BTreeMap<i64, String> {
+    let mut pk_language_map: BTreeMap<i64, String> = BTreeMap::new();
+
+    for language_data in language_data_vec {
+        if let Field::LanguageField(field_options::LanguageField { language }) = &language_data.fields {
+            pk_language_map.insert(language_data.pk, language.to_owned());
+        }
+    }
+
+    return pk_language_map;
+}
+
 fn get_language_pk_map_vec(language_data_vec: &Vec<JsonData>) -> BTreeMap<String, i64> {
     let mut language_pk_map: BTreeMap<String, i64> = BTreeMap::new();
 
     for language_data in language_data_vec {
         if let Field::LanguageField(field_options::LanguageField { language }) = &language_data.fields {
-            language_pk_map.insert(language.clone(), language_data.pk);
+            language_pk_map.insert(language.to_owned(), language_data.pk);
         }
     }
 

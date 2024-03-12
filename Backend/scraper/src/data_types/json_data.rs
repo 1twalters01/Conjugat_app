@@ -143,7 +143,7 @@ impl JsonData {
 }
 
 
-pub fn create_json_data_vec_from_vec_vec_string(data_vec_vec: Vec<Vec<String>>, field_type: FieldOptions) -> Vec<JsonData> {
+pub fn create_json_data_vec_from_vec_vec_string(data_vec_vec: &Vec<Vec<String>>, field_type: FieldOptions) -> Vec<JsonData> {
     let mut json_data: Vec<JsonData> = Vec::new();
     let mut primary_key: i64 = 0;
 

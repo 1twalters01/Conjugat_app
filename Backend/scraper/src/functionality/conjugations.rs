@@ -94,7 +94,7 @@ pub async fn run_conjugations_modules() {
 
     // Fetch data vectors and then create and save json data vectors
     let base_data_vec_vec: Vec<Vec<String>> = extract_base_data_vec_vec(&verb_page_info_vec_vec, &language_pk_map_vec);
-    let base_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(base_data_vec_vec, FieldOptions::BaseField);
+    let base_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(&base_data_vec_vec, FieldOptions::BaseField);
     save_json_data_vec_to_file(&base_json_data_vec, "temp/json/conjugations/bases.json");
     let base_pk_map_vec: Vec<BTreeMap<String, i64>> = get_base_pk_map_vec(base_json_data_vec.clone(), &language_vec);
     save_map_vec_to_file(&base_pk_map_vec, "temp/json/conjugations/btreemaps/bases.json");
@@ -103,20 +103,20 @@ pub async fn run_conjugations_modules() {
 
     // CREATE MAJOR AND MINOR TENSE JSONDATA VECS FOR THIS AND LINK THOSE TO TENSE
     let major_tense_data_vec_vec: Vec<Vec<String>> = extract_major_tense_data_vec_vec(&verb_page_info_vec_vec, &language_pk_map_vec);
-    let major_tense_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(major_tense_data_vec_vec, FieldOptions::MajorTenseField);
+    let major_tense_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(&major_tense_data_vec_vec, FieldOptions::MajorTenseField);
     save_json_data_vec_to_file(&major_tense_json_data_vec, "temp/json/conjugations/major_tenses.json");
     let major_tense_pk_map_vec: Vec<BTreeMap<String, i64>> = get_major_tense_pk_map_vec(major_tense_json_data_vec.clone(), &language_vec);
     save_map_vec_to_file(&major_tense_pk_map_vec, "temp/json/conjugations/btreemaps/major_tenses.json");
 
     let minor_tense_data_vec_vec: Vec<Vec<String>> = extract_minor_tense_data_vec_vec(&verb_page_info_vec_vec, &language_pk_map_vec);
-    let minor_tense_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(minor_tense_data_vec_vec, FieldOptions::MinorTenseField);
+    let minor_tense_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(&minor_tense_data_vec_vec, FieldOptions::MinorTenseField);
     save_json_data_vec_to_file(&minor_tense_json_data_vec, "temp/json/conjugations/minor_tenses.json");
     let minor_tense_pk_map_vec: Vec<BTreeMap<String, i64>> = get_minor_tense_pk_map_vec(minor_tense_json_data_vec.clone(), &language_vec);
     save_map_vec_to_file(&minor_tense_pk_map_vec, "temp/json/conjugations/btreemaps/minor_tenses.json");
 
 
     let tense_data_vec_vec: Vec<Vec<String>> = extract_tense_data_vec_vec(&verb_page_info_vec_vec, &major_tense_pk_map_vec, &minor_tense_pk_map_vec);
-    let tense_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(tense_data_vec_vec.clone(), FieldOptions::TenseField);
+    let tense_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(&tense_data_vec_vec.clone(), FieldOptions::TenseField);
     save_json_data_vec_to_file(&tense_json_data_vec, "temp/json/conjugations/tenses.json");
     let tense_pk_map_vec: Vec<BTreeMap<String, i64>> = get_tense_pk_map_vec(tense_json_data_vec.clone(), &language_vec, &major_tense_pk_map_vec);
     save_map_vec_to_file(&tense_pk_map_vec, "temp/json/conjugations/btreemaps/tenses.json");
@@ -125,19 +125,19 @@ pub async fn run_conjugations_modules() {
 
 
     let subject_data_vec_vec: Vec<Vec<String>> = extract_subject_data_vec_vec(&verb_page_info_vec_vec, &language_pk_map_vec);
-    let subject_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(subject_data_vec_vec, FieldOptions::SubjectField);
+    let subject_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(&subject_data_vec_vec, FieldOptions::SubjectField);
     save_json_data_vec_to_file(&subject_json_data_vec, "temp/json/conjugations/subjects.json");
     let subject_pk_map_vec: Vec<BTreeMap<String, i64>> = get_subject_pk_map_vec(subject_json_data_vec.clone(), &language_vec);
     save_map_vec_to_file(&subject_pk_map_vec, "temp/json/conjugations/btreemaps/subjects.json");
 
     let auxiliary_data_vec_vec: Vec<Vec<String>> = extract_auxiliary_data_vec_vec(&verb_page_info_vec_vec, &language_pk_map_vec);
-    let auxiliary_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(auxiliary_data_vec_vec, FieldOptions::AuxiliaryField);
+    let auxiliary_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(&auxiliary_data_vec_vec, FieldOptions::AuxiliaryField);
     save_json_data_vec_to_file(&auxiliary_json_data_vec, "temp/json/conjugations/auxiliaries.json");
     let auxiliary_pk_map_vec: Vec<BTreeMap<String, i64>> = get_auxiliary_pk_map_vec(auxiliary_json_data_vec.clone(), &language_vec);
     save_map_vec_to_file(&auxiliary_pk_map_vec, "temp/json/conjugations/btreemaps/auxiliaries.json");
 
     let conjugate_data_vec_vec: Vec<Vec<String>> = extract_conjugate_data_vec_vec(&verb_page_info_vec_vec, &base_pk_map_vec, &model_language_id_map_vec);
-    let conjugate_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(conjugate_data_vec_vec, FieldOptions::ConjugateField);
+    let conjugate_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(&conjugate_data_vec_vec, FieldOptions::ConjugateField);
     save_json_data_vec_to_file(&conjugate_json_data_vec, "temp/json/conjugations/conjugates.json");
     panic!("\n\n\npause here boss");
     let conjugate_pk_map_vec: Vec<BTreeMap<String, i64>> = get_conjugate_pk_map_vec(conjugate_json_data_vec.clone(), base_json_data_vec.clone(), &language_vec);
@@ -145,7 +145,7 @@ pub async fn run_conjugations_modules() {
     
 
     let conjugation_data_vec_vec: Vec<Vec<String>> = extract_conjugation_data_vec_vec(&verb_page_info_vec_vec, &tense_pk_map_vec, &subject_pk_map_vec, &auxiliary_pk_map_vec, &conjugate_pk_map_vec);
-    let conjugation_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(conjugation_data_vec_vec, FieldOptions::ConjugationField);
+    let conjugation_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(&conjugation_data_vec_vec, FieldOptions::ConjugationField);
     save_json_data_vec_to_file(&conjugation_json_data_vec, "temp/json/conjugations/conjugations.json");
     let conjugation_pk_map_vec: Vec<BTreeMap<String, i64>> = get_conjugation_pk_map_vec(conjugation_json_data_vec, conjugate_json_data_vec, base_json_data_vec, &language_vec);
     save_map_vec_to_file(&conjugation_pk_map_vec, "temp/json/conjugations/btreemaps/conjugation.json");
