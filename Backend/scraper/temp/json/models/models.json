@@ -3,85 +3,13 @@
     "model": "verbs.models",
     "pk": 1,
     "fields": {
-      "ending": "1",
-      "model": "amar"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 2,
-    "fields": {
-      "ending": "1",
-      "model": "andar"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 3,
-    "fields": {
-      "ending": "1",
-      "model": "dar"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 4,
-    "fields": {
-      "ending": "1",
-      "model": "desdar"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 5,
-    "fields": {
-      "ending": "1",
-      "model": "llegar"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 6,
-    "fields": {
-      "ending": "1",
-      "model": "obstar"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 7,
-    "fields": {
-      "ending": "1",
-      "model": "raspahilar"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 8,
-    "fields": {
-      "ending": "1",
-      "model": "respahilar"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 9,
-    "fields": {
-      "ending": "1",
-      "model": "respailar"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 10,
-    "fields": {
       "ending": "2",
       "model": "neviscar"
     }
   },
   {
     "model": "verbs.models",
-    "pk": 11,
+    "pk": 2,
     "fields": {
       "ending": "2",
       "model": "sacar"
@@ -89,7 +17,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 12,
+    "pk": 3,
     "fields": {
       "ending": "3",
       "model": "quebrar"
@@ -97,7 +25,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 13,
+    "pk": 4,
     "fields": {
       "ending": "4",
       "model": "desempedrar"
@@ -105,7 +33,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 14,
+    "pk": 5,
     "fields": {
       "ending": "5",
       "model": "estregar"
@@ -113,7 +41,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 15,
+    "pk": 6,
     "fields": {
       "ending": "5",
       "model": "negar"
@@ -121,7 +49,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 16,
+    "pk": 7,
     "fields": {
       "ending": "6",
       "model": "melar"
@@ -129,7 +57,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 17,
+    "pk": 8,
     "fields": {
       "ending": "7",
       "model": "abeldar"
@@ -137,7 +65,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 18,
+    "pk": 9,
     "fields": {
       "ending": "8",
       "model": "temblar"
@@ -145,7 +73,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 19,
+    "pk": 10,
     "fields": {
       "ending": "9",
       "model": "desmembrar"
@@ -153,7 +81,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 20,
+    "pk": 11,
     "fields": {
       "ending": "9",
       "model": "sembrar"
@@ -161,7 +89,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 21,
+    "pk": 12,
     "fields": {
       "ending": "10",
       "model": "templar"
@@ -169,7 +97,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 22,
+    "pk": 13,
     "fields": {
       "ending": "11",
       "model": "recomendar"
@@ -177,7 +105,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 23,
+    "pk": 14,
     "fields": {
       "ending": "12",
       "model": "deslendrar"
@@ -185,7 +113,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 24,
+    "pk": 15,
     "fields": {
       "ending": "13",
       "model": "pensar"
@@ -193,7 +121,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 25,
+    "pk": 16,
     "fields": {
       "ending": "14",
       "model": "cimentar"
@@ -201,7 +129,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 26,
+    "pk": 17,
     "fields": {
       "ending": "14",
       "model": "sentar"
@@ -209,7 +137,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 27,
+    "pk": 18,
     "fields": {
       "ending": "15",
       "model": "comenzar"
@@ -217,7 +145,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 28,
+    "pk": 19,
     "fields": {
       "ending": "16",
       "model": "desherbar"
@@ -225,7 +153,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 29,
+    "pk": 20,
     "fields": {
       "ending": "17",
       "model": "jamerdar"
@@ -233,7 +161,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 30,
+    "pk": 21,
     "fields": {
       "ending": "18",
       "model": "envernar"
@@ -241,7 +169,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 31,
+    "pk": 22,
     "fields": {
       "ending": "18",
       "model": "gobernar"
@@ -249,7 +177,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 32,
+    "pk": 23,
     "fields": {
       "ending": "19",
       "model": "errar"
@@ -257,7 +185,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 33,
+    "pk": 24,
     "fields": {
       "ending": "19",
       "model": "serrar"
@@ -265,7 +193,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 34,
+    "pk": 25,
     "fields": {
       "ending": "19",
       "model": "soterrar"
@@ -273,7 +201,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 35,
+    "pk": 26,
     "fields": {
       "ending": "20",
       "model": "acertar"
@@ -281,7 +209,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 36,
+    "pk": 27,
     "fields": {
       "ending": "21",
       "model": "atravesar"
@@ -289,7 +217,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 37,
+    "pk": 28,
     "fields": {
       "ending": "22",
       "model": "manifestar"
@@ -297,7 +225,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 38,
+    "pk": 29,
     "fields": {
       "ending": "23",
       "model": "adestrar"
@@ -305,7 +233,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 39,
+    "pk": 30,
     "fields": {
       "ending": "24",
       "model": "apretar"
@@ -313,7 +241,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 40,
+    "pk": 31,
     "fields": {
       "ending": "25",
       "model": "nevar"
@@ -321,7 +249,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 41,
+    "pk": 32,
     "fields": {
       "ending": "26",
       "model": "empezar"
@@ -329,7 +257,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 42,
+    "pk": 33,
     "fields": {
       "ending": "27",
       "model": "far"
@@ -337,7 +265,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 43,
+    "pk": 34,
     "fields": {
       "ending": "28",
       "model": "jugar"
@@ -345,7 +273,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 44,
+    "pk": 35,
     "fields": {
       "ending": "29",
       "model": "ampliar"
@@ -353,7 +281,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 45,
+    "pk": 36,
     "fields": {
       "ending": "29",
       "model": "expatriar"
@@ -361,7 +289,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 46,
+    "pk": 37,
     "fields": {
       "ending": "29",
       "model": "guiar"
@@ -369,7 +297,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 47,
+    "pk": 38,
     "fields": {
       "ending": "30",
       "model": "cabrahigar"
@@ -377,7 +305,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 48,
+    "pk": 39,
     "fields": {
       "ending": "31",
       "model": "ahijar"
@@ -385,7 +313,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 49,
+    "pk": 40,
     "fields": {
       "ending": "32",
       "model": "sobrehilar"
@@ -393,7 +321,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 50,
+    "pk": 41,
     "fields": {
       "ending": "33",
       "model": "atraillar"
@@ -401,7 +329,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 51,
+    "pk": 42,
     "fields": {
       "ending": "34",
       "model": "descafeinar"
@@ -409,7 +337,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 52,
+    "pk": 43,
     "fields": {
       "ending": "34",
       "model": "enzainar"
@@ -417,7 +345,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 53,
+    "pk": 44,
     "fields": {
       "ending": "35",
       "model": "ahincar"
@@ -425,7 +353,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 54,
+    "pk": 45,
     "fields": {
       "ending": "36",
       "model": "airar"
@@ -433,7 +361,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 55,
+    "pk": 46,
     "fields": {
       "ending": "37",
       "model": "ahirmar"
@@ -441,7 +369,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 56,
+    "pk": 47,
     "fields": {
       "ending": "38",
       "model": "aislar"
@@ -449,7 +377,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 57,
+    "pk": 48,
     "fields": {
       "ending": "39",
       "model": "ahitar"
@@ -457,7 +385,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 58,
+    "pk": 49,
     "fields": {
       "ending": "40",
       "model": "enraizar"
@@ -465,7 +393,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 59,
+    "pk": 50,
     "fields": {
       "ending": "41",
       "model": "probar"
@@ -473,7 +401,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 60,
+    "pk": 51,
     "fields": {
       "ending": "42",
       "model": "poblar"
@@ -481,7 +409,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 61,
+    "pk": 52,
     "fields": {
       "ending": "43",
       "model": "clocar"
@@ -489,7 +417,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 62,
+    "pk": 53,
     "fields": {
       "ending": "43",
       "model": "trocar"
@@ -497,7 +425,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 63,
+    "pk": 54,
     "fields": {
       "ending": "44",
       "model": "rodar"
@@ -505,7 +433,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 64,
+    "pk": 55,
     "fields": {
       "ending": "45",
       "model": "rogar"
@@ -513,7 +441,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 65,
+    "pk": 56,
     "fields": {
       "ending": "46",
       "model": "asolar"
@@ -521,7 +449,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 66,
+    "pk": 57,
     "fields": {
       "ending": "46",
       "model": "volar"
@@ -529,7 +457,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 67,
+    "pk": 58,
     "fields": {
       "ending": "47",
       "model": "revolcar"
@@ -537,7 +465,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 68,
+    "pk": 59,
     "fields": {
       "ending": "48",
       "model": "regoldar"
@@ -545,7 +473,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 69,
+    "pk": 60,
     "fields": {
       "ending": "48",
       "model": "soldar"
@@ -553,7 +481,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 70,
+    "pk": 61,
     "fields": {
       "ending": "49",
       "model": "colgar"
@@ -561,7 +489,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 71,
+    "pk": 62,
     "fields": {
       "ending": "50",
       "model": "degollar"
@@ -569,7 +497,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 72,
+    "pk": 63,
     "fields": {
       "ending": "50",
       "model": "follar"
@@ -577,7 +505,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 73,
+    "pk": 64,
     "fields": {
       "ending": "50",
       "model": "resollar"
@@ -585,7 +513,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 74,
+    "pk": 65,
     "fields": {
       "ending": "51",
       "model": "soltar"
@@ -593,7 +521,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 75,
+    "pk": 66,
     "fields": {
       "ending": "52",
       "model": "sonar"
@@ -601,7 +529,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 76,
+    "pk": 67,
     "fields": {
       "ending": "53",
       "model": "contar"
@@ -609,7 +537,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 77,
+    "pk": 68,
     "fields": {
       "ending": "54",
       "model": "encontrar"
@@ -617,7 +545,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 78,
+    "pk": 69,
     "fields": {
       "ending": "55",
       "model": "avergonzar"
@@ -625,7 +553,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 79,
+    "pk": 70,
     "fields": {
       "ending": "56",
       "model": "aforar"
@@ -633,7 +561,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 80,
+    "pk": 71,
     "fields": {
       "ending": "56",
       "model": "desaforar"
@@ -641,7 +569,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 81,
+    "pk": 72,
     "fields": {
       "ending": "56",
       "model": "engorar"
@@ -649,7 +577,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 82,
+    "pk": 73,
     "fields": {
       "ending": "57",
       "model": "aporcar"
@@ -657,7 +585,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 83,
+    "pk": 74,
     "fields": {
       "ending": "58",
       "model": "acordar"
@@ -665,7 +593,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 84,
+    "pk": 75,
     "fields": {
       "ending": "59",
       "model": "acornar"
@@ -673,7 +601,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 85,
+    "pk": 76,
     "fields": {
       "ending": "60",
       "model": "entortar"
@@ -681,7 +609,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 86,
+    "pk": 77,
     "fields": {
       "ending": "61",
       "model": "forzar"
@@ -689,7 +617,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 87,
+    "pk": 78,
     "fields": {
       "ending": "62",
       "model": "desengrosar"
@@ -697,7 +625,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 88,
+    "pk": 79,
     "fields": {
       "ending": "62",
       "model": "desosar"
@@ -705,7 +633,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 89,
+    "pk": 80,
     "fields": {
       "ending": "62",
       "model": "engrosar"
@@ -713,7 +641,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 90,
+    "pk": 81,
     "fields": {
       "ending": "63",
       "model": "costar"
@@ -721,7 +649,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 91,
+    "pk": 82,
     "fields": {
       "ending": "64",
       "model": "mostrar"
@@ -729,7 +657,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 92,
+    "pk": 83,
     "fields": {
       "ending": "65",
       "model": "desencovar"
@@ -737,7 +665,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 93,
+    "pk": 84,
     "fields": {
       "ending": "65",
       "model": "renovar"
@@ -745,7 +673,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 94,
+    "pk": 85,
     "fields": {
       "ending": "66",
       "model": "soñar"
@@ -753,7 +681,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 95,
+    "pk": 86,
     "fields": {
       "ending": "67",
       "model": "actuar"
@@ -761,7 +689,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 96,
+    "pk": 87,
     "fields": {
       "ending": "67",
       "model": "averiguar"
@@ -769,7 +697,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 97,
+    "pk": 88,
     "fields": {
       "ending": "67",
       "model": "estatuar"
@@ -777,7 +705,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 98,
+    "pk": 89,
     "fields": {
       "ending": "67",
       "model": "evacuar"
@@ -785,7 +713,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 99,
+    "pk": 90,
     "fields": {
       "ending": "67",
       "model": "garuar"
@@ -793,7 +721,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 100,
+    "pk": 91,
     "fields": {
       "ending": "67",
       "model": "ruar"
@@ -801,7 +729,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 101,
+    "pk": 92,
     "fields": {
       "ending": "68",
       "model": "ahuchar"
@@ -809,7 +737,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 102,
+    "pk": 93,
     "fields": {
       "ending": "69",
       "model": "embaular"
@@ -817,7 +745,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 103,
+    "pk": 94,
     "fields": {
       "ending": "70",
       "model": "aullar"
@@ -825,7 +753,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 104,
+    "pk": 95,
     "fields": {
       "ending": "71",
       "model": "sahumar"
@@ -833,7 +761,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 105,
+    "pk": 96,
     "fields": {
       "ending": "72",
       "model": "aunar"
@@ -841,7 +769,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 106,
+    "pk": 97,
     "fields": {
       "ending": "73",
       "model": "aungar"
@@ -849,7 +777,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 107,
+    "pk": 98,
     "fields": {
       "ending": "74",
       "model": "reuntar"
@@ -857,7 +785,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 108,
+    "pk": 99,
     "fields": {
       "ending": "75",
       "model": "aupar"
@@ -865,7 +793,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 109,
+    "pk": 100,
     "fields": {
       "ending": "76",
       "model": "rehusar"
@@ -873,7 +801,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 110,
+    "pk": 101,
     "fields": {
       "ending": "77",
       "model": "barahustar"
@@ -881,7 +809,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 111,
+    "pk": 102,
     "fields": {
       "ending": "78",
       "model": "cazar"
@@ -889,15 +817,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 112,
-    "fields": {
-      "ending": "79",
-      "model": "saber"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 113,
+    "pk": 103,
     "fields": {
       "ending": "80",
       "model": "hacer"
@@ -905,7 +825,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 114,
+    "pk": 104,
     "fields": {
       "ending": "80",
       "model": "placer"
@@ -913,7 +833,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 115,
+    "pk": 105,
     "fields": {
       "ending": "81",
       "model": "caber"
@@ -921,7 +841,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 116,
+    "pk": 106,
     "fields": {
       "ending": "82",
       "model": "acaecer"
@@ -929,7 +849,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 117,
+    "pk": 107,
     "fields": {
       "ending": "82",
       "model": "empecer"
@@ -937,7 +857,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 118,
+    "pk": 108,
     "fields": {
       "ending": "82",
       "model": "parecer"
@@ -945,7 +865,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 119,
+    "pk": 109,
     "fields": {
       "ending": "82",
       "model": "tardecer"
@@ -953,7 +873,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 120,
+    "pk": 110,
     "fields": {
       "ending": "82",
       "model": "vencer"
@@ -961,7 +881,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 121,
+    "pk": 111,
     "fields": {
       "ending": "83",
       "model": "heder"
@@ -969,7 +889,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 122,
+    "pk": 112,
     "fields": {
       "ending": "84",
       "model": "tender"
@@ -977,7 +897,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 123,
+    "pk": 113,
     "fields": {
       "ending": "85",
       "model": "contener"
@@ -985,7 +905,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 124,
+    "pk": 114,
     "fields": {
       "ending": "85",
       "model": "tener"
@@ -993,7 +913,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 125,
+    "pk": 115,
     "fields": {
       "ending": "86",
       "model": "atañer"
@@ -1001,7 +921,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 126,
+    "pk": 116,
     "fields": {
       "ending": "86",
       "model": "caer"
@@ -1009,7 +929,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 127,
+    "pk": 117,
     "fields": {
       "ending": "86",
       "model": "creer"
@@ -1017,7 +937,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 128,
+    "pk": 118,
     "fields": {
       "ending": "86",
       "model": "deber"
@@ -1025,7 +945,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 129,
+    "pk": 119,
     "fields": {
       "ending": "86",
       "model": "prever"
@@ -1033,7 +953,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 130,
+    "pk": 120,
     "fields": {
       "ending": "86",
       "model": "raer"
@@ -1041,7 +961,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 131,
+    "pk": 121,
     "fields": {
       "ending": "86",
       "model": "roer"
@@ -1049,7 +969,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 132,
+    "pk": 122,
     "fields": {
       "ending": "86",
       "model": "tañer"
@@ -1057,7 +977,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 133,
+    "pk": 123,
     "fields": {
       "ending": "86",
       "model": "traer"
@@ -1065,7 +985,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 134,
+    "pk": 124,
     "fields": {
       "ending": "86",
       "model": "valer"
@@ -1073,7 +993,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 135,
+    "pk": 125,
     "fields": {
       "ending": "86",
       "model": "ver"
@@ -1081,7 +1001,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 136,
+    "pk": 126,
     "fields": {
       "ending": "87",
       "model": "perder"
@@ -1089,7 +1009,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 137,
+    "pk": 127,
     "fields": {
       "ending": "88",
       "model": "querer"
@@ -1097,7 +1017,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 138,
+    "pk": 128,
     "fields": {
       "ending": "89",
       "model": "cerner"
@@ -1105,7 +1025,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 139,
+    "pk": 129,
     "fields": {
       "ending": "90",
       "model": "verter"
@@ -1113,7 +1033,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 140,
+    "pk": 130,
     "fields": {
       "ending": "91",
       "model": "coger"
@@ -1121,7 +1041,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 141,
+    "pk": 131,
     "fields": {
       "ending": "92",
       "model": "romper"
@@ -1129,7 +1049,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 142,
+    "pk": 132,
     "fields": {
       "ending": "93",
       "model": "cocer"
@@ -1137,7 +1057,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 143,
+    "pk": 133,
     "fields": {
       "ending": "94",
       "model": "poder"
@@ -1145,7 +1065,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 144,
+    "pk": 134,
     "fields": {
       "ending": "95",
       "model": "doler"
@@ -1153,7 +1073,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 145,
+    "pk": 135,
     "fields": {
       "ending": "95",
       "model": "oler"
@@ -1161,7 +1081,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 146,
+    "pk": 136,
     "fields": {
       "ending": "96",
       "model": "volver"
@@ -1169,7 +1089,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 147,
+    "pk": 137,
     "fields": {
       "ending": "97",
       "model": "aponer"
@@ -1177,7 +1097,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 148,
+    "pk": 138,
     "fields": {
       "ending": "97",
       "model": "poner"
@@ -1185,7 +1105,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 149,
+    "pk": 139,
     "fields": {
       "ending": "98",
       "model": "torcer"
@@ -1193,7 +1113,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 150,
+    "pk": 140,
     "fields": {
       "ending": "99",
       "model": "morder"
@@ -1201,7 +1121,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 151,
+    "pk": 141,
     "fields": {
       "ending": "100",
       "model": "llover"
@@ -1209,7 +1129,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 152,
+    "pk": 142,
     "fields": {
       "ending": "100",
       "model": "mover"
@@ -1217,7 +1137,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 153,
+    "pk": 143,
     "fields": {
       "ending": "101",
       "model": "yacer"
@@ -1225,7 +1145,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 154,
+    "pk": 144,
     "fields": {
       "ending": "102",
       "model": "describir"
@@ -1233,7 +1153,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 155,
+    "pk": 145,
     "fields": {
       "ending": "102",
       "model": "escribir"
@@ -1241,7 +1161,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 156,
+    "pk": 146,
     "fields": {
       "ending": "103",
       "model": "esparcir"
@@ -1249,7 +1169,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 157,
+    "pk": 147,
     "fields": {
       "ending": "103",
       "model": "lucir"
@@ -1257,7 +1177,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 158,
+    "pk": 148,
     "fields": {
       "ending": "103",
       "model": "traducir"
@@ -1265,7 +1185,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 159,
+    "pk": 149,
     "fields": {
       "ending": "104",
       "model": "concebir"
@@ -1273,7 +1193,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 160,
+    "pk": 150,
     "fields": {
       "ending": "105",
       "model": "decir"
@@ -1281,7 +1201,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 161,
+    "pk": 151,
     "fields": {
       "ending": "105",
       "model": "infecir"
@@ -1289,7 +1209,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 162,
+    "pk": 152,
     "fields": {
       "ending": "105",
       "model": "maldecir"
@@ -1297,7 +1217,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 163,
+    "pk": 153,
     "fields": {
       "ending": "105",
       "model": "predecir"
@@ -1305,7 +1225,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 164,
+    "pk": 154,
     "fields": {
       "ending": "106",
       "model": "pedir"
@@ -1313,7 +1233,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 165,
+    "pk": 155,
     "fields": {
       "ending": "107",
       "model": "elegir"
@@ -1321,7 +1241,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 166,
+    "pk": 156,
     "fields": {
       "ending": "108",
       "model": "seguir"
@@ -1329,7 +1249,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 167,
+    "pk": 157,
     "fields": {
       "ending": "109",
       "model": "gemir"
@@ -1337,7 +1257,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 168,
+    "pk": 158,
     "fields": {
       "ending": "110",
       "model": "henchir"
@@ -1345,7 +1265,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 169,
+    "pk": 159,
     "fields": {
       "ending": "110",
       "model": "rehenchir"
@@ -1353,7 +1273,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 170,
+    "pk": 160,
     "fields": {
       "ending": "111",
       "model": "hendir"
@@ -1361,7 +1281,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 171,
+    "pk": 161,
     "fields": {
       "ending": "111",
       "model": "rendir"
@@ -1369,7 +1289,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 172,
+    "pk": 162,
     "fields": {
       "ending": "112",
       "model": "devenir"
@@ -1377,7 +1297,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 173,
+    "pk": 163,
     "fields": {
       "ending": "112",
       "model": "venir"
@@ -1385,7 +1305,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 174,
+    "pk": 164,
     "fields": {
       "ending": "113",
       "model": "sentir"
@@ -1393,7 +1313,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 175,
+    "pk": 165,
     "fields": {
       "ending": "114",
       "model": "erguir"
@@ -1401,7 +1321,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 176,
+    "pk": 166,
     "fields": {
       "ending": "115",
       "model": "preferir"
@@ -1409,7 +1329,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 177,
+    "pk": 167,
     "fields": {
       "ending": "116",
       "model": "concernir"
@@ -1417,7 +1337,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 178,
+    "pk": 168,
     "fields": {
       "ending": "116",
       "model": "discernir"
@@ -1425,7 +1345,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 179,
+    "pk": 169,
     "fields": {
       "ending": "117",
       "model": "invertir"
@@ -1433,7 +1353,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 180,
+    "pk": 170,
     "fields": {
       "ending": "118",
       "model": "hervir"
@@ -1441,7 +1361,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 181,
+    "pk": 171,
     "fields": {
       "ending": "118",
       "model": "servir"
@@ -1449,7 +1369,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 182,
+    "pk": 172,
     "fields": {
       "ending": "119",
       "model": "vestir"
@@ -1457,7 +1377,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 183,
+    "pk": 173,
     "fields": {
       "ending": "120",
       "model": "repetir"
@@ -1465,7 +1385,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 184,
+    "pk": 174,
     "fields": {
       "ending": "121",
       "model": "refreír"
@@ -1473,7 +1393,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 185,
+    "pk": 175,
     "fields": {
       "ending": "121",
       "model": "reír"
@@ -1481,7 +1401,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 186,
+    "pk": 176,
     "fields": {
       "ending": "121",
       "model": "sonreír"
@@ -1489,7 +1409,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 187,
+    "pk": 177,
     "fields": {
       "ending": "122",
       "model": "teñir"
@@ -1497,7 +1417,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 188,
+    "pk": 178,
     "fields": {
       "ending": "123",
       "model": "dirigir"
@@ -1505,7 +1425,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 189,
+    "pk": 179,
     "fields": {
       "ending": "124",
       "model": "prohibir"
@@ -1513,7 +1433,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 190,
+    "pk": 180,
     "fields": {
       "ending": "125",
       "model": "rehinchir"
@@ -1521,7 +1441,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 191,
+    "pk": 181,
     "fields": {
       "ending": "126",
       "model": "asir"
@@ -1529,7 +1449,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 192,
+    "pk": 182,
     "fields": {
       "ending": "126",
       "model": "balbucir"
@@ -1537,7 +1457,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 193,
+    "pk": 183,
     "fields": {
       "ending": "126",
       "model": "bruñir"
@@ -1545,7 +1465,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 194,
+    "pk": 184,
     "fields": {
       "ending": "126",
       "model": "huir"
@@ -1553,7 +1473,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 195,
+    "pk": 185,
     "fields": {
       "ending": "126",
       "model": "ir"
@@ -1561,7 +1481,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 196,
+    "pk": 186,
     "fields": {
       "ending": "126",
       "model": "manir"
@@ -1569,7 +1489,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 197,
+    "pk": 187,
     "fields": {
       "ending": "126",
       "model": "salir"
@@ -1577,7 +1497,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 198,
+    "pk": 188,
     "fields": {
       "ending": "126",
       "model": "sostituir"
@@ -1585,7 +1505,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 199,
+    "pk": 189,
     "fields": {
       "ending": "126",
       "model": "usucapir"
@@ -1593,7 +1513,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 200,
+    "pk": 190,
     "fields": {
       "ending": "126",
       "model": "vivir"
@@ -1601,7 +1521,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 201,
+    "pk": 191,
     "fields": {
       "ending": "127",
       "model": "podrir"
@@ -1609,7 +1529,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 202,
+    "pk": 192,
     "fields": {
       "ending": "128",
       "model": "morir"
@@ -1617,7 +1537,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 203,
+    "pk": 193,
     "fields": {
       "ending": "129",
       "model": "dormir"
@@ -1625,7 +1545,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 204,
+    "pk": 194,
     "fields": {
       "ending": "130",
       "model": "delinquir"
@@ -1633,7 +1553,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 205,
+    "pk": 195,
     "fields": {
       "ending": "131",
       "model": "adquirir"
@@ -1641,7 +1561,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 206,
+    "pk": 196,
     "fields": {
       "ending": "131",
       "model": "cubrir"
@@ -1649,7 +1569,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 207,
+    "pk": 197,
     "fields": {
       "ending": "132",
       "model": "pudrir"
@@ -1657,7 +1577,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 208,
+    "pk": 198,
     "fields": {
       "ending": "133",
       "model": "distinguir"
@@ -1665,7 +1585,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 209,
+    "pk": 199,
     "fields": {
       "ending": "133",
       "model": "rehuir"
@@ -1673,7 +1593,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 210,
+    "pk": 200,
     "fields": {
       "ending": "134",
       "model": "rehundir"
@@ -1681,7 +1601,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 211,
+    "pk": 201,
     "fields": {
       "ending": "135",
       "model": "reunir"
@@ -1689,7 +1609,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 212,
+    "pk": 202,
     "fields": {
       "ending": "136",
       "model": "contraír"
@@ -1697,7 +1617,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 213,
+    "pk": 203,
     "fields": {
       "ending": "136",
       "model": "desvaír"
@@ -1705,7 +1625,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 214,
+    "pk": 204,
     "fields": {
       "ending": "136",
       "model": "embaír"
@@ -1713,7 +1633,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 215,
+    "pk": 205,
     "fields": {
       "ending": "136",
       "model": "invehír"
@@ -1721,7 +1641,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 216,
+    "pk": 206,
     "fields": {
       "ending": "136",
       "model": "oír"
@@ -1729,7 +1649,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 217,
+    "pk": 207,
     "fields": {
       "ending": "137",
       "model": "argüir"
@@ -1737,7 +1657,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 218,
+    "pk": 208,
     "fields": {
       "ending": "138",
       "model": "haber"
@@ -1745,10 +1665,90 @@
   },
   {
     "model": "verbs.models",
-    "pk": 219,
+    "pk": 209,
+    "fields": {
+      "ending": "138",
+      "model": "saber"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 210,
+    "fields": {
+      "ending": "139",
+      "model": "amar"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 211,
+    "fields": {
+      "ending": "139",
+      "model": "andar"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 212,
+    "fields": {
+      "ending": "139",
+      "model": "dar"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 213,
+    "fields": {
+      "ending": "139",
+      "model": "desdar"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 214,
     "fields": {
       "ending": "139",
       "model": "estar"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 215,
+    "fields": {
+      "ending": "139",
+      "model": "llegar"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 216,
+    "fields": {
+      "ending": "139",
+      "model": "obstar"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 217,
+    "fields": {
+      "ending": "139",
+      "model": "raspahilar"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 218,
+    "fields": {
+      "ending": "139",
+      "model": "respahilar"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 219,
+    "fields": {
+      "ending": "139",
+      "model": "respailar"
     }
   },
   {
@@ -1763,109 +1763,13 @@
     "model": "verbs.models",
     "pk": 221,
     "fields": {
-      "ending": "141",
-      "model": "aceitar"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 222,
-    "fields": {
-      "ending": "141",
-      "model": "anunciar"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 223,
-    "fields": {
-      "ending": "141",
-      "model": "chegar"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 224,
-    "fields": {
-      "ending": "141",
-      "model": "dar"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 225,
-    "fields": {
-      "ending": "141",
-      "model": "dispersar"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 226,
-    "fields": {
-      "ending": "141",
-      "model": "entregar"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 227,
-    "fields": {
-      "ending": "141",
-      "model": "expressar"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 228,
-    "fields": {
-      "ending": "141",
-      "model": "ganhar"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 229,
-    "fields": {
-      "ending": "141",
-      "model": "grassar"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 230,
-    "fields": {
-      "ending": "141",
-      "model": "pagar"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 231,
-    "fields": {
-      "ending": "141",
-      "model": "recear"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 232,
-    "fields": {
-      "ending": "141",
-      "model": "relampaguear"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 233,
-    "fields": {
       "ending": "142",
       "model": "matar"
     }
   },
   {
     "model": "verbs.models",
-    "pk": 234,
+    "pk": 222,
     "fields": {
       "ending": "143",
       "model": "ficar"
@@ -1873,7 +1777,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 235,
+    "pk": 223,
     "fields": {
       "ending": "143",
       "model": "neviscar"
@@ -1881,7 +1785,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 236,
+    "pk": 224,
     "fields": {
       "ending": "144",
       "model": "comerciar"
@@ -1889,7 +1793,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 237,
+    "pk": 225,
     "fields": {
       "ending": "144",
       "model": "odiar"
@@ -1897,7 +1801,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 238,
+    "pk": 226,
     "fields": {
       "ending": "145",
       "model": "averiguar"
@@ -1905,7 +1809,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 239,
+    "pk": 227,
     "fields": {
       "ending": "146",
       "model": "saudar"
@@ -1913,7 +1817,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 240,
+    "pk": 228,
     "fields": {
       "ending": "147",
       "model": "começar"
@@ -1921,7 +1825,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 241,
+    "pk": 229,
     "fields": {
       "ending": "148",
       "model": "caber"
@@ -1929,7 +1833,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 242,
+    "pk": 230,
     "fields": {
       "ending": "148",
       "model": "saber"
@@ -1937,7 +1841,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 243,
+    "pk": 231,
     "fields": {
       "ending": "149",
       "model": "haver"
@@ -1945,7 +1849,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 244,
+    "pk": 232,
     "fields": {
       "ending": "149",
       "model": "reaver"
@@ -1953,7 +1857,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 245,
+    "pk": 233,
     "fields": {
       "ending": "150",
       "model": "aprazer"
@@ -1961,7 +1865,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 246,
+    "pk": 234,
     "fields": {
       "ending": "150",
       "model": "fazer"
@@ -1969,7 +1873,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 247,
+    "pk": 235,
     "fields": {
       "ending": "150",
       "model": "prazer"
@@ -1977,7 +1881,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 248,
+    "pk": 236,
     "fields": {
       "ending": "150",
       "model": "trazer"
@@ -1985,7 +1889,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 249,
+    "pk": 237,
     "fields": {
       "ending": "151",
       "model": "acontecer"
@@ -1993,7 +1897,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 250,
+    "pk": 238,
     "fields": {
       "ending": "151",
       "model": "aquecer"
@@ -2001,7 +1905,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 251,
+    "pk": 239,
     "fields": {
       "ending": "152",
       "model": "perder"
@@ -2009,7 +1913,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 252,
+    "pk": 240,
     "fields": {
       "ending": "152",
       "model": "suspender"
@@ -2017,103 +1921,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 253,
-    "fields": {
-      "ending": "153",
-      "model": "chover"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 254,
-    "fields": {
-      "ending": "153",
-      "model": "conviver"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 255,
-    "fields": {
-      "ending": "153",
-      "model": "crer"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 256,
-    "fields": {
-      "ending": "153",
-      "model": "jazer"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 257,
-    "fields": {
-      "ending": "153",
-      "model": "later"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 258,
-    "fields": {
-      "ending": "153",
-      "model": "ler"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 259,
-    "fields": {
-      "ending": "153",
-      "model": "obter"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 260,
-    "fields": {
-      "ending": "153",
-      "model": "precaver"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 261,
-    "fields": {
-      "ending": "153",
-      "model": "prover"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 262,
-    "fields": {
-      "ending": "153",
-      "model": "valer"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 263,
-    "fields": {
-      "ending": "153",
-      "model": "vender"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 264,
-    "fields": {
-      "ending": "153",
-      "model": "ver"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 265,
+    "pk": 241,
     "fields": {
       "ending": "154",
       "model": "querer"
@@ -2121,7 +1929,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 266,
+    "pk": 242,
     "fields": {
       "ending": "155",
       "model": "escrever"
@@ -2129,7 +1937,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 267,
+    "pk": 243,
     "fields": {
       "ending": "156",
       "model": "eleger"
@@ -2137,7 +1945,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 268,
+    "pk": 244,
     "fields": {
       "ending": "156",
       "model": "proteger"
@@ -2145,7 +1953,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 269,
+    "pk": 245,
     "fields": {
       "ending": "157",
       "model": "prender"
@@ -2153,7 +1961,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 270,
+    "pk": 246,
     "fields": {
       "ending": "158",
       "model": "poder"
@@ -2161,7 +1969,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 271,
+    "pk": 247,
     "fields": {
       "ending": "159",
       "model": "doer"
@@ -2169,7 +1977,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 272,
+    "pk": 248,
     "fields": {
       "ending": "159",
       "model": "moer"
@@ -2177,7 +1985,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 273,
+    "pk": 249,
     "fields": {
       "ending": "160",
       "model": "antepor"
@@ -2185,7 +1993,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 274,
+    "pk": 250,
     "fields": {
       "ending": "161",
       "model": "morrer"
@@ -2193,7 +2001,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 275,
+    "pk": 251,
     "fields": {
       "ending": "161",
       "model": "requerer"
@@ -2201,7 +2009,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 276,
+    "pk": 252,
     "fields": {
       "ending": "162",
       "model": "erguer"
@@ -2209,7 +2017,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 277,
+    "pk": 253,
     "fields": {
       "ending": "163",
       "model": "dizer"
@@ -2217,7 +2025,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 278,
+    "pk": 254,
     "fields": {
       "ending": "164",
       "model": "pôr"
@@ -2225,7 +2033,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 279,
+    "pk": 255,
     "fields": {
       "ending": "165",
       "model": "ressarcir"
@@ -2233,7 +2041,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 280,
+    "pk": 256,
     "fields": {
       "ending": "166",
       "model": "pedir"
@@ -2241,7 +2049,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 281,
+    "pk": 257,
     "fields": {
       "ending": "167",
       "model": "reflectir"
@@ -2249,7 +2057,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 282,
+    "pk": 258,
     "fields": {
       "ending": "168",
       "model": "agredir"
@@ -2257,7 +2065,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 283,
+    "pk": 259,
     "fields": {
       "ending": "169",
       "model": "seguir"
@@ -2265,7 +2073,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 284,
+    "pk": 260,
     "fields": {
       "ending": "170",
       "model": "expelir"
@@ -2273,7 +2081,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 285,
+    "pk": 261,
     "fields": {
       "ending": "171",
       "model": "fremir"
@@ -2281,7 +2089,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 286,
+    "pk": 262,
     "fields": {
       "ending": "172",
       "model": "prevenir"
@@ -2289,7 +2097,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 287,
+    "pk": 263,
     "fields": {
       "ending": "173",
       "model": "sentir"
@@ -2297,7 +2105,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 288,
+    "pk": 264,
     "fields": {
       "ending": "174",
       "model": "divergir"
@@ -2305,7 +2113,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 289,
+    "pk": 265,
     "fields": {
       "ending": "174",
       "model": "emergir"
@@ -2313,7 +2121,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 290,
+    "pk": 266,
     "fields": {
       "ending": "175",
       "model": "inserir"
@@ -2321,7 +2129,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 291,
+    "pk": 267,
     "fields": {
       "ending": "175",
       "model": "preferir"
@@ -2329,7 +2137,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 292,
+    "pk": 268,
     "fields": {
       "ending": "176",
       "model": "concernir"
@@ -2337,7 +2145,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 293,
+    "pk": 269,
     "fields": {
       "ending": "177",
       "model": "divertir"
@@ -2345,7 +2153,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 294,
+    "pk": 270,
     "fields": {
       "ending": "178",
       "model": "servir"
@@ -2353,7 +2161,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 295,
+    "pk": 271,
     "fields": {
       "ending": "179",
       "model": "cerzir"
@@ -2361,7 +2169,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 296,
+    "pk": 272,
     "fields": {
       "ending": "180",
       "model": "despir"
@@ -2369,7 +2177,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 297,
+    "pk": 273,
     "fields": {
       "ending": "181",
       "model": "investir"
@@ -2377,7 +2185,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 298,
+    "pk": 274,
     "fields": {
       "ending": "182",
       "model": "repetir"
@@ -2385,7 +2193,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 299,
+    "pk": 275,
     "fields": {
       "ending": "183",
       "model": "agir"
@@ -2393,7 +2201,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 300,
+    "pk": 276,
     "fields": {
       "ending": "183",
       "model": "corrigir"
@@ -2401,7 +2209,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 301,
+    "pk": 277,
     "fields": {
       "ending": "183",
       "model": "frigir"
@@ -2409,7 +2217,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 302,
+    "pk": 278,
     "fields": {
       "ending": "183",
       "model": "fulgir"
@@ -2417,7 +2225,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 303,
+    "pk": 279,
     "fields": {
       "ending": "183",
       "model": "ungir"
@@ -2425,7 +2233,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 304,
+    "pk": 280,
     "fields": {
       "ending": "184",
       "model": "distinguir"
@@ -2433,7 +2241,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 305,
+    "pk": 281,
     "fields": {
       "ending": "184",
       "model": "extinguir"
@@ -2441,7 +2249,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 306,
+    "pk": 282,
     "fields": {
       "ending": "185",
       "model": "proibir"
@@ -2449,7 +2257,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 307,
+    "pk": 283,
     "fields": {
       "ending": "186",
       "model": "exprimir"
@@ -2457,103 +2265,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 308,
-    "fields": {
-      "ending": "187",
-      "model": "avir"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 309,
-    "fields": {
-      "ending": "187",
-      "model": "bramir"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 310,
-    "fields": {
-      "ending": "187",
-      "model": "destituir"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 311,
-    "fields": {
-      "ending": "187",
-      "model": "distribuir"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 312,
-    "fields": {
-      "ending": "187",
-      "model": "embair"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 313,
-    "fields": {
-      "ending": "187",
-      "model": "falir"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 314,
-    "fields": {
-      "ending": "187",
-      "model": "garantir"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 315,
-    "fields": {
-      "ending": "187",
-      "model": "repelir"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 316,
-    "fields": {
-      "ending": "187",
-      "model": "rir"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 317,
-    "fields": {
-      "ending": "187",
-      "model": "sair"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 318,
-    "fields": {
-      "ending": "187",
-      "model": "traduzir"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 319,
-    "fields": {
-      "ending": "187",
-      "model": "vir"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 320,
+    "pk": 284,
     "fields": {
       "ending": "188",
       "model": "descobrir"
@@ -2561,7 +2273,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 321,
+    "pk": 285,
     "fields": {
       "ending": "189",
       "model": "engolir"
@@ -2569,7 +2281,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 322,
+    "pk": 286,
     "fields": {
       "ending": "189",
       "model": "polir"
@@ -2577,7 +2289,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 323,
+    "pk": 287,
     "fields": {
       "ending": "190",
       "model": "dormir"
@@ -2585,7 +2297,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 324,
+    "pk": 288,
     "fields": {
       "ending": "191",
       "model": "retorquir"
@@ -2593,7 +2305,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 325,
+    "pk": 289,
     "fields": {
       "ending": "192",
       "model": "sortir"
@@ -2601,7 +2313,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 326,
+    "pk": 290,
     "fields": {
       "ending": "193",
       "model": "tossir"
@@ -2609,7 +2321,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 327,
+    "pk": 291,
     "fields": {
       "ending": "194",
       "model": "abrir"
@@ -2617,7 +2329,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 328,
+    "pk": 292,
     "fields": {
       "ending": "195",
       "model": "omitir"
@@ -2625,7 +2337,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 329,
+    "pk": 293,
     "fields": {
       "ending": "196",
       "model": "subir"
@@ -2633,7 +2345,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 330,
+    "pk": 294,
     "fields": {
       "ending": "197",
       "model": "acudir"
@@ -2641,7 +2353,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 331,
+    "pk": 295,
     "fields": {
       "ending": "198",
       "model": "fugir"
@@ -2649,7 +2361,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 332,
+    "pk": 296,
     "fields": {
       "ending": "199",
       "model": "arguir"
@@ -2657,7 +2369,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 333,
+    "pk": 297,
     "fields": {
       "ending": "199",
       "model": "destruir"
@@ -2665,7 +2377,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 334,
+    "pk": 298,
     "fields": {
       "ending": "199",
       "model": "ruir"
@@ -2673,7 +2385,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 335,
+    "pk": 299,
     "fields": {
       "ending": "200",
       "model": "bulir"
@@ -2681,7 +2393,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 336,
+    "pk": 300,
     "fields": {
       "ending": "201",
       "model": "reunir"
@@ -2689,7 +2401,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 337,
+    "pk": 301,
     "fields": {
       "ending": "202",
       "model": "entupir"
@@ -2697,7 +2409,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 338,
+    "pk": 302,
     "fields": {
       "ending": "203",
       "model": "cuspir"
@@ -2705,7 +2417,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 339,
+    "pk": 303,
     "fields": {
       "ending": "204",
       "model": "ouvir"
@@ -2713,7 +2425,55 @@
   },
   {
     "model": "verbs.models",
-    "pk": 340,
+    "pk": 304,
+    "fields": {
+      "ending": "205",
+      "model": "aceitar"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 305,
+    "fields": {
+      "ending": "205",
+      "model": "anunciar"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 306,
+    "fields": {
+      "ending": "205",
+      "model": "chegar"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 307,
+    "fields": {
+      "ending": "205",
+      "model": "dar"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 308,
+    "fields": {
+      "ending": "205",
+      "model": "dispersar"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 309,
+    "fields": {
+      "ending": "205",
+      "model": "entregar"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 310,
     "fields": {
       "ending": "205",
       "model": "estar"
@@ -2721,7 +2481,127 @@
   },
   {
     "model": "verbs.models",
-    "pk": 341,
+    "pk": 311,
+    "fields": {
+      "ending": "205",
+      "model": "expressar"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 312,
+    "fields": {
+      "ending": "205",
+      "model": "ganhar"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 313,
+    "fields": {
+      "ending": "205",
+      "model": "grassar"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 314,
+    "fields": {
+      "ending": "205",
+      "model": "pagar"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 315,
+    "fields": {
+      "ending": "205",
+      "model": "recear"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 316,
+    "fields": {
+      "ending": "205",
+      "model": "relampaguear"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 317,
+    "fields": {
+      "ending": "206",
+      "model": "chover"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 318,
+    "fields": {
+      "ending": "206",
+      "model": "conviver"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 319,
+    "fields": {
+      "ending": "206",
+      "model": "crer"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 320,
+    "fields": {
+      "ending": "206",
+      "model": "jazer"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 321,
+    "fields": {
+      "ending": "206",
+      "model": "later"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 322,
+    "fields": {
+      "ending": "206",
+      "model": "ler"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 323,
+    "fields": {
+      "ending": "206",
+      "model": "obter"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 324,
+    "fields": {
+      "ending": "206",
+      "model": "precaver"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 325,
+    "fields": {
+      "ending": "206",
+      "model": "prover"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 326,
     "fields": {
       "ending": "206",
       "model": "ter"
@@ -2729,10 +2609,130 @@
   },
   {
     "model": "verbs.models",
-    "pk": 342,
+    "pk": 327,
+    "fields": {
+      "ending": "206",
+      "model": "valer"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 328,
+    "fields": {
+      "ending": "206",
+      "model": "vender"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 329,
+    "fields": {
+      "ending": "206",
+      "model": "ver"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 330,
+    "fields": {
+      "ending": "207",
+      "model": "avir"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 331,
+    "fields": {
+      "ending": "207",
+      "model": "bramir"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 332,
+    "fields": {
+      "ending": "207",
+      "model": "destituir"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 333,
+    "fields": {
+      "ending": "207",
+      "model": "distribuir"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 334,
+    "fields": {
+      "ending": "207",
+      "model": "embair"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 335,
+    "fields": {
+      "ending": "207",
+      "model": "falir"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 336,
+    "fields": {
+      "ending": "207",
+      "model": "garantir"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 337,
     "fields": {
       "ending": "207",
       "model": "ir"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 338,
+    "fields": {
+      "ending": "207",
+      "model": "repelir"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 339,
+    "fields": {
+      "ending": "207",
+      "model": "rir"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 340,
+    "fields": {
+      "ending": "207",
+      "model": "sair"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 341,
+    "fields": {
+      "ending": "207",
+      "model": "traduzir"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 342,
+    "fields": {
+      "ending": "207",
+      "model": "vir"
     }
   },
   {
@@ -2955,8 +2955,8 @@
     "model": "verbs.models",
     "pk": 370,
     "fields": {
-      "ending": "213",
-      "model": "riavere"
+      "ending": "214",
+      "model": "torcere"
     }
   },
   {
@@ -2964,20 +2964,12 @@
     "pk": 371,
     "fields": {
       "ending": "214",
-      "model": "torcere"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 372,
-    "fields": {
-      "ending": "214",
       "model": "vincere"
     }
   },
   {
     "model": "verbs.models",
-    "pk": 373,
+    "pk": 372,
     "fields": {
       "ending": "215",
       "model": "ardere"
@@ -2985,7 +2977,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 374,
+    "pk": 373,
     "fields": {
       "ending": "215",
       "model": "cedere"
@@ -2993,7 +2985,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 375,
+    "pk": 374,
     "fields": {
       "ending": "215",
       "model": "chiedere"
@@ -3001,7 +2993,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 376,
+    "pk": 375,
     "fields": {
       "ending": "215",
       "model": "chiudere"
@@ -3009,7 +3001,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 377,
+    "pk": 376,
     "fields": {
       "ending": "215",
       "model": "concedere"
@@ -3017,7 +3009,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 378,
+    "pk": 377,
     "fields": {
       "ending": "215",
       "model": "decidere"
@@ -3025,7 +3017,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 379,
+    "pk": 378,
     "fields": {
       "ending": "215",
       "model": "espandere"
@@ -3033,7 +3025,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 380,
+    "pk": 379,
     "fields": {
       "ending": "215",
       "model": "esplodere"
@@ -3041,7 +3033,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 381,
+    "pk": 380,
     "fields": {
       "ending": "215",
       "model": "ledere"
@@ -3049,7 +3041,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 382,
+    "pk": 381,
     "fields": {
       "ending": "215",
       "model": "mordere"
@@ -3057,7 +3049,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 383,
+    "pk": 382,
     "fields": {
       "ending": "215",
       "model": "perdere"
@@ -3065,7 +3057,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 384,
+    "pk": 383,
     "fields": {
       "ending": "215",
       "model": "persuadere"
@@ -3073,7 +3065,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 385,
+    "pk": 384,
     "fields": {
       "ending": "215",
       "model": "prudere"
@@ -3081,7 +3073,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 386,
+    "pk": 385,
     "fields": {
       "ending": "215",
       "model": "radere"
@@ -3089,7 +3081,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 387,
+    "pk": 386,
     "fields": {
       "ending": "215",
       "model": "ridere"
@@ -3097,7 +3089,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 388,
+    "pk": 387,
     "fields": {
       "ending": "215",
       "model": "spandere"
@@ -3105,7 +3097,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 389,
+    "pk": 388,
     "fields": {
       "ending": "216",
       "model": "prevedere"
@@ -3113,7 +3105,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 390,
+    "pk": 389,
     "fields": {
       "ending": "216",
       "model": "sedere"
@@ -3121,7 +3113,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 391,
+    "pk": 390,
     "fields": {
       "ending": "216",
       "model": "vedere"
@@ -3129,7 +3121,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 392,
+    "pk": 391,
     "fields": {
       "ending": "217",
       "model": "avellere"
@@ -3137,7 +3129,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 393,
+    "pk": 392,
     "fields": {
       "ending": "217",
       "model": "espellere"
@@ -3145,7 +3137,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 394,
+    "pk": 393,
     "fields": {
       "ending": "218",
       "model": "tenere"
@@ -3153,7 +3145,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 395,
+    "pk": 394,
     "fields": {
       "ending": "219",
       "model": "assistere"
@@ -3161,7 +3153,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 396,
+    "pk": 395,
     "fields": {
       "ending": "219",
       "model": "battere"
@@ -3169,7 +3161,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 397,
+    "pk": 396,
     "fields": {
       "ending": "219",
       "model": "cadere"
@@ -3177,7 +3169,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 398,
+    "pk": 397,
     "fields": {
       "ending": "219",
       "model": "concernere"
@@ -3185,7 +3177,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 399,
+    "pk": 398,
     "fields": {
       "ending": "219",
       "model": "credere"
@@ -3193,7 +3185,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 400,
+    "pk": 399,
     "fields": {
       "ending": "219",
       "model": "delinquere"
@@ -3201,7 +3193,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 401,
+    "pk": 400,
     "fields": {
       "ending": "219",
       "model": "estrovertere"
@@ -3209,7 +3201,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 402,
+    "pk": 401,
     "fields": {
       "ending": "219",
       "model": "fottere"
@@ -3217,7 +3209,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 403,
+    "pk": 402,
     "fields": {
       "ending": "219",
       "model": "godere"
@@ -3225,7 +3217,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 404,
+    "pk": 403,
     "fields": {
       "ending": "219",
       "model": "imbevere"
@@ -3233,7 +3225,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 405,
+    "pk": 404,
     "fields": {
       "ending": "219",
       "model": "incombere"
@@ -3241,7 +3233,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 406,
+    "pk": 405,
     "fields": {
       "ending": "219",
       "model": "insistere"
@@ -3249,7 +3241,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 407,
+    "pk": 406,
     "fields": {
       "ending": "219",
       "model": "lucere"
@@ -3257,7 +3249,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 408,
+    "pk": 407,
     "fields": {
       "ending": "219",
       "model": "mescere"
@@ -3265,7 +3257,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 409,
+    "pk": 408,
     "fields": {
       "ending": "219",
       "model": "molcere"
@@ -3273,7 +3265,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 410,
+    "pk": 409,
     "fields": {
       "ending": "219",
       "model": "pendere"
@@ -3281,7 +3273,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 411,
+    "pk": 410,
     "fields": {
       "ending": "219",
       "model": "piacere"
@@ -3289,7 +3281,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 412,
+    "pk": 411,
     "fields": {
       "ending": "219",
       "model": "piovere"
@@ -3297,7 +3289,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 413,
+    "pk": 412,
     "fields": {
       "ending": "219",
       "model": "plaudere"
@@ -3305,7 +3297,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 414,
+    "pk": 413,
     "fields": {
       "ending": "219",
       "model": "recere"
@@ -3313,7 +3305,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 415,
+    "pk": 414,
     "fields": {
       "ending": "219",
       "model": "ripetere"
@@ -3321,7 +3313,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 416,
+    "pk": 415,
     "fields": {
       "ending": "219",
       "model": "risiedere"
@@ -3329,7 +3321,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 417,
+    "pk": 416,
     "fields": {
       "ending": "219",
       "model": "risplendere"
@@ -3337,7 +3329,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 418,
+    "pk": 417,
     "fields": {
       "ending": "219",
       "model": "serpere"
@@ -3345,7 +3337,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 419,
+    "pk": 418,
     "fields": {
       "ending": "219",
       "model": "temere"
@@ -3353,7 +3345,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 420,
+    "pk": 419,
     "fields": {
       "ending": "219",
       "model": "tessere"
@@ -3361,7 +3353,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 421,
+    "pk": 420,
     "fields": {
       "ending": "219",
       "model": "vendere"
@@ -3369,7 +3361,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 422,
+    "pk": 421,
     "fields": {
       "ending": "219",
       "model": "vigere"
@@ -3377,7 +3369,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 423,
+    "pk": 422,
     "fields": {
       "ending": "220",
       "model": "restringere"
@@ -3385,7 +3377,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 424,
+    "pk": 423,
     "fields": {
       "ending": "221",
       "model": "mettere"
@@ -3393,7 +3385,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 425,
+    "pk": 424,
     "fields": {
       "ending": "222",
       "model": "cingere"
@@ -3401,7 +3393,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 426,
+    "pk": 425,
     "fields": {
       "ending": "222",
       "model": "detergere"
@@ -3409,7 +3401,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 427,
+    "pk": 426,
     "fields": {
       "ending": "222",
       "model": "divergere"
@@ -3417,7 +3409,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 428,
+    "pk": 427,
     "fields": {
       "ending": "222",
       "model": "emergere"
@@ -3425,7 +3417,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 429,
+    "pk": 428,
     "fields": {
       "ending": "222",
       "model": "fulgere"
@@ -3433,7 +3425,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 430,
+    "pk": 429,
     "fields": {
       "ending": "222",
       "model": "giungere"
@@ -3441,7 +3433,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 431,
+    "pk": 430,
     "fields": {
       "ending": "222",
       "model": "piangere"
@@ -3449,7 +3441,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 432,
+    "pk": 431,
     "fields": {
       "ending": "222",
       "model": "porgere"
@@ -3457,7 +3449,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 433,
+    "pk": 432,
     "fields": {
       "ending": "222",
       "model": "spargere"
@@ -3465,7 +3457,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 434,
+    "pk": 433,
     "fields": {
       "ending": "222",
       "model": "tangere"
@@ -3473,7 +3465,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 435,
+    "pk": 434,
     "fields": {
       "ending": "222",
       "model": "vergere"
@@ -3481,7 +3473,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 436,
+    "pk": 435,
     "fields": {
       "ending": "222",
       "model": "volgere"
@@ -3489,7 +3481,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 437,
+    "pk": 436,
     "fields": {
       "ending": "223",
       "model": "affiggere"
@@ -3497,7 +3489,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 438,
+    "pk": 437,
     "fields": {
       "ending": "223",
       "model": "distruggere"
@@ -3505,7 +3497,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 439,
+    "pk": 438,
     "fields": {
       "ending": "223",
       "model": "friggere"
@@ -3513,7 +3505,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 440,
+    "pk": 439,
     "fields": {
       "ending": "223",
       "model": "leggere"
@@ -3521,7 +3513,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 441,
+    "pk": 440,
     "fields": {
       "ending": "224",
       "model": "cogliere"
@@ -3529,7 +3521,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 442,
+    "pk": 441,
     "fields": {
       "ending": "224",
       "model": "scegliere"
@@ -3537,7 +3529,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 443,
+    "pk": 442,
     "fields": {
       "ending": "225",
       "model": "spegnere"
@@ -3545,7 +3537,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 444,
+    "pk": 443,
     "fields": {
       "ending": "226",
       "model": "distinguere"
@@ -3553,7 +3545,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 445,
+    "pk": 444,
     "fields": {
       "ending": "227",
       "model": "licere"
@@ -3561,7 +3553,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 446,
+    "pk": 445,
     "fields": {
       "ending": "228",
       "model": "adempiere"
@@ -3569,7 +3561,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 447,
+    "pk": 446,
     "fields": {
       "ending": "228",
       "model": "compiere"
@@ -3577,7 +3569,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 448,
+    "pk": 447,
     "fields": {
       "ending": "229",
       "model": "diligere"
@@ -3585,7 +3577,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 449,
+    "pk": 448,
     "fields": {
       "ending": "229",
       "model": "dirigere"
@@ -3593,7 +3585,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 450,
+    "pk": 449,
     "fields": {
       "ending": "229",
       "model": "esigere"
@@ -3601,7 +3593,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 451,
+    "pk": 450,
     "fields": {
       "ending": "229",
       "model": "redigere"
@@ -3609,7 +3601,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 452,
+    "pk": 451,
     "fields": {
       "ending": "230",
       "model": "comprimere"
@@ -3617,7 +3609,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 453,
+    "pk": 452,
     "fields": {
       "ending": "230",
       "model": "esprimere"
@@ -3625,7 +3617,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 454,
+    "pk": 453,
     "fields": {
       "ending": "230",
       "model": "redimere"
@@ -3633,7 +3625,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 455,
+    "pk": 454,
     "fields": {
       "ending": "231",
       "model": "stringere"
@@ -3641,7 +3633,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 456,
+    "pk": 455,
     "fields": {
       "ending": "232",
       "model": "calere"
@@ -3649,7 +3641,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 457,
+    "pk": 456,
     "fields": {
       "ending": "232",
       "model": "eccellere"
@@ -3657,7 +3649,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 458,
+    "pk": 457,
     "fields": {
       "ending": "232",
       "model": "svellere"
@@ -3665,7 +3657,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 459,
+    "pk": 458,
     "fields": {
       "ending": "232",
       "model": "valere"
@@ -3673,7 +3665,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 460,
+    "pk": 459,
     "fields": {
       "ending": "233",
       "model": "assumere"
@@ -3681,7 +3673,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 461,
+    "pk": 460,
     "fields": {
       "ending": "234",
       "model": "accendere"
@@ -3689,7 +3681,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 462,
+    "pk": 461,
     "fields": {
       "ending": "234",
       "model": "ascondere"
@@ -3697,7 +3689,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 463,
+    "pk": 462,
     "fields": {
       "ending": "234",
       "model": "prendere"
@@ -3705,7 +3697,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 464,
+    "pk": 463,
     "fields": {
       "ending": "234",
       "model": "rispondere"
@@ -3713,7 +3705,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 465,
+    "pk": 464,
     "fields": {
       "ending": "234",
       "model": "scendere"
@@ -3721,7 +3713,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 466,
+    "pk": 465,
     "fields": {
       "ending": "234",
       "model": "scindere"
@@ -3729,7 +3721,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 467,
+    "pk": 466,
     "fields": {
       "ending": "235",
       "model": "permanere"
@@ -3737,7 +3729,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 468,
+    "pk": 467,
     "fields": {
       "ending": "235",
       "model": "rimanere"
@@ -3745,7 +3737,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 469,
+    "pk": 468,
     "fields": {
       "ending": "236",
       "model": "dolere"
@@ -3753,7 +3745,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 470,
+    "pk": 469,
     "fields": {
       "ending": "236",
       "model": "solere"
@@ -3761,7 +3753,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 471,
+    "pk": 470,
     "fields": {
       "ending": "236",
       "model": "volere"
@@ -3769,7 +3761,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 472,
+    "pk": 471,
     "fields": {
       "ending": "237",
       "model": "rompere"
@@ -3777,7 +3769,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 473,
+    "pk": 472,
     "fields": {
       "ending": "238",
       "model": "fondere"
@@ -3785,7 +3777,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 474,
+    "pk": 473,
     "fields": {
       "ending": "239",
       "model": "potere"
@@ -3793,7 +3785,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 475,
+    "pk": 474,
     "fields": {
       "ending": "240",
       "model": "dovere"
@@ -3801,7 +3793,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 476,
+    "pk": 475,
     "fields": {
       "ending": "241",
       "model": "bere"
@@ -3809,7 +3801,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 477,
+    "pk": 476,
     "fields": {
       "ending": "242",
       "model": "correre"
@@ -3817,7 +3809,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 478,
+    "pk": 477,
     "fields": {
       "ending": "242",
       "model": "parere"
@@ -3825,7 +3817,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 479,
+    "pk": 478,
     "fields": {
       "ending": "243",
       "model": "porre"
@@ -3833,7 +3825,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 480,
+    "pk": 479,
     "fields": {
       "ending": "243",
       "model": "trarre"
@@ -3841,7 +3833,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 481,
+    "pk": 480,
     "fields": {
       "ending": "244",
       "model": "conoscere"
@@ -3849,7 +3841,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 482,
+    "pk": 481,
     "fields": {
       "ending": "244",
       "model": "crescere"
@@ -3857,7 +3849,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 483,
+    "pk": 482,
     "fields": {
       "ending": "244",
       "model": "nascere"
@@ -3865,7 +3857,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 484,
+    "pk": 483,
     "fields": {
       "ending": "245",
       "model": "secernere"
@@ -3873,7 +3865,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 485,
+    "pk": 484,
     "fields": {
       "ending": "246",
       "model": "discutere"
@@ -3881,7 +3873,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 486,
+    "pk": 485,
     "fields": {
       "ending": "247",
       "model": "connettere"
@@ -3889,7 +3881,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 487,
+    "pk": 486,
     "fields": {
       "ending": "247",
       "model": "flettere"
@@ -3897,7 +3889,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 488,
+    "pk": 487,
     "fields": {
       "ending": "248",
       "model": "cuocere"
@@ -3905,7 +3897,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 489,
+    "pk": 488,
     "fields": {
       "ending": "248",
       "model": "nuocere"
@@ -3913,7 +3905,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 490,
+    "pk": 489,
     "fields": {
       "ending": "249",
       "model": "scuotere"
@@ -3921,7 +3913,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 491,
+    "pk": 490,
     "fields": {
       "ending": "250",
       "model": "muovere"
@@ -3929,7 +3921,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 492,
+    "pk": 491,
     "fields": {
       "ending": "251",
       "model": "condurre"
@@ -3937,7 +3929,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 493,
+    "pk": 492,
     "fields": {
       "ending": "252",
       "model": "assolvere"
@@ -3945,7 +3937,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 494,
+    "pk": 493,
     "fields": {
       "ending": "252",
       "model": "devolvere"
@@ -3953,7 +3945,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 495,
+    "pk": 494,
     "fields": {
       "ending": "252",
       "model": "evolvere"
@@ -3961,7 +3953,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 496,
+    "pk": 495,
     "fields": {
       "ending": "252",
       "model": "scrivere"
@@ -3969,7 +3961,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 497,
+    "pk": 496,
     "fields": {
       "ending": "252",
       "model": "vivere"
@@ -3977,7 +3969,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 498,
+    "pk": 497,
     "fields": {
       "ending": "253",
       "model": "venire"
@@ -3985,7 +3977,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 499,
+    "pk": 498,
     "fields": {
       "ending": "254",
       "model": "compire"
@@ -3993,7 +3985,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 500,
+    "pk": 499,
     "fields": {
       "ending": "254",
       "model": "cucire"
@@ -4001,7 +3993,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 501,
+    "pk": 500,
     "fields": {
       "ending": "254",
       "model": "dire"
@@ -4009,7 +4001,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 502,
+    "pk": 501,
     "fields": {
       "ending": "254",
       "model": "eseguire"
@@ -4017,7 +4009,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 503,
+    "pk": 502,
     "fields": {
       "ending": "254",
       "model": "finire"
@@ -4025,7 +4017,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 504,
+    "pk": 503,
     "fields": {
       "ending": "254",
       "model": "fuggire"
@@ -4033,7 +4025,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 505,
+    "pk": 504,
     "fields": {
       "ending": "254",
       "model": "gire"
@@ -4041,7 +4033,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 506,
+    "pk": 505,
     "fields": {
       "ending": "254",
       "model": "inferire"
@@ -4049,7 +4041,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 507,
+    "pk": 506,
     "fields": {
       "ending": "254",
       "model": "mentire"
@@ -4057,7 +4049,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 508,
+    "pk": 507,
     "fields": {
       "ending": "254",
       "model": "punire"
@@ -4065,7 +4057,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 509,
+    "pk": 508,
     "fields": {
       "ending": "254",
       "model": "riempire"
@@ -4073,7 +4065,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 510,
+    "pk": 509,
     "fields": {
       "ending": "254",
       "model": "salire"
@@ -4081,7 +4073,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 511,
+    "pk": 510,
     "fields": {
       "ending": "254",
       "model": "seguire"
@@ -4089,7 +4081,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 512,
+    "pk": 511,
     "fields": {
       "ending": "254",
       "model": "stridire"
@@ -4097,7 +4089,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 513,
+    "pk": 512,
     "fields": {
       "ending": "254",
       "model": "vestire"
@@ -4105,7 +4097,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 514,
+    "pk": 513,
     "fields": {
       "ending": "255",
       "model": "morire"
@@ -4113,7 +4105,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 515,
+    "pk": 514,
     "fields": {
       "ending": "256",
       "model": "seppellire"
@@ -4121,7 +4113,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 516,
+    "pk": 515,
     "fields": {
       "ending": "257",
       "model": "apparire"
@@ -4129,7 +4121,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 517,
+    "pk": 516,
     "fields": {
       "ending": "257",
       "model": "aprire"
@@ -4137,7 +4129,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 518,
+    "pk": 517,
     "fields": {
       "ending": "257",
       "model": "offrire"
@@ -4145,7 +4137,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 519,
+    "pk": 518,
     "fields": {
       "ending": "257",
       "model": "trasparire"
@@ -4153,7 +4145,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 520,
+    "pk": 519,
     "fields": {
       "ending": "258",
       "model": "sentire"
@@ -4161,7 +4153,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 521,
+    "pk": 520,
     "fields": {
       "ending": "259",
       "model": "udire"
@@ -4169,7 +4161,7 @@
   },
   {
     "model": "verbs.models",
-    "pk": 522,
+    "pk": 521,
     "fields": {
       "ending": "260",
       "model": "uscire"
@@ -4177,10 +4169,18 @@
   },
   {
     "model": "verbs.models",
-    "pk": 523,
+    "pk": 522,
     "fields": {
       "ending": "261",
       "model": "avere"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 523,
+    "fields": {
+      "ending": "261",
+      "model": "riavere"
     }
   },
   {
@@ -4195,1151 +4195,1151 @@
     "model": "verbs.models",
     "pk": 525,
     "fields": {
-      "ending": "263",
-      "model": "acheter"
+      "ending": "266",
+      "model": "absoudre"
     }
   },
   {
     "model": "verbs.models",
     "pk": 526,
     "fields": {
-      "ending": "263",
-      "model": "adirer"
+      "ending": "266",
+      "model": "accroire"
     }
   },
   {
     "model": "verbs.models",
     "pk": 527,
     "fields": {
-      "ending": "263",
-      "model": "aliéner"
+      "ending": "266",
+      "model": "accroître"
     }
   },
   {
     "model": "verbs.models",
     "pk": 528,
     "fields": {
-      "ending": "263",
-      "model": "appeler"
+      "ending": "266",
+      "model": "acheter"
     }
   },
   {
     "model": "verbs.models",
     "pk": 529,
     "fields": {
-      "ending": "263",
-      "model": "aérer"
+      "ending": "266",
+      "model": "acquérir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 530,
     "fields": {
-      "ending": "263",
-      "model": "balayer"
+      "ending": "266",
+      "model": "adirer"
     }
   },
   {
     "model": "verbs.models",
     "pk": 531,
     "fields": {
-      "ending": "263",
-      "model": "commencer"
+      "ending": "266",
+      "model": "advenir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 532,
     "fields": {
-      "ending": "263",
-      "model": "courbaturer"
+      "ending": "266",
+      "model": "aliéner"
     }
   },
   {
     "model": "verbs.models",
     "pk": 533,
     "fields": {
-      "ending": "263",
-      "model": "céder"
+      "ending": "266",
+      "model": "aller"
     }
   },
   {
     "model": "verbs.models",
     "pk": 534,
     "fields": {
-      "ending": "263",
-      "model": "célébrer"
+      "ending": "266",
+      "model": "apparoir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 535,
     "fields": {
-      "ending": "263",
-      "model": "douer"
+      "ending": "266",
+      "model": "appeler"
     }
   },
   {
     "model": "verbs.models",
     "pk": 536,
     "fields": {
-      "ending": "263",
-      "model": "dépecer"
+      "ending": "266",
+      "model": "ardre"
     }
   },
   {
     "model": "verbs.models",
     "pk": 537,
     "fields": {
-      "ending": "263",
-      "model": "enfiévrer"
+      "ending": "266",
+      "model": "assaillir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 538,
     "fields": {
-      "ending": "263",
-      "model": "envoyer"
+      "ending": "266",
+      "model": "asseoir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 539,
     "fields": {
-      "ending": "263",
-      "model": "exécrer"
+      "ending": "266",
+      "model": "assoir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 540,
     "fields": {
-      "ending": "263",
-      "model": "hypothéquer"
+      "ending": "266",
+      "model": "attendre"
     }
   },
   {
     "model": "verbs.models",
     "pk": 541,
     "fields": {
-      "ending": "263",
-      "model": "incomber"
+      "ending": "266",
+      "model": "avenir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 542,
     "fields": {
-      "ending": "263",
-      "model": "intégrer"
+      "ending": "266",
+      "model": "avoir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 543,
     "fields": {
-      "ending": "263",
-      "model": "jeter"
+      "ending": "266",
+      "model": "aérer"
     }
   },
   {
     "model": "verbs.models",
     "pk": 544,
     "fields": {
-      "ending": "263",
-      "model": "lever"
+      "ending": "266",
+      "model": "balayer"
     }
   },
   {
     "model": "verbs.models",
     "pk": 545,
     "fields": {
-      "ending": "263",
-      "model": "liserer"
+      "ending": "266",
+      "model": "battre"
     }
   },
   {
     "model": "verbs.models",
     "pk": 546,
     "fields": {
-      "ending": "263",
-      "model": "léguer"
+      "ending": "266",
+      "model": "boire"
     }
   },
   {
     "model": "verbs.models",
     "pk": 547,
     "fields": {
-      "ending": "263",
-      "model": "léser"
+      "ending": "266",
+      "model": "bouillir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 548,
     "fields": {
-      "ending": "263",
-      "model": "manger"
+      "ending": "266",
+      "model": "braire"
     }
   },
   {
     "model": "verbs.models",
     "pk": 549,
     "fields": {
-      "ending": "263",
-      "model": "marcher"
+      "ending": "266",
+      "model": "bruire"
     }
   },
   {
     "model": "verbs.models",
     "pk": 550,
     "fields": {
-      "ending": "263",
-      "model": "neiger"
+      "ending": "266",
+      "model": "chaloir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 551,
     "fields": {
-      "ending": "263",
-      "model": "peler"
+      "ending": "266",
+      "model": "choir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 552,
     "fields": {
-      "ending": "263",
-      "model": "peser"
+      "ending": "266",
+      "model": "circoncire"
     }
   },
   {
     "model": "verbs.models",
     "pk": 553,
     "fields": {
-      "ending": "263",
-      "model": "promener"
+      "ending": "266",
+      "model": "clore"
     }
   },
   {
     "model": "verbs.models",
     "pk": 554,
     "fields": {
-      "ending": "263",
-      "model": "protéger"
+      "ending": "266",
+      "model": "commencer"
     }
   },
   {
     "model": "verbs.models",
     "pk": 555,
     "fields": {
-      "ending": "263",
-      "model": "pénétrer"
+      "ending": "266",
+      "model": "comparoir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 556,
     "fields": {
-      "ending": "263",
-      "model": "rapiécer"
+      "ending": "266",
+      "model": "conclure"
     }
   },
   {
     "model": "verbs.models",
     "pk": 557,
     "fields": {
-      "ending": "263",
-      "model": "receper"
+      "ending": "266",
+      "model": "confire"
     }
   },
   {
     "model": "verbs.models",
     "pk": 558,
     "fields": {
-      "ending": "263",
-      "model": "recéper"
+      "ending": "266",
+      "model": "connaître"
     }
   },
   {
     "model": "verbs.models",
     "pk": 559,
     "fields": {
-      "ending": "263",
-      "model": "régler"
+      "ending": "266",
+      "model": "coudre"
     }
   },
   {
     "model": "verbs.models",
     "pk": 560,
     "fields": {
-      "ending": "263",
-      "model": "régner"
+      "ending": "266",
+      "model": "courbaturer"
     }
   },
   {
     "model": "verbs.models",
     "pk": 561,
     "fields": {
-      "ending": "263",
-      "model": "répéter"
+      "ending": "266",
+      "model": "courir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 562,
     "fields": {
-      "ending": "263",
-      "model": "révéler"
+      "ending": "266",
+      "model": "craindre"
     }
   },
   {
     "model": "verbs.models",
     "pk": 563,
     "fields": {
-      "ending": "263",
-      "model": "semer"
+      "ending": "266",
+      "model": "croire"
     }
   },
   {
     "model": "verbs.models",
     "pk": 564,
     "fields": {
-      "ending": "263",
-      "model": "sevrer"
+      "ending": "266",
+      "model": "croître"
     }
   },
   {
     "model": "verbs.models",
     "pk": 565,
     "fields": {
-      "ending": "263",
-      "model": "sécher"
+      "ending": "266",
+      "model": "cueillir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 566,
     "fields": {
-      "ending": "263",
-      "model": "urger"
+      "ending": "266",
+      "model": "cuire"
     }
   },
   {
     "model": "verbs.models",
     "pk": 567,
     "fields": {
-      "ending": "263",
-      "model": "venter"
+      "ending": "266",
+      "model": "céder"
     }
   },
   {
     "model": "verbs.models",
     "pk": 568,
     "fields": {
-      "ending": "263",
-      "model": "verglacer"
+      "ending": "266",
+      "model": "célébrer"
     }
   },
   {
     "model": "verbs.models",
     "pk": 569,
     "fields": {
-      "ending": "263",
-      "model": "écrémer"
+      "ending": "266",
+      "model": "devoir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 570,
     "fields": {
-      "ending": "264",
-      "model": "dormir"
+      "ending": "266",
+      "model": "dire"
     }
   },
   {
     "model": "verbs.models",
     "pk": 571,
     "fields": {
-      "ending": "264",
-      "model": "faillir"
+      "ending": "266",
+      "model": "dormir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 572,
     "fields": {
-      "ending": "264",
-      "model": "finir"
+      "ending": "266",
+      "model": "douer"
     }
   },
   {
     "model": "verbs.models",
     "pk": 573,
     "fields": {
-      "ending": "264",
-      "model": "impartir"
+      "ending": "266",
+      "model": "déchoir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 574,
     "fields": {
-      "ending": "264",
-      "model": "maudire"
+      "ending": "266",
+      "model": "déclore"
     }
   },
   {
     "model": "verbs.models",
     "pk": 575,
     "fields": {
-      "ending": "265",
-      "model": "absoudre"
+      "ending": "266",
+      "model": "dépecer"
     }
   },
   {
     "model": "verbs.models",
     "pk": 576,
     "fields": {
-      "ending": "265",
-      "model": "accroire"
+      "ending": "266",
+      "model": "enclore"
     }
   },
   {
     "model": "verbs.models",
     "pk": 577,
     "fields": {
-      "ending": "265",
-      "model": "accroître"
+      "ending": "266",
+      "model": "endormir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 578,
     "fields": {
-      "ending": "265",
-      "model": "acquérir"
+      "ending": "266",
+      "model": "enfiévrer"
     }
   },
   {
     "model": "verbs.models",
     "pk": 579,
     "fields": {
-      "ending": "265",
-      "model": "advenir"
+      "ending": "266",
+      "model": "envoyer"
     }
   },
   {
     "model": "verbs.models",
     "pk": 580,
     "fields": {
-      "ending": "265",
-      "model": "aller"
+      "ending": "266",
+      "model": "exécrer"
     }
   },
   {
     "model": "verbs.models",
     "pk": 581,
     "fields": {
-      "ending": "265",
-      "model": "apparoir"
+      "ending": "266",
+      "model": "faillir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 582,
     "fields": {
-      "ending": "265",
-      "model": "ardre"
+      "ending": "266",
+      "model": "faire"
     }
   },
   {
     "model": "verbs.models",
     "pk": 583,
     "fields": {
-      "ending": "265",
-      "model": "assaillir"
+      "ending": "266",
+      "model": "falloir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 584,
     "fields": {
-      "ending": "265",
-      "model": "asseoir"
+      "ending": "266",
+      "model": "finir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 585,
     "fields": {
-      "ending": "265",
-      "model": "assoir"
+      "ending": "266",
+      "model": "fleurir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 586,
     "fields": {
-      "ending": "265",
-      "model": "attendre"
+      "ending": "266",
+      "model": "forfaire"
     }
   },
   {
     "model": "verbs.models",
     "pk": 587,
     "fields": {
-      "ending": "265",
-      "model": "avenir"
+      "ending": "266",
+      "model": "foutre"
     }
   },
   {
     "model": "verbs.models",
     "pk": 588,
     "fields": {
-      "ending": "265",
-      "model": "battre"
+      "ending": "266",
+      "model": "frire"
     }
   },
   {
     "model": "verbs.models",
     "pk": 589,
     "fields": {
-      "ending": "265",
-      "model": "boire"
+      "ending": "266",
+      "model": "fuir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 590,
     "fields": {
-      "ending": "265",
-      "model": "bouillir"
+      "ending": "266",
+      "model": "gésir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 591,
     "fields": {
-      "ending": "265",
-      "model": "braire"
+      "ending": "266",
+      "model": "haïr"
     }
   },
   {
     "model": "verbs.models",
     "pk": 592,
     "fields": {
-      "ending": "265",
-      "model": "bruire"
+      "ending": "266",
+      "model": "huir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 593,
     "fields": {
-      "ending": "265",
-      "model": "chaloir"
+      "ending": "266",
+      "model": "hypothéquer"
     }
   },
   {
     "model": "verbs.models",
     "pk": 594,
     "fields": {
-      "ending": "265",
-      "model": "choir"
+      "ending": "266",
+      "model": "impartir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 595,
     "fields": {
-      "ending": "265",
-      "model": "circoncire"
+      "ending": "266",
+      "model": "inclure"
     }
   },
   {
     "model": "verbs.models",
     "pk": 596,
     "fields": {
-      "ending": "265",
-      "model": "clore"
+      "ending": "266",
+      "model": "incomber"
     }
   },
   {
     "model": "verbs.models",
     "pk": 597,
     "fields": {
-      "ending": "265",
-      "model": "comparoir"
+      "ending": "266",
+      "model": "interdire"
     }
   },
   {
     "model": "verbs.models",
     "pk": 598,
     "fields": {
-      "ending": "265",
-      "model": "conclure"
+      "ending": "266",
+      "model": "intégrer"
     }
   },
   {
     "model": "verbs.models",
     "pk": 599,
     "fields": {
-      "ending": "265",
-      "model": "confire"
+      "ending": "266",
+      "model": "issir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 600,
     "fields": {
-      "ending": "265",
-      "model": "connaître"
+      "ending": "266",
+      "model": "jeter"
     }
   },
   {
     "model": "verbs.models",
     "pk": 601,
     "fields": {
-      "ending": "265",
-      "model": "coudre"
+      "ending": "266",
+      "model": "lever"
     }
   },
   {
     "model": "verbs.models",
     "pk": 602,
     "fields": {
-      "ending": "265",
-      "model": "courir"
+      "ending": "266",
+      "model": "lire"
     }
   },
   {
     "model": "verbs.models",
     "pk": 603,
     "fields": {
-      "ending": "265",
-      "model": "craindre"
+      "ending": "266",
+      "model": "liserer"
     }
   },
   {
     "model": "verbs.models",
     "pk": 604,
     "fields": {
-      "ending": "265",
-      "model": "croire"
+      "ending": "266",
+      "model": "léguer"
     }
   },
   {
     "model": "verbs.models",
     "pk": 605,
     "fields": {
-      "ending": "265",
-      "model": "croître"
+      "ending": "266",
+      "model": "léser"
     }
   },
   {
     "model": "verbs.models",
     "pk": 606,
     "fields": {
-      "ending": "265",
-      "model": "cueillir"
+      "ending": "266",
+      "model": "manger"
     }
   },
   {
     "model": "verbs.models",
     "pk": 607,
     "fields": {
-      "ending": "265",
-      "model": "cuire"
+      "ending": "266",
+      "model": "marcher"
     }
   },
   {
     "model": "verbs.models",
     "pk": 608,
     "fields": {
-      "ending": "265",
-      "model": "devoir"
+      "ending": "266",
+      "model": "maudire"
     }
   },
   {
     "model": "verbs.models",
     "pk": 609,
     "fields": {
-      "ending": "265",
-      "model": "dire"
+      "ending": "266",
+      "model": "mentir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 610,
     "fields": {
-      "ending": "265",
-      "model": "déchoir"
+      "ending": "266",
+      "model": "messeoir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 611,
     "fields": {
-      "ending": "265",
-      "model": "déclore"
+      "ending": "266",
+      "model": "mettre"
     }
   },
   {
     "model": "verbs.models",
     "pk": 612,
     "fields": {
-      "ending": "265",
-      "model": "enclore"
+      "ending": "266",
+      "model": "moudre"
     }
   },
   {
     "model": "verbs.models",
     "pk": 613,
     "fields": {
-      "ending": "265",
-      "model": "endormir"
+      "ending": "266",
+      "model": "mourir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 614,
     "fields": {
-      "ending": "265",
-      "model": "faire"
+      "ending": "266",
+      "model": "mouvoir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 615,
     "fields": {
-      "ending": "265",
-      "model": "falloir"
+      "ending": "266",
+      "model": "naître"
     }
   },
   {
     "model": "verbs.models",
     "pk": 616,
     "fields": {
-      "ending": "265",
-      "model": "fleurir"
+      "ending": "266",
+      "model": "neiger"
     }
   },
   {
     "model": "verbs.models",
     "pk": 617,
     "fields": {
-      "ending": "265",
-      "model": "forfaire"
+      "ending": "266",
+      "model": "nuire"
     }
   },
   {
     "model": "verbs.models",
     "pk": 618,
     "fields": {
-      "ending": "265",
-      "model": "foutre"
+      "ending": "266",
+      "model": "occire"
     }
   },
   {
     "model": "verbs.models",
     "pk": 619,
     "fields": {
-      "ending": "265",
-      "model": "frire"
+      "ending": "266",
+      "model": "ouvrir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 620,
     "fields": {
-      "ending": "265",
-      "model": "fuir"
+      "ending": "266",
+      "model": "ouïr"
     }
   },
   {
     "model": "verbs.models",
     "pk": 621,
     "fields": {
-      "ending": "265",
-      "model": "gésir"
+      "ending": "266",
+      "model": "parfaire"
     }
   },
   {
     "model": "verbs.models",
     "pk": 622,
     "fields": {
-      "ending": "265",
-      "model": "haïr"
+      "ending": "266",
+      "model": "paître"
     }
   },
   {
     "model": "verbs.models",
     "pk": 623,
     "fields": {
-      "ending": "265",
-      "model": "huir"
+      "ending": "266",
+      "model": "peler"
     }
   },
   {
     "model": "verbs.models",
     "pk": 624,
     "fields": {
-      "ending": "265",
-      "model": "inclure"
+      "ending": "266",
+      "model": "peser"
     }
   },
   {
     "model": "verbs.models",
     "pk": 625,
     "fields": {
-      "ending": "265",
-      "model": "interdire"
+      "ending": "266",
+      "model": "plaire"
     }
   },
   {
     "model": "verbs.models",
     "pk": 626,
     "fields": {
-      "ending": "265",
-      "model": "issir"
+      "ending": "266",
+      "model": "pleuvoir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 627,
     "fields": {
-      "ending": "265",
-      "model": "lire"
+      "ending": "266",
+      "model": "pourvoir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 628,
     "fields": {
-      "ending": "265",
-      "model": "mentir"
+      "ending": "266",
+      "model": "pouvoir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 629,
     "fields": {
-      "ending": "265",
-      "model": "messeoir"
+      "ending": "266",
+      "model": "prendre"
     }
   },
   {
     "model": "verbs.models",
     "pk": 630,
     "fields": {
-      "ending": "265",
-      "model": "mettre"
+      "ending": "266",
+      "model": "promener"
     }
   },
   {
     "model": "verbs.models",
     "pk": 631,
     "fields": {
-      "ending": "265",
-      "model": "moudre"
+      "ending": "266",
+      "model": "protéger"
     }
   },
   {
     "model": "verbs.models",
     "pk": 632,
     "fields": {
-      "ending": "265",
-      "model": "mourir"
+      "ending": "266",
+      "model": "prévaloir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 633,
     "fields": {
-      "ending": "265",
-      "model": "mouvoir"
+      "ending": "266",
+      "model": "prévoir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 634,
     "fields": {
-      "ending": "265",
-      "model": "naître"
+      "ending": "266",
+      "model": "pénétrer"
     }
   },
   {
     "model": "verbs.models",
     "pk": 635,
     "fields": {
-      "ending": "265",
-      "model": "nuire"
+      "ending": "266",
+      "model": "rapiécer"
     }
   },
   {
     "model": "verbs.models",
     "pk": 636,
     "fields": {
-      "ending": "265",
-      "model": "occire"
+      "ending": "266",
+      "model": "receper"
     }
   },
   {
     "model": "verbs.models",
     "pk": 637,
     "fields": {
-      "ending": "265",
-      "model": "ouvrir"
+      "ending": "266",
+      "model": "recevoir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 638,
     "fields": {
-      "ending": "265",
-      "model": "ouïr"
+      "ending": "266",
+      "model": "recroître"
     }
   },
   {
     "model": "verbs.models",
     "pk": 639,
     "fields": {
-      "ending": "265",
-      "model": "parfaire"
+      "ending": "266",
+      "model": "recéper"
     }
   },
   {
     "model": "verbs.models",
     "pk": 640,
     "fields": {
-      "ending": "265",
-      "model": "paître"
+      "ending": "266",
+      "model": "revaloir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 641,
     "fields": {
-      "ending": "265",
-      "model": "plaire"
+      "ending": "266",
+      "model": "rire"
     }
   },
   {
     "model": "verbs.models",
     "pk": 642,
     "fields": {
-      "ending": "265",
-      "model": "pleuvoir"
+      "ending": "266",
+      "model": "rompre"
     }
   },
   {
     "model": "verbs.models",
     "pk": 643,
     "fields": {
-      "ending": "265",
-      "model": "pourvoir"
+      "ending": "266",
+      "model": "régler"
     }
   },
   {
     "model": "verbs.models",
     "pk": 644,
     "fields": {
-      "ending": "265",
-      "model": "pouvoir"
+      "ending": "266",
+      "model": "régner"
     }
   },
   {
     "model": "verbs.models",
     "pk": 645,
     "fields": {
-      "ending": "265",
-      "model": "prendre"
+      "ending": "266",
+      "model": "répéter"
     }
   },
   {
     "model": "verbs.models",
     "pk": 646,
     "fields": {
-      "ending": "265",
-      "model": "prévaloir"
+      "ending": "266",
+      "model": "résoudre"
     }
   },
   {
     "model": "verbs.models",
     "pk": 647,
     "fields": {
-      "ending": "265",
-      "model": "prévoir"
+      "ending": "266",
+      "model": "révéler"
     }
   },
   {
     "model": "verbs.models",
     "pk": 648,
     "fields": {
-      "ending": "265",
-      "model": "recevoir"
+      "ending": "266",
+      "model": "savoir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 649,
     "fields": {
-      "ending": "265",
-      "model": "recroître"
+      "ending": "266",
+      "model": "semer"
     }
   },
   {
     "model": "verbs.models",
     "pk": 650,
     "fields": {
-      "ending": "265",
-      "model": "revaloir"
+      "ending": "266",
+      "model": "seoir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 651,
     "fields": {
-      "ending": "265",
-      "model": "rire"
+      "ending": "266",
+      "model": "servir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 652,
     "fields": {
-      "ending": "265",
-      "model": "rompre"
+      "ending": "266",
+      "model": "sevrer"
     }
   },
   {
     "model": "verbs.models",
     "pk": 653,
     "fields": {
-      "ending": "265",
-      "model": "résoudre"
+      "ending": "266",
+      "model": "sourdre"
     }
   },
   {
     "model": "verbs.models",
     "pk": 654,
     "fields": {
-      "ending": "265",
-      "model": "savoir"
+      "ending": "266",
+      "model": "stupéfaire"
     }
   },
   {
     "model": "verbs.models",
     "pk": 655,
     "fields": {
-      "ending": "265",
-      "model": "seoir"
+      "ending": "266",
+      "model": "suffire"
     }
   },
   {
     "model": "verbs.models",
     "pk": 656,
     "fields": {
-      "ending": "265",
-      "model": "servir"
+      "ending": "266",
+      "model": "suivre"
     }
   },
   {
     "model": "verbs.models",
     "pk": 657,
     "fields": {
-      "ending": "265",
-      "model": "sourdre"
+      "ending": "266",
+      "model": "surseoir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 658,
     "fields": {
-      "ending": "265",
-      "model": "stupéfaire"
+      "ending": "266",
+      "model": "survivre"
     }
   },
   {
     "model": "verbs.models",
     "pk": 659,
     "fields": {
-      "ending": "265",
-      "model": "suffire"
+      "ending": "266",
+      "model": "sécher"
     }
   },
   {
     "model": "verbs.models",
     "pk": 660,
     "fields": {
-      "ending": "265",
-      "model": "suivre"
+      "ending": "266",
+      "model": "taire"
     }
   },
   {
     "model": "verbs.models",
     "pk": 661,
     "fields": {
-      "ending": "265",
-      "model": "surseoir"
+      "ending": "266",
+      "model": "tenir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 662,
     "fields": {
-      "ending": "265",
-      "model": "survivre"
+      "ending": "266",
+      "model": "traire"
     }
   },
   {
     "model": "verbs.models",
     "pk": 663,
     "fields": {
-      "ending": "265",
-      "model": "taire"
+      "ending": "266",
+      "model": "urger"
     }
   },
   {
     "model": "verbs.models",
     "pk": 664,
     "fields": {
-      "ending": "265",
-      "model": "tenir"
+      "ending": "266",
+      "model": "vaincre"
     }
   },
   {
     "model": "verbs.models",
     "pk": 665,
     "fields": {
-      "ending": "265",
-      "model": "traire"
+      "ending": "266",
+      "model": "valoir"
     }
   },
   {
     "model": "verbs.models",
     "pk": 666,
     "fields": {
-      "ending": "265",
-      "model": "vaincre"
+      "ending": "266",
+      "model": "venter"
     }
   },
   {
     "model": "verbs.models",
     "pk": 667,
     "fields": {
-      "ending": "265",
-      "model": "valoir"
+      "ending": "266",
+      "model": "verglacer"
     }
   },
   {
     "model": "verbs.models",
     "pk": 668,
     "fields": {
-      "ending": "265",
+      "ending": "266",
       "model": "vivre"
     }
   },
@@ -5347,7 +5347,7 @@
     "model": "verbs.models",
     "pk": 669,
     "fields": {
-      "ending": "265",
+      "ending": "266",
       "model": "voir"
     }
   },
@@ -5355,7 +5355,7 @@
     "model": "verbs.models",
     "pk": 670,
     "fields": {
-      "ending": "265",
+      "ending": "266",
       "model": "vouloir"
     }
   },
@@ -5363,7 +5363,7 @@
     "model": "verbs.models",
     "pk": 671,
     "fields": {
-      "ending": "265",
+      "ending": "266",
       "model": "vêtir"
     }
   },
@@ -5371,7 +5371,7 @@
     "model": "verbs.models",
     "pk": 672,
     "fields": {
-      "ending": "265",
+      "ending": "266",
       "model": "échoir"
     }
   },
@@ -5379,7 +5379,7 @@
     "model": "verbs.models",
     "pk": 673,
     "fields": {
-      "ending": "265",
+      "ending": "266",
       "model": "éclore"
     }
   },
@@ -5387,7 +5387,7 @@
     "model": "verbs.models",
     "pk": 674,
     "fields": {
-      "ending": "265",
+      "ending": "266",
       "model": "écrire"
     }
   },
@@ -5395,8 +5395,8 @@
     "model": "verbs.models",
     "pk": 675,
     "fields": {
-      "ending": "265",
-      "model": "émouvoir"
+      "ending": "266",
+      "model": "écrémer"
     }
   },
   {
@@ -5404,7 +5404,7 @@
     "pk": 676,
     "fields": {
       "ending": "266",
-      "model": "avoir"
+      "model": "émouvoir"
     }
   },
   {
@@ -5419,7 +5419,7 @@
     "model": "verbs.models",
     "pk": 678,
     "fields": {
-      "ending": "267",
+      "ending": "268",
       "model": "abide"
     }
   },
@@ -5427,7 +5427,7 @@
     "model": "verbs.models",
     "pk": 679,
     "fields": {
-      "ending": "267",
+      "ending": "268",
       "model": "awake"
     }
   },
@@ -5435,7 +5435,7 @@
     "model": "verbs.models",
     "pk": 680,
     "fields": {
-      "ending": "267",
+      "ending": "268",
       "model": "bag"
     }
   },
@@ -5443,925 +5443,189 @@
     "model": "verbs.models",
     "pk": 681,
     "fields": {
-      "ending": "267",
-      "model": "bear"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 682,
-    "fields": {
-      "ending": "267",
-      "model": "beat"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 683,
-    "fields": {
-      "ending": "267",
-      "model": "bed"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 684,
-    "fields": {
-      "ending": "267",
-      "model": "beget"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 685,
-    "fields": {
-      "ending": "267",
-      "model": "begin"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 686,
-    "fields": {
-      "ending": "267",
-      "model": "bend"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 687,
-    "fields": {
-      "ending": "267",
-      "model": "beseech"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 688,
-    "fields": {
-      "ending": "267",
-      "model": "bite"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 689,
-    "fields": {
-      "ending": "267",
-      "model": "blow"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 690,
-    "fields": {
-      "ending": "267",
-      "model": "break"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 691,
-    "fields": {
-      "ending": "267",
-      "model": "bring"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 692,
-    "fields": {
-      "ending": "267",
-      "model": "burn"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 693,
-    "fields": {
-      "ending": "267",
-      "model": "buy"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 694,
-    "fields": {
-      "ending": "267",
-      "model": "cancel"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 695,
-    "fields": {
-      "ending": "267",
-      "model": "catch"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 696,
-    "fields": {
-      "ending": "267",
-      "model": "choose"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 697,
-    "fields": {
-      "ending": "267",
-      "model": "come"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 698,
-    "fields": {
-      "ending": "267",
-      "model": "crow"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 699,
-    "fields": {
-      "ending": "267",
-      "model": "cry"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 700,
-    "fields": {
-      "ending": "267",
-      "model": "dare"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 701,
-    "fields": {
-      "ending": "267",
-      "model": "dig"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 702,
-    "fields": {
-      "ending": "267",
-      "model": "dive"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 703,
-    "fields": {
-      "ending": "267",
-      "model": "draw"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 704,
-    "fields": {
-      "ending": "267",
-      "model": "drive"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 705,
-    "fields": {
-      "ending": "267",
-      "model": "dye"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 706,
-    "fields": {
-      "ending": "267",
-      "model": "eat"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 707,
-    "fields": {
-      "ending": "267",
-      "model": "echo"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 708,
-    "fields": {
-      "ending": "267",
-      "model": "fall"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 709,
-    "fields": {
-      "ending": "267",
-      "model": "feel"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 710,
-    "fields": {
-      "ending": "267",
-      "model": "fight"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 711,
-    "fields": {
-      "ending": "267",
-      "model": "find"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 712,
-    "fields": {
-      "ending": "267",
-      "model": "flee"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 713,
-    "fields": {
-      "ending": "267",
-      "model": "fling"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 714,
-    "fields": {
-      "ending": "267",
-      "model": "fly"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 715,
-    "fields": {
-      "ending": "267",
-      "model": "forbid"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 716,
-    "fields": {
-      "ending": "267",
-      "model": "forecast"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 717,
-    "fields": {
-      "ending": "267",
-      "model": "forget"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 718,
-    "fields": {
-      "ending": "267",
-      "model": "freeze"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 719,
-    "fields": {
-      "ending": "267",
-      "model": "gel"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 720,
-    "fields": {
-      "ending": "267",
-      "model": "get"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 721,
-    "fields": {
-      "ending": "267",
-      "model": "gild"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 722,
-    "fields": {
-      "ending": "267",
-      "model": "give"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 723,
-    "fields": {
-      "ending": "267",
-      "model": "go"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 724,
-    "fields": {
-      "ending": "267",
-      "model": "grow"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 725,
-    "fields": {
-      "ending": "267",
-      "model": "hang"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 726,
-    "fields": {
-      "ending": "267",
-      "model": "heave"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 727,
-    "fields": {
-      "ending": "267",
-      "model": "hide"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 728,
-    "fields": {
-      "ending": "267",
-      "model": "hold"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 729,
-    "fields": {
-      "ending": "267",
-      "model": "interweave"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 730,
-    "fields": {
-      "ending": "267",
-      "model": "ko"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 731,
-    "fields": {
-      "ending": "267",
-      "model": "lade"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 732,
-    "fields": {
-      "ending": "267",
-      "model": "lead"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 733,
-    "fields": {
-      "ending": "267",
-      "model": "leave"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 734,
-    "fields": {
-      "ending": "267",
-      "model": "lie"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 735,
-    "fields": {
-      "ending": "267",
-      "model": "light"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 736,
-    "fields": {
-      "ending": "267",
-      "model": "lose"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 737,
-    "fields": {
-      "ending": "267",
-      "model": "make"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 738,
-    "fields": {
-      "ending": "267",
-      "model": "meet"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 739,
-    "fields": {
-      "ending": "267",
-      "model": "obey"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 740,
-    "fields": {
-      "ending": "267",
-      "model": "pay"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 741,
-    "fields": {
-      "ending": "267",
-      "model": "picnic"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 742,
-    "fields": {
-      "ending": "267",
-      "model": "prove"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 743,
-    "fields": {
-      "ending": "267",
-      "model": "put"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 744,
-    "fields": {
-      "ending": "267",
-      "model": "quiz"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 745,
-    "fields": {
-      "ending": "267",
-      "model": "race"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 746,
-    "fields": {
-      "ending": "267",
-      "model": "rid"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 747,
-    "fields": {
-      "ending": "267",
-      "model": "ride"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 748,
-    "fields": {
-      "ending": "267",
-      "model": "rise"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 749,
-    "fields": {
-      "ending": "267",
-      "model": "rob"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 750,
-    "fields": {
-      "ending": "267",
-      "model": "run"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 751,
-    "fields": {
-      "ending": "267",
-      "model": "scan"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 752,
-    "fields": {
-      "ending": "267",
-      "model": "see"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 753,
-    "fields": {
-      "ending": "267",
-      "model": "seek"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 754,
-    "fields": {
-      "ending": "267",
-      "model": "shave"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 755,
-    "fields": {
-      "ending": "267",
-      "model": "shear"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 756,
-    "fields": {
-      "ending": "267",
-      "model": "shed"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 757,
-    "fields": {
-      "ending": "267",
-      "model": "shine"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 758,
-    "fields": {
-      "ending": "267",
-      "model": "shoe"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 759,
-    "fields": {
-      "ending": "267",
-      "model": "shoot"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 760,
-    "fields": {
-      "ending": "267",
-      "model": "show"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 761,
-    "fields": {
-      "ending": "267",
-      "model": "sing"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 762,
-    "fields": {
-      "ending": "267",
-      "model": "sink"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 763,
-    "fields": {
-      "ending": "267",
-      "model": "sit"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 764,
-    "fields": {
-      "ending": "267",
-      "model": "slay"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 765,
-    "fields": {
-      "ending": "267",
-      "model": "sleep"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 766,
-    "fields": {
-      "ending": "267",
-      "model": "slide"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 767,
-    "fields": {
-      "ending": "267",
-      "model": "slink"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 768,
-    "fields": {
-      "ending": "267",
-      "model": "smell"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 769,
-    "fields": {
-      "ending": "267",
-      "model": "sneak"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 770,
-    "fields": {
-      "ending": "267",
-      "model": "sow"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 771,
-    "fields": {
-      "ending": "267",
-      "model": "speed"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 772,
-    "fields": {
-      "ending": "267",
-      "model": "spin"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 773,
-    "fields": {
-      "ending": "267",
-      "model": "stand"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 774,
-    "fields": {
-      "ending": "267",
-      "model": "stave"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 775,
-    "fields": {
-      "ending": "267",
-      "model": "steal"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 776,
-    "fields": {
-      "ending": "267",
-      "model": "stick"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 777,
-    "fields": {
-      "ending": "267",
-      "model": "stop"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 778,
-    "fields": {
-      "ending": "267",
-      "model": "strike"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 779,
-    "fields": {
-      "ending": "267",
-      "model": "sum"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 780,
-    "fields": {
-      "ending": "267",
-      "model": "swear"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 781,
-    "fields": {
-      "ending": "267",
-      "model": "swell"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 782,
-    "fields": {
-      "ending": "267",
-      "model": "swim"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 783,
-    "fields": {
-      "ending": "267",
-      "model": "take"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 784,
-    "fields": {
-      "ending": "267",
-      "model": "tar"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 785,
-    "fields": {
-      "ending": "267",
-      "model": "teach"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 786,
-    "fields": {
-      "ending": "267",
-      "model": "tell"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 787,
-    "fields": {
-      "ending": "267",
-      "model": "think"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 788,
-    "fields": {
-      "ending": "267",
-      "model": "tie"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 789,
-    "fields": {
-      "ending": "267",
-      "model": "tread"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 790,
-    "fields": {
-      "ending": "267",
-      "model": "trot"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 791,
-    "fields": {
-      "ending": "267",
-      "model": "wed"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 792,
-    "fields": {
-      "ending": "267",
-      "model": "win"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 793,
-    "fields": {
-      "ending": "267",
-      "model": "wish"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 794,
-    "fields": {
-      "ending": "267",
-      "model": "write"
-    }
-  },
-  {
-    "model": "verbs.models",
-    "pk": 795,
-    "fields": {
       "ending": "268",
       "model": "be"
     }
   },
   {
     "model": "verbs.models",
-    "pk": 796,
+    "pk": 682,
+    "fields": {
+      "ending": "268",
+      "model": "bear"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 683,
+    "fields": {
+      "ending": "268",
+      "model": "beat"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 684,
+    "fields": {
+      "ending": "268",
+      "model": "bed"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 685,
+    "fields": {
+      "ending": "268",
+      "model": "beget"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 686,
+    "fields": {
+      "ending": "268",
+      "model": "begin"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 687,
+    "fields": {
+      "ending": "268",
+      "model": "bend"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 688,
+    "fields": {
+      "ending": "268",
+      "model": "beseech"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 689,
+    "fields": {
+      "ending": "268",
+      "model": "bite"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 690,
+    "fields": {
+      "ending": "268",
+      "model": "blow"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 691,
+    "fields": {
+      "ending": "268",
+      "model": "break"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 692,
+    "fields": {
+      "ending": "268",
+      "model": "bring"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 693,
+    "fields": {
+      "ending": "268",
+      "model": "burn"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 694,
+    "fields": {
+      "ending": "268",
+      "model": "buy"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 695,
+    "fields": {
+      "ending": "268",
+      "model": "cancel"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 696,
+    "fields": {
+      "ending": "268",
+      "model": "catch"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 697,
+    "fields": {
+      "ending": "268",
+      "model": "choose"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 698,
+    "fields": {
+      "ending": "268",
+      "model": "come"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 699,
+    "fields": {
+      "ending": "268",
+      "model": "crow"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 700,
+    "fields": {
+      "ending": "268",
+      "model": "cry"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 701,
+    "fields": {
+      "ending": "268",
+      "model": "dare"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 702,
+    "fields": {
+      "ending": "268",
+      "model": "dig"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 703,
+    "fields": {
+      "ending": "268",
+      "model": "dive"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 704,
     "fields": {
       "ending": "268",
       "model": "do"
@@ -6369,10 +5633,746 @@
   },
   {
     "model": "verbs.models",
-    "pk": 797,
+    "pk": 705,
+    "fields": {
+      "ending": "268",
+      "model": "draw"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 706,
+    "fields": {
+      "ending": "268",
+      "model": "drive"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 707,
+    "fields": {
+      "ending": "268",
+      "model": "dye"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 708,
+    "fields": {
+      "ending": "268",
+      "model": "eat"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 709,
+    "fields": {
+      "ending": "268",
+      "model": "echo"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 710,
+    "fields": {
+      "ending": "268",
+      "model": "fall"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 711,
+    "fields": {
+      "ending": "268",
+      "model": "feel"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 712,
+    "fields": {
+      "ending": "268",
+      "model": "fight"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 713,
+    "fields": {
+      "ending": "268",
+      "model": "find"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 714,
+    "fields": {
+      "ending": "268",
+      "model": "flee"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 715,
+    "fields": {
+      "ending": "268",
+      "model": "fling"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 716,
+    "fields": {
+      "ending": "268",
+      "model": "fly"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 717,
+    "fields": {
+      "ending": "268",
+      "model": "forbid"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 718,
+    "fields": {
+      "ending": "268",
+      "model": "forecast"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 719,
+    "fields": {
+      "ending": "268",
+      "model": "forget"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 720,
+    "fields": {
+      "ending": "268",
+      "model": "freeze"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 721,
+    "fields": {
+      "ending": "268",
+      "model": "gel"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 722,
+    "fields": {
+      "ending": "268",
+      "model": "get"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 723,
+    "fields": {
+      "ending": "268",
+      "model": "gild"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 724,
+    "fields": {
+      "ending": "268",
+      "model": "give"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 725,
+    "fields": {
+      "ending": "268",
+      "model": "go"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 726,
+    "fields": {
+      "ending": "268",
+      "model": "grow"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 727,
+    "fields": {
+      "ending": "268",
+      "model": "hang"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 728,
     "fields": {
       "ending": "268",
       "model": "have"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 729,
+    "fields": {
+      "ending": "268",
+      "model": "heave"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 730,
+    "fields": {
+      "ending": "268",
+      "model": "hide"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 731,
+    "fields": {
+      "ending": "268",
+      "model": "hold"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 732,
+    "fields": {
+      "ending": "268",
+      "model": "interweave"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 733,
+    "fields": {
+      "ending": "268",
+      "model": "ko"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 734,
+    "fields": {
+      "ending": "268",
+      "model": "lade"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 735,
+    "fields": {
+      "ending": "268",
+      "model": "lead"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 736,
+    "fields": {
+      "ending": "268",
+      "model": "leave"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 737,
+    "fields": {
+      "ending": "268",
+      "model": "lie"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 738,
+    "fields": {
+      "ending": "268",
+      "model": "light"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 739,
+    "fields": {
+      "ending": "268",
+      "model": "lose"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 740,
+    "fields": {
+      "ending": "268",
+      "model": "make"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 741,
+    "fields": {
+      "ending": "268",
+      "model": "meet"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 742,
+    "fields": {
+      "ending": "268",
+      "model": "obey"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 743,
+    "fields": {
+      "ending": "268",
+      "model": "pay"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 744,
+    "fields": {
+      "ending": "268",
+      "model": "picnic"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 745,
+    "fields": {
+      "ending": "268",
+      "model": "prove"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 746,
+    "fields": {
+      "ending": "268",
+      "model": "put"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 747,
+    "fields": {
+      "ending": "268",
+      "model": "quiz"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 748,
+    "fields": {
+      "ending": "268",
+      "model": "race"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 749,
+    "fields": {
+      "ending": "268",
+      "model": "rid"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 750,
+    "fields": {
+      "ending": "268",
+      "model": "ride"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 751,
+    "fields": {
+      "ending": "268",
+      "model": "rise"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 752,
+    "fields": {
+      "ending": "268",
+      "model": "rob"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 753,
+    "fields": {
+      "ending": "268",
+      "model": "run"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 754,
+    "fields": {
+      "ending": "268",
+      "model": "scan"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 755,
+    "fields": {
+      "ending": "268",
+      "model": "see"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 756,
+    "fields": {
+      "ending": "268",
+      "model": "seek"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 757,
+    "fields": {
+      "ending": "268",
+      "model": "shave"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 758,
+    "fields": {
+      "ending": "268",
+      "model": "shear"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 759,
+    "fields": {
+      "ending": "268",
+      "model": "shed"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 760,
+    "fields": {
+      "ending": "268",
+      "model": "shine"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 761,
+    "fields": {
+      "ending": "268",
+      "model": "shoe"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 762,
+    "fields": {
+      "ending": "268",
+      "model": "shoot"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 763,
+    "fields": {
+      "ending": "268",
+      "model": "show"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 764,
+    "fields": {
+      "ending": "268",
+      "model": "sing"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 765,
+    "fields": {
+      "ending": "268",
+      "model": "sink"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 766,
+    "fields": {
+      "ending": "268",
+      "model": "sit"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 767,
+    "fields": {
+      "ending": "268",
+      "model": "slay"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 768,
+    "fields": {
+      "ending": "268",
+      "model": "sleep"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 769,
+    "fields": {
+      "ending": "268",
+      "model": "slide"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 770,
+    "fields": {
+      "ending": "268",
+      "model": "slink"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 771,
+    "fields": {
+      "ending": "268",
+      "model": "smell"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 772,
+    "fields": {
+      "ending": "268",
+      "model": "sneak"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 773,
+    "fields": {
+      "ending": "268",
+      "model": "sow"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 774,
+    "fields": {
+      "ending": "268",
+      "model": "speed"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 775,
+    "fields": {
+      "ending": "268",
+      "model": "spin"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 776,
+    "fields": {
+      "ending": "268",
+      "model": "stand"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 777,
+    "fields": {
+      "ending": "268",
+      "model": "stave"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 778,
+    "fields": {
+      "ending": "268",
+      "model": "steal"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 779,
+    "fields": {
+      "ending": "268",
+      "model": "stick"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 780,
+    "fields": {
+      "ending": "268",
+      "model": "stop"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 781,
+    "fields": {
+      "ending": "268",
+      "model": "strike"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 782,
+    "fields": {
+      "ending": "268",
+      "model": "sum"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 783,
+    "fields": {
+      "ending": "268",
+      "model": "swear"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 784,
+    "fields": {
+      "ending": "268",
+      "model": "swell"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 785,
+    "fields": {
+      "ending": "268",
+      "model": "swim"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 786,
+    "fields": {
+      "ending": "268",
+      "model": "take"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 787,
+    "fields": {
+      "ending": "268",
+      "model": "tar"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 788,
+    "fields": {
+      "ending": "268",
+      "model": "teach"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 789,
+    "fields": {
+      "ending": "268",
+      "model": "tell"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 790,
+    "fields": {
+      "ending": "268",
+      "model": "think"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 791,
+    "fields": {
+      "ending": "268",
+      "model": "tie"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 792,
+    "fields": {
+      "ending": "268",
+      "model": "tread"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 793,
+    "fields": {
+      "ending": "268",
+      "model": "trot"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 794,
+    "fields": {
+      "ending": "268",
+      "model": "wed"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 795,
+    "fields": {
+      "ending": "268",
+      "model": "win"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 796,
+    "fields": {
+      "ending": "268",
+      "model": "wish"
+    }
+  },
+  {
+    "model": "verbs.models",
+    "pk": 797,
+    "fields": {
+      "ending": "268",
+      "model": "write"
     }
   }
 ]

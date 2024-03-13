@@ -42,7 +42,7 @@ pub async fn run_model_module() {
 
 
     // Create ending data and ending:group map
-    let ending_data_vec_vec: Vec<Vec<String>> = get_ending_data_vec(content_vec.clone(), &group_pk_map_vec);
+    let ending_data_vec_vec: Vec<Vec<String>> = get_ending_data_vec(&content_vec, &group_pk_map_vec);
     let ending_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(&ending_data_vec_vec, FieldOptions::EndingField);
     save_json_data_vec_to_file(&ending_json_data_vec, "temp/json/models/endings.json");
     let ending_group_id_map_vec: Vec<BTreeMap<String, i64>> = get_ending_group_id_map_vec(&ending_json_data_vec, &group_json_data_vec, &language_vec);
@@ -60,7 +60,7 @@ pub async fn run_model_module() {
 
 
     // Create model data and model:ending map
-    let model_data_vec_vec: Vec<Vec<String>> = get_model_data_vec_vec(content_vec.clone(), &ending_pk_map_vec.clone(), &group_pk_map_vec);
+    let model_data_vec_vec: Vec<Vec<String>> = get_model_data_vec_vec(&content_vec, &ending_pk_map_vec);
     let model_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(&model_data_vec_vec, FieldOptions::ModelField);
     save_json_data_vec_to_file(&model_json_data_vec, "temp/json/models/models.json");
     let model_ending_id_map_vec: Vec<BTreeMap<String, i64>> = get_model_ending_id_map_vec(&model_json_data_vec, &ending_json_data_vec, &group_json_data_vec, &language_vec);
@@ -200,7 +200,7 @@ fn get_pk_group_map_vec(group_json_data_vec: &Vec<JsonData>, language_vec: &Vec<
 }
 
 
-fn get_ending_data_vec(content_vec: Vec<String>, group_pk_map_vec: &Vec<BTreeMap<String, i64>>) -> Vec<Vec<String>> {
+fn get_ending_data_vec(content_vec: &Vec<String>, group_pk_map_vec: &Vec<BTreeMap<String, i64>>) -> Vec<Vec<String>> {
     let main_selector = scraper::Selector::parse("div.model-row").unwrap();
     let document_vec: Vec<Html> = content_vec.into_iter()
         .map(|extract| scraper::Html::parse_document(&extract))
@@ -370,7 +370,7 @@ fn get_pk_ending_map_vec(ending_json_data_vec: &Vec<JsonData>, group_json_data_v
 
 
 
-fn get_model_data_vec_vec(content_vec: Vec<String>, ending_pk_map_vec: &Vec<BTreeMap<String, i64>>, group_pk_map_vec: &Vec<BTreeMap<String, i64>> ) -> Vec<Vec<String>> {
+fn get_model_data_vec_vec(content_vec: &Vec<String>, ending_pk_map_vec: &Vec<BTreeMap<String, i64>>) -> Vec<Vec<String>> {
     let main_selector = scraper::Selector::parse("div.model-row").unwrap();
     let document_vec: Vec<Html> = content_vec.into_iter()
         .map(|extract| scraper::Html::parse_document(&extract))
@@ -398,7 +398,7 @@ fn get_model_data_vec_vec(content_vec: Vec<String>, ending_pk_map_vec: &Vec<BTre
                     .map(|data| data.trim().to_string()).collect::<Vec<String>>(),
             ]).collect::<Vec<_>>();
 
-        println!("model ending array vector: {:#?}", model_ending_array_vec);
+        // println!("model ending array vector: {:#?}", model_ending_array_vec);
 
         for model_ending_array in model_ending_array_vec.iter_mut() {
             if model_ending_array[1].len() == 0 {
@@ -408,11 +408,7 @@ fn get_model_data_vec_vec(content_vec: Vec<String>, ending_pk_map_vec: &Vec<BTre
                 model_ending_array[2].push("-".to_string())
             }
 
-            // Need to fix from here
-            let group_index = group_pk_map_vec[index]
-                .get(&model_ending_array[2][0]).unwrap()
-                .to_string().parse::<usize>().unwrap();
-            let ending_pk_map = ending_pk_map_vec[group_index].clone();
+            let ending_pk_map = ending_pk_map_vec[index].clone();
 
             model_ending_array[1][0] = ending_pk_map.get(&model_ending_array[1][0]).unwrap().to_string()
         }
