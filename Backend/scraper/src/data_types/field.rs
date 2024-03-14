@@ -9,6 +9,7 @@ use crate::data_types::field_options::{
     MinorTenseField,
     TenseField,
     TenseSubfield,
+    ParticleField,
     SubjectField,
     AuxiliaryField,
     ConjugateField,
@@ -28,6 +29,7 @@ pub enum Field {
     MajorTenseField(MajorTenseField),
     MinorTenseField(MinorTenseField),
     TenseField(TenseField),
+    ParticleField(ParticleField),
     SubjectField(SubjectField),
     AuxiliaryField(AuxiliaryField),
     ConjugateField(ConjugateField),
@@ -46,6 +48,7 @@ pub enum FieldOptions {
     MajorTenseField,
     MinorTenseField,
     TenseField,
+    ParticleField,
     SubjectField,
     AuxiliaryField,
     ConjugateField,
@@ -122,6 +125,14 @@ impl Field {
                 return Field::TenseField(tense_field)
             },
 
+            FieldOptions::ParticleField => {
+                let particle_field = ParticleField {
+                    particle: String::new(),
+                    language: String::new(),
+                };
+                return Field::ParticleField(particle_field)
+            },
+
             FieldOptions::SubjectField => {
                 let subject_field = SubjectField {
                     rank: 0,
@@ -153,6 +164,7 @@ impl Field {
                 let conjugation_field = ConjugationField {
                     rank: 0,
                     tense: String::new(),
+                    particle: String::new(),
                     subject: String::new(),
                     auxiliary: String::new(),
                     conjugate: String::new(),

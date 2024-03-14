@@ -9,10 +9,11 @@ use crate::{
             MajorTenseField,
             MinorTenseField,
             TenseField,
+            ParticleField,
             SubjectField,
             AuxiliaryField,
             ConjugateField,
-            ConjugationField,
+            // ConjugationField,
         },
     },
     helper_functions::{
@@ -46,109 +47,132 @@ pub async fn run_conjugations_modules() {
     let (_language_data_vec, language_vec) = read_language_data_from_json_data(language_content.as_str());
     // println!("language_data_vec: {:#?}", _language_data_vec);
 
-    // Read group data from file
-    let group_content: String = read_file_to_string("temp/json/models/groups.json");
-    let _group_data_vec: Vec<JsonData> = serde_json::from_str(group_content.as_str()).unwrap();
-    // println!("group_data_vec: {:#?}", _group_data_vec);
+    // // Read group data from file
+    // let group_content: String = read_file_to_string("temp/json/models/groups.json");
+    // let _group_data_vec: Vec<JsonData> = serde_json::from_str(group_content.as_str()).unwrap();
+    // // println!("group_data_vec: {:#?}", _group_data_vec);
+    //
+    // // Read ending data from file
+    // let ending_content: String = read_file_to_string("temp/json/models/endings.json");
+    // let _ending_data_vec: Vec<JsonData> = serde_json::from_str(ending_content.as_str()).unwrap();
+    // // println!("ending_data_vec: {:#?}", _ending_data_vec);
+    //
+    // // Read model data from file
+    // let model_content: String = read_file_to_string("temp/json/models/models.json");
+    // let _model_data_vec: Vec<JsonData> = serde_json::from_str(model_content.as_str()).unwrap();
+    // // println!("model_data_vec: {:#?}", _model_data_vec);
+    //
+    // // Get regular exponential back off & error 429 backoff
+    // let mut backoff: u64 = env::var("BACKOFF").unwrap().parse::<u64>().unwrap();
+    // let mut error_429_backoff: u64 = env::var("ERROR_429_BACKOFF").unwrap().parse::<u64>().unwrap();
+    //
+    // // Fetch verb urls vector
+    // let (verb_url_vec_vec, backoff_res, error_429_backoff_res) = fetch_verb_url_vec_vec(language_vec.clone(), backoff, error_429_backoff).await;
+    //
+    // backoff = backoff_res;
+    // error_429_backoff = error_429_backoff_res;
+    // // let mut backoff_duration = time::Duration::from_secs(backoff);
+    // // let mut error_429_backoff_duration = time::Duration::from_secs(error_429_backoff);
+    //
+    // // Generate verb page information vector
+    // let mut verb_page_info_vec_vec: Vec<Vec<PageInfo>> = generate_verb_page_info_vec_vec(language_vec.clone(), verb_url_vec_vec, backoff, error_429_backoff).await;
+    // // println!("verb_page_info_vec: {:#?}", verb_page_info_vec);
+    //
+    //
+    // verb_page_info_vec_vec = extend_verb_page_info_vec_vec(language_vec.clone(), verb_page_info_vec_vec.clone(), backoff, error_429_backoff).await;
+    //
+    // // panic!("\n\n\npause here boss");
 
-    // Read ending data from file
-    let ending_content: String = read_file_to_string("temp/json/models/endings.json");
-    let _ending_data_vec: Vec<JsonData> = serde_json::from_str(ending_content.as_str()).unwrap();
-    // println!("ending_data_vec: {:#?}", _ending_data_vec);
 
-    // Read model data from file
-    let model_content: String = read_file_to_string("temp/json/models/models.json");
-    let _model_data_vec: Vec<JsonData> = serde_json::from_str(model_content.as_str()).unwrap();
-    // println!("model_data_vec: {:#?}", _model_data_vec);
-
-    // Get regular exponential back off & error 429 backoff
-    let mut backoff: u64 = env::var("BACKOFF").unwrap().parse::<u64>().unwrap();
-    let mut error_429_backoff: u64 = env::var("ERROR_429_BACKOFF").unwrap().parse::<u64>().unwrap();
-
-    // Fetch verb urls vector
-    let (verb_url_vec_vec, backoff_res, error_429_backoff_res) = fetch_verb_url_vec_vec(language_vec.clone(), backoff, error_429_backoff).await;
-
-    backoff = backoff_res;
-    error_429_backoff = error_429_backoff_res;
-    // let mut backoff_duration = time::Duration::from_secs(backoff);
-    // let mut error_429_backoff_duration = time::Duration::from_secs(error_429_backoff);
-
-    // Generate verb page information vector
-    let mut verb_page_info_vec_vec: Vec<Vec<PageInfo>> = generate_verb_page_info_vec_vec(language_vec.clone(), verb_url_vec_vec, backoff, error_429_backoff).await;
-    // println!("verb_page_info_vec: {:#?}", verb_page_info_vec);
-
-
-    verb_page_info_vec_vec = extend_verb_page_info_vec_vec(language_vec.clone(), verb_page_info_vec_vec.clone(), backoff, error_429_backoff).await;
-
-    // panic!("\n\n\npause here boss");
-
-
+    let spanish_verb_page_info_vec_vec_content: String = read_file_to_string("temp/json/conjugations/data/Spanish_page_info.json");
+    let spanish_verb_page_info_vec_vec: Vec<PageInfo> = serde_json::from_str(&spanish_verb_page_info_vec_vec_content).unwrap();
+    let portuguese_verb_page_info_vec_vec_content: String = read_file_to_string("temp/json/conjugations/data/Portuguese_page_info.json");
+    let portuguese_verb_page_info_vec_vec: Vec<PageInfo> = serde_json::from_str(&portuguese_verb_page_info_vec_vec_content).unwrap();
+    let italian_verb_page_info_vec_vec_content: String = read_file_to_string("temp/json/conjugations/data/Italian_page_info.json");
+    let italian_verb_page_info_vec_vec: Vec<PageInfo> = serde_json::from_str(&italian_verb_page_info_vec_vec_content).unwrap();
+    let french_verb_page_info_vec_vec_content: String = read_file_to_string("temp/json/conjugations/data/French_page_info.json");
+    let french_verb_page_info_vec_vec: Vec<PageInfo> = serde_json::from_str(&french_verb_page_info_vec_vec_content).unwrap();
+    let english_verb_page_info_vec_vec_content: String = read_file_to_string("temp/json/conjugations/data/English_page_info.json");
+    let english_verb_page_info_vec_vec: Vec<PageInfo> = serde_json::from_str(&english_verb_page_info_vec_vec_content).unwrap();
+    let mut verb_page_info_vec_vec: Vec<Vec<PageInfo>> = Vec::new();
+    verb_page_info_vec_vec.push(spanish_verb_page_info_vec_vec);
+    verb_page_info_vec_vec.push(portuguese_verb_page_info_vec_vec);
+    verb_page_info_vec_vec.push(italian_verb_page_info_vec_vec);
+    verb_page_info_vec_vec.push(french_verb_page_info_vec_vec);
+    verb_page_info_vec_vec.push(english_verb_page_info_vec_vec);
+    
 
 
     // Read necessary pk map vec
-    let language_pk_content: String = read_file_to_string("temp/json/languages/btreemaps/languages.json");
-    let language_pk_map_vec: Vec<BTreeMap<String, i64>> = serde_json::from_str(&language_pk_content).unwrap();
-    let model_content: String = read_file_to_string("temp/json/models/btreemaps/model_language.json");
+    let language_pk_content: String = read_file_to_string("temp/json/languages/btreemaps/language_pk.json");
+    let language_pk_map: BTreeMap<String, i64> = serde_json::from_str(&language_pk_content).unwrap();
+    let model_content: String = read_file_to_string("temp/json/models/btreemaps/model_language_id.json");
     let model_language_id_map_vec: Vec<BTreeMap<String, i64>> = serde_json::from_str(&model_content).unwrap();
 
 
     // Fetch data vectors and then create and save json data vectors
-    let base_data_vec_vec: Vec<Vec<String>> = extract_base_data_vec_vec(&verb_page_info_vec_vec, &language_pk_map_vec);
+    let base_data_vec_vec: Vec<Vec<String>> = extract_base_data_vec_vec(&verb_page_info_vec_vec, &language_pk_map);
     let base_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(&base_data_vec_vec, FieldOptions::BaseField);
     save_json_data_vec_to_file(&base_json_data_vec, "temp/json/conjugations/bases.json");
     let base_pk_map_vec: Vec<BTreeMap<String, i64>> = get_base_pk_map_vec(base_json_data_vec.clone(), &language_vec);
-    save_map_vec_to_file(&base_pk_map_vec, "temp/json/conjugations/btreemaps/bases.json");
+    save_map_vec_to_file(&base_pk_map_vec, "temp/json/conjugations/btreemaps/bases_pk.json");
 
 
 
     // CREATE MAJOR AND MINOR TENSE JSONDATA VECS FOR THIS AND LINK THOSE TO TENSE
-    let major_tense_data_vec_vec: Vec<Vec<String>> = extract_major_tense_data_vec_vec(&verb_page_info_vec_vec, &language_pk_map_vec);
+    let major_tense_data_vec_vec: Vec<Vec<String>> = extract_major_tense_data_vec_vec(&verb_page_info_vec_vec, &language_pk_map);
     let major_tense_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(&major_tense_data_vec_vec, FieldOptions::MajorTenseField);
     save_json_data_vec_to_file(&major_tense_json_data_vec, "temp/json/conjugations/major_tenses.json");
     let major_tense_pk_map_vec: Vec<BTreeMap<String, i64>> = get_major_tense_pk_map_vec(major_tense_json_data_vec.clone(), &language_vec);
-    save_map_vec_to_file(&major_tense_pk_map_vec, "temp/json/conjugations/btreemaps/major_tenses.json");
+    save_map_vec_to_file(&major_tense_pk_map_vec, "temp/json/conjugations/btreemaps/major_tense_pk.json");
 
-    let minor_tense_data_vec_vec: Vec<Vec<String>> = extract_minor_tense_data_vec_vec(&verb_page_info_vec_vec, &language_pk_map_vec);
+    let minor_tense_data_vec_vec: Vec<Vec<String>> = extract_minor_tense_data_vec_vec(&verb_page_info_vec_vec, &language_pk_map);
     let minor_tense_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(&minor_tense_data_vec_vec, FieldOptions::MinorTenseField);
     save_json_data_vec_to_file(&minor_tense_json_data_vec, "temp/json/conjugations/minor_tenses.json");
     let minor_tense_pk_map_vec: Vec<BTreeMap<String, i64>> = get_minor_tense_pk_map_vec(minor_tense_json_data_vec.clone(), &language_vec);
-    save_map_vec_to_file(&minor_tense_pk_map_vec, "temp/json/conjugations/btreemaps/minor_tenses.json");
-
+    save_map_vec_to_file(&minor_tense_pk_map_vec, "temp/json/conjugations/btreemaps/minor_tense_pk.json");
 
     let tense_data_vec_vec: Vec<Vec<String>> = extract_tense_data_vec_vec(&verb_page_info_vec_vec, &major_tense_pk_map_vec, &minor_tense_pk_map_vec);
     let tense_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(&tense_data_vec_vec.clone(), FieldOptions::TenseField);
     save_json_data_vec_to_file(&tense_json_data_vec, "temp/json/conjugations/tenses.json");
     let tense_pk_map_vec: Vec<BTreeMap<String, i64>> = get_tense_pk_map_vec(tense_json_data_vec.clone(), &language_vec, &major_tense_pk_map_vec);
-    save_map_vec_to_file(&tense_pk_map_vec, "temp/json/conjugations/btreemaps/tenses.json");
+    save_map_vec_to_file(&tense_pk_map_vec, "temp/json/conjugations/btreemaps/tense_pk.json");
 
 
 
+    let particle_data_vec_vec: Vec<Vec<String>> = extract_particle_data_vec_vec(&verb_page_info_vec_vec, &language_pk_map);
+    let particle_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(&particle_data_vec_vec, FieldOptions::ParticleField);
+    save_json_data_vec_to_file(&particle_json_data_vec, "temp/json/conjugations/particles.json");
+    let particle_pk_map_vec: Vec<BTreeMap<String, i64>> = get_particle_pk_map_vec(particle_json_data_vec.clone(), &language_vec);
+    save_map_vec_to_file(&particle_pk_map_vec, "temp/json/conjugations/btreemaps/particle_pk.json");
 
-    let subject_data_vec_vec: Vec<Vec<String>> = extract_subject_data_vec_vec(&verb_page_info_vec_vec, &language_pk_map_vec);
+    let subject_data_vec_vec: Vec<Vec<String>> = extract_subject_data_vec_vec(&verb_page_info_vec_vec, &language_pk_map);
     let subject_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(&subject_data_vec_vec, FieldOptions::SubjectField);
     save_json_data_vec_to_file(&subject_json_data_vec, "temp/json/conjugations/subjects.json");
     let subject_pk_map_vec: Vec<BTreeMap<String, i64>> = get_subject_pk_map_vec(subject_json_data_vec.clone(), &language_vec);
-    save_map_vec_to_file(&subject_pk_map_vec, "temp/json/conjugations/btreemaps/subjects.json");
+    save_map_vec_to_file(&subject_pk_map_vec, "temp/json/conjugations/btreemaps/subject_pk.json");
 
-    let auxiliary_data_vec_vec: Vec<Vec<String>> = extract_auxiliary_data_vec_vec(&verb_page_info_vec_vec, &language_pk_map_vec);
+    let auxiliary_data_vec_vec: Vec<Vec<String>> = extract_auxiliary_data_vec_vec(&verb_page_info_vec_vec, &language_pk_map);
     let auxiliary_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(&auxiliary_data_vec_vec, FieldOptions::AuxiliaryField);
     save_json_data_vec_to_file(&auxiliary_json_data_vec, "temp/json/conjugations/auxiliaries.json");
     let auxiliary_pk_map_vec: Vec<BTreeMap<String, i64>> = get_auxiliary_pk_map_vec(auxiliary_json_data_vec.clone(), &language_vec);
-    save_map_vec_to_file(&auxiliary_pk_map_vec, "temp/json/conjugations/btreemaps/auxiliaries.json");
+    save_map_vec_to_file(&auxiliary_pk_map_vec, "temp/json/conjugations/btreemaps/auxiliary_pk.json");
 
+    // let conjugate_content: String = read_file_to_string("temp/json/conjugations/conjugates.json");
+    // let conjugate_json_data_vec: Vec<JsonData> = serde_json::from_str(&conjugate_content).unwrap();
     let conjugate_data_vec_vec: Vec<Vec<String>> = extract_conjugate_data_vec_vec(&verb_page_info_vec_vec, &base_pk_map_vec, &model_language_id_map_vec);
     let conjugate_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(&conjugate_data_vec_vec, FieldOptions::ConjugateField);
     save_json_data_vec_to_file(&conjugate_json_data_vec, "temp/json/conjugations/conjugates.json");
-    panic!("\n\n\npause here boss");
     let conjugate_pk_map_vec: Vec<BTreeMap<String, i64>> = get_conjugate_pk_map_vec(conjugate_json_data_vec.clone(), base_json_data_vec.clone(), &language_vec);
-    save_map_vec_to_file(&conjugate_pk_map_vec, "temp/json/conjugations/btreemaps/conjugate.json");
+    save_map_vec_to_file(&conjugate_pk_map_vec, "temp/json/conjugations/btreemaps/conjugats.json");
     
 
-    let conjugation_data_vec_vec: Vec<Vec<String>> = extract_conjugation_data_vec_vec(&verb_page_info_vec_vec, &tense_pk_map_vec, &subject_pk_map_vec, &auxiliary_pk_map_vec, &conjugate_pk_map_vec);
+    let conjugation_data_vec_vec: Vec<Vec<String>> = extract_conjugation_data_vec_vec(&verb_page_info_vec_vec, &major_tense_pk_map_vec, &minor_tense_pk_map_vec, &tense_pk_map_vec, &particle_pk_map_vec, &subject_pk_map_vec, &auxiliary_pk_map_vec, &conjugate_pk_map_vec);
     let conjugation_json_data_vec: Vec<JsonData> = create_json_data_vec_from_vec_vec_string(&conjugation_data_vec_vec, FieldOptions::ConjugationField);
     save_json_data_vec_to_file(&conjugation_json_data_vec, "temp/json/conjugations/conjugations.json");
-    let conjugation_pk_map_vec: Vec<BTreeMap<String, i64>> = get_conjugation_pk_map_vec(conjugation_json_data_vec, conjugate_json_data_vec, base_json_data_vec, &language_vec);
-    save_map_vec_to_file(&conjugation_pk_map_vec, "temp/json/conjugations/btreemaps/conjugation.json");
+    // let conjugation_pk_map_vec: Vec<BTreeMap<String, i64>> = get_conjugation_pk_map_vec(conjugation_json_data_vec, conjugate_json_data_vec, base_json_data_vec, &language_vec);
+    // save_map_vec_to_file(&conjugation_pk_map_vec, "temp/json/conjugations/btreemaps/conjugation.json");
+    // panic!("\n\n\npause here boss");
 }
 
 
@@ -689,6 +713,7 @@ async fn extend_verb_page_info_vec_vec(language_vec: Vec<String>, mut verb_page_
                 let subjects_selector = scraper::Selector::parse("i.graytxt").unwrap();
                 let auxiliaries_selector = scraper::Selector::parse("i.auxgraytxt").unwrap();
                 let conjugates_selector = scraper::Selector::parse("i.verbtxt").unwrap();
+                let conjugates_irr_selector = scraper::Selector::parse("i.verbtxt-term-irr").unwrap();
                 let particles_selector = scraper::Selector::parse("i.particletxt").unwrap();
 
                 page_info.subjects = document.select(&subjects_selector).map(|subject| subject.text().collect::<String>().trim().to_string())
@@ -854,13 +879,13 @@ async fn extend_verb_page_info_vec_vec(language_vec: Vec<String>, mut verb_page_
 }
 
 
-fn extract_base_data_vec_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>, language_pk_map_vec: &Vec<BTreeMap<String, i64>>) -> Vec<Vec<String>> {
+fn extract_base_data_vec_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>, language_pk_map: &BTreeMap<String, i64>) -> Vec<Vec<String>> {
     let mut base_data_vec_vec: Vec<Vec<String>> = Vec::new();
 
     for (index, verb_page_info_vec) in verb_page_info_vec_vec.into_iter().enumerate() {
         for verb_page_info in verb_page_info_vec.into_iter() {
             let rank: String = verb_page_info.metadata.rank.clone();
-            let language: String = language_pk_map_vec[index].get(&verb_page_info.metadata.language.clone()).unwrap().to_string();
+            let language: String = language_pk_map.get(&verb_page_info.metadata.language.clone()).unwrap().to_string();
             let base: String = verb_page_info.metadata.base.clone();
 
             let base_data_vec = Vec::from([rank, language, base]);
@@ -887,13 +912,13 @@ fn get_base_pk_map_vec(base_json_data_vec: Vec<JsonData>, language_vec: &Vec<Str
     return base_pk_map_vec;
 }
 
-fn extract_major_tense_data_vec_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>, language_pk_map_vec: &Vec<BTreeMap<String, i64>>) -> Vec<Vec<String>> {
+fn extract_major_tense_data_vec_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>, language_pk_map: &BTreeMap<String, i64>) -> Vec<Vec<String>> {
     let mut major_tense_data_vec_vec: Vec<Vec<String>> = Vec::new();
 
     for (index, verb_page_info_vec) in verb_page_info_vec_vec.into_iter().enumerate() {
         let mut major_tense_vec: Vec<Tense> = Vec::new();
         for verb_page_info in verb_page_info_vec.into_iter() {
-            let language: String = language_pk_map_vec[index].get(&verb_page_info.metadata.language.clone()).unwrap().to_string();
+            let language: String = language_pk_map.get(&verb_page_info.metadata.language.clone()).unwrap().to_string();
             let major_tense_data_vec: Vec<Tense> = verb_page_info.tenses.clone();
 
             for major_tense_data in major_tense_data_vec {
@@ -928,13 +953,13 @@ fn get_major_tense_pk_map_vec(major_tense_json_data_vec: Vec<JsonData>, language
     return major_tense_pk_map_vec;
 }
 
-fn extract_minor_tense_data_vec_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>, language_pk_map_vec: &Vec<BTreeMap<String, i64>>) -> Vec<Vec<String>> {
+fn extract_minor_tense_data_vec_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>, language_pk_map: &BTreeMap<String, i64>) -> Vec<Vec<String>> {
     let mut minor_tense_data_vec_vec: Vec<Vec<String>> = Vec::new();
 
     for (index, verb_page_info_vec) in verb_page_info_vec_vec.into_iter().enumerate() {
         let mut minor_tense_vec: Vec<Tense> = Vec::new();
         for verb_page_info in verb_page_info_vec.into_iter() {
-            let language: String = language_pk_map_vec[index].get(&verb_page_info.metadata.language.clone()).unwrap().to_string();
+            let language: String = language_pk_map.get(&verb_page_info.metadata.language.clone()).unwrap().to_string();
             let minor_tense_data_vec: Vec<Tense> = verb_page_info.tenses.clone();
 
             for minor_tense_data in minor_tense_data_vec {
@@ -1021,13 +1046,54 @@ fn get_tense_pk_map_vec(tense_json_data_vec: Vec<JsonData>, language_vec: &Vec<S
 }
 
 
-fn extract_subject_data_vec_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>, language_pk_map_vec: &Vec<BTreeMap<String, i64>>) -> Vec<Vec<String>> {
+fn extract_particle_data_vec_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>, language_pk_map: &BTreeMap<String, i64>) -> Vec<Vec<String>> {
+    let mut particle_data_vec_vec: Vec<Vec<String>> = Vec::new();
+    
+    for (index, verb_page_info_vec) in verb_page_info_vec_vec.into_iter().enumerate() {
+        let mut particle_vec: Vec<String> = Vec::new();
+        for verb_page_info in verb_page_info_vec.into_iter() {
+            let language: String = language_pk_map.get(&verb_page_info.metadata.language.clone()).unwrap().to_string();
+            let particles: Vec<String> = verb_page_info.particles.clone();
+
+            for (index2, particle) in particles.into_iter().enumerate() {
+                if particle_vec.contains(&particle) { continue }
+                particle_vec.push(particle.clone());
+
+                let rank: String = (index2 + 1).to_string();
+                let particle_data_vec: Vec<String> = Vec::from([language.clone(), particle]);
+
+                if particle_data_vec_vec.contains(&particle_data_vec) == false {
+                    particle_data_vec_vec.push(particle_data_vec);
+                }
+                
+            }
+        }
+    }
+
+    return particle_data_vec_vec;
+}
+
+
+fn get_particle_pk_map_vec(subject_json_data_vec: Vec<JsonData>, language_vec: &Vec<String>) -> Vec<BTreeMap<String, i64>>  {
+    let mut particle_pk_map_vec: Vec<BTreeMap<String, i64>> = language_vec.into_iter().map(|_| BTreeMap::new()).collect();
+    for particle_data in subject_json_data_vec {
+        if let Field::ParticleField(ParticleField { particle, language }) = &particle_data.fields {
+            let language_id: i64 = language.parse::<i64>().unwrap();
+            particle_pk_map_vec[language_id.to_string().parse::<usize>().unwrap() - 1].insert(particle.to_owned(), particle_data.pk);
+        }
+    }
+
+    return particle_pk_map_vec;
+}
+
+
+fn extract_subject_data_vec_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>, language_pk_map: &BTreeMap<String, i64>) -> Vec<Vec<String>> {
     let mut subject_data_vec_vec: Vec<Vec<String>> = Vec::new();
     
     for (index, verb_page_info_vec) in verb_page_info_vec_vec.into_iter().enumerate() {
         let mut subject_vec: Vec<String> = Vec::new();
         for verb_page_info in verb_page_info_vec.into_iter() {
-            let language: String = language_pk_map_vec[index].get(&verb_page_info.metadata.language.clone()).unwrap().to_string();
+            let language: String = language_pk_map.get(&verb_page_info.metadata.language.clone()).unwrap().to_string();
             let subjects: Vec<String> = verb_page_info.subjects.clone();
 
             for (index2, subject) in subjects.into_iter().enumerate() {
@@ -1062,13 +1128,13 @@ fn get_subject_pk_map_vec(subject_json_data_vec: Vec<JsonData>, language_vec: &V
 }
 
 
-fn extract_auxiliary_data_vec_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>, language_pk_map_vec: &Vec<BTreeMap<String, i64>>) -> Vec<Vec<String>> {
+fn extract_auxiliary_data_vec_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>, language_pk_map: &BTreeMap<String, i64>) -> Vec<Vec<String>> {
     let mut auxiliary_data_vec_vec: Vec<Vec<String>> = Vec::new();
 
-    for (index, verb_page_info_vec) in verb_page_info_vec_vec.into_iter().enumerate() {
+    for verb_page_info_vec in verb_page_info_vec_vec {
         let mut auxiliary_vec: Vec<String> = Vec::new();
         for verb_page_info in verb_page_info_vec.into_iter() {
-            let language: String = language_pk_map_vec[index].get(&verb_page_info.metadata.language.clone()).unwrap().to_string();
+            let language: String = language_pk_map.get(&verb_page_info.metadata.language.clone()).unwrap().to_string();
             let auxiliaries: Vec<String> = verb_page_info.auxiliaries.clone(); 
 
             for auxiliary in auxiliaries {
@@ -1105,14 +1171,28 @@ fn extract_conjugate_data_vec_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>, b
 
     for (index, verb_page_info_vec) in verb_page_info_vec_vec.into_iter().enumerate() {
         for verb_page_info in verb_page_info_vec.into_iter() {
-            let base: String = base_pk_map_vec[index].get(&verb_page_info.metadata.base.clone()).unwrap().to_string();
-            println!("base: {:?}, base_id: {:?}", verb_page_info.metadata.base.clone(), base);
-            let model: String = model_pk_map_vec[index].get(&verb_page_info.metadata.model.clone()).unwrap().to_string();
-            println!("model: {:?}, model_id: {:?}", verb_page_info.metadata.model.clone(), model);
-            let conjugates: Vec<String> = verb_page_info.conjugates.clone();
-            for conjugate in conjugates {
-                let conjugate_data_vec: Vec<String> = Vec::from([base.clone(), model.clone(), conjugate]);
-                if conjugate_data_vec_vec.contains(&conjugate_data_vec) {
+            let base: String = base_pk_map_vec[index].get(&verb_page_info.metadata.base).unwrap().to_string();
+            // println!("base: {:?}, base_id: {:?}", verb_page_info.metadata.base.clone(), base);
+            let model: String = match model_pk_map_vec[index].get(&verb_page_info.metadata.model.clone()) {
+                None => String::from("-"),
+                Some(value) => value.to_string(),
+            };
+            // println!("model: {:?}, model_id: {:?}", verb_page_info.metadata.model.clone(), model);
+            // let conjugates: Vec<String> = verb_page_info.conjugates.clone();
+            let mut conjugates: Vec<String> = Vec::new();
+            for phrases in verb_page_info.phrases.clone() {
+                for phrase in phrases {
+                    for conjugate in phrase.conjugates{
+                        if conjugates.contains(&conjugate) == false {
+                            conjugates.push(conjugate.clone());
+                        }
+                    }
+                }
+            }
+            for conjugate in conjugates.clone() {
+                let conjugate_data_vec: Vec<String> = Vec::from([0.to_string(), base.clone(), model.clone(), conjugate]);
+                // println!("conjugates: {:?}", conjugate_data_vec);
+                if conjugate_data_vec_vec.contains(&conjugate_data_vec) == false {
                     conjugate_data_vec_vec.push(conjugate_data_vec);
                 }
             }
@@ -1142,27 +1222,84 @@ fn get_conjugate_pk_map_vec(conjugate_json_data_vec: Vec<JsonData>, base_json_da
 }
 
 
-fn extract_conjugation_data_vec_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>, tense_pk_map_vec: &Vec<BTreeMap<String, i64>>,
-    subject_pk_map_vec: &Vec<BTreeMap<String, i64>>, auxiliary_pk_map_vec: &Vec<BTreeMap<String, i64>>,
+fn extract_conjugation_data_vec_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>,
+    major_tense_pk_map: &Vec<BTreeMap<String, i64>>, minor_tense_pk_map: &Vec<BTreeMap<String, i64>>, tense_pk_map_vec: &Vec<BTreeMap<String, i64>>,
+    particle_pk_map_vec: &Vec<BTreeMap<String, i64>>, subject_pk_map_vec: &Vec<BTreeMap<String, i64>>, auxiliary_pk_map_vec: &Vec<BTreeMap<String, i64>>,
     conjugate_pk_map_vec: &Vec<BTreeMap<String, i64>>) -> Vec<Vec<String>> {
     
     let mut conjugation_data_vec_vec: Vec<Vec<String>> = Vec::new();
 
-    for verb_page_info_vec in verb_page_info_vec_vec.into_iter() {
+    for (index, verb_page_info_vec) in verb_page_info_vec_vec.into_iter().enumerate() {
         for verb_page_info in verb_page_info_vec.into_iter() {
             // Need to use a different rank
+            let rank: String = verb_page_info.metadata.clone().rank; 
+
             let phrases: Vec<Vec<Phrase>> = verb_page_info.phrases.clone();
+            for (index2, phrase_vec) in phrases.into_iter().enumerate() {
+                let major_tense: String = major_tense_pk_map[index].get(&verb_page_info.tenses[index2].major).unwrap().to_string();
+                let minor_tense: String = minor_tense_pk_map[index].get(&verb_page_info.tenses[index2].minor).unwrap().to_string();
+                let tense = tense_pk_map_vec[index].get(&(major_tense + "|" + &minor_tense)).unwrap().to_string();
+                println!("tense map vec: {:#?}", tense_pk_map_vec[index]);
+                println!("tenses: {:#?}", verb_page_info.tenses);
+                println!("tense: {:#?}", tense);
 
-            for (index, phrase_vec) in phrases.into_iter().enumerate() {
                 for phrase in phrase_vec {
-                    // make tense_pk_map_vec a Vec<BTreeMap<Tense, i64>>?
-                    let rank: String = verb_page_info.metadata.rank.clone();
-                    let tense = tense_pk_map_vec[index].get(&(verb_page_info.tenses[index].clone().major+ " " + verb_page_info.tenses[index].clone().minor.as_str())).unwrap().to_string();
-                    let subject = subject_pk_map_vec[index].get(&phrase.subjects[0]).unwrap().to_string();
-                    let auxiliary = auxiliary_pk_map_vec[index].get(&phrase.auxiliaries[0]).unwrap().to_string();
-                    let conjugate = conjugate_pk_map_vec[index].get(&phrase.conjugates[0]).unwrap().to_string();
+                    println!("phrase: {:#?}", phrase);
+                    let mut phrase_vec: Vec<String> = phrase.clone().phrase;
+                    let mut phrase_vec_copy: Vec<String> = phrase.clone().phrase;
+                    phrase_vec.sort();
 
-                    let conjugation_data_vec: Vec<String> = Vec::from([rank, tense, subject, auxiliary, conjugate]);
+                    let mut particle_vec: Vec<String> = Vec::new();
+                    for particle in phrase.clone().particles {
+                        let particle_pk = particle_pk_map_vec[index].get(&particle).unwrap().to_string();
+                        if phrase_vec.contains(&particle) {
+                            let value = phrase_vec.binary_search(&particle).unwrap();
+                            phrase_vec.remove(value);
+                            phrase_vec_copy[value] = "P".to_string() + &particle_pk;
+                        }
+                        particle_vec.push(particle_pk);
+                    }
+                    let particle = particle_vec.join(",");
+
+                    let mut subject_vec: Vec<String> = Vec::new();
+                    for subject in phrase.clone().subjects {
+                        let subject_pk = subject_pk_map_vec[index].get(&subject).unwrap().to_string();
+                        if phrase_vec.contains(&subject) {
+                            let value = phrase_vec.binary_search(&subject).unwrap();
+                            phrase_vec.remove(value);
+                            phrase_vec_copy[value] = "S".to_string() + &subject_pk;
+                        }
+                        subject_vec.push(subject_pk);
+                    }
+                    let subject = subject_vec.join(",");
+
+                    let mut auxiliary_vec: Vec<String> = Vec::new();
+                    for auxiliary in phrase.clone().auxiliaries {
+                        let auxiliary_pk = auxiliary_pk_map_vec[index].get(&auxiliary).unwrap().to_string();
+                        if phrase_vec.contains(&auxiliary) {
+                            let value = phrase_vec.binary_search(&auxiliary).unwrap();
+                            phrase_vec.remove(value);
+                            phrase_vec_copy[value] = "A".to_string() + &auxiliary_pk;
+                        }
+                        auxiliary_vec.push(auxiliary_pk);
+                    }
+                    let auxiliary = auxiliary_vec.join(",");
+
+                    let mut conjugate_vec: Vec<String> = Vec::new();
+                    for conjugate in phrase.clone().conjugates {
+                        // println!("conjugate map: {:?}", conjugate_pk_map_vec[index]);
+                        println!("index: {:?}", index);
+                        let conjugate_pk = conjugate_pk_map_vec[index].get(&conjugate).unwrap().to_string();
+                        if phrase_vec.contains(&conjugate) {
+                            let value = phrase_vec.binary_search(&conjugate).unwrap();
+                            phrase_vec.remove(value);
+                            phrase_vec_copy[value] = "C".to_string() + &conjugate_pk;
+                        }
+                        conjugate_vec.push(conjugate_pk);
+                    }
+                    let conjugate = conjugate_vec.join(",");
+
+                    let conjugation_data_vec: Vec<String> = Vec::from([rank.clone(), tense.clone(), particle, subject, auxiliary, conjugate]);
                     conjugation_data_vec_vec.push(conjugation_data_vec);
                 }
             }
@@ -1173,26 +1310,26 @@ fn extract_conjugation_data_vec_vec(verb_page_info_vec_vec: &Vec<Vec<PageInfo>>,
 }
 
 
-fn get_conjugation_pk_map_vec(conjugation_json_data_vec: Vec<JsonData>, conjugate_json_data_vec: Vec<JsonData>, base_json_data_vec: Vec<JsonData>, language_vec: &Vec<String>) -> Vec<BTreeMap<String, i64>>  {
-    let mut conjugation_pk_map_vec: Vec<BTreeMap<String, i64>> = language_vec.into_iter().map(|_| BTreeMap::new()).collect();
-    for conjugation_data in conjugation_json_data_vec {
-        if let Field::ConjugationField(ConjugationField { rank:_, tense:_, subject:_, auxiliary:_, conjugate }) = &conjugation_data.fields {
-            let conjugate_pk: i64 = conjugate.parse::<i64>().unwrap() - 1;
-
-            let mut base_pk: i64 = 0;
-            if let Field::ConjugateField(ConjugateField { rank:_, conjugate:_, base, model:_ }) = conjugate_json_data_vec[conjugate_pk.to_string().parse::<usize>().unwrap()].clone().fields {
-                base_pk = base.parse::<i64>().unwrap() - 1;
-            } 
-
-            let mut language_id: i64 = 0;
-            if let Field::BaseField(BaseField { rank:_, language, base:_ }) = base_json_data_vec[base_pk.to_string().parse::<usize>().unwrap()].clone().fields {
-                language_id = language.parse::<i64>().unwrap();
-            }
-
-            conjugation_pk_map_vec[language_id.to_string().parse::<usize>().unwrap() - 1].insert(conjugate.to_owned(), conjugation_data.pk);
-        }
-    }
-
-    return conjugation_pk_map_vec;
-}
+// fn get_conjugation_pk_map_vec(conjugation_json_data_vec: Vec<JsonData>, conjugate_json_data_vec: Vec<JsonData>, base_json_data_vec: Vec<JsonData>, language_vec: &Vec<String>) -> Vec<BTreeMap<String, i64>>  {
+//     let mut conjugation_pk_map_vec: Vec<BTreeMap<String, i64>> = language_vec.into_iter().map(|_| BTreeMap::new()).collect();
+//     for conjugation_data in conjugation_json_data_vec {
+//         if let Field::ConjugationField(ConjugationField { rank:_, tense:_, particle:_, subject:_, auxiliary:_, conjugate }) = &conjugation_data.fields {
+//             let conjugate_pk: i64 = conjugate.parse::<i64>().unwrap() - 1;
+//
+//             let mut base_pk: i64 = 0;
+//             if let Field::ConjugateField(ConjugateField { rank:_, conjugate:_, base, model:_ }) = conjugate_json_data_vec[conjugate_pk.to_string().parse::<usize>().unwrap()].clone().fields {
+//                 base_pk = base.parse::<i64>().unwrap() - 1;
+//             } 
+//
+//             let mut language_id: i64 = 0;
+//             if let Field::BaseField(BaseField { rank:_, language, base:_ }) = base_json_data_vec[base_pk.to_string().parse::<usize>().unwrap()].clone().fields {
+//                 language_id = language.parse::<i64>().unwrap();
+//             }
+//
+//             conjugation_pk_map_vec[language_id.to_string().parse::<usize>().unwrap() - 1].insert(conjugate.to_owned(), conjugation_data.pk);
+//         }
+//     }
+//
+//     return conjugation_pk_map_vec;
+// }
 

@@ -1,0 +1,290 @@
+[
+  {
+    "model": "verbs.particles",
+    "pk": 1,
+    "fields": {
+      "particle": "me",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 2,
+    "fields": {
+      "particle": "te",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 3,
+    "fields": {
+      "particle": "se",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 4,
+    "fields": {
+      "particle": "nos",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 5,
+    "fields": {
+      "particle": "os",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 6,
+    "fields": {
+      "particle": "él",
+      "language": "1"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 7,
+    "fields": {
+      "particle": "que",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 8,
+    "fields": {
+      "particle": "se",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 9,
+    "fields": {
+      "particle": "quando",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 10,
+    "fields": {
+      "particle": "não",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 11,
+    "fields": {
+      "particle": "che",
+      "language": "3"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 12,
+    "fields": {
+      "particle": "que",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 13,
+    "fields": {
+      "particle": "qu'",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 14,
+    "fields": {
+      "particle": "il",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 15,
+    "fields": {
+      "particle": "m'",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 16,
+    "fields": {
+      "particle": "t'",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 17,
+    "fields": {
+      "particle": "s'",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 18,
+    "fields": {
+      "particle": "nous",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 19,
+    "fields": {
+      "particle": "vous",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 20,
+    "fields": {
+      "particle": "me",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 21,
+    "fields": {
+      "particle": "se",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 22,
+    "fields": {
+      "particle": "te",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 23,
+    "fields": {
+      "particle": "-toi",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 24,
+    "fields": {
+      "particle": "-nous",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 25,
+    "fields": {
+      "particle": "-vous",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 26,
+    "fields": {
+      "particle": "will",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 27,
+    "fields": {
+      "particle": "let's",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 28,
+    "fields": {
+      "particle": "to",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 29,
+    "fields": {
+      "particle": "it",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 30,
+    "fields": {
+      "particle": "myself",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 31,
+    "fields": {
+      "particle": "yourself",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 32,
+    "fields": {
+      "particle": "himself/herself/itself",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 33,
+    "fields": {
+      "particle": "ourselves",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 34,
+    "fields": {
+      "particle": "yourselves",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 35,
+    "fields": {
+      "particle": "themselves",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 36,
+    "fields": {
+      "particle": "oneself",
+      "language": "5"
+    }
+  }
+]

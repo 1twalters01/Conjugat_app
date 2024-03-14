@@ -19,6 +19,7 @@ use crate::data_types::{
         MinorTenseField,
         TenseField,
         TenseSubfield,
+        ParticleField,
         SubjectField,
         AuxiliaryField,
         ConjugateField,
@@ -61,10 +62,11 @@ pub async fn save_data_to_postgres(json_data_vec: &Vec<JsonData>) -> Result<(), 
             Field::MajorTenseField(MajorTenseField{language, major_tense}) => save_major_tense_field_to_postgres(&pool, pk, language, major_tense).await,
             Field::MinorTenseField(MinorTenseField{language, minor_tense}) => save_minor_tense_field_to_postgres(&pool, pk, language, minor_tense).await,
             Field::TenseField(TenseField{rank, tense}) => save_tense_field_to_postgres(&pool, pk, rank, tense).await,
+            Field::ParticleField(ParticleField{language, particle}) => save_particle_field_to_postgres(&pool, pk, language, particle).await,
             Field::SubjectField(SubjectField{rank, language, subject}) => save_subject_field_to_postgres(&pool, pk, rank, language, subject).await,
             Field::AuxiliaryField(AuxiliaryField{language, auxiliary}) => save_auxiliary_field_to_postgres(&pool, pk, language, auxiliary).await,
             Field::ConjugateField(ConjugateField{rank, base, conjugate, model}) => save_conjugate_field_to_postgres(&pool, pk, rank, base, model, conjugate).await,
-            Field::ConjugationField(ConjugationField{rank, tense, subject, auxiliary, conjugate}) => save_conjugation_field_to_postgres(&pool, pk, rank, tense, subject, auxiliary, conjugate).await,
+            Field::ConjugationField(ConjugationField{rank, tense, particle, subject, auxiliary, conjugate}) => save_conjugation_field_to_postgres(&pool, pk, rank, tense, particle, subject, auxiliary, conjugate).await,
             Field::SentenceField(SentenceField{rank, conjugation, sentence, char_length, char_start}) => save_sentence_field_to_postgres(&pool, pk, rank, conjugation, sentence, char_length, char_start).await,
         };
 
@@ -296,6 +298,33 @@ async fn save_tense_field_to_postgres(pool: &Pool<Postgres>, pk: i64, rank: &i64
 }
 
 
+async fn save_particle_field_to_postgres(pool: &Pool<Postgres>, pk: i64, language: &str, particle:&str) -> Result<(), Error> {
+    let insert_query = sqlx::query("INSERT INTO verbs_particle (id, language, particle) VALUES ($1, $2, $3)")
+        .bind(pk)
+        .bind(language)
+        .bind(particle)
+        .execute(pool)
+        .await;
+
+    match insert_query {
+        Ok(_) => return Ok(()),
+        Err(_) => {
+            let rewrite_query = sqlx::query("UPDATE verbs_tense SET language=($1), particle=($2) WHERE id=($3)")
+                .bind(language)
+                .bind(particle)
+                .bind(pk)
+                .execute(pool)
+                .await;
+
+            match rewrite_query {
+                Ok(_) => return Ok(()),
+                Err(err) => panic!("Error: {:?}", err),
+            };
+        },
+    };
+}
+
+
 async fn save_subject_field_to_postgres(pool: &Pool<Postgres>, pk: i64, rank: &i64, language: &str, subject:&str) -> Result<(), Error> {
     let insert_query = sqlx::query("INSERT INTO verbs_subject (id, rank, language, subject) VALUES ($1, $2, $3, $4)")
         .bind(pk)
@@ -384,11 +413,12 @@ async fn save_conjugate_field_to_postgres(pool: &Pool<Postgres>, pk: i64, rank: 
 }
 
 
-async fn save_conjugation_field_to_postgres(pool: &Pool<Postgres>, pk: i64, rank: &i64, tense: &str, subject: &str, auxiliary: &str, conjugate: &str) -> Result<(), Error> {
-    let insert_query = sqlx::query("INSERT INTO verbs_auxiliary (id, rank, tense, subject, auxiliary, conjugate) VALUES ($1, $2, $3, $4, $5, $6)")
+async fn save_conjugation_field_to_postgres(pool: &Pool<Postgres>, pk: i64, rank: &i64, tense: &str, particle:&str, subject: &str, auxiliary: &str, conjugate: &str) -> Result<(), Error> {
+    let insert_query = sqlx::query("INSERT INTO verbs_auxiliary (id, rank, tense, particle, subject, auxiliary, conjugate) VALUES ($1, $2, $3, $4, $5, $6, $7)")
         .bind(pk)
         .bind(rank)
         .bind(tense)
+        .bind(particle)
         .bind(subject)
         .bind(auxiliary)
         .bind(conjugate)
@@ -398,9 +428,10 @@ async fn save_conjugation_field_to_postgres(pool: &Pool<Postgres>, pk: i64, rank
     match insert_query {
         Ok(_) => return Ok(()),
         Err(_) => {
-            let rewrite_query = sqlx::query("UPDATE verbs_tense SET rank=($1), tense=($2), subject=($3), auxiliary=($4), conjugate=($5) WHERE id=($6)")
+            let rewrite_query = sqlx::query("UPDATE verbs_tense SET rank=($1), tense=($2), particle=($3), subject=($4), auxiliary=($5), conjugate=($6) WHERE id=($7)")
                 .bind(rank)
                 .bind(tense)
+                .bind(particle)
                 .bind(subject)
                 .bind(auxiliary)
                 .bind(conjugate)

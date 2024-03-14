@@ -55,6 +55,11 @@ pub struct TenseSubfield {
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct ParticleField {
+    pub particle: String,
+    pub language: String,
+}
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SubjectField {
     pub rank: i64,
     pub language: String,
@@ -79,6 +84,7 @@ pub struct ConjugateField {
 pub struct ConjugationField {
     pub rank: i64,
     pub tense: String,
+    pub particle: String,
     pub subject: String,
     pub auxiliary: String,
     pub conjugate: String,

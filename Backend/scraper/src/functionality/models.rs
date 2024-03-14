@@ -224,6 +224,9 @@ fn get_ending_data_vec(content_vec: &Vec<String>, group_pk_map_vec: &Vec<BTreeMa
                 ])
             .collect::<Vec<_>>();
 
+        let blank_ending_group_array: Vec<Vec<String>> = vec!(Vec::from(["-".to_string()]), Vec::from(["-".to_string()]));
+        ending_group_array_vec.push(blank_ending_group_array);
+
         // println!("group_pk_map_vec: {:?}", group_pk_map_vec);
         for ending_group_array in ending_group_array_vec.iter_mut() {
             if ending_group_array[1].len() == 0 {
@@ -247,6 +250,7 @@ fn get_ending_data_vec(content_vec: &Vec<String>, group_pk_map_vec: &Vec<BTreeMa
 
     ending_data_vec_vec.sort_by(|a, b| a[0].parse::<i64>().unwrap().cmp(&b[0].parse::<i64>().unwrap()));
 
+    // panic!("pause");
     return ending_data_vec_vec;
 }
 
@@ -398,7 +402,8 @@ fn get_model_data_vec_vec(content_vec: &Vec<String>, ending_pk_map_vec: &Vec<BTr
                     .map(|data| data.trim().to_string()).collect::<Vec<String>>(),
             ]).collect::<Vec<_>>();
 
-        // println!("model ending array vector: {:#?}", model_ending_array_vec);
+        let blank_model_ending_array: Vec<Vec<String>> = vec!(Vec::from(["-".to_string()]), Vec::from(["-".to_string()]), Vec::from(["-".to_string()]));
+        model_ending_array_vec.push(blank_model_ending_array);
 
         for model_ending_array in model_ending_array_vec.iter_mut() {
             if model_ending_array[1].len() == 0 {

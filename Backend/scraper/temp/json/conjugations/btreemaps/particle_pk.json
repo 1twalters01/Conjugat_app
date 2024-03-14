@@ -1,0 +1,48 @@
+[
+  {
+    "me": 1,
+    "nos": 4,
+    "os": 5,
+    "se": 3,
+    "te": 2,
+    "él": 6
+  },
+  {
+    "não": 10,
+    "quando": 9,
+    "que": 7,
+    "se": 8
+  },
+  {
+    "che": 11
+  },
+  {
+    "-nous": 24,
+    "-toi": 23,
+    "-vous": 25,
+    "il": 14,
+    "m'": 15,
+    "me": 20,
+    "nous": 18,
+    "qu'": 13,
+    "que": 12,
+    "s'": 17,
+    "se": 21,
+    "t'": 16,
+    "te": 22,
+    "vous": 19
+  },
+  {
+    "himself/herself/itself": 32,
+    "it": 29,
+    "let's": 27,
+    "myself": 30,
+    "oneself": 36,
+    "ourselves": 33,
+    "themselves": 35,
+    "to": 28,
+    "will": 26,
+    "yourself": 31,
+    "yourselves": 34
+  }
+]

@@ -14,6 +14,7 @@ use crate::data_types::{
         MinorTenseField,
         TenseField,
         TenseSubfield,
+        ParticleField,
         SubjectField,
         AuxiliaryField,
         ConjugateField,
@@ -99,6 +100,14 @@ impl JsonData {
                 }
             },
  
+            FieldOptions::ParticleField => {
+                return JsonData {
+                    model: String::from("verbs.particles"),
+                    pk: 0,
+                    fields: Field::default(FieldOptions::ParticleField),
+                }
+            },
+
             FieldOptions::SubjectField => {
                 return JsonData {
                     model: String::from("verbs.subjects"),
@@ -219,6 +228,14 @@ pub fn create_json_data_vec_from_vec_vec_string(data_vec_vec: &Vec<Vec<String>>,
                 Field::TenseField(tense_field)
             },
 
+            FieldOptions::ParticleField => {
+                let particle_field = ParticleField {
+                    language: data[0].clone(),
+                    particle: data[1].clone(),
+                };
+                Field::ParticleField(particle_field)
+            },
+
             FieldOptions::SubjectField => {
                 let subject_field = SubjectField {
                     rank: data[0].parse::<i64>().unwrap(),
@@ -239,9 +256,9 @@ pub fn create_json_data_vec_from_vec_vec_string(data_vec_vec: &Vec<Vec<String>>,
             FieldOptions::ConjugateField => {
                 let conjugate_field = ConjugateField {
                     rank: data[0].parse::<i64>().unwrap(),
-                    base: data[0].clone(),
-                    conjugate: data[1].clone(),
+                    base: data[1].clone(),
                     model: data[2].clone(),
+                    conjugate: data[3].clone(),
                 };
                 Field::ConjugateField(conjugate_field)
             },
@@ -251,9 +268,10 @@ pub fn create_json_data_vec_from_vec_vec_string(data_vec_vec: &Vec<Vec<String>>,
                 let conjugation_field = ConjugationField {
                     rank: data[0].parse::<i64>().unwrap(),
                     tense: data[1].clone(),
-                    subject: data[2].clone(),
-                    auxiliary: data[3].clone(),
-                    conjugate: data[4].clone(),
+                    particle: data[2].clone(),
+                    subject: data[3].clone(),
+                    auxiliary: data[4].clone(),
+                    conjugate: data[5].clone(),
                 };
                 Field::ConjugationField(conjugation_field)
             },
