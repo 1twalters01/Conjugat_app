@@ -411,8 +411,8 @@
     "model": "verbs.auxiliaries",
     "pk": 52,
     "fields": {
-      "language": "2",
-      "auxiliary": "tenho"
+      "language": "1",
+      "auxiliary": ""
     }
   },
   {
@@ -420,7 +420,7 @@
     "pk": 53,
     "fields": {
       "language": "2",
-      "auxiliary": "tens"
+      "auxiliary": "tenho"
     }
   },
   {
@@ -428,7 +428,7 @@
     "pk": 54,
     "fields": {
       "language": "2",
-      "auxiliary": "tem"
+      "auxiliary": "tens"
     }
   },
   {
@@ -436,7 +436,7 @@
     "pk": 55,
     "fields": {
       "language": "2",
-      "auxiliary": "temos"
+      "auxiliary": "tem"
     }
   },
   {
@@ -444,7 +444,7 @@
     "pk": 56,
     "fields": {
       "language": "2",
-      "auxiliary": "tendes"
+      "auxiliary": "temos"
     }
   },
   {
@@ -452,7 +452,7 @@
     "pk": 57,
     "fields": {
       "language": "2",
-      "auxiliary": "têm"
+      "auxiliary": "tendes"
     }
   },
   {
@@ -460,7 +460,7 @@
     "pk": 58,
     "fields": {
       "language": "2",
-      "auxiliary": "tinha"
+      "auxiliary": "têm"
     }
   },
   {
@@ -468,7 +468,7 @@
     "pk": 59,
     "fields": {
       "language": "2",
-      "auxiliary": "tinhas"
+      "auxiliary": "tinha"
     }
   },
   {
@@ -476,7 +476,7 @@
     "pk": 60,
     "fields": {
       "language": "2",
-      "auxiliary": "tínhamos"
+      "auxiliary": "tinhas"
     }
   },
   {
@@ -484,7 +484,7 @@
     "pk": 61,
     "fields": {
       "language": "2",
-      "auxiliary": "tínheis"
+      "auxiliary": "tínhamos"
     }
   },
   {
@@ -492,7 +492,7 @@
     "pk": 62,
     "fields": {
       "language": "2",
-      "auxiliary": "tinham"
+      "auxiliary": "tínheis"
     }
   },
   {
@@ -500,7 +500,7 @@
     "pk": 63,
     "fields": {
       "language": "2",
-      "auxiliary": "tivera"
+      "auxiliary": "tinham"
     }
   },
   {
@@ -508,7 +508,7 @@
     "pk": 64,
     "fields": {
       "language": "2",
-      "auxiliary": "tiveras"
+      "auxiliary": "tivera"
     }
   },
   {
@@ -516,7 +516,7 @@
     "pk": 65,
     "fields": {
       "language": "2",
-      "auxiliary": "tivéramos"
+      "auxiliary": "tiveras"
     }
   },
   {
@@ -524,7 +524,7 @@
     "pk": 66,
     "fields": {
       "language": "2",
-      "auxiliary": "tivéreis"
+      "auxiliary": "tivéramos"
     }
   },
   {
@@ -532,7 +532,7 @@
     "pk": 67,
     "fields": {
       "language": "2",
-      "auxiliary": "tiveram"
+      "auxiliary": "tivéreis"
     }
   },
   {
@@ -540,7 +540,7 @@
     "pk": 68,
     "fields": {
       "language": "2",
-      "auxiliary": "terei"
+      "auxiliary": "tiveram"
     }
   },
   {
@@ -548,7 +548,7 @@
     "pk": 69,
     "fields": {
       "language": "2",
-      "auxiliary": "terás"
+      "auxiliary": "terei"
     }
   },
   {
@@ -556,7 +556,7 @@
     "pk": 70,
     "fields": {
       "language": "2",
-      "auxiliary": "terá"
+      "auxiliary": "terás"
     }
   },
   {
@@ -564,7 +564,7 @@
     "pk": 71,
     "fields": {
       "language": "2",
-      "auxiliary": "teremos"
+      "auxiliary": "terá"
     }
   },
   {
@@ -572,7 +572,7 @@
     "pk": 72,
     "fields": {
       "language": "2",
-      "auxiliary": "tereis"
+      "auxiliary": "teremos"
     }
   },
   {
@@ -580,7 +580,7 @@
     "pk": 73,
     "fields": {
       "language": "2",
-      "auxiliary": "terão"
+      "auxiliary": "tereis"
     }
   },
   {
@@ -588,7 +588,7 @@
     "pk": 74,
     "fields": {
       "language": "2",
-      "auxiliary": "tenha"
+      "auxiliary": "terão"
     }
   },
   {
@@ -596,7 +596,7 @@
     "pk": 75,
     "fields": {
       "language": "2",
-      "auxiliary": "tenhas"
+      "auxiliary": "tenha"
     }
   },
   {
@@ -604,7 +604,7 @@
     "pk": 76,
     "fields": {
       "language": "2",
-      "auxiliary": "tenhamos"
+      "auxiliary": "tenhas"
     }
   },
   {
@@ -612,7 +612,7 @@
     "pk": 77,
     "fields": {
       "language": "2",
-      "auxiliary": "tenhais"
+      "auxiliary": "tenhamos"
     }
   },
   {
@@ -620,7 +620,7 @@
     "pk": 78,
     "fields": {
       "language": "2",
-      "auxiliary": "tenham"
+      "auxiliary": "tenhais"
     }
   },
   {
@@ -628,7 +628,7 @@
     "pk": 79,
     "fields": {
       "language": "2",
-      "auxiliary": "tivesse"
+      "auxiliary": "tenham"
     }
   },
   {
@@ -636,7 +636,7 @@
     "pk": 80,
     "fields": {
       "language": "2",
-      "auxiliary": "tivesses"
+      "auxiliary": "tivesse"
     }
   },
   {
@@ -644,7 +644,7 @@
     "pk": 81,
     "fields": {
       "language": "2",
-      "auxiliary": "tivéssemos"
+      "auxiliary": "tivesses"
     }
   },
   {
@@ -652,7 +652,7 @@
     "pk": 82,
     "fields": {
       "language": "2",
-      "auxiliary": "tivésseis"
+      "auxiliary": "tivéssemos"
     }
   },
   {
@@ -660,7 +660,7 @@
     "pk": 83,
     "fields": {
       "language": "2",
-      "auxiliary": "tivessem"
+      "auxiliary": "tivésseis"
     }
   },
   {
@@ -668,7 +668,7 @@
     "pk": 84,
     "fields": {
       "language": "2",
-      "auxiliary": "tiver"
+      "auxiliary": "tivessem"
     }
   },
   {
@@ -676,7 +676,7 @@
     "pk": 85,
     "fields": {
       "language": "2",
-      "auxiliary": "tiveres"
+      "auxiliary": "tiver"
     }
   },
   {
@@ -684,7 +684,7 @@
     "pk": 86,
     "fields": {
       "language": "2",
-      "auxiliary": "tivermos"
+      "auxiliary": "tiveres"
     }
   },
   {
@@ -692,7 +692,7 @@
     "pk": 87,
     "fields": {
       "language": "2",
-      "auxiliary": "tiverdes"
+      "auxiliary": "tivermos"
     }
   },
   {
@@ -700,7 +700,7 @@
     "pk": 88,
     "fields": {
       "language": "2",
-      "auxiliary": "tiverem"
+      "auxiliary": "tiverdes"
     }
   },
   {
@@ -708,7 +708,7 @@
     "pk": 89,
     "fields": {
       "language": "2",
-      "auxiliary": "teria"
+      "auxiliary": "tiverem"
     }
   },
   {
@@ -716,7 +716,7 @@
     "pk": 90,
     "fields": {
       "language": "2",
-      "auxiliary": "terias"
+      "auxiliary": "teria"
     }
   },
   {
@@ -724,7 +724,7 @@
     "pk": 91,
     "fields": {
       "language": "2",
-      "auxiliary": "teríamos"
+      "auxiliary": "terias"
     }
   },
   {
@@ -732,7 +732,7 @@
     "pk": 92,
     "fields": {
       "language": "2",
-      "auxiliary": "teríeis"
+      "auxiliary": "teríamos"
     }
   },
   {
@@ -740,23 +740,23 @@
     "pk": 93,
     "fields": {
       "language": "2",
-      "auxiliary": "teriam"
+      "auxiliary": "teríeis"
     }
   },
   {
     "model": "verbs.auxiliaries",
     "pk": 94,
     "fields": {
-      "language": "3",
-      "auxiliary": "sono"
+      "language": "2",
+      "auxiliary": "teriam"
     }
   },
   {
     "model": "verbs.auxiliaries",
     "pk": 95,
     "fields": {
-      "language": "3",
-      "auxiliary": "sei"
+      "language": "2",
+      "auxiliary": ""
     }
   },
   {
@@ -764,7 +764,7 @@
     "pk": 96,
     "fields": {
       "language": "3",
-      "auxiliary": "è"
+      "auxiliary": "sono"
     }
   },
   {
@@ -772,7 +772,7 @@
     "pk": 97,
     "fields": {
       "language": "3",
-      "auxiliary": "siamo"
+      "auxiliary": "sei"
     }
   },
   {
@@ -780,7 +780,7 @@
     "pk": 98,
     "fields": {
       "language": "3",
-      "auxiliary": "siete"
+      "auxiliary": "è"
     }
   },
   {
@@ -788,7 +788,7 @@
     "pk": 99,
     "fields": {
       "language": "3",
-      "auxiliary": "ero"
+      "auxiliary": "siamo"
     }
   },
   {
@@ -796,7 +796,7 @@
     "pk": 100,
     "fields": {
       "language": "3",
-      "auxiliary": "eri"
+      "auxiliary": "siete"
     }
   },
   {
@@ -804,7 +804,7 @@
     "pk": 101,
     "fields": {
       "language": "3",
-      "auxiliary": "era"
+      "auxiliary": "ero"
     }
   },
   {
@@ -812,7 +812,7 @@
     "pk": 102,
     "fields": {
       "language": "3",
-      "auxiliary": "eravamo"
+      "auxiliary": "eri"
     }
   },
   {
@@ -820,7 +820,7 @@
     "pk": 103,
     "fields": {
       "language": "3",
-      "auxiliary": "eravate"
+      "auxiliary": "era"
     }
   },
   {
@@ -828,7 +828,7 @@
     "pk": 104,
     "fields": {
       "language": "3",
-      "auxiliary": "erano"
+      "auxiliary": "eravamo"
     }
   },
   {
@@ -836,7 +836,7 @@
     "pk": 105,
     "fields": {
       "language": "3",
-      "auxiliary": "fui"
+      "auxiliary": "eravate"
     }
   },
   {
@@ -844,7 +844,7 @@
     "pk": 106,
     "fields": {
       "language": "3",
-      "auxiliary": "fosti"
+      "auxiliary": "erano"
     }
   },
   {
@@ -852,7 +852,7 @@
     "pk": 107,
     "fields": {
       "language": "3",
-      "auxiliary": "fu"
+      "auxiliary": "fui"
     }
   },
   {
@@ -860,7 +860,7 @@
     "pk": 108,
     "fields": {
       "language": "3",
-      "auxiliary": "fummo"
+      "auxiliary": "fosti"
     }
   },
   {
@@ -868,7 +868,7 @@
     "pk": 109,
     "fields": {
       "language": "3",
-      "auxiliary": "foste"
+      "auxiliary": "fu"
     }
   },
   {
@@ -876,7 +876,7 @@
     "pk": 110,
     "fields": {
       "language": "3",
-      "auxiliary": "furono"
+      "auxiliary": "fummo"
     }
   },
   {
@@ -884,7 +884,7 @@
     "pk": 111,
     "fields": {
       "language": "3",
-      "auxiliary": "sarò"
+      "auxiliary": "foste"
     }
   },
   {
@@ -892,7 +892,7 @@
     "pk": 112,
     "fields": {
       "language": "3",
-      "auxiliary": "sarai"
+      "auxiliary": "furono"
     }
   },
   {
@@ -900,7 +900,7 @@
     "pk": 113,
     "fields": {
       "language": "3",
-      "auxiliary": "sarà"
+      "auxiliary": "sarò"
     }
   },
   {
@@ -908,7 +908,7 @@
     "pk": 114,
     "fields": {
       "language": "3",
-      "auxiliary": "saremo"
+      "auxiliary": "sarai"
     }
   },
   {
@@ -916,7 +916,7 @@
     "pk": 115,
     "fields": {
       "language": "3",
-      "auxiliary": "sarete"
+      "auxiliary": "sarà"
     }
   },
   {
@@ -924,7 +924,7 @@
     "pk": 116,
     "fields": {
       "language": "3",
-      "auxiliary": "saranno"
+      "auxiliary": "saremo"
     }
   },
   {
@@ -932,7 +932,7 @@
     "pk": 117,
     "fields": {
       "language": "3",
-      "auxiliary": "sia"
+      "auxiliary": "sarete"
     }
   },
   {
@@ -940,7 +940,7 @@
     "pk": 118,
     "fields": {
       "language": "3",
-      "auxiliary": "siate"
+      "auxiliary": "saranno"
     }
   },
   {
@@ -948,7 +948,7 @@
     "pk": 119,
     "fields": {
       "language": "3",
-      "auxiliary": "siano"
+      "auxiliary": "sia"
     }
   },
   {
@@ -956,7 +956,7 @@
     "pk": 120,
     "fields": {
       "language": "3",
-      "auxiliary": "fossi"
+      "auxiliary": "siate"
     }
   },
   {
@@ -964,7 +964,7 @@
     "pk": 121,
     "fields": {
       "language": "3",
-      "auxiliary": "fosse"
+      "auxiliary": "siano"
     }
   },
   {
@@ -972,7 +972,7 @@
     "pk": 122,
     "fields": {
       "language": "3",
-      "auxiliary": "fossimo"
+      "auxiliary": "fossi"
     }
   },
   {
@@ -980,7 +980,7 @@
     "pk": 123,
     "fields": {
       "language": "3",
-      "auxiliary": "fossero"
+      "auxiliary": "fosse"
     }
   },
   {
@@ -988,7 +988,7 @@
     "pk": 124,
     "fields": {
       "language": "3",
-      "auxiliary": "sarei"
+      "auxiliary": "fossimo"
     }
   },
   {
@@ -996,7 +996,7 @@
     "pk": 125,
     "fields": {
       "language": "3",
-      "auxiliary": "saresti"
+      "auxiliary": "fossero"
     }
   },
   {
@@ -1004,7 +1004,7 @@
     "pk": 126,
     "fields": {
       "language": "3",
-      "auxiliary": "sarebbe"
+      "auxiliary": "sarei"
     }
   },
   {
@@ -1012,7 +1012,7 @@
     "pk": 127,
     "fields": {
       "language": "3",
-      "auxiliary": "saremmo"
+      "auxiliary": "saresti"
     }
   },
   {
@@ -1020,7 +1020,7 @@
     "pk": 128,
     "fields": {
       "language": "3",
-      "auxiliary": "sareste"
+      "auxiliary": "sarebbe"
     }
   },
   {
@@ -1028,7 +1028,7 @@
     "pk": 129,
     "fields": {
       "language": "3",
-      "auxiliary": "sarebbero"
+      "auxiliary": "saremmo"
     }
   },
   {
@@ -1036,7 +1036,7 @@
     "pk": 130,
     "fields": {
       "language": "3",
-      "auxiliary": "essendo"
+      "auxiliary": "sareste"
     }
   },
   {
@@ -1044,7 +1044,7 @@
     "pk": 131,
     "fields": {
       "language": "3",
-      "auxiliary": "ho"
+      "auxiliary": "sarebbero"
     }
   },
   {
@@ -1052,7 +1052,7 @@
     "pk": 132,
     "fields": {
       "language": "3",
-      "auxiliary": "hai"
+      "auxiliary": "essendo"
     }
   },
   {
@@ -1060,7 +1060,7 @@
     "pk": 133,
     "fields": {
       "language": "3",
-      "auxiliary": "ha"
+      "auxiliary": "ho"
     }
   },
   {
@@ -1068,7 +1068,7 @@
     "pk": 134,
     "fields": {
       "language": "3",
-      "auxiliary": "abbiamo"
+      "auxiliary": "hai"
     }
   },
   {
@@ -1076,7 +1076,7 @@
     "pk": 135,
     "fields": {
       "language": "3",
-      "auxiliary": "avete"
+      "auxiliary": "ha"
     }
   },
   {
@@ -1084,7 +1084,7 @@
     "pk": 136,
     "fields": {
       "language": "3",
-      "auxiliary": "hanno"
+      "auxiliary": "abbiamo"
     }
   },
   {
@@ -1092,7 +1092,7 @@
     "pk": 137,
     "fields": {
       "language": "3",
-      "auxiliary": "avevo"
+      "auxiliary": "avete"
     }
   },
   {
@@ -1100,7 +1100,7 @@
     "pk": 138,
     "fields": {
       "language": "3",
-      "auxiliary": "avevi"
+      "auxiliary": "hanno"
     }
   },
   {
@@ -1108,7 +1108,7 @@
     "pk": 139,
     "fields": {
       "language": "3",
-      "auxiliary": "aveva"
+      "auxiliary": "avevo"
     }
   },
   {
@@ -1116,7 +1116,7 @@
     "pk": 140,
     "fields": {
       "language": "3",
-      "auxiliary": "avevamo"
+      "auxiliary": "avevi"
     }
   },
   {
@@ -1124,7 +1124,7 @@
     "pk": 141,
     "fields": {
       "language": "3",
-      "auxiliary": "avevate"
+      "auxiliary": "aveva"
     }
   },
   {
@@ -1132,7 +1132,7 @@
     "pk": 142,
     "fields": {
       "language": "3",
-      "auxiliary": "avevano"
+      "auxiliary": "avevamo"
     }
   },
   {
@@ -1140,7 +1140,7 @@
     "pk": 143,
     "fields": {
       "language": "3",
-      "auxiliary": "ebbi"
+      "auxiliary": "avevate"
     }
   },
   {
@@ -1148,7 +1148,7 @@
     "pk": 144,
     "fields": {
       "language": "3",
-      "auxiliary": "avesti"
+      "auxiliary": "avevano"
     }
   },
   {
@@ -1156,7 +1156,7 @@
     "pk": 145,
     "fields": {
       "language": "3",
-      "auxiliary": "ebbe"
+      "auxiliary": "ebbi"
     }
   },
   {
@@ -1164,7 +1164,7 @@
     "pk": 146,
     "fields": {
       "language": "3",
-      "auxiliary": "avemmo"
+      "auxiliary": "avesti"
     }
   },
   {
@@ -1172,7 +1172,7 @@
     "pk": 147,
     "fields": {
       "language": "3",
-      "auxiliary": "aveste"
+      "auxiliary": "ebbe"
     }
   },
   {
@@ -1180,7 +1180,7 @@
     "pk": 148,
     "fields": {
       "language": "3",
-      "auxiliary": "ebbero"
+      "auxiliary": "avemmo"
     }
   },
   {
@@ -1188,7 +1188,7 @@
     "pk": 149,
     "fields": {
       "language": "3",
-      "auxiliary": "avrò"
+      "auxiliary": "aveste"
     }
   },
   {
@@ -1196,7 +1196,7 @@
     "pk": 150,
     "fields": {
       "language": "3",
-      "auxiliary": "avrai"
+      "auxiliary": "ebbero"
     }
   },
   {
@@ -1204,7 +1204,7 @@
     "pk": 151,
     "fields": {
       "language": "3",
-      "auxiliary": "avrà"
+      "auxiliary": "avrò"
     }
   },
   {
@@ -1212,7 +1212,7 @@
     "pk": 152,
     "fields": {
       "language": "3",
-      "auxiliary": "avremo"
+      "auxiliary": "avrai"
     }
   },
   {
@@ -1220,7 +1220,7 @@
     "pk": 153,
     "fields": {
       "language": "3",
-      "auxiliary": "avrete"
+      "auxiliary": "avrà"
     }
   },
   {
@@ -1228,7 +1228,7 @@
     "pk": 154,
     "fields": {
       "language": "3",
-      "auxiliary": "avranno"
+      "auxiliary": "avremo"
     }
   },
   {
@@ -1236,7 +1236,7 @@
     "pk": 155,
     "fields": {
       "language": "3",
-      "auxiliary": "abbia"
+      "auxiliary": "avrete"
     }
   },
   {
@@ -1244,7 +1244,7 @@
     "pk": 156,
     "fields": {
       "language": "3",
-      "auxiliary": "abbiate"
+      "auxiliary": "avranno"
     }
   },
   {
@@ -1252,7 +1252,7 @@
     "pk": 157,
     "fields": {
       "language": "3",
-      "auxiliary": "abbiano"
+      "auxiliary": "abbia"
     }
   },
   {
@@ -1260,7 +1260,7 @@
     "pk": 158,
     "fields": {
       "language": "3",
-      "auxiliary": "avessi"
+      "auxiliary": "abbiate"
     }
   },
   {
@@ -1268,7 +1268,7 @@
     "pk": 159,
     "fields": {
       "language": "3",
-      "auxiliary": "avesse"
+      "auxiliary": "abbiano"
     }
   },
   {
@@ -1276,7 +1276,7 @@
     "pk": 160,
     "fields": {
       "language": "3",
-      "auxiliary": "avessimo"
+      "auxiliary": "avessi"
     }
   },
   {
@@ -1284,7 +1284,7 @@
     "pk": 161,
     "fields": {
       "language": "3",
-      "auxiliary": "avessero"
+      "auxiliary": "avesse"
     }
   },
   {
@@ -1292,7 +1292,7 @@
     "pk": 162,
     "fields": {
       "language": "3",
-      "auxiliary": "avrei"
+      "auxiliary": "avessimo"
     }
   },
   {
@@ -1300,7 +1300,7 @@
     "pk": 163,
     "fields": {
       "language": "3",
-      "auxiliary": "avresti"
+      "auxiliary": "avessero"
     }
   },
   {
@@ -1308,7 +1308,7 @@
     "pk": 164,
     "fields": {
       "language": "3",
-      "auxiliary": "avrebbe"
+      "auxiliary": "avrei"
     }
   },
   {
@@ -1316,7 +1316,7 @@
     "pk": 165,
     "fields": {
       "language": "3",
-      "auxiliary": "avremmo"
+      "auxiliary": "avresti"
     }
   },
   {
@@ -1324,7 +1324,7 @@
     "pk": 166,
     "fields": {
       "language": "3",
-      "auxiliary": "avreste"
+      "auxiliary": "avrebbe"
     }
   },
   {
@@ -1332,7 +1332,7 @@
     "pk": 167,
     "fields": {
       "language": "3",
-      "auxiliary": "avrebbero"
+      "auxiliary": "avremmo"
     }
   },
   {
@@ -1340,31 +1340,31 @@
     "pk": 168,
     "fields": {
       "language": "3",
-      "auxiliary": "avendo"
+      "auxiliary": "avreste"
     }
   },
   {
     "model": "verbs.auxiliaries",
     "pk": 169,
     "fields": {
-      "language": "4",
-      "auxiliary": "ai"
+      "language": "3",
+      "auxiliary": "avrebbero"
     }
   },
   {
     "model": "verbs.auxiliaries",
     "pk": 170,
     "fields": {
-      "language": "4",
-      "auxiliary": "as"
+      "language": "3",
+      "auxiliary": "avendo"
     }
   },
   {
     "model": "verbs.auxiliaries",
     "pk": 171,
     "fields": {
-      "language": "4",
-      "auxiliary": "a"
+      "language": "3",
+      "auxiliary": ""
     }
   },
   {
@@ -1372,7 +1372,7 @@
     "pk": 172,
     "fields": {
       "language": "4",
-      "auxiliary": "avons"
+      "auxiliary": "ai"
     }
   },
   {
@@ -1380,7 +1380,7 @@
     "pk": 173,
     "fields": {
       "language": "4",
-      "auxiliary": "avez"
+      "auxiliary": "as"
     }
   },
   {
@@ -1388,7 +1388,7 @@
     "pk": 174,
     "fields": {
       "language": "4",
-      "auxiliary": "ont"
+      "auxiliary": "a"
     }
   },
   {
@@ -1396,7 +1396,7 @@
     "pk": 175,
     "fields": {
       "language": "4",
-      "auxiliary": "avais"
+      "auxiliary": "avons"
     }
   },
   {
@@ -1404,7 +1404,7 @@
     "pk": 176,
     "fields": {
       "language": "4",
-      "auxiliary": "avait"
+      "auxiliary": "avez"
     }
   },
   {
@@ -1412,7 +1412,7 @@
     "pk": 177,
     "fields": {
       "language": "4",
-      "auxiliary": "avions"
+      "auxiliary": "ont"
     }
   },
   {
@@ -1420,7 +1420,7 @@
     "pk": 178,
     "fields": {
       "language": "4",
-      "auxiliary": "aviez"
+      "auxiliary": "avais"
     }
   },
   {
@@ -1428,7 +1428,7 @@
     "pk": 179,
     "fields": {
       "language": "4",
-      "auxiliary": "avaient"
+      "auxiliary": "avait"
     }
   },
   {
@@ -1436,7 +1436,7 @@
     "pk": 180,
     "fields": {
       "language": "4",
-      "auxiliary": "eus"
+      "auxiliary": "avions"
     }
   },
   {
@@ -1444,7 +1444,7 @@
     "pk": 181,
     "fields": {
       "language": "4",
-      "auxiliary": "eut"
+      "auxiliary": "aviez"
     }
   },
   {
@@ -1452,7 +1452,7 @@
     "pk": 182,
     "fields": {
       "language": "4",
-      "auxiliary": "eûmes"
+      "auxiliary": "avaient"
     }
   },
   {
@@ -1460,7 +1460,7 @@
     "pk": 183,
     "fields": {
       "language": "4",
-      "auxiliary": "eûtes"
+      "auxiliary": "eus"
     }
   },
   {
@@ -1468,7 +1468,7 @@
     "pk": 184,
     "fields": {
       "language": "4",
-      "auxiliary": "eurent"
+      "auxiliary": "eut"
     }
   },
   {
@@ -1476,7 +1476,7 @@
     "pk": 185,
     "fields": {
       "language": "4",
-      "auxiliary": "aurai"
+      "auxiliary": "eûmes"
     }
   },
   {
@@ -1484,7 +1484,7 @@
     "pk": 186,
     "fields": {
       "language": "4",
-      "auxiliary": "auras"
+      "auxiliary": "eûtes"
     }
   },
   {
@@ -1492,7 +1492,7 @@
     "pk": 187,
     "fields": {
       "language": "4",
-      "auxiliary": "aura"
+      "auxiliary": "eurent"
     }
   },
   {
@@ -1500,7 +1500,7 @@
     "pk": 188,
     "fields": {
       "language": "4",
-      "auxiliary": "aurons"
+      "auxiliary": "aurai"
     }
   },
   {
@@ -1508,7 +1508,7 @@
     "pk": 189,
     "fields": {
       "language": "4",
-      "auxiliary": "aurez"
+      "auxiliary": "auras"
     }
   },
   {
@@ -1516,7 +1516,7 @@
     "pk": 190,
     "fields": {
       "language": "4",
-      "auxiliary": "auront"
+      "auxiliary": "aura"
     }
   },
   {
@@ -1524,7 +1524,7 @@
     "pk": 191,
     "fields": {
       "language": "4",
-      "auxiliary": "eusse"
+      "auxiliary": "aurons"
     }
   },
   {
@@ -1532,7 +1532,7 @@
     "pk": 192,
     "fields": {
       "language": "4",
-      "auxiliary": "eusses"
+      "auxiliary": "aurez"
     }
   },
   {
@@ -1540,7 +1540,7 @@
     "pk": 193,
     "fields": {
       "language": "4",
-      "auxiliary": "eût"
+      "auxiliary": "auront"
     }
   },
   {
@@ -1548,7 +1548,7 @@
     "pk": 194,
     "fields": {
       "language": "4",
-      "auxiliary": "eussions"
+      "auxiliary": "eusse"
     }
   },
   {
@@ -1556,7 +1556,7 @@
     "pk": 195,
     "fields": {
       "language": "4",
-      "auxiliary": "eussiez"
+      "auxiliary": "eusses"
     }
   },
   {
@@ -1564,7 +1564,7 @@
     "pk": 196,
     "fields": {
       "language": "4",
-      "auxiliary": "eussent"
+      "auxiliary": "eût"
     }
   },
   {
@@ -1572,7 +1572,7 @@
     "pk": 197,
     "fields": {
       "language": "4",
-      "auxiliary": "aie"
+      "auxiliary": "eussions"
     }
   },
   {
@@ -1580,7 +1580,7 @@
     "pk": 198,
     "fields": {
       "language": "4",
-      "auxiliary": "aies"
+      "auxiliary": "eussiez"
     }
   },
   {
@@ -1588,7 +1588,7 @@
     "pk": 199,
     "fields": {
       "language": "4",
-      "auxiliary": "ait"
+      "auxiliary": "eussent"
     }
   },
   {
@@ -1596,7 +1596,7 @@
     "pk": 200,
     "fields": {
       "language": "4",
-      "auxiliary": "ayons"
+      "auxiliary": "aie"
     }
   },
   {
@@ -1604,7 +1604,7 @@
     "pk": 201,
     "fields": {
       "language": "4",
-      "auxiliary": "ayez"
+      "auxiliary": "aies"
     }
   },
   {
@@ -1612,7 +1612,7 @@
     "pk": 202,
     "fields": {
       "language": "4",
-      "auxiliary": "aient"
+      "auxiliary": "ait"
     }
   },
   {
@@ -1620,7 +1620,7 @@
     "pk": 203,
     "fields": {
       "language": "4",
-      "auxiliary": "aurais"
+      "auxiliary": "ayons"
     }
   },
   {
@@ -1628,7 +1628,7 @@
     "pk": 204,
     "fields": {
       "language": "4",
-      "auxiliary": "aurait"
+      "auxiliary": "ayez"
     }
   },
   {
@@ -1636,7 +1636,7 @@
     "pk": 205,
     "fields": {
       "language": "4",
-      "auxiliary": "aurions"
+      "auxiliary": "aient"
     }
   },
   {
@@ -1644,7 +1644,7 @@
     "pk": 206,
     "fields": {
       "language": "4",
-      "auxiliary": "auriez"
+      "auxiliary": "aurais"
     }
   },
   {
@@ -1652,7 +1652,7 @@
     "pk": 207,
     "fields": {
       "language": "4",
-      "auxiliary": "auraient"
+      "auxiliary": "aurait"
     }
   },
   {
@@ -1660,7 +1660,7 @@
     "pk": 208,
     "fields": {
       "language": "4",
-      "auxiliary": "ayant"
+      "auxiliary": "aurions"
     }
   },
   {
@@ -1668,7 +1668,7 @@
     "pk": 209,
     "fields": {
       "language": "4",
-      "auxiliary": "avoir"
+      "auxiliary": "auriez"
     }
   },
   {
@@ -1676,7 +1676,7 @@
     "pk": 210,
     "fields": {
       "language": "4",
-      "auxiliary": "suis"
+      "auxiliary": "auraient"
     }
   },
   {
@@ -1684,7 +1684,7 @@
     "pk": 211,
     "fields": {
       "language": "4",
-      "auxiliary": "es"
+      "auxiliary": "ayant"
     }
   },
   {
@@ -1692,7 +1692,7 @@
     "pk": 212,
     "fields": {
       "language": "4",
-      "auxiliary": "est"
+      "auxiliary": "avoir"
     }
   },
   {
@@ -1700,7 +1700,7 @@
     "pk": 213,
     "fields": {
       "language": "4",
-      "auxiliary": "sommes"
+      "auxiliary": "suis"
     }
   },
   {
@@ -1708,7 +1708,7 @@
     "pk": 214,
     "fields": {
       "language": "4",
-      "auxiliary": "êtes"
+      "auxiliary": "es"
     }
   },
   {
@@ -1716,7 +1716,7 @@
     "pk": 215,
     "fields": {
       "language": "4",
-      "auxiliary": "sont"
+      "auxiliary": "est"
     }
   },
   {
@@ -1724,7 +1724,7 @@
     "pk": 216,
     "fields": {
       "language": "4",
-      "auxiliary": "étais"
+      "auxiliary": "sommes"
     }
   },
   {
@@ -1732,7 +1732,7 @@
     "pk": 217,
     "fields": {
       "language": "4",
-      "auxiliary": "était"
+      "auxiliary": "êtes"
     }
   },
   {
@@ -1740,7 +1740,7 @@
     "pk": 218,
     "fields": {
       "language": "4",
-      "auxiliary": "étions"
+      "auxiliary": "sont"
     }
   },
   {
@@ -1748,7 +1748,7 @@
     "pk": 219,
     "fields": {
       "language": "4",
-      "auxiliary": "étiez"
+      "auxiliary": "étais"
     }
   },
   {
@@ -1756,7 +1756,7 @@
     "pk": 220,
     "fields": {
       "language": "4",
-      "auxiliary": "étaient"
+      "auxiliary": "était"
     }
   },
   {
@@ -1764,7 +1764,7 @@
     "pk": 221,
     "fields": {
       "language": "4",
-      "auxiliary": "fus"
+      "auxiliary": "étions"
     }
   },
   {
@@ -1772,7 +1772,7 @@
     "pk": 222,
     "fields": {
       "language": "4",
-      "auxiliary": "fut"
+      "auxiliary": "étiez"
     }
   },
   {
@@ -1780,7 +1780,7 @@
     "pk": 223,
     "fields": {
       "language": "4",
-      "auxiliary": "fûmes"
+      "auxiliary": "étaient"
     }
   },
   {
@@ -1788,7 +1788,7 @@
     "pk": 224,
     "fields": {
       "language": "4",
-      "auxiliary": "fûtes"
+      "auxiliary": "fus"
     }
   },
   {
@@ -1796,7 +1796,7 @@
     "pk": 225,
     "fields": {
       "language": "4",
-      "auxiliary": "furent"
+      "auxiliary": "fut"
     }
   },
   {
@@ -1804,7 +1804,7 @@
     "pk": 226,
     "fields": {
       "language": "4",
-      "auxiliary": "serai"
+      "auxiliary": "fûmes"
     }
   },
   {
@@ -1812,7 +1812,7 @@
     "pk": 227,
     "fields": {
       "language": "4",
-      "auxiliary": "seras"
+      "auxiliary": "fûtes"
     }
   },
   {
@@ -1820,7 +1820,7 @@
     "pk": 228,
     "fields": {
       "language": "4",
-      "auxiliary": "sera"
+      "auxiliary": "furent"
     }
   },
   {
@@ -1828,7 +1828,7 @@
     "pk": 229,
     "fields": {
       "language": "4",
-      "auxiliary": "serons"
+      "auxiliary": "serai"
     }
   },
   {
@@ -1836,7 +1836,7 @@
     "pk": 230,
     "fields": {
       "language": "4",
-      "auxiliary": "serez"
+      "auxiliary": "seras"
     }
   },
   {
@@ -1844,7 +1844,7 @@
     "pk": 231,
     "fields": {
       "language": "4",
-      "auxiliary": "seront"
+      "auxiliary": "sera"
     }
   },
   {
@@ -1852,7 +1852,7 @@
     "pk": 232,
     "fields": {
       "language": "4",
-      "auxiliary": "fusse"
+      "auxiliary": "serons"
     }
   },
   {
@@ -1860,7 +1860,7 @@
     "pk": 233,
     "fields": {
       "language": "4",
-      "auxiliary": "fusses"
+      "auxiliary": "serez"
     }
   },
   {
@@ -1868,7 +1868,7 @@
     "pk": 234,
     "fields": {
       "language": "4",
-      "auxiliary": "fût"
+      "auxiliary": "seront"
     }
   },
   {
@@ -1876,7 +1876,7 @@
     "pk": 235,
     "fields": {
       "language": "4",
-      "auxiliary": "fussions"
+      "auxiliary": "fusse"
     }
   },
   {
@@ -1884,7 +1884,7 @@
     "pk": 236,
     "fields": {
       "language": "4",
-      "auxiliary": "fussiez"
+      "auxiliary": "fusses"
     }
   },
   {
@@ -1892,7 +1892,7 @@
     "pk": 237,
     "fields": {
       "language": "4",
-      "auxiliary": "fussent"
+      "auxiliary": "fût"
     }
   },
   {
@@ -1900,7 +1900,7 @@
     "pk": 238,
     "fields": {
       "language": "4",
-      "auxiliary": "sois"
+      "auxiliary": "fussions"
     }
   },
   {
@@ -1908,7 +1908,7 @@
     "pk": 239,
     "fields": {
       "language": "4",
-      "auxiliary": "soit"
+      "auxiliary": "fussiez"
     }
   },
   {
@@ -1916,7 +1916,7 @@
     "pk": 240,
     "fields": {
       "language": "4",
-      "auxiliary": "soyons"
+      "auxiliary": "fussent"
     }
   },
   {
@@ -1924,7 +1924,7 @@
     "pk": 241,
     "fields": {
       "language": "4",
-      "auxiliary": "soyez"
+      "auxiliary": "sois"
     }
   },
   {
@@ -1932,7 +1932,7 @@
     "pk": 242,
     "fields": {
       "language": "4",
-      "auxiliary": "soient"
+      "auxiliary": "soit"
     }
   },
   {
@@ -1940,7 +1940,7 @@
     "pk": 243,
     "fields": {
       "language": "4",
-      "auxiliary": "serais"
+      "auxiliary": "soyons"
     }
   },
   {
@@ -1948,7 +1948,7 @@
     "pk": 244,
     "fields": {
       "language": "4",
-      "auxiliary": "serait"
+      "auxiliary": "soyez"
     }
   },
   {
@@ -1956,7 +1956,7 @@
     "pk": 245,
     "fields": {
       "language": "4",
-      "auxiliary": "serions"
+      "auxiliary": "soient"
     }
   },
   {
@@ -1964,7 +1964,7 @@
     "pk": 246,
     "fields": {
       "language": "4",
-      "auxiliary": "seriez"
+      "auxiliary": "serais"
     }
   },
   {
@@ -1972,7 +1972,7 @@
     "pk": 247,
     "fields": {
       "language": "4",
-      "auxiliary": "seraient"
+      "auxiliary": "serait"
     }
   },
   {
@@ -1980,7 +1980,7 @@
     "pk": 248,
     "fields": {
       "language": "4",
-      "auxiliary": "étant"
+      "auxiliary": "serions"
     }
   },
   {
@@ -1988,39 +1988,39 @@
     "pk": 249,
     "fields": {
       "language": "4",
-      "auxiliary": "être"
+      "auxiliary": "seriez"
     }
   },
   {
     "model": "verbs.auxiliaries",
     "pk": 250,
     "fields": {
-      "language": "5",
-      "auxiliary": "am"
+      "language": "4",
+      "auxiliary": "seraient"
     }
   },
   {
     "model": "verbs.auxiliaries",
     "pk": 251,
     "fields": {
-      "language": "5",
-      "auxiliary": "are"
+      "language": "4",
+      "auxiliary": "étant"
     }
   },
   {
     "model": "verbs.auxiliaries",
     "pk": 252,
     "fields": {
-      "language": "5",
-      "auxiliary": "is"
+      "language": "4",
+      "auxiliary": "être"
     }
   },
   {
     "model": "verbs.auxiliaries",
     "pk": 253,
     "fields": {
-      "language": "5",
-      "auxiliary": "have"
+      "language": "4",
+      "auxiliary": ""
     }
   },
   {
@@ -2028,7 +2028,7 @@
     "pk": 254,
     "fields": {
       "language": "5",
-      "auxiliary": "has"
+      "auxiliary": "am"
     }
   },
   {
@@ -2036,7 +2036,7 @@
     "pk": 255,
     "fields": {
       "language": "5",
-      "auxiliary": "was"
+      "auxiliary": "are"
     }
   },
   {
@@ -2044,7 +2044,7 @@
     "pk": 256,
     "fields": {
       "language": "5",
-      "auxiliary": "were"
+      "auxiliary": "is"
     }
   },
   {
@@ -2052,7 +2052,7 @@
     "pk": 257,
     "fields": {
       "language": "5",
-      "auxiliary": "had"
+      "auxiliary": "have"
     }
   },
   {
@@ -2060,7 +2060,7 @@
     "pk": 258,
     "fields": {
       "language": "5",
-      "auxiliary": "be"
+      "auxiliary": "has"
     }
   },
   {
@@ -2068,7 +2068,7 @@
     "pk": 259,
     "fields": {
       "language": "5",
-      "auxiliary": "been"
+      "auxiliary": "was"
     }
   },
   {
@@ -2076,7 +2076,47 @@
     "pk": 260,
     "fields": {
       "language": "5",
+      "auxiliary": "were"
+    }
+  },
+  {
+    "model": "verbs.auxiliaries",
+    "pk": 261,
+    "fields": {
+      "language": "5",
+      "auxiliary": "had"
+    }
+  },
+  {
+    "model": "verbs.auxiliaries",
+    "pk": 262,
+    "fields": {
+      "language": "5",
+      "auxiliary": "be"
+    }
+  },
+  {
+    "model": "verbs.auxiliaries",
+    "pk": 263,
+    "fields": {
+      "language": "5",
+      "auxiliary": "been"
+    }
+  },
+  {
+    "model": "verbs.auxiliaries",
+    "pk": 264,
+    "fields": {
+      "language": "5",
       "auxiliary": "having"
+    }
+  },
+  {
+    "model": "verbs.auxiliaries",
+    "pk": 265,
+    "fields": {
+      "language": "5",
+      "auxiliary": ""
     }
   }
 ]

@@ -1,5 +1,6 @@
 [
   {
+    "": 7,
     "ellos/ellas/Uds.": 6,
     "nosotros": 4,
     "tú": 2,
@@ -8,45 +9,49 @@
     "él/ella/Ud.": 3
   },
   {
-    "ele/ela/você": 9,
-    "eles/elas/vocês": 12,
-    "eu": 7,
-    "nós": 10,
-    "tu": 8,
-    "vós": 11
+    "": 14,
+    "ele/ela/você": 10,
+    "eles/elas/vocês": 13,
+    "eu": 8,
+    "nós": 11,
+    "tu": 9,
+    "vós": 12
   },
   {
-    "io": 13,
-    "lei": 20,
-    "lei/lui": 15,
-    "loro": 18,
-    "lui": 19,
-    "noi": 16,
-    "tu": 14,
-    "voi": 17
+    "": 23,
+    "io": 15,
+    "lei": 22,
+    "lei/lui": 17,
+    "loro": 20,
+    "lui": 21,
+    "noi": 18,
+    "tu": 16,
+    "voi": 19
   },
   {
-    "elle": 33,
-    "elles": 35,
-    "fém.pl.:": 31,
-    "fém.sg.:": 30,
-    "il": 32,
-    "il/elle": 23,
-    "ils": 34,
-    "ils/elles": 26,
-    "j'": 27,
-    "je": 21,
-    "masc.pl.:": 29,
-    "masc.sg.:": 28,
-    "nous": 24,
-    "tu": 22,
-    "vous": 25
+    "": 39,
+    "elle": 36,
+    "elles": 38,
+    "fém.pl.:": 34,
+    "fém.sg.:": 33,
+    "il": 35,
+    "il/elle": 26,
+    "ils": 37,
+    "ils/elles": 29,
+    "j'": 30,
+    "je": 24,
+    "masc.pl.:": 32,
+    "masc.sg.:": 31,
+    "nous": 27,
+    "tu": 25,
+    "vous": 28
   },
   {
-    "I": 36,
-    "he/she/it": 38,
-    "they": 40,
-    "we": 39,
-    "you": 37
+    "": 45,
+    "I": 40,
+    "he/she/it": 42,
+    "they": 44,
+    "we": 43,
+    "you": 41
   }
 ]

@@ -3,7 +3,7 @@
     "model": "verbs.subjects",
     "pk": 1,
     "fields": {
-      "rank": 1,
+      "rank": 2,
       "language": "1",
       "subject": "yo"
     }
@@ -12,7 +12,7 @@
     "model": "verbs.subjects",
     "pk": 2,
     "fields": {
-      "rank": 2,
+      "rank": 3,
       "language": "1",
       "subject": "tú"
     }
@@ -21,7 +21,7 @@
     "model": "verbs.subjects",
     "pk": 3,
     "fields": {
-      "rank": 3,
+      "rank": 4,
       "language": "1",
       "subject": "él/ella/Ud."
     }
@@ -30,7 +30,7 @@
     "model": "verbs.subjects",
     "pk": 4,
     "fields": {
-      "rank": 4,
+      "rank": 5,
       "language": "1",
       "subject": "nosotros"
     }
@@ -39,7 +39,7 @@
     "model": "verbs.subjects",
     "pk": 5,
     "fields": {
-      "rank": 5,
+      "rank": 6,
       "language": "1",
       "subject": "vosotros"
     }
@@ -48,7 +48,7 @@
     "model": "verbs.subjects",
     "pk": 6,
     "fields": {
-      "rank": 6,
+      "rank": 7,
       "language": "1",
       "subject": "ellos/ellas/Uds."
     }
@@ -58,8 +58,8 @@
     "pk": 7,
     "fields": {
       "rank": 1,
-      "language": "2",
-      "subject": "eu"
+      "language": "1",
+      "subject": ""
     }
   },
   {
@@ -68,7 +68,7 @@
     "fields": {
       "rank": 2,
       "language": "2",
-      "subject": "tu"
+      "subject": "eu"
     }
   },
   {
@@ -77,7 +77,7 @@
     "fields": {
       "rank": 3,
       "language": "2",
-      "subject": "ele/ela/você"
+      "subject": "tu"
     }
   },
   {
@@ -86,7 +86,7 @@
     "fields": {
       "rank": 4,
       "language": "2",
-      "subject": "nós"
+      "subject": "ele/ela/você"
     }
   },
   {
@@ -95,7 +95,7 @@
     "fields": {
       "rank": 5,
       "language": "2",
-      "subject": "vós"
+      "subject": "nós"
     }
   },
   {
@@ -104,259 +104,304 @@
     "fields": {
       "rank": 6,
       "language": "2",
-      "subject": "eles/elas/vocês"
+      "subject": "vós"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 13,
     "fields": {
-      "rank": 1,
-      "language": "3",
-      "subject": "io"
+      "rank": 7,
+      "language": "2",
+      "subject": "eles/elas/vocês"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 14,
     "fields": {
-      "rank": 2,
-      "language": "3",
-      "subject": "tu"
+      "rank": 1,
+      "language": "2",
+      "subject": ""
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 15,
     "fields": {
-      "rank": 3,
+      "rank": 2,
       "language": "3",
-      "subject": "lei/lui"
+      "subject": "io"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 16,
     "fields": {
-      "rank": 4,
+      "rank": 3,
       "language": "3",
-      "subject": "noi"
+      "subject": "tu"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 17,
     "fields": {
-      "rank": 5,
+      "rank": 4,
       "language": "3",
-      "subject": "voi"
+      "subject": "lei/lui"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 18,
     "fields": {
-      "rank": 6,
+      "rank": 5,
       "language": "3",
-      "subject": "loro"
+      "subject": "noi"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 19,
     "fields": {
-      "rank": 7,
+      "rank": 6,
       "language": "3",
-      "subject": "lui"
+      "subject": "voi"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 20,
     "fields": {
-      "rank": 8,
+      "rank": 7,
       "language": "3",
-      "subject": "lei"
+      "subject": "loro"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 21,
     "fields": {
-      "rank": 1,
-      "language": "4",
-      "subject": "je"
+      "rank": 8,
+      "language": "3",
+      "subject": "lui"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 22,
     "fields": {
-      "rank": 2,
-      "language": "4",
-      "subject": "tu"
+      "rank": 9,
+      "language": "3",
+      "subject": "lei"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 23,
     "fields": {
-      "rank": 3,
-      "language": "4",
-      "subject": "il/elle"
+      "rank": 1,
+      "language": "3",
+      "subject": ""
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 24,
     "fields": {
-      "rank": 4,
+      "rank": 2,
       "language": "4",
-      "subject": "nous"
+      "subject": "je"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 25,
     "fields": {
-      "rank": 5,
+      "rank": 3,
       "language": "4",
-      "subject": "vous"
+      "subject": "tu"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 26,
     "fields": {
-      "rank": 6,
+      "rank": 4,
       "language": "4",
-      "subject": "ils/elles"
+      "subject": "il/elle"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 27,
     "fields": {
-      "rank": 7,
+      "rank": 5,
       "language": "4",
-      "subject": "j'"
+      "subject": "nous"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 28,
     "fields": {
-      "rank": 8,
+      "rank": 6,
       "language": "4",
-      "subject": "masc.sg.:"
+      "subject": "vous"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 29,
     "fields": {
-      "rank": 9,
+      "rank": 7,
       "language": "4",
-      "subject": "masc.pl.:"
+      "subject": "ils/elles"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 30,
     "fields": {
-      "rank": 10,
+      "rank": 8,
       "language": "4",
-      "subject": "fém.sg.:"
+      "subject": "j'"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 31,
     "fields": {
-      "rank": 11,
+      "rank": 9,
       "language": "4",
-      "subject": "fém.pl.:"
+      "subject": "masc.sg.:"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 32,
     "fields": {
-      "rank": 7,
+      "rank": 10,
       "language": "4",
-      "subject": "il"
+      "subject": "masc.pl.:"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 33,
     "fields": {
-      "rank": 8,
+      "rank": 11,
       "language": "4",
-      "subject": "elle"
+      "subject": "fém.sg.:"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 34,
     "fields": {
-      "rank": 9,
+      "rank": 12,
       "language": "4",
-      "subject": "ils"
+      "subject": "fém.pl.:"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 35,
     "fields": {
-      "rank": 10,
+      "rank": 8,
       "language": "4",
-      "subject": "elles"
+      "subject": "il"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 36,
     "fields": {
-      "rank": 1,
-      "language": "5",
-      "subject": "I"
+      "rank": 9,
+      "language": "4",
+      "subject": "elle"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 37,
     "fields": {
-      "rank": 2,
-      "language": "5",
-      "subject": "you"
+      "rank": 10,
+      "language": "4",
+      "subject": "ils"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 38,
     "fields": {
-      "rank": 3,
-      "language": "5",
-      "subject": "he/she/it"
+      "rank": 11,
+      "language": "4",
+      "subject": "elles"
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 39,
     "fields": {
-      "rank": 4,
-      "language": "5",
-      "subject": "we"
+      "rank": 1,
+      "language": "4",
+      "subject": ""
     }
   },
   {
     "model": "verbs.subjects",
     "pk": 40,
     "fields": {
+      "rank": 2,
+      "language": "5",
+      "subject": "I"
+    }
+  },
+  {
+    "model": "verbs.subjects",
+    "pk": 41,
+    "fields": {
+      "rank": 3,
+      "language": "5",
+      "subject": "you"
+    }
+  },
+  {
+    "model": "verbs.subjects",
+    "pk": 42,
+    "fields": {
+      "rank": 4,
+      "language": "5",
+      "subject": "he/she/it"
+    }
+  },
+  {
+    "model": "verbs.subjects",
+    "pk": 43,
+    "fields": {
       "rank": 5,
       "language": "5",
+      "subject": "we"
+    }
+  },
+  {
+    "model": "verbs.subjects",
+    "pk": 44,
+    "fields": {
+      "rank": 6,
+      "language": "5",
       "subject": "they"
+    }
+  },
+  {
+    "model": "verbs.subjects",
+    "pk": 45,
+    "fields": {
+      "rank": 1,
+      "language": "5",
+      "subject": ""
     }
   }
 ]

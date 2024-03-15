@@ -51,15 +51,15 @@
     "model": "verbs.particles",
     "pk": 7,
     "fields": {
-      "particle": "que",
-      "language": "2"
+      "particle": "",
+      "language": "1"
     }
   },
   {
     "model": "verbs.particles",
     "pk": 8,
     "fields": {
-      "particle": "se",
+      "particle": "que",
       "language": "2"
     }
   },
@@ -67,7 +67,7 @@
     "model": "verbs.particles",
     "pk": 9,
     "fields": {
-      "particle": "quando",
+      "particle": "se",
       "language": "2"
     }
   },
@@ -75,7 +75,7 @@
     "model": "verbs.particles",
     "pk": 10,
     "fields": {
-      "particle": "não",
+      "particle": "quando",
       "language": "2"
     }
   },
@@ -83,13 +83,37 @@
     "model": "verbs.particles",
     "pk": 11,
     "fields": {
+      "particle": "não",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 12,
+    "fields": {
+      "particle": "",
+      "language": "2"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 13,
+    "fields": {
       "particle": "che",
       "language": "3"
     }
   },
   {
     "model": "verbs.particles",
-    "pk": 12,
+    "pk": 14,
+    "fields": {
+      "particle": "",
+      "language": "3"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 15,
     "fields": {
       "particle": "que",
       "language": "4"
@@ -97,7 +121,7 @@
   },
   {
     "model": "verbs.particles",
-    "pk": 13,
+    "pk": 16,
     "fields": {
       "particle": "qu'",
       "language": "4"
@@ -105,7 +129,7 @@
   },
   {
     "model": "verbs.particles",
-    "pk": 14,
+    "pk": 17,
     "fields": {
       "particle": "il",
       "language": "4"
@@ -113,7 +137,7 @@
   },
   {
     "model": "verbs.particles",
-    "pk": 15,
+    "pk": 18,
     "fields": {
       "particle": "m'",
       "language": "4"
@@ -121,7 +145,7 @@
   },
   {
     "model": "verbs.particles",
-    "pk": 16,
+    "pk": 19,
     "fields": {
       "particle": "t'",
       "language": "4"
@@ -129,7 +153,7 @@
   },
   {
     "model": "verbs.particles",
-    "pk": 17,
+    "pk": 20,
     "fields": {
       "particle": "s'",
       "language": "4"
@@ -137,7 +161,7 @@
   },
   {
     "model": "verbs.particles",
-    "pk": 18,
+    "pk": 21,
     "fields": {
       "particle": "nous",
       "language": "4"
@@ -145,7 +169,7 @@
   },
   {
     "model": "verbs.particles",
-    "pk": 19,
+    "pk": 22,
     "fields": {
       "particle": "vous",
       "language": "4"
@@ -153,7 +177,7 @@
   },
   {
     "model": "verbs.particles",
-    "pk": 20,
+    "pk": 23,
     "fields": {
       "particle": "me",
       "language": "4"
@@ -161,7 +185,7 @@
   },
   {
     "model": "verbs.particles",
-    "pk": 21,
+    "pk": 24,
     "fields": {
       "particle": "se",
       "language": "4"
@@ -169,7 +193,7 @@
   },
   {
     "model": "verbs.particles",
-    "pk": 22,
+    "pk": 25,
     "fields": {
       "particle": "te",
       "language": "4"
@@ -177,7 +201,7 @@
   },
   {
     "model": "verbs.particles",
-    "pk": 23,
+    "pk": 26,
     "fields": {
       "particle": "-toi",
       "language": "4"
@@ -185,7 +209,7 @@
   },
   {
     "model": "verbs.particles",
-    "pk": 24,
+    "pk": 27,
     "fields": {
       "particle": "-nous",
       "language": "4"
@@ -193,7 +217,7 @@
   },
   {
     "model": "verbs.particles",
-    "pk": 25,
+    "pk": 28,
     "fields": {
       "particle": "-vous",
       "language": "4"
@@ -201,7 +225,15 @@
   },
   {
     "model": "verbs.particles",
-    "pk": 26,
+    "pk": 29,
+    "fields": {
+      "particle": "",
+      "language": "4"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 30,
     "fields": {
       "particle": "will",
       "language": "5"
@@ -209,7 +241,7 @@
   },
   {
     "model": "verbs.particles",
-    "pk": 27,
+    "pk": 31,
     "fields": {
       "particle": "let's",
       "language": "5"
@@ -217,7 +249,7 @@
   },
   {
     "model": "verbs.particles",
-    "pk": 28,
+    "pk": 32,
     "fields": {
       "particle": "to",
       "language": "5"
@@ -225,7 +257,7 @@
   },
   {
     "model": "verbs.particles",
-    "pk": 29,
+    "pk": 33,
     "fields": {
       "particle": "it",
       "language": "5"
@@ -233,7 +265,7 @@
   },
   {
     "model": "verbs.particles",
-    "pk": 30,
+    "pk": 34,
     "fields": {
       "particle": "myself",
       "language": "5"
@@ -241,7 +273,7 @@
   },
   {
     "model": "verbs.particles",
-    "pk": 31,
+    "pk": 35,
     "fields": {
       "particle": "yourself",
       "language": "5"
@@ -249,7 +281,7 @@
   },
   {
     "model": "verbs.particles",
-    "pk": 32,
+    "pk": 36,
     "fields": {
       "particle": "himself/herself/itself",
       "language": "5"
@@ -257,7 +289,7 @@
   },
   {
     "model": "verbs.particles",
-    "pk": 33,
+    "pk": 37,
     "fields": {
       "particle": "ourselves",
       "language": "5"
@@ -265,7 +297,7 @@
   },
   {
     "model": "verbs.particles",
-    "pk": 34,
+    "pk": 38,
     "fields": {
       "particle": "yourselves",
       "language": "5"
@@ -273,7 +305,7 @@
   },
   {
     "model": "verbs.particles",
-    "pk": 35,
+    "pk": 39,
     "fields": {
       "particle": "themselves",
       "language": "5"
@@ -281,9 +313,17 @@
   },
   {
     "model": "verbs.particles",
-    "pk": 36,
+    "pk": 40,
     "fields": {
       "particle": "oneself",
+      "language": "5"
+    }
+  },
+  {
+    "model": "verbs.particles",
+    "pk": 41,
+    "fields": {
+      "particle": "",
       "language": "5"
     }
   }
