@@ -1,4 +1,4 @@
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct PageInfo {
@@ -55,7 +55,7 @@ impl PageInfo {
 // }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
-pub struct Phrase  {
+pub struct Phrase {
     pub phrase: Vec<String>,
     pub subjects: Vec<String>,
     pub auxiliaries: Vec<String>,

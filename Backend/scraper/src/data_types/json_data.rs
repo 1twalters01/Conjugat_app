@@ -1,28 +1,12 @@
-use serde::{Serialize, Deserialize};
 use crate::data_types::{
-    field::{
-        Field,
-        FieldOptions,
-    },
+    field::{Field, FieldOptions},
     field_options::{
-        LanguageField,
-        GroupField,
-        ModelField,
-        EndingField,
-        BaseField,
-        MajorTenseField,
-        MinorTenseField,
-        TenseField,
-        TenseSubfield,
-        ParticleField,
-        SubjectField,
-        AuxiliaryField,
-        ConjugateField,
-        ConjugationField,
-        SentenceField,
+        AuxiliaryField, BaseField, ConjugateField, ConjugationField, EndingField, GroupField,
+        LanguageField, MajorTenseField, MinorTenseField, ModelField, ParticleField, SentenceField,
+        SubjectField, TenseField, TenseSubfield,
     },
 };
-
+use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct JsonData {
@@ -30,8 +14,6 @@ pub struct JsonData {
     pub pk: i64,
     pub fields: Field,
 }
-
-
 
 impl JsonData {
     pub fn default(field_type: &FieldOptions) -> JsonData {
@@ -42,15 +24,15 @@ impl JsonData {
                     pk: 0,
                     fields: Field::default(FieldOptions::LanguageField),
                 }
-            },
-            
+            }
+
             FieldOptions::GroupField => {
                 return JsonData {
                     model: String::from("verbs.groups"),
                     pk: 0,
                     fields: Field::default(FieldOptions::GroupField),
                 }
-            },
+            }
 
             FieldOptions::EndingField => {
                 return JsonData {
@@ -58,15 +40,15 @@ impl JsonData {
                     pk: 0,
                     fields: Field::default(FieldOptions::EndingField),
                 }
-            },
- 
+            }
+
             FieldOptions::ModelField => {
                 return JsonData {
                     model: String::from("verbs.models"),
                     pk: 0,
                     fields: Field::default(FieldOptions::ModelField),
                 }
-            },
+            }
 
             FieldOptions::BaseField => {
                 return JsonData {
@@ -74,7 +56,7 @@ impl JsonData {
                     pk: 0,
                     fields: Field::default(FieldOptions::BaseField),
                 }
-            },
+            }
 
             FieldOptions::MajorTenseField => {
                 return JsonData {
@@ -82,7 +64,7 @@ impl JsonData {
                     pk: 0,
                     fields: Field::default(FieldOptions::MajorTenseField),
                 }
-            },
+            }
 
             FieldOptions::MinorTenseField => {
                 return JsonData {
@@ -90,7 +72,7 @@ impl JsonData {
                     pk: 0,
                     fields: Field::default(FieldOptions::MinorTenseField),
                 }
-            },
+            }
 
             FieldOptions::TenseField => {
                 return JsonData {
@@ -98,15 +80,15 @@ impl JsonData {
                     pk: 0,
                     fields: Field::default(FieldOptions::TenseField),
                 }
-            },
- 
+            }
+
             FieldOptions::ParticleField => {
                 return JsonData {
                     model: String::from("verbs.particles"),
                     pk: 0,
                     fields: Field::default(FieldOptions::ParticleField),
                 }
-            },
+            }
 
             FieldOptions::SubjectField => {
                 return JsonData {
@@ -114,45 +96,47 @@ impl JsonData {
                     pk: 0,
                     fields: Field::default(FieldOptions::SubjectField),
                 }
-            },
- 
+            }
+
             FieldOptions::AuxiliaryField => {
                 return JsonData {
                     model: String::from("verbs.auxiliaries"),
                     pk: 0,
                     fields: Field::default(FieldOptions::AuxiliaryField),
                 }
-            },
- 
+            }
+
             FieldOptions::ConjugateField => {
                 return JsonData {
                     model: String::from("verbs.conjugates"),
                     pk: 0,
                     fields: Field::default(FieldOptions::ConjugateField),
                 }
-            },
-            
+            }
+
             FieldOptions::ConjugationField => {
                 return JsonData {
                     model: String::from("verbs.conjugations"),
                     pk: 0,
                     fields: Field::default(FieldOptions::ConjugationField),
                 }
-            },
-            
+            }
+
             FieldOptions::SentenceField => {
                 return JsonData {
                     model: String::from("verbs.sentences"),
                     pk: 0,
                     fields: Field::default(FieldOptions::SentenceField),
                 }
-            },
+            }
         }
     }
 }
 
-
-pub fn create_json_data_vec_from_vec_vec_string(data_vec_vec: &Vec<Vec<String>>, field_type: FieldOptions) -> Vec<JsonData> {
+pub fn create_json_data_vec_from_vec_vec_string(
+    data_vec_vec: &Vec<Vec<String>>,
+    field_type: FieldOptions,
+) -> Vec<JsonData> {
     let mut json_data: Vec<JsonData> = Vec::new();
     let mut primary_key: i64 = 0;
 
@@ -165,7 +149,7 @@ pub fn create_json_data_vec_from_vec_vec_string(data_vec_vec: &Vec<Vec<String>>,
                     language: data[0].clone(),
                 };
                 Field::LanguageField(language_field)
-            },
+            }
 
             FieldOptions::GroupField => {
                 let group_field = GroupField {
@@ -173,7 +157,7 @@ pub fn create_json_data_vec_from_vec_vec_string(data_vec_vec: &Vec<Vec<String>>,
                     group: data[1].clone(),
                 };
                 Field::GroupField(group_field)
-            },
+            }
 
             FieldOptions::EndingField => {
                 let ending_field = EndingField {
@@ -181,15 +165,15 @@ pub fn create_json_data_vec_from_vec_vec_string(data_vec_vec: &Vec<Vec<String>>,
                     ending: data[1].clone(),
                 };
                 Field::EndingField(ending_field)
-            },
+            }
 
-            FieldOptions:: ModelField => {
+            FieldOptions::ModelField => {
                 let model_field = ModelField {
                     ending: data[0].clone(),
                     model: data[1].clone(),
                 };
                 Field::ModelField(model_field)
-            },
+            }
 
             FieldOptions::BaseField => {
                 let base_field = BaseField {
@@ -198,7 +182,7 @@ pub fn create_json_data_vec_from_vec_vec_string(data_vec_vec: &Vec<Vec<String>>,
                     base: data[2].clone(),
                 };
                 Field::BaseField(base_field)
-            },
+            }
 
             FieldOptions::MajorTenseField => {
                 let major_tense_field = MajorTenseField {
@@ -206,7 +190,7 @@ pub fn create_json_data_vec_from_vec_vec_string(data_vec_vec: &Vec<Vec<String>>,
                     major_tense: data[1].clone(),
                 };
                 Field::MajorTenseField(major_tense_field)
-            },
+            }
 
             FieldOptions::MinorTenseField => {
                 let minor_tense_field = MinorTenseField {
@@ -214,19 +198,19 @@ pub fn create_json_data_vec_from_vec_vec_string(data_vec_vec: &Vec<Vec<String>>,
                     minor_tense: data[1].clone(),
                 };
                 Field::MinorTenseField(minor_tense_field)
-            },
+            }
 
             FieldOptions::TenseField => {
                 let tense_subfield = TenseSubfield {
                     major: data[1].clone(),
-                    minor: data[2].clone()
+                    minor: data[2].clone(),
                 };
                 let tense_field = TenseField {
                     rank: data[0].parse::<i64>().unwrap(),
                     tense: tense_subfield,
                 };
                 Field::TenseField(tense_field)
-            },
+            }
 
             FieldOptions::ParticleField => {
                 let particle_field = ParticleField {
@@ -234,7 +218,7 @@ pub fn create_json_data_vec_from_vec_vec_string(data_vec_vec: &Vec<Vec<String>>,
                     particle: data[1].clone(),
                 };
                 Field::ParticleField(particle_field)
-            },
+            }
 
             FieldOptions::SubjectField => {
                 let subject_field = SubjectField {
@@ -243,7 +227,7 @@ pub fn create_json_data_vec_from_vec_vec_string(data_vec_vec: &Vec<Vec<String>>,
                     subject: data[2].clone(),
                 };
                 Field::SubjectField(subject_field)
-            },
+            }
 
             FieldOptions::AuxiliaryField => {
                 let auxiliary_field = AuxiliaryField {
@@ -251,7 +235,7 @@ pub fn create_json_data_vec_from_vec_vec_string(data_vec_vec: &Vec<Vec<String>>,
                     auxiliary: data[1].clone(),
                 };
                 Field::AuxiliaryField(auxiliary_field)
-            },
+            }
 
             FieldOptions::ConjugateField => {
                 let conjugate_field = ConjugateField {
@@ -261,7 +245,7 @@ pub fn create_json_data_vec_from_vec_vec_string(data_vec_vec: &Vec<Vec<String>>,
                     conjugate: data[3].clone(),
                 };
                 Field::ConjugateField(conjugate_field)
-            },
+            }
 
             // Need a different top type to Vec<Vec<&str>>
             FieldOptions::ConjugationField => {
@@ -274,7 +258,7 @@ pub fn create_json_data_vec_from_vec_vec_string(data_vec_vec: &Vec<Vec<String>>,
                     conjugate: data[5].clone(),
                 };
                 Field::ConjugationField(conjugation_field)
-            },
+            }
 
             // Need a different top type to Vec<Vec<&str>>
             FieldOptions::SentenceField => {
@@ -286,7 +270,7 @@ pub fn create_json_data_vec_from_vec_vec_string(data_vec_vec: &Vec<Vec<String>>,
                     char_start: data[4].parse::<i64>().unwrap(),
                 };
                 Field::SentenceField(sentence_field)
-            },
+            }
         };
 
         let target_data = JsonData {
@@ -300,4 +284,3 @@ pub fn create_json_data_vec_from_vec_vec_string(data_vec_vec: &Vec<Vec<String>>,
 
     return json_data;
 }
-

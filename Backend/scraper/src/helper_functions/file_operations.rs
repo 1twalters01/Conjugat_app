@@ -1,9 +1,8 @@
 use std::{
-    fs::{self, OpenOptions, File},
-    io::{self, Error, ErrorKind, Write, Read},
+    fs::{self, File, OpenOptions},
+    io::{self, Error, ErrorKind, Read, Write},
     result,
 };
-
 
 pub fn open_file(file_path: &str) -> Result<File, io::Error> {
     let file_result = OpenOptions::new().write(true).read(true).open(file_path);
@@ -29,8 +28,8 @@ pub fn open_or_create_file(file_path: &str) -> Result<File, io::Error> {
             other_error_kind => {
                 // Make better error message
                 let msg = "Problem opening the file";
-                return Err(Error::new(other_error_kind, msg))
-            },
+                return Err(Error::new(other_error_kind, msg));
+            }
         },
     };
 }
@@ -44,7 +43,7 @@ pub fn create_file(file_path: &str) -> Result<File, io::Error> {
 }
 
 pub fn write_file(file: &mut File, content: &String) -> result::Result<(), io::Error> {
-   match file.write_all(content.as_bytes()) {
+    match file.write_all(content.as_bytes()) {
         Ok(_) => return Ok(()),
         Err(err) => return Err(err),
     };
@@ -65,11 +64,10 @@ pub fn delete_file(file_path: &str) -> result::Result<(), io::Error> {
     match fs::remove_file(file_path) {
         Ok(()) => return Ok(()),
         Err(error) => match error.kind() {
-            ErrorKind::NotFound => {}// return Ok(()),
+            ErrorKind::NotFound => {} // return Ok(()),
             other_error_kind => return Err(Error::new(other_error_kind, "Error")),
         },
     };
-    
+
     return Ok(());
 }
-

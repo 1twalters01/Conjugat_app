@@ -1,10 +1,8 @@
 use std::io;
 
 use crate::functionality::{
-    languages::run_languages_module,
-    models::run_model_module,
-    conjugations::run_conjugations_modules,
-    resurrection::run_resurrection_module
+    conjugations::run_conjugations_modules, languages::run_languages_module,
+    models::run_model_module, resurrection::run_resurrection_module,
 };
 
 pub async fn initialise_process() {
@@ -25,11 +23,11 @@ pub async fn initialise_process() {
 
     if languages.is_empty() {
         languages = Vec::from([
-        "Spanish".to_string(),
-        "Portuguese".to_string(),
-        "Italian".to_string(),
-        "French".to_string(),
-        "English".to_string()
+            "Spanish".to_string(),
+            "Portuguese".to_string(),
+            "Italian".to_string(),
+            "French".to_string(),
+            "English".to_string(),
         ]);
     }
 
@@ -40,9 +38,6 @@ pub async fn initialise_process() {
     run_conjugations_modules().await;
 }
 
-
 pub fn continue_process() {
     run_resurrection_module();
 }
-
-

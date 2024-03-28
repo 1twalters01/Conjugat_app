@@ -1,5 +1,5 @@
+pub mod conjugations;
 pub mod languages;
 pub mod models;
-pub mod conjugations;
-pub mod sentences;
 pub mod resurrection;
+pub mod sentences;

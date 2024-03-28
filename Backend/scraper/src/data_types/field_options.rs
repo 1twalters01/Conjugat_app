@@ -1,5 +1,4 @@
-use serde::{Serialize, Deserialize};
-
+use serde::{Deserialize, Serialize};
 
 #[derive(Ord, PartialEq, Eq, PartialOrd, Debug, Serialize, Deserialize, Clone)]
 pub struct LanguageField {
@@ -98,4 +97,3 @@ pub struct SentenceField {
     pub char_start: i64,
     pub char_length: i64,
 }
-

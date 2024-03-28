@@ -11,8 +11,7 @@ pub struct ScraperArgs {
 pub enum ScrapeMode {
     /// Create the first set of conjugations
     Initialise,
-    
+
     /// Recreate continued conjugation pageinfo vector
     Continue,
 }
-
